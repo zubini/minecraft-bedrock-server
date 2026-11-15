@@ -5,6 +5,7 @@ Installation und Auto-Update für einen [Minecraft Bedrock Dedicated Server](htt
 - Einrichtung des Servers per Provisioning-Skript
 - Täglich um **04:00** (Europe/Zurich): Versionscheck
 - Update **nur bei neuer Version** (inkl. Welt-Backup)
+- Optional: Nintendo Switch via eigenständiges [MCXboxBroadcast](#nintendo-switch-mcxboxbroadcast)-Setup
 - Download = Annahme der [Minecraft EULA](https://minecraft.net/eula)
 
 ## Installation
@@ -118,9 +119,45 @@ sudo systemctl start minecraft-bedrock
 4. `sudo chown -R minecraft:minecraft /opt/minecraft-bedrock`  
 5. `sudo systemctl start minecraft-bedrock`
 
+## Nintendo Switch (MCXboxBroadcast)
+
+Die Switch kann **keine Server-IP eingeben** — nur Featured Servers, Freunde/Welten und Realms.  
+[MCXboxBroadcast](https://github.com/MCXboxBroadcast/Broadcaster) listet deinen Bedrock-Server dauerhaft als joinbare Freundes-Welt eines Bot-Xbox-Accounts. Das ist optional und **nicht** Teil von `provision.sh`.
+
+### Setup
+
+Öffentliche Bedrock-Adresse (dieselbe, die PC/Handy schon nutzen):
+
+```bash
+# vom PC
+BROADCAST_IP=203.0.113.10 ./scripts/setup-mcxboxbroadcast.sh user@dein-server
+
+# oder auf dem Server
+sudo BROADCAST_IP=203.0.113.10 ./scripts/setup-mcxboxbroadcast.sh
+```
+
+Optional: `BROADCAST_PORT=19132` (Default).  
+Installiert Java ≥ 17 (OpenJDK 17 oder Fallback 21/`default-jre`), die Standalone-JAR unter `/opt/mcxboxbroadcast/`, `config.yml` und den systemd-Dienst `mcxboxbroadcast`. Bestehende `config.env`/`config.yml` werden nicht überschrieben (JAR wird bei erneutem Lauf aktualisiert).
+
+### Einmalig: Xbox-Login
+
+1. Logs beobachten: `journalctl -u mcxboxbroadcast -f`
+2. Code unter https://www.microsoft.com/link mit einem **Alt-Xbox-Account** eingeben (nicht den Hauptaccount — Upstream warnt vor ToS-/Ban-Risiko)
+3. Auf der Switch den Bot-Gamertag als Freund hinzufügen → Play → Freunde/Welten → Session joinen
+4. Bei aktiver Allowlist Switch-Gamertags in `/opt/minecraft-bedrock/allowlist.json` eintragen
+
+```bash
+systemctl status mcxboxbroadcast
+journalctl -u mcxboxbroadcast -f
+```
+
+Konfiguration: `/etc/mcxboxbroadcast/config.env`, Ziel-IP/Port in `/opt/mcxboxbroadcast/config.yml`.  
+Nach Änderungen an `config.yml`: `sudo systemctl restart mcxboxbroadcast`.
+
 ## Skripte
 
 | Skript | Zweck |
 |--------|--------|
-| `scripts/provision.sh` | Einrichtung (`user@host` vom PC, sonst auf dem Server) |
+| `scripts/provision.sh` | Einrichtung Bedrock-Server (`user@host` vom PC, sonst auf dem Server) |
+| `scripts/setup-mcxboxbroadcast.sh` | Optional: MCXboxBroadcast für Switch/Konsolen (eigenständig) |
 | `scripts/update.sh` | Versionscheck + Update (liegt danach unter `/opt/.../bin/`) |

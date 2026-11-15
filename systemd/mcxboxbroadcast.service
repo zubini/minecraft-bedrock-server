@@ -1,0 +1,28 @@
+[Unit]
+Description=MCXboxBroadcast (Xbox Live friends session for Bedrock)
+Documentation=https://github.com/MCXboxBroadcast/Broadcaster
+After=network-online.target
+Wants=network-online.target
+# Soft dependency: Bedrock may run on the same host, but is not required locally
+# (remote-address can point at any reachable BDS).
+
+[Service]
+Type=simple
+User=minecraft
+Group=minecraft
+WorkingDirectory=/opt/mcxboxbroadcast
+ExecStart=/usr/bin/java -Xms64M -Xmx256M -jar /opt/mcxboxbroadcast/MCXboxBroadcastStandalone.jar
+Restart=on-failure
+RestartSec=15
+Nice=10
+
+# Auth tokens and config live under WorkingDirectory
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
