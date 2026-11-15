@@ -103,13 +103,24 @@ install_packages() {
     unzip \
     jq \
     tar \
-    gzip
+    gzip \
+    openssl
 
   # Debian 12: libcurl4 / Debian 13+: libcurl4t64 (time64 transition)
   if ! dpkg -s libcurl4 &>/dev/null && ! dpkg -s libcurl4t64 &>/dev/null; then
     apt-get install -y --no-install-recommends libcurl4 \
       || apt-get install -y --no-install-recommends libcurl4t64 \
       || log "Note: could not install libcurl – install manually if needed."
+  fi
+}
+
+set_timezone() {
+  local tz="${TIMEZONE:-Europe/Zurich}"
+  if command -v timedatectl >/dev/null; then
+    log "Setting timezone to $tz …"
+    timedatectl set-timezone "$tz"
+  else
+    log "timedatectl not found – skipping timezone ($tz)."
   fi
 }
 
@@ -156,6 +167,7 @@ load_config() {
   BACKUP_DIR="${BACKUP_DIR:-${INSTALL_DIR}/backups}"
   SERVICE_USER="${SERVICE_USER:-minecraft}"
   SERVICE_NAME="${SERVICE_NAME:-minecraft-bedrock}"
+  TIMEZONE="${TIMEZONE:-Europe/Zurich}"
 }
 
 install_scripts() {
@@ -205,7 +217,8 @@ print_status() {
   echo "Install directory: $INSTALL_DIR"
   echo "Config:            /etc/minecraft-bedrock/config.env"
   echo "Backups:           $BACKUP_DIR"
-  echo "Update timer:      daily 04:00 (Persistent=true)"
+  echo "Update timer:      daily 04:00 Europe/Zurich (Persistent=true)"
+  echo "Timezone:          $(timedatectl show -p Timezone --value 2>/dev/null || echo Europe/Zurich)"
   echo
   echo "Service status:"
   systemctl --no-pager --full status "${SERVICE_NAME}.service" || true
@@ -230,6 +243,7 @@ provision_local() {
   install_packages
   install_config
   load_config
+  set_timezone
   ensure_user
   ensure_dirs
   install_scripts

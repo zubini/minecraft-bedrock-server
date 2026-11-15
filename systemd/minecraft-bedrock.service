@@ -17,5 +17,13 @@ Nice=5
 # Bedrock uses UDP (default port 19132)
 LimitNOFILE=4096
 
+# Minimal hardening (conservative – should not affect gameplay)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+RestrictSUIDSGID=true
+
 [Install]
 WantedBy=multi-user.target

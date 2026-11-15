@@ -245,14 +245,64 @@ is_protected_dir() {
   return 1
 }
 
+# Extract a response header value (case-insensitive), trimmed.
+# Uses the last match (final hop after redirects).
+header_value() {
+  local file="$1" name="$2"
+  awk -v key="$name" '
+    BEGIN { IGNORECASE = 1 }
+    tolower($0) ~ ("^" tolower(key) ":") {
+      sub(/^[^:]*:[[:space:]]*/, "")
+      sub(/\r$/, "")
+      val = $0
+    }
+    END { if (val != "") print val }
+  ' "$file"
+}
+
+# Verify ZIP against Mojang/Azure CDN headers (Content-MD5 + Content-Length).
+# Mojang does not publish a separate SHA manifest; Content-MD5 is the official blob checksum.
+verify_download() {
+  local dest="$1"
+  local hdr_file="$2"
+  local expected_md5 expected_len actual_md5 actual_len
+
+  [[ -s "$dest" ]] || die "Download is empty: $dest"
+
+  expected_len="$(header_value "$hdr_file" "content-length")"
+  actual_len="$(stat -c '%s' "$dest" 2>/dev/null || stat -f '%z' "$dest")"
+  if [[ -n "$expected_len" && "$expected_len" =~ ^[0-9]+$ ]]; then
+    if [[ "$actual_len" != "$expected_len" ]]; then
+      die "Download size mismatch (expected ${expected_len}, got ${actual_len})"
+    fi
+  fi
+
+  expected_md5="$(header_value "$hdr_file" "content-md5")"
+  if [[ -z "$expected_md5" ]]; then
+    die "CDN response missing Content-MD5 – refusing to install unverified download."
+  fi
+
+  command -v openssl >/dev/null || die "openssl required for download checksum verification"
+  actual_md5="$(openssl dgst -md5 -binary "$dest" | base64)"
+  if [[ "$actual_md5" != "$expected_md5" ]]; then
+    die "Download Content-MD5 mismatch (expected ${expected_md5}, got ${actual_md5})"
+  fi
+
+  log "Download verified (Content-MD5=${expected_md5}, size=${actual_len})"
+}
+
 # Download ZIP while the server can keep running (shorter downtime).
 download_zip() {
   local url="$1"
   local dest="$2"
+  local hdr_file
+
+  hdr_file="$(make_temp_dir)/download.headers"
   log "Downloading $url …"
-  curl -fL -A "$USER_AGENT" -o "$dest" "$url" \
+  curl -fL -A "$USER_AGENT" -D "$hdr_file" -o "$dest" "$url" \
     || die "Download failed: $url"
-  [[ -s "$dest" ]] || die "Download is empty: $dest"
+
+  verify_download "$dest" "$hdr_file"
 }
 
 install_from_zip() {
