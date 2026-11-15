@@ -1,0 +1,21 @@
+[Unit]
+Description=Minecraft Bedrock Dedicated Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=minecraft
+Group=minecraft
+WorkingDirectory=/opt/minecraft-bedrock
+Environment=LD_LIBRARY_PATH=.
+ExecStart=/opt/minecraft-bedrock/bedrock_server
+Restart=on-failure
+RestartSec=10
+Nice=5
+
+# Bedrock uses UDP (default port 19132)
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

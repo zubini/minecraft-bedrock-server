@@ -1,0 +1,9 @@
+[Unit]
+Description=Minecraft Bedrock Server Update Check
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/minecraft-bedrock/bin/update.sh
+Nice=10
