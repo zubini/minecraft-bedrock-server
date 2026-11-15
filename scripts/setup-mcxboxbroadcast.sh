@@ -4,7 +4,8 @@
 # Idempotent: existing config.env / config.yml are not overwritten.
 #
 # Usage:
-#   BROADCAST_IP=203.0.113.10 ./scripts/setup-mcxboxbroadcast.sh user@host
+#   ./scripts/setup-mcxboxbroadcast.sh user@host          # BROADCAST_IP defaults to host
+#   BROADCAST_IP=other.example ./scripts/setup-mcxboxbroadcast.sh user@host
 #   sudo BROADCAST_IP=203.0.113.10 ./scripts/setup-mcxboxbroadcast.sh
 set -euo pipefail
 
@@ -28,16 +29,32 @@ log() {
 usage() {
   cat <<EOF
 Usage:
-  BROADCAST_IP=<public-ip-or-host> $0 user@host   # from your PC (ssh + rsync)
-  sudo BROADCAST_IP=<public-ip-or-host> $0        # on the Debian server
+  $0 user@host                                 # from your PC (ssh + rsync)
+  sudo BROADCAST_IP=<public-ip-or-host> $0     # on the Debian server
+
+In remote mode, BROADCAST_IP defaults to the host part of user@host
+(same address Minecraft clients use, if that matches SSH). Override with:
+  BROADCAST_IP=other.example $0 user@host
 
 Optional env:
   BROADCAST_PORT=19132
   REMOTE_DIR=/path/on/server   (remote mode only)
 
-BROADCAST_IP is required on first install (when config.yml does not exist yet).
+On first install, BROADCAST_IP must be known (auto from user@host, or set explicitly).
 Existing /etc/mcxboxbroadcast/config.env and INSTALL_DIR/config.yml are left unchanged.
 EOF
+}
+
+# Extract host from user@host or user@[ipv6] (optional :ssh-port is not supported here).
+ssh_target_host() {
+  local target="$1"
+  local host="${target#*@}"
+  if [[ "$host" == \[*\]* ]]; then
+    # user@[2001:db8::1] → 2001:db8::1
+    host="${host#\[}"
+    host="${host%%\]*}"
+  fi
+  printf '%s' "$host"
 }
 
 require_repo_layout() {
@@ -61,7 +78,14 @@ provision_remote() {
   remote_ip="${BROADCAST_IP:-}"
   remote_port="${BROADCAST_PORT:-}"
 
+  if [[ -z "$remote_ip" ]]; then
+    remote_ip="$(ssh_target_host "$target")"
+    [[ -n "$remote_ip" ]] || die "Could not derive host from SSH target: $target"
+    log "BROADCAST_IP not set – using SSH host: $remote_ip"
+  fi
+
   log "Target: $target"
+  log "Broadcast address: $remote_ip${remote_port:+:}$remote_port"
   log "Remote dir: $REMOTE_DIR"
 
   log "Ensuring rsync on remote host …"

@@ -126,14 +126,15 @@ Die Switch kann **keine Server-IP eingeben** — nur Featured Servers, Freunde/W
 
 ### Setup
 
-Öffentliche Bedrock-Adresse (dieselbe, die PC/Handy schon nutzen):
-
 ```bash
-# vom PC
-BROADCAST_IP=203.0.113.10 ./scripts/setup-mcxboxbroadcast.sh user@dein-server
+# vom PC – BROADCAST_IP = Host aus user@host (wenn SSH-Host = Minecraft-Adresse)
+./scripts/setup-mcxboxbroadcast.sh user@dein-server
 
-# oder auf dem Server
-sudo BROADCAST_IP=203.0.113.10 ./scripts/setup-mcxboxbroadcast.sh
+# abweichende Spiel-Adresse:
+# BROADCAST_IP=andere.example ./scripts/setup-mcxboxbroadcast.sh user@dein-server
+
+# direkt auf dem Server (IP/Host explizit nötig):
+sudo BROADCAST_IP=dein-server ./scripts/setup-mcxboxbroadcast.sh
 ```
 
 Optional: `BROADCAST_PORT=19132` (Default).  
