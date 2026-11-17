@@ -1,10 +1,3 @@
-fill ~64 ~0 ~3 ~65 ~0 ~7 quartz_block
-setblock ~64 ~5 ~7 quartz_block
-setblock ~65 ~5 ~7 quartz_block
-setblock ~64 ~10 ~7 quartz_block
-setblock ~65 ~10 ~7 quartz_block
-setblock ~64 ~15 ~7 quartz_block
-setblock ~65 ~15 ~7 quartz_block
 setblock ~64 ~20 ~7 quartz_block
 setblock ~65 ~20 ~7 quartz_block
 setblock ~64 ~25 ~7 quartz_block
@@ -23,6 +16,13 @@ setblock ~64 ~55 ~7 quartz_block
 setblock ~65 ~55 ~7 quartz_block
 setblock ~64 ~60 ~7 quartz_block
 setblock ~65 ~60 ~7 quartz_block
-fill ~63 ~1 ~3 ~68 ~4 ~8 air
-setblock ~64 ~1 ~7 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~65 ~1 ~7 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+fill ~65 ~0 ~9 ~66 ~0 ~9 stone_bricks
+fill ~64 ~1 ~9 ~67 ~3 ~9 light_blue_concrete
+fill ~65 ~1 ~9 ~66 ~2 ~9 air
+setblock ~65 ~1 ~9 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~65 ~2 ~9 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~66 ~1 ~9 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~66 ~2 ~9 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+fill ~66 ~1 ~3 ~68 ~1 ~8 red_carpet
+setblock ~66 ~1 ~3 flower_pot
+setblock ~68 ~1 ~3 flower_pot

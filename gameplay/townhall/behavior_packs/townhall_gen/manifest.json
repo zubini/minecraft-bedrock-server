@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Town Hall",
+    "description": "Rathaus 32×32",
+    "uuid": "c7a4e9d0-3b8f-0a57-f42c-9d1f4a6b8c0e",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "d8b5f0e1-4c9a-1b68-a53d-0e2a5b7c9d1f",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

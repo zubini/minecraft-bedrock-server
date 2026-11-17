@@ -1,0 +1,9 @@
+{
+  "ns": "school",
+  "size_x": 36,
+  "size_z": 48,
+  "max_height": 18,
+  "build_steps": 5,
+  "clear_steps": 5,
+  "build_commands": 129
+}

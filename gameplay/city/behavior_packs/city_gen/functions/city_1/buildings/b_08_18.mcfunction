@@ -1,28 +1,8 @@
-setblock ~5 ~12 ~46 quartz_block
-setblock ~4 ~16 ~46 quartz_block
-setblock ~5 ~16 ~46 quartz_block
-setblock ~4 ~20 ~46 quartz_block
-setblock ~5 ~20 ~46 quartz_block
-setblock ~4 ~24 ~46 quartz_block
-setblock ~5 ~24 ~46 quartz_block
-setblock ~4 ~28 ~46 quartz_block
-setblock ~5 ~28 ~46 quartz_block
-setblock ~4 ~32 ~46 quartz_block
-setblock ~5 ~32 ~46 quartz_block
-setblock ~4 ~36 ~46 quartz_block
-setblock ~5 ~36 ~46 quartz_block
-setblock ~4 ~40 ~46 quartz_block
-setblock ~5 ~40 ~46 quartz_block
-setblock ~4 ~44 ~46 quartz_block
-setblock ~5 ~44 ~46 quartz_block
-setblock ~4 ~48 ~46 quartz_block
-setblock ~5 ~48 ~46 quartz_block
-setblock ~4 ~52 ~46 quartz_block
-setblock ~5 ~52 ~46 quartz_block
-setblock ~4 ~56 ~46 quartz_block
-setblock ~5 ~56 ~46 quartz_block
-setblock ~4 ~60 ~46 quartz_block
-setblock ~5 ~60 ~46 quartz_block
-setblock ~4 ~64 ~46 quartz_block
-setblock ~5 ~64 ~46 quartz_block
-fill ~4 ~0 ~49 ~5 ~0 ~49 stone_bricks
+fill ~2 ~65 ~47 ~8 ~65 ~48 blue_carpet
+setblock ~6 ~65 ~42 bookshelf
+setblock ~6 ~66 ~42 bookshelf
+setblock ~7 ~65 ~42 bookshelf
+setblock ~8 ~65 ~42 chest
+setblock ~6 ~65 ~48 crafting_table
+setblock ~8 ~65 ~48 flower_pot
+fill ~5 ~69 ~45 ~5 ~72 ~45 iron_bars

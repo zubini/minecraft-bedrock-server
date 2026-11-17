@@ -1,28 +1,14 @@
-setblock ~45 ~62 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~63 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~63 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~64 ~43 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~64 ~43 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-fill ~44 ~0 ~43 ~45 ~0 ~46 quartz_block
-setblock ~44 ~4 ~46 quartz_block
-setblock ~45 ~4 ~46 quartz_block
-setblock ~44 ~8 ~46 quartz_block
-setblock ~45 ~8 ~46 quartz_block
-setblock ~44 ~12 ~46 quartz_block
-setblock ~45 ~12 ~46 quartz_block
-setblock ~44 ~16 ~46 quartz_block
-setblock ~45 ~16 ~46 quartz_block
-setblock ~44 ~20 ~46 quartz_block
-setblock ~45 ~20 ~46 quartz_block
-setblock ~44 ~24 ~46 quartz_block
-setblock ~45 ~24 ~46 quartz_block
-setblock ~44 ~28 ~46 quartz_block
-setblock ~45 ~28 ~46 quartz_block
-setblock ~44 ~32 ~46 quartz_block
-setblock ~45 ~32 ~46 quartz_block
-setblock ~44 ~36 ~46 quartz_block
-setblock ~45 ~36 ~46 quartz_block
-setblock ~44 ~40 ~46 quartz_block
-setblock ~45 ~40 ~46 quartz_block
-setblock ~44 ~44 ~46 quartz_block
-setblock ~45 ~44 ~46 quartz_block
+setblock ~48 ~61 ~43 flower_pot
+setblock ~46 ~61 ~48 flower_pot
+setblock ~48 ~61 ~48 bookshelf
+setblock ~47 ~61 ~43 chest
+setblock ~48 ~61 ~47 flower_pot
+fill ~46 ~65 ~43 ~48 ~65 ~48 blue_carpet
+fill ~43 ~65 ~47 ~48 ~65 ~48 blue_carpet
+setblock ~46 ~65 ~43 bookshelf
+setblock ~46 ~66 ~43 bookshelf
+setblock ~47 ~65 ~43 bookshelf
+setblock ~48 ~65 ~43 chest
+setblock ~46 ~65 ~48 crafting_table
+setblock ~48 ~65 ~48 flower_pot
+fill ~45 ~66 ~45 ~45 ~69 ~45 iron_bars

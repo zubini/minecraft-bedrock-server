@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "School",
+    "description": "Schule 36×48",
+    "uuid": "a5e2c7b8-1f6d-8e35-d20a-7b9d2e4f6a8c",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "b6f3d8c9-2a7e-9f46-e31b-8c0e3f5a7b9d",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -21,8 +21,8 @@ fill ~44 ~56 ~63 ~45 ~56 ~65 air
 fill ~44 ~60 ~63 ~45 ~60 ~65 air
 fill ~44 ~64 ~63 ~45 ~64 ~65 air
 fill ~44 ~1 ~63 ~45 ~64 ~66 air
+fill ~43 ~1 ~63 ~48 ~3 ~68 air
 setblock ~44 ~1 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~45 ~1 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~44 ~2 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~45 ~2 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~3 ~64 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]

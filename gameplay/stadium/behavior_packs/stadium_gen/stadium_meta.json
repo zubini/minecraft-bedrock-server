@@ -1,0 +1,9 @@
+{
+  "ns": "stadium",
+  "size_x": 70,
+  "size_z": 100,
+  "max_height": 28,
+  "build_steps": 1292,
+  "clear_steps": 23,
+  "build_commands": 31008
+}

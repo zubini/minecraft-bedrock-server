@@ -1,0 +1,9 @@
+{
+  "ns": "townhall",
+  "size_x": 32,
+  "size_z": 32,
+  "max_height": 28,
+  "build_steps": 4,
+  "clear_steps": 5,
+  "build_commands": 109
+}

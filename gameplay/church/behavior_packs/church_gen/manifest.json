@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Church",
+    "description": "Dorfkirche 24×40",
+    "uuid": "c1a8e3d4-7b2f-4a91-9e6c-3d5f8a0b2c4e",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "d2b9f4e5-8c3a-5b02-af7d-4e6a9b1c3d5f",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

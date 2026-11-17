@@ -15,6 +15,19 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  buildAirClearCommands,
+  buildClearCommandBatches,
+  chunkCommands,
+  createRng,
+  fill,
+  fillLarge,
+  originMarkerLines as originMarkerLinesShared,
+  pad2,
+  setblock,
+  tickingAreaAddCmd,
+  writeMcfunction,
+} from "../lib/mc_gen.mjs";
 
 // ---------------------------------------------------------------------------
 // Feste Werte
@@ -29,12 +42,6 @@ const CITY_DIR = path.dirname(fileURLToPath(import.meta.url));
 
 /** Wohin das fertige Pack geschrieben wird. */
 const OUT_DIR = path.join(CITY_DIR, "behavior_packs", "city_gen");
-
-/**
- * Minecraft erlaubt max. 32768 Blöcke pro /fill.
- * Grössere Flächen teilen wir in Streifen auf.
- */
-const FILL_MAX_BLOCKS = 32768;
 
 /** Mögliche Fassadenfarben (moderne Beton-Türme). */
 const FACADE_COLORS = [
@@ -59,63 +66,14 @@ const LAYOUT = {
 const DEFAULT_VARIANTS = 5;
 
 /** Pack-Version (bei Logik-Änderung erhöhen). */
-const PACK_VERSION = [1, 7, 1];
+const PACK_VERSION = [1, 7, 3];
 
 /** Max. Befehle pro Gebäude-Tick (sonst bricht BDS lange Functions ab → nur 3–4 Häuser). */
 const BUILDING_CMDS_PER_TICK = 28;
 
-// ---------------------------------------------------------------------------
-// Hilfen: Zufall, Koordinaten, Dateien schreiben
-// ---------------------------------------------------------------------------
-
-/**
- * Einfacher Zufallsgenerator mit festem Startwert (Seed).
- * Gleicher Seed → gleiche Stadt.
- */
-function createRng(seed) {
-  let state = seed >>> 0; // als positive 32-Bit-Zahl
-
-  return {
-    /** Zufallszahl zwischen 0 und 1 (nicht einschliesslich 1). */
-    random() {
-      state = (state + 0x6d2b79f5) | 0;
-      let t = Math.imul(state ^ (state >>> 15), 1 | state);
-      t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    },
-
-    /** Ganze Zahl von min bis max (beide inklusive). */
-    int(min, max) {
-      return min + Math.floor(this.random() * (max - min + 1));
-    },
-
-    /** Ein zufälliges Element aus einer Liste. */
-    pick(list) {
-      return list[Math.floor(this.random() * list.length)];
-    },
-  };
-}
-
-/**
- * Relativ zum Origin-Marker (Spieler-Standpunkt).
- * +x = Ost, +y = oben, +z = Süd.
- * (Blickrichtungs-^ war auf BDS für fill unzuverlässig → Clear/Terrain/Strassen tot.)
- */
-function at(x, y, z) {
-  return `~${x} ~${y} ~${z}`;
-}
-
-/** Ein einzelner fill-Befehl. */
-function fill(x1, y1, z1, x2, y2, z2, block, mode = "") {
-  const from = at(x1, y1, z1);
-  const to = at(x2, y2, z2);
-  if (mode) return `fill ${from} ${to} ${block} ${mode}`;
-  return `fill ${from} ${to} ${block}`;
-}
-
-/** setblock relativ zum Origin-Marker. */
-function setblock(x, y, z, block) {
-  return `setblock ${at(x, y, z)} ${block}`;
+/** Origin-Marker mit City-Gruppen-Tag. */
+function originMarkerLines(tag) {
+  return originMarkerLinesShared(tag, "city_o");
 }
 
 /**
@@ -130,65 +88,6 @@ function stair(x, y, z, facing) {
     z,
     `quartz_stairs ["weirdo_direction":${dir},"upside_down_bit":false]`,
   );
-}
-
-/** Weisses Treppen-Podest. */
-function landing(x, y, z) {
-  return setblock(x, y, z, "quartz_block");
-}
-
-/**
- * Wie fill(), aber splittet grosse Quader, falls > maxBlocks.
- * Sonst schlägt der Befehl im Spiel fehl.
- * maxBlocks kleiner wählen (z.B. Clear), wenn viele Blöcke wirklich ersetzt werden.
- */
-function fillLarge(x1, y1, z1, x2, y2, z2, block, mode = "", maxBlocks = FILL_MAX_BLOCKS) {
-  const commands = [];
-
-  const yMin = Math.min(y1, y2);
-  const yMax = Math.max(y1, y2);
-  const zMin = Math.min(z1, z2);
-  const zMax = Math.max(z1, z2);
-  const xMin = Math.min(x1, x2);
-  const xMax = Math.max(x1, x2);
-
-  const height = yMax - yMin + 1;
-  const depth = zMax - zMin + 1;
-
-  // Wie breit darf ein Streifen in X sein?
-  const maxStripWidth = Math.max(1, Math.floor(maxBlocks / (height * depth)));
-
-  for (let x = xMin; x <= xMax; ) {
-    const xEnd = Math.min(xMax, x + maxStripWidth - 1);
-    const width = xEnd - x + 1;
-
-    // Falls immer noch zu gross: zusätzlich in Z schneiden
-    if (width * height * depth > maxBlocks) {
-      const maxDepth = Math.max(1, Math.floor(maxBlocks / (width * height)));
-      for (let z = zMin; z <= zMax; ) {
-        const zEnd = Math.min(zMax, z + maxDepth - 1);
-        commands.push(fill(x, yMin, z, xEnd, yMax, zEnd, block, mode));
-        z = zEnd + 1;
-      }
-    } else {
-      commands.push(fill(x, yMin, zMin, xEnd, yMax, zMax, block, mode));
-    }
-
-    x = xEnd + 1;
-  }
-
-  return commands;
-}
-
-/** Schreibt eine .mcfunction-Datei (eine Zeile = ein Befehl, ohne / davor). */
-function writeMcfunction(filePath, lines) {
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  const text = lines.filter((line) => line.trim() !== "").join("\n") + "\n";
-  fs.writeFileSync(filePath, text, "utf8");
-}
-
-function pad2(n) {
-  return String(n).padStart(2, "0");
 }
 
 // ---------------------------------------------------------------------------
@@ -411,8 +310,9 @@ function buildLandscapeBatches(size, lot, sidewalk, street, seed, lots) {
 }
 
 /**
- * Doppeltür Südwand, Blick nach Norden.
- * Links Anschlag links (false), rechts Anschlag rechts (true).
+ * Doppeltür Südwand (direction 2, Blick von aussen nach Norden).
+ * Bedrock: hinge_bit true = Anschlag links, false = rechts (bei dieser Ausrichtung).
+ * Links aussen = true, rechts aussen = false.
  */
 function doubleDoorSouth(xLeft, y, z) {
   return [
@@ -420,25 +320,25 @@ function doubleDoorSouth(xLeft, y, z) {
       xLeft,
       y,
       z,
-      'wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]',
+      'wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]',
     ),
     setblock(
       xLeft,
       y + 1,
       z,
-      'wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]',
+      'wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]',
     ),
     setblock(
       xLeft + 1,
       y,
       z,
-      'wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]',
+      'wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]',
     ),
     setblock(
       xLeft + 1,
       y + 1,
       z,
-      'wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]',
+      'wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]',
     ),
   ];
 }
@@ -535,16 +435,19 @@ function furnishFloor(yFloor, storyIndex, x0, z0, x1, z1, sx, sz, sx1, sz1, rng)
 }
 
 /**
- * Immer gleiche Richtung: von Süd (Tür) nach Norden hoch.
- * Keine Stufe in der Bodenebene — erste Stufe auf yFloor+1 (auf dem Boden).
- * Pro Stock herumlaufen zur südlichen Startseite.
+ * Immer gleiche Richtung: Süd → Nord (facing north), pro Stock herumlaufen.
+ *
+ * Pro vollem Stockwerk genau storyH Stufen:
+ *   i=0..storyH-1 → y = yFloor+1+i, z = stairZ1-i
+ * Erste Stufe liegt auf dem Boden (yFloor+1), nie in der Bodenebene.
+ * Letzte Stufe liegt in der nächsten Etage (Nord, Etagenloch) — dort seitlich absteigen.
+ * Nur Flüge zu einer echten Etage (yFloor+storyH < height), kein Stummel unters Dach.
  */
 function placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height) {
-  for (let yFloor = 0; yFloor < height; yFloor += storyH) {
+  for (let yFloor = 0; yFloor + storyH < height; yFloor += storyH) {
     for (let i = 0; i < storyH; i++) {
-      const y = yFloor + 1 + i; // nicht in yFloor (Boden)
-      if (y >= height) break;
-      const z = stairZ1 - i; // Start Süd → Nord
+      const y = yFloor + 1 + i;
+      const z = stairZ1 - i;
       commands.push(stair(stairX0, y, z, "north"));
       commands.push(stair(stairX1, y, z, "north"));
     }
@@ -552,17 +455,12 @@ function placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, story
 }
 
 /**
- * Bodenzellen am Treppenstart (Süd) und EG unter der Treppe.
- * Nord auf den Etagen: letzte Stufe bleibt (nicht mit Block überschreiben).
+ * EG: Schachtboden voll (erste Stufe erst bei y=1).
+ * Obere Etagen: kein Süd-Pad im Schacht — sonst zu kleine Deckenaussparung
+ * (Spieler kollidiert mit dem Bodenrand). Anlauf von z=stairZ1+1 auf normalem Boden.
  */
-function placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, block) {
-  // EG: ganzer Schachtboden bleibt Boden (erste Stufe erst bei y=1)
+function placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, _storyH, _height, block) {
   commands.push(fill(stairX0, 0, stairZ0, stairX1, 0, stairZ1, block));
-  for (let y = storyH; y < height; y += storyH) {
-    // Süd-Start: normaler Boden zum Aufsteigen
-    commands.push(setblock(stairX0, y, stairZ1, block));
-    commands.push(setblock(stairX1, y, stairZ1, block));
-  }
 }
 
 /**
@@ -590,10 +488,11 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   const stairX1 = midX;
   const stairZ0 = Math.floor((z0 + z1) / 2) - Math.floor(storyH / 2);
   const stairZ1 = stairZ0 + storyH - 1;
-  const sx = stairX0;
-  const sz = stairZ0;
-  const sx1 = stairX1;
-  const sz1 = stairZ1;
+  // Aussparung grösser als die Stufen (±1), sonst kommt man nicht durch die Decke
+  const sx = Math.max(x0 + 1, stairX0 - 1);
+  const sx1 = Math.min(x1 - 1, stairX1 + 1);
+  const sz = Math.max(z0 + 1, stairZ0 - 1);
+  const sz1 = stairZ1; // ganzer Schacht inkl. Süd — kein Bodensteg im Loch
 
   const commands = [];
 
@@ -654,17 +553,13 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
     }
   }
 
-  // Treppenschacht: Etagenlöcher nur bis vor Süd-Start (Boden bleibt)
+  // Treppenschacht: volle Etagenlöcher (Stufen-Fussabdruck + Rand), kein Bodensteg
   for (let y = storyH; y < height; y += storyH) {
-    if (stairZ1 - 1 >= stairZ0) {
-      commands.push(fill(sx, y, sz, sx1, y, stairZ1 - 1, "air"));
-    }
+    commands.push(fill(sx, y, sz, sx1, y, sz1, "air"));
   }
   commands.push(fill(sx, 1, sz, sx1, height - 1, sz1, "air"));
-  placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height);
-  placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, "quartz_block");
 
-  // Lobby über EG freiräumen, Treppe/Türen neu
+  // Lobby-EG freiräumen, dann Treppe/Podeste/Türen einmal final setzen
   commands.push(fill(x0 + 1, 1, z0 + 1, x1 - 1, Math.min(height - 1, storyH - 1), z1 - 1, "air"));
   placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height);
   placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, "quartz_block");
@@ -690,44 +585,6 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   return commands;
 }
 
-/** Befehle in Tick-Batches aufteilen. */
-function chunkCommands(all, batchSize) {
-  const batches = [];
-  for (let i = 0; i < all.length; i += batchSize) {
-    batches.push(all.slice(i, i + batchSize));
-  }
-  return batches;
-}
-
-/**
- * Luft-Scheiben von yFrom bis clearTop (für Clear und Terrain-Prep).
- */
-function buildAirClearCommands(size, maxHeight, yFrom = 0) {
-  const clearTop = maxHeight + 4;
-  const clearFillMax = 4096;
-  const all = [];
-
-  const lowEnd = Math.min(15, clearTop);
-  for (let y0 = yFrom; y0 <= lowEnd; y0 += 2) {
-    const y1 = Math.min(lowEnd, y0 + 1);
-    all.push(...fillLarge(0, y0, 0, size - 1, y1, size - 1, "air", "", clearFillMax));
-  }
-  for (let y0 = Math.max(yFrom, 16); y0 <= clearTop; y0 += 4) {
-    const y1 = Math.min(clearTop, y0 + 3);
-    all.push(...fillLarge(0, y0, 0, size - 1, y1, size - 1, "air", "", clearFillMax));
-  }
-  all.push(...fillLarge(0, yFrom, 0, size - 1, Math.min(yFrom + 3, clearTop), size - 1, "air", "", clearFillMax));
-  return all;
-}
-
-/**
- * Clear-Befehle: nur Luft, kein neuer Boden.
- * Untere Schichten oft hartnäckig → dünne Y-Scheiben.
- */
-function buildClearCommandBatches(size, maxHeight) {
-  return chunkCommands(buildAirClearCommands(size, maxHeight, 0), 3);
-}
-
 /**
  * Terrain-Prep: Ebene unter den Füssen (y=-1) = Erde,
  * ab Fuss-Höhe (y=0) alles Luft – Platz für die Stadt.
@@ -741,21 +598,6 @@ function buildPrepBatches(size, maxHeight) {
     ...fillLarge(0, 0, 0, size - 1, 2, size - 1, "air", "", clearFillMax),
   ];
   return chunkCommands(all, 3);
-}
-
-/** Tickingarea über die Stadt (+X/+Z vom Origin). */
-function tickingAreaAddCmd(size, maxY, areaName) {
-  return `tickingarea add ~0 ~-1 ~0 ~${size - 1} ~${maxY + 8} ~${size - 1} ${areaName} true`;
-}
-
-/** Origin-Marker am Spieler. */
-function originMarkerLines(tag) {
-  return [
-    "summon armor_stand ~ ~ ~",
-    `tag @e[type=armor_stand,r=3,c=1] add ${tag}`,
-    `tag @e[tag=${tag},c=1] add city_o`,
-    `effect @e[tag=${tag}] invisibility 999999 0 true`,
-  ];
 }
 
 /** Seed für Variante index (1-basiert) aus Basis-Seed. */

@@ -1,0 +1,24 @@
+setblock ~51 ~0 ~56 lime_concrete
+setblock ~51 ~0 ~57 lime_concrete
+setblock ~51 ~0 ~58 lime_concrete
+setblock ~51 ~0 ~59 lime_concrete
+setblock ~51 ~0 ~60 lime_concrete
+setblock ~51 ~0 ~61 lime_concrete
+setblock ~52 ~0 ~43 lime_concrete
+setblock ~52 ~0 ~44 lime_concrete
+setblock ~52 ~0 ~45 lime_concrete
+setblock ~52 ~0 ~46 lime_concrete
+setblock ~52 ~0 ~47 lime_concrete
+setblock ~52 ~0 ~48 lime_concrete
+setblock ~52 ~0 ~49 lime_concrete
+setblock ~52 ~0 ~50 lime_concrete
+setblock ~52 ~0 ~51 lime_concrete
+setblock ~52 ~0 ~52 lime_concrete
+setblock ~52 ~0 ~53 lime_concrete
+setblock ~52 ~0 ~54 lime_concrete
+setblock ~52 ~0 ~55 lime_concrete
+setblock ~52 ~0 ~56 lime_concrete
+fill ~18 ~0 ~49 ~50 ~0 ~49 white_concrete
+setblock ~30 ~0 ~48 white_concrete
+setblock ~30 ~0 ~49 white_concrete
+setblock ~30 ~0 ~50 white_concrete

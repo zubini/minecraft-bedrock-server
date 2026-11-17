@@ -1,3 +1,4 @@
+setblock ~45 ~8 ~25 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~44 ~9 ~24 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~45 ~9 ~24 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~44 ~10 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
@@ -25,4 +26,3 @@ setblock ~45 ~20 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false
 setblock ~44 ~21 ~27 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~45 ~21 ~27 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~44 ~22 ~26 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~22 ~26 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]

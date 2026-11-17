@@ -1,8 +1,3 @@
-setblock ~5 ~12 ~26 quartz_block
-setblock ~4 ~16 ~26 quartz_block
-setblock ~5 ~16 ~26 quartz_block
-setblock ~4 ~20 ~26 quartz_block
-setblock ~5 ~20 ~26 quartz_block
 setblock ~4 ~24 ~26 quartz_block
 setblock ~5 ~24 ~26 quartz_block
 setblock ~4 ~28 ~26 quartz_block
@@ -25,4 +20,9 @@ setblock ~4 ~60 ~26 quartz_block
 setblock ~5 ~60 ~26 quartz_block
 setblock ~4 ~64 ~26 quartz_block
 setblock ~5 ~64 ~26 quartz_block
-fill ~2 ~1 ~22 ~8 ~3 ~28 air
+fill ~4 ~0 ~29 ~5 ~0 ~29 stone_bricks
+fill ~3 ~1 ~29 ~6 ~3 ~29 light_gray_concrete
+fill ~4 ~1 ~29 ~5 ~2 ~29 air
+setblock ~4 ~1 ~29 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~4 ~2 ~29 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~5 ~1 ~29 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]

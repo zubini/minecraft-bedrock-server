@@ -1,28 +1,8 @@
-setblock ~45 ~4 ~66 quartz_block
-setblock ~44 ~8 ~66 quartz_block
-setblock ~45 ~8 ~66 quartz_block
-setblock ~44 ~12 ~66 quartz_block
-setblock ~45 ~12 ~66 quartz_block
-setblock ~44 ~16 ~66 quartz_block
-setblock ~45 ~16 ~66 quartz_block
-setblock ~44 ~20 ~66 quartz_block
-setblock ~45 ~20 ~66 quartz_block
-setblock ~44 ~24 ~66 quartz_block
-setblock ~45 ~24 ~66 quartz_block
-setblock ~44 ~28 ~66 quartz_block
-setblock ~45 ~28 ~66 quartz_block
-setblock ~44 ~32 ~66 quartz_block
-setblock ~45 ~32 ~66 quartz_block
-setblock ~44 ~36 ~66 quartz_block
-setblock ~45 ~36 ~66 quartz_block
-setblock ~44 ~40 ~66 quartz_block
-setblock ~45 ~40 ~66 quartz_block
-setblock ~44 ~44 ~66 quartz_block
-setblock ~45 ~44 ~66 quartz_block
-setblock ~44 ~48 ~66 quartz_block
-setblock ~45 ~48 ~66 quartz_block
-setblock ~44 ~52 ~66 quartz_block
-setblock ~45 ~52 ~66 quartz_block
-setblock ~44 ~56 ~66 quartz_block
-setblock ~45 ~56 ~66 quartz_block
-setblock ~44 ~60 ~66 quartz_block
+fill ~46 ~81 ~62 ~48 ~81 ~68 red_carpet
+fill ~42 ~81 ~62 ~43 ~81 ~68 red_carpet
+fill ~42 ~81 ~67 ~48 ~81 ~68 red_carpet
+setblock ~47 ~81 ~68 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~47 ~81 ~67 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~48 ~81 ~62 flower_pot
+setblock ~46 ~81 ~62 chest
+fill ~45 ~85 ~65 ~45 ~88 ~65 iron_bars

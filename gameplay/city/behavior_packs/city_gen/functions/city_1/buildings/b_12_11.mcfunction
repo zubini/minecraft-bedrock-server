@@ -1,28 +1,23 @@
-setblock ~4 ~4 ~66 quartz_block
-setblock ~5 ~4 ~66 quartz_block
-setblock ~4 ~8 ~66 quartz_block
-setblock ~5 ~8 ~66 quartz_block
-setblock ~4 ~12 ~66 quartz_block
-setblock ~5 ~12 ~66 quartz_block
-setblock ~4 ~16 ~66 quartz_block
-setblock ~5 ~16 ~66 quartz_block
-setblock ~4 ~20 ~66 quartz_block
-setblock ~5 ~20 ~66 quartz_block
-setblock ~4 ~24 ~66 quartz_block
-setblock ~5 ~24 ~66 quartz_block
-setblock ~4 ~28 ~66 quartz_block
-setblock ~5 ~28 ~66 quartz_block
-setblock ~4 ~32 ~66 quartz_block
-setblock ~5 ~32 ~66 quartz_block
-setblock ~4 ~36 ~66 quartz_block
-setblock ~5 ~36 ~66 quartz_block
-setblock ~4 ~40 ~66 quartz_block
-setblock ~5 ~40 ~66 quartz_block
-fill ~4 ~0 ~69 ~5 ~0 ~69 stone_bricks
-fill ~3 ~1 ~69 ~6 ~3 ~69 light_blue_concrete
-fill ~4 ~1 ~69 ~5 ~2 ~69 air
-setblock ~4 ~1 ~69 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~4 ~2 ~69 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~5 ~1 ~69 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~5 ~2 ~69 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~6 ~1 ~62 ~8 ~1 ~68 red_carpet
+fill ~2 ~33 ~67 ~8 ~33 ~68 white_carpet
+setblock ~7 ~33 ~68 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~7 ~33 ~67 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~8 ~33 ~62 flower_pot
+setblock ~6 ~33 ~62 chest
+fill ~6 ~37 ~62 ~8 ~37 ~68 gray_carpet
+fill ~2 ~37 ~62 ~3 ~37 ~68 gray_carpet
+fill ~2 ~37 ~67 ~8 ~37 ~68 gray_carpet
+setblock ~6 ~37 ~62 flower_pot
+setblock ~8 ~37 ~62 flower_pot
+setblock ~6 ~37 ~68 flower_pot
+setblock ~8 ~37 ~68 bookshelf
+setblock ~7 ~37 ~62 chest
+fill ~6 ~41 ~62 ~8 ~41 ~68 red_carpet
+fill ~2 ~41 ~62 ~3 ~41 ~68 red_carpet
+fill ~2 ~41 ~67 ~8 ~41 ~68 red_carpet
+setblock ~6 ~41 ~62 bookshelf
+setblock ~6 ~42 ~62 bookshelf
+setblock ~7 ~41 ~62 bookshelf
+setblock ~8 ~41 ~62 chest
+setblock ~6 ~41 ~68 crafting_table
+setblock ~8 ~41 ~68 flower_pot
+fill ~5 ~42 ~65 ~5 ~45 ~65 iron_bars

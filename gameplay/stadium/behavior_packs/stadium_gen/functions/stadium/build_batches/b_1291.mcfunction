@@ -1,0 +1,24 @@
+setblock ~65 ~4 ~49 air
+setblock ~66 ~4 ~49 air
+setblock ~67 ~4 ~49 air
+setblock ~2 ~4 ~50 air
+setblock ~3 ~4 ~50 air
+setblock ~4 ~4 ~50 air
+setblock ~5 ~4 ~50 air
+setblock ~6 ~4 ~50 air
+setblock ~63 ~4 ~50 air
+setblock ~64 ~4 ~50 air
+setblock ~65 ~4 ~50 air
+setblock ~66 ~4 ~50 air
+setblock ~67 ~4 ~50 air
+setblock ~2 ~4 ~51 air
+setblock ~3 ~4 ~51 air
+setblock ~4 ~4 ~51 air
+setblock ~5 ~4 ~51 air
+setblock ~6 ~4 ~51 air
+setblock ~63 ~4 ~51 air
+setblock ~64 ~4 ~51 air
+setblock ~65 ~4 ~51 air
+setblock ~66 ~4 ~51 air
+setblock ~67 ~4 ~51 air
+fill ~0 ~0 ~48 ~69 ~0 ~50 stone_bricks

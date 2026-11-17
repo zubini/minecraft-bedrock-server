@@ -2,7 +2,7 @@
 
 Gameplay-Hinweise für den Bedrock-Server — getrennt von Installation und Server-Konfiguration (siehe Root-[`README.md`](../README.md)).
 
-Skripte und Packs liegen unter [`gameplay/city/`](city/).
+Skripte und Packs liegen unter [`gameplay/`](.) (Stadt + Landmarken).
 
 ## Prozedurale Stadt (`city`)
 
@@ -73,6 +73,40 @@ Wieder an die **Nordwest-Ecke**. Über mehrere Sekunden („Clear fertig.“).
 2. Lokal `node gameplay/city/generate_city_pack.mjs --seed <neu> [--variants 5]`  
 3. `./gameplay/city/deploy_city_pack.sh minecraft`  
 4. `/function city_N/start`
+
+## Landmarken (Kirche, Stadion, Schule, Rathaus, Park)
+
+Eigenständige Behavior Packs — jeweils **Nordwest-Ecke**, Bau nach **Ost+Süd**, eigenes Clear mit passender Grösse.
+
+| Pack | Grösse (X×Z) | Höhe Clear | Start | Clear |
+|------|--------------|------------|-------|-------|
+| Kirche | 24×40 | ~35 | `/function church/start` | `/function church/clear` |
+| Stadion | 70×100 | ~28 | `/function stadium/start` | `/function stadium/clear` |
+| Schule | 36×48 | ~18 | `/function school/start` | `/function school/clear` |
+| Rathaus | 32×32 | ~28 | `/function townhall/start` | `/function townhall/clear` |
+| Park | 48×48 | ~12 | `/function park/start` | `/function park/clear` |
+
+### Pack erzeugen (lokal)
+
+```bash
+node gameplay/church/generate_church_pack.mjs
+node gameplay/stadium/generate_stadium_pack.mjs
+node gameplay/school/generate_school_pack.mjs
+node gameplay/townhall/generate_townhall_pack.mjs
+node gameplay/park/generate_park_pack.mjs
+```
+
+### Deploy (je Pack, startet den Server neu)
+
+```bash
+./gameplay/church/deploy_church_pack.sh minecraft
+./gameplay/stadium/deploy_stadium_pack.sh minecraft
+./gameplay/school/deploy_school_pack.sh minecraft
+./gameplay/townhall/deploy_townhall_pack.sh minecraft
+./gameplay/park/deploy_park_pack.sh minecraft
+```
+
+Danach ggf. neu joinen. **In der Nähe bleiben**, bis Chat «Fertig.» meldet (Stadion dauert länger).
 
 ## Gebäude kopieren (Structure Block)
 

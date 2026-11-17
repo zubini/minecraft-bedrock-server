@@ -1,28 +1,20 @@
-setblock ~65 ~26 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~64 ~27 ~64 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~65 ~27 ~64 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~64 ~28 ~63 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~65 ~28 ~63 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~64 ~29 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~65 ~29 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~64 ~30 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~65 ~30 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-fill ~64 ~0 ~63 ~65 ~0 ~66 quartz_block
-setblock ~64 ~4 ~66 quartz_block
-setblock ~65 ~4 ~66 quartz_block
-setblock ~64 ~8 ~66 quartz_block
-setblock ~65 ~8 ~66 quartz_block
-setblock ~64 ~12 ~66 quartz_block
-setblock ~65 ~12 ~66 quartz_block
-setblock ~64 ~16 ~66 quartz_block
-setblock ~65 ~16 ~66 quartz_block
-setblock ~64 ~20 ~66 quartz_block
-setblock ~65 ~20 ~66 quartz_block
-setblock ~64 ~24 ~66 quartz_block
-setblock ~65 ~24 ~66 quartz_block
-setblock ~64 ~28 ~66 quartz_block
-setblock ~65 ~28 ~66 quartz_block
-fill ~64 ~0 ~69 ~65 ~0 ~69 stone_bricks
-fill ~63 ~1 ~69 ~66 ~3 ~69 white_concrete
-fill ~64 ~1 ~69 ~65 ~2 ~69 air
-setblock ~64 ~1 ~69 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~66 ~21 ~62 chest
+setblock ~67 ~21 ~62 flower_pot
+fill ~66 ~25 ~62 ~68 ~25 ~68 blue_carpet
+fill ~62 ~25 ~62 ~63 ~25 ~68 blue_carpet
+fill ~62 ~25 ~67 ~68 ~25 ~68 blue_carpet
+setblock ~66 ~25 ~62 flower_pot
+setblock ~68 ~25 ~62 flower_pot
+setblock ~66 ~25 ~68 flower_pot
+setblock ~68 ~25 ~68 bookshelf
+setblock ~67 ~25 ~62 chest
+fill ~66 ~29 ~62 ~68 ~29 ~68 light_blue_carpet
+fill ~62 ~29 ~62 ~63 ~29 ~68 light_blue_carpet
+fill ~62 ~29 ~67 ~68 ~29 ~68 light_blue_carpet
+setblock ~66 ~29 ~62 bookshelf
+setblock ~66 ~30 ~62 bookshelf
+setblock ~67 ~29 ~62 bookshelf
+setblock ~68 ~29 ~62 chest
+setblock ~66 ~29 ~68 crafting_table
+setblock ~68 ~29 ~68 flower_pot
+fill ~65 ~32 ~65 ~65 ~35 ~65 iron_bars

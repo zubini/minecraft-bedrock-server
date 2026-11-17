@@ -1,28 +1,28 @@
-setblock ~45 ~24 ~24 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~25 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~25 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~26 ~27 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~26 ~27 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~27 ~26 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~27 ~26 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~28 ~25 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~28 ~25 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~29 ~24 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~29 ~24 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~30 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~30 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~31 ~27 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~31 ~27 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~32 ~26 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~32 ~26 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~33 ~25 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~33 ~25 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~34 ~24 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~34 ~24 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~35 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~35 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~36 ~27 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~36 ~27 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~37 ~26 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~45 ~37 ~26 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~44 ~38 ~25 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+fill ~42 ~26 ~22 ~43 ~26 ~29 red_carpet
+fill ~42 ~26 ~28 ~49 ~26 ~29 red_carpet
+setblock ~47 ~26 ~29 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~47 ~26 ~28 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~49 ~26 ~22 flower_pot
+setblock ~46 ~26 ~22 chest
+fill ~46 ~31 ~22 ~49 ~31 ~29 blue_carpet
+fill ~42 ~31 ~22 ~43 ~31 ~29 blue_carpet
+fill ~42 ~31 ~28 ~49 ~31 ~29 blue_carpet
+setblock ~46 ~31 ~22 flower_pot
+setblock ~49 ~31 ~22 flower_pot
+setblock ~46 ~31 ~29 flower_pot
+setblock ~49 ~31 ~29 bookshelf
+setblock ~47 ~31 ~22 chest
+fill ~46 ~36 ~22 ~49 ~36 ~29 light_blue_carpet
+fill ~42 ~36 ~22 ~43 ~36 ~29 light_blue_carpet
+fill ~42 ~36 ~28 ~49 ~36 ~29 light_blue_carpet
+setblock ~46 ~36 ~22 bookshelf
+setblock ~46 ~37 ~22 bookshelf
+setblock ~47 ~36 ~22 bookshelf
+setblock ~49 ~36 ~22 chest
+setblock ~46 ~36 ~29 crafting_table
+setblock ~49 ~36 ~29 flower_pot
+fill ~46 ~41 ~22 ~49 ~41 ~29 white_carpet
+fill ~42 ~41 ~22 ~43 ~41 ~29 white_carpet
+fill ~42 ~41 ~28 ~49 ~41 ~29 white_carpet
+setblock ~47 ~41 ~29 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~47 ~41 ~28 yellow_bed ["direction":2,"head_piece_bit":true]
