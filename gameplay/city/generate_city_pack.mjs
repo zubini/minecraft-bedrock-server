@@ -40,9 +40,9 @@ const FILL_MAX_BLOCKS = 32768;
 const FACADE_COLORS = [
   "white_concrete",
   "light_gray_concrete",
-  "gray_concrete",
-  "black_concrete",
   "cyan_concrete",
+  "light_blue_concrete",
+  "white_concrete",
 ];
 
 /** Feste Stadtgrösse: 80×80 → 4×4 Parzellen bei Zellgrösse 20. */
@@ -59,7 +59,10 @@ const LAYOUT = {
 const DEFAULT_VARIANTS = 5;
 
 /** Pack-Version (bei Logik-Änderung erhöhen). */
-const PACK_VERSION = [1, 3, 1];
+const PACK_VERSION = [1, 7, 1];
+
+/** Max. Befehle pro Gebäude-Tick (sonst bricht BDS lange Functions ab → nur 3–4 Häuser). */
+const BUILDING_CMDS_PER_TICK = 28;
 
 // ---------------------------------------------------------------------------
 // Hilfen: Zufall, Koordinaten, Dateien schreiben
@@ -94,14 +97,15 @@ function createRng(seed) {
 }
 
 /**
- * Relative Welt-Koordinate vom Ausführungs-Punkt (Spieler oder Origin-Marker).
- * ~x = Ost, ~y = oben, ~z = Süd.
+ * Relativ zum Origin-Marker (Spieler-Standpunkt).
+ * +x = Ost, +y = oben, +z = Süd.
+ * (Blickrichtungs-^ war auf BDS für fill unzuverlässig → Clear/Terrain/Strassen tot.)
  */
 function at(x, y, z) {
   return `~${x} ~${y} ~${z}`;
 }
 
-/** Ein einzelner fill-Befehl. mode z.B. "hollow" = nur die Hülle. */
+/** Ein einzelner fill-Befehl. */
 function fill(x1, y1, z1, x2, y2, z2, block, mode = "") {
   const from = at(x1, y1, z1);
   const to = at(x2, y2, z2);
@@ -115,20 +119,22 @@ function setblock(x, y, z, block) {
 }
 
 /**
- * Echte Treppenstufe (Bedrock-Blockstates).
- * facing = Richtung, in die man beim Hochlaufen schaut.
- * weirdo_direction: 0=Ost, 1=West, 2=Süd, 3=Nord.
+ * Weisse Treppenstufe (Quarz). weirdo_direction: 0=Ost, 1=West, 2=Süd, 3=Nord.
  */
 function stair(x, y, z, facing) {
   const dir = { east: 0, west: 1, south: 2, north: 3 }[facing];
   if (dir === undefined) throw new Error(`Unbekannte Treppen-Richtung: ${facing}`);
-  // BDS-Parser: Leerzeichen vor [, States mit ":" (nicht "=") – sonst Parse-Error.
   return setblock(
     x,
     y,
     z,
-    `stone_stairs ["weirdo_direction":${dir},"upside_down_bit":false]`,
+    `quartz_stairs ["weirdo_direction":${dir},"upside_down_bit":false]`,
   );
+}
+
+/** Weisses Treppen-Podest. */
+function landing(x, y, z) {
+  return setblock(x, y, z, "quartz_block");
 }
 
 /**
@@ -234,13 +240,13 @@ function createLots(size, lot, sidewalk, street) {
 
 /**
  * Terrain in kleine Batches (für tickweise Ausführung).
- * Zu viele fills in einem Tick → Bedrock macht oft gar nichts Sichtbares.
+ * Boden = Gras (kein grauer Stein-Teppich); Strassen kommen danach als Steinziegel.
  */
 function buildTerrainBatches(size, maxHeight) {
   const clearFillMax = 8192;
   const airCmds = fillLarge(0, 0, 0, size - 1, maxHeight, size - 1, "air", "", clearFillMax);
-  const stoneCmds = fillLarge(0, 0, 0, size - 1, 0, size - 1, "stone", "", clearFillMax);
-  const all = [...airCmds, ...stoneCmds];
+  const groundCmds = fillLarge(0, 0, 0, size - 1, 0, size - 1, "grass_block", "", clearFillMax);
+  const all = [...airCmds, ...groundCmds];
   const batchSize = 8;
   const batches = [];
   for (let i = 0; i < all.length; i += batchSize) {
@@ -248,16 +254,14 @@ function buildTerrainBatches(size, maxHeight) {
   }
   if (batches.length > 0) {
     batches[batches.length - 1].push(
-      'tellraw @a {"rawtext":[{"text":"[city] Terrain fertig – Strassen …"}]}',
+      'tellraw @a {"rawtext":[{"text":"[city] Terrain fertig – Häuser …"}]}',
     );
   }
   return batches;
 }
 
 /**
- * Strassen als Tick-Batches (eine Achse / Index pro Tick).
- * Schwarz = Fahrbahn, hellgrau = Bürgersteig, gelb = Mittellinie.
- * Früher: alle fills in einer Function → oft wirkungslos auf BDS.
+ * Nur die Fahrbahn als Steinziegel; Bürgersteige bleiben Gras.
  */
 function buildRoadBatches(size, lot, sidewalk, street) {
   const cell = lot + sidewalk + street + sidewalk;
@@ -266,160 +270,421 @@ function buildRoadBatches(size, lot, sidewalk, street) {
 
   for (let i = 0; i < grid; i++) {
     const base = i * cell;
-    const walkA = base + lot;
-    const roadStart = walkA + sidewalk;
-    const roadEnd = roadStart + street - 1;
-    const walkB = roadEnd + 1;
-    const mid = Math.floor((roadStart + roadEnd) / 2);
+    const streetA = base + lot + sidewalk;
+    const streetB = streetA + street - 1;
 
-    // Vertikaler Korridor (Nord→Süd, Streifen in X)
-    const vertical = [
-      ...fillLarge(walkA, 0, 0, walkB, 0, size - 1, "light_gray_concrete"),
-      ...fillLarge(roadStart, 0, 0, roadEnd, 0, size - 1, "black_concrete"),
-      ...fillLarge(mid, 0, 0, mid, 0, size - 1, "yellow_concrete"),
-    ];
-    batches.push(vertical);
-
-    // Horizontaler Korridor (West→Ost, Streifen in Z)
-    const horizontal = [
-      ...fillLarge(0, 0, walkA, size - 1, 0, walkB, "light_gray_concrete"),
-      ...fillLarge(0, 0, roadStart, size - 1, 0, roadEnd, "black_concrete"),
-      ...fillLarge(0, 0, mid, size - 1, 0, mid, "yellow_concrete"),
-    ];
-    batches.push(horizontal);
+    batches.push(fillLarge(streetA, 0, 0, streetB, 0, size - 1, "stone_bricks"));
+    batches.push(fillLarge(0, 0, streetA, size - 1, 0, streetB, "stone_bricks"));
   }
 
   if (batches.length > 0) {
     batches[batches.length - 1].push(
-      'tellraw @a {"rawtext":[{"text":"[city] Strassen fertig – Häuser …"}]}',
+      'tellraw @a {"rawtext":[{"text":"[city] Strassen fertig – Grün …"}]}',
+    );
+  }
+  return batches;
+}
+
+const FLOWERS = ["poppy", "dandelion", "azure_bluet", "oxeye_daisy", "cornflower", "allium"];
+
+/** Footprint + Insets – gleicher RNG wie beim Häuserbau. */
+function pickTowerLayout(lot, rng) {
+  const lotWidth = lot.x1 - lot.x0 + 1;
+  const lotDepth = lot.z1 - lot.z0 + 1;
+  // Kleiner als Parzelle → Grünstreifen zwischen Haus und Strasse
+  const footprint = rng.pick([8, 9, 10]);
+  const insetX = Math.floor((lotWidth - footprint) / 2);
+  const insetZ = Math.floor((lotDepth - footprint) / 2);
+  return {
+    footprint,
+    x0: lot.x0 + insetX,
+    z0: lot.z0 + insetZ,
+    x1: lot.x0 + insetX + footprint - 1,
+    z1: lot.z0 + insetZ + footprint - 1,
+  };
+}
+
+/** Mehr Variation: oft mittel, seltener sehr hoch bis maxH. */
+function pickTowerHeight(rng, minH, maxH) {
+  const span = maxH - minH;
+  const r = rng.random();
+  if (r < 0.3) return rng.int(minH, minH + Math.floor(span * 0.35));
+  if (r < 0.7) return rng.int(minH + Math.floor(span * 0.25), minH + Math.floor(span * 0.65));
+  return rng.int(minH + Math.floor(span * 0.5), maxH);
+}
+
+/**
+ * Bürgersteige + Hof (Lot minus Gebäude) begrünen: nur Blumen (keine Bäume).
+ */
+function buildLandscapeBatches(size, lot, sidewalk, street, seed, lots) {
+  const cell = lot + sidewalk + street + sidewalk;
+  const grid = size / cell;
+  const rng = createRng((seed ^ 0x5f3759df) >>> 0);
+  const cmds = [];
+
+  const onEastWestStreet = (z) => {
+    for (let i = 0; i < grid; i++) {
+      const a = i * cell + lot + sidewalk;
+      if (z >= a && z < a + street) return true;
+    }
+    return false;
+  };
+  const onNorthSouthStreet = (x) => {
+    for (let i = 0; i < grid; i++) {
+      const a = i * cell + lot + sidewalk;
+      if (x >= a && x < a + street) return true;
+    }
+    return false;
+  };
+
+  // Bürgersteige – keine Blumen auf Fahrbahn-Kreuzungen
+  for (let i = 0; i < grid; i++) {
+    const base = i * cell;
+    const walkW = base + lot;
+    const walkE = base + lot + sidewalk + street;
+    const walkN = walkW;
+    const walkS = walkE;
+
+    for (let z = 0; z < size; z++) {
+      if (onEastWestStreet(z)) continue;
+      if (rng.random() < 0.32) cmds.push(setblock(walkW, 1, z, rng.pick(FLOWERS)));
+      if (rng.random() < 0.32) cmds.push(setblock(walkE, 1, z, rng.pick(FLOWERS)));
+    }
+    for (let x = 0; x < size; x++) {
+      if (onNorthSouthStreet(x)) continue;
+      if (rng.random() < 0.32) cmds.push(setblock(x, 1, walkN, rng.pick(FLOWERS)));
+      if (rng.random() < 0.32) cmds.push(setblock(x, 1, walkS, rng.pick(FLOWERS)));
+    }
+  }
+
+  // Höfe um die Gebäude — Südseite (Eingang) ohne Blumen
+  for (const oneLot of lots) {
+    const lotSeed = (seed + oneLot.col * 7919 + oneLot.row * 104729) >>> 0;
+    const lotRng = createRng(lotSeed);
+    const layout = pickTowerLayout(oneLot, lotRng);
+    const doorX0 = layout.x0 + Math.floor(layout.footprint / 2) - 1;
+    const doorX1 = doorX0 + 1;
+
+    for (let x = oneLot.x0; x <= oneLot.x1; x++) {
+      for (let z = oneLot.z0; z <= oneLot.z1; z++) {
+        const underBuilding =
+          x >= layout.x0 && x <= layout.x1 && z >= layout.z0 && z <= layout.z1;
+        if (underBuilding) continue;
+
+        // Vor dem Eingang (Süd) und im Tür-Pfad: kein Grün
+        const southOfBuilding = z > layout.z1;
+        const doorApproach =
+          southOfBuilding && x >= doorX0 - 1 && x <= doorX1 + 1;
+        if (southOfBuilding || doorApproach) continue;
+
+        if (lotRng.random() < 0.4) {
+          cmds.push(setblock(x, 1, z, lotRng.pick(FLOWERS)));
+        }
+      }
+    }
+  }
+
+  // Auch Bürgersteig-Blumen direkt vor Türen entfernen (Süd-Streifen der Lots)
+  for (const oneLot of lots) {
+    const lotSeed = (seed + oneLot.col * 7919 + oneLot.row * 104729) >>> 0;
+    const lotRng = createRng(lotSeed);
+    const layout = pickTowerLayout(oneLot, lotRng);
+    const doorX0 = layout.x0 + Math.floor(layout.footprint / 2) - 1;
+    const doorX1 = doorX0 + 1;
+    const walkS = oneLot.z1 + 1; // erste Zelle südlich der Parzelle = Bürgersteig
+    if (walkS >= size) continue;
+    for (let x = doorX0 - 1; x <= doorX1 + 1; x++) {
+      if (x < 0 || x >= size) continue;
+      cmds.push(setblock(x, 1, walkS, "air"));
+      // RNG nur um lotRng-State mit Gebäude-Seed synchron zu halten falls nötig
+      void lotRng;
+    }
+  }
+
+  const batches = chunkCommands(cmds, 24);
+  if (batches.length > 0) {
+    batches[batches.length - 1].push(
+      'tellraw @a {"rawtext":[{"text":"[city] Grün fertig."}]}',
     );
   }
   return batches;
 }
 
 /**
- * Ein Hochhaus auf einer Parzelle.
- * y=0 = Boden/Strasse; Haus ab y=1.
- * Grundfläche: 10×10 oder 12×12, zentriert.
+ * Doppeltür Südwand, Blick nach Norden.
+ * Links Anschlag links (false), rechts Anschlag rechts (true).
+ */
+function doubleDoorSouth(xLeft, y, z) {
+  return [
+    setblock(
+      xLeft,
+      y,
+      z,
+      'wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]',
+    ),
+    setblock(
+      xLeft,
+      y + 1,
+      z,
+      'wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]',
+    ),
+    setblock(
+      xLeft + 1,
+      y,
+      z,
+      'wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]',
+    ),
+    setblock(
+      xLeft + 1,
+      y + 1,
+      z,
+      'wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]',
+    ),
+  ];
+}
+
+/** Bett: Fuss bei (x,z), Kopf nach Norden (direction 2). */
+function bedNorth(x, y, z, color) {
+  return [
+    setblock(x, y, z, `${color}_bed ["direction":2,"head_piece_bit":false]`),
+    setblock(x, y, z - 1, `${color}_bed ["direction":2,"head_piece_bit":true]`),
+  ];
+}
+
+/**
+ * Freie Rechtecke neben dem Treppenschacht (Ost/West/Nord/Süd).
+ */
+function furnitureZones(x0, z0, x1, z1, sx, sz, sx1, sz1) {
+  const zones = [];
+  const pushIf = (ax0, az0, ax1, az1) => {
+    if (ax1 - ax0 >= 1 && az1 - az0 >= 1) {
+      zones.push({ x0: ax0, z0: az0, x1: ax1, z1: az1 });
+    }
+  };
+  // Ost / West / Süd / Nord vom Schacht
+  pushIf(sx1 + 1, z0 + 1, x1 - 1, z1 - 1);
+  pushIf(x0 + 1, z0 + 1, sx - 1, z1 - 1);
+  pushIf(x0 + 1, sz1 + 1, x1 - 1, z1 - 1);
+  pushIf(x0 + 1, z0 + 1, x1 - 1, sz - 1);
+  return zones;
+}
+
+/**
+ * Einrichtung pro Stock: Teppich + Büro / Schlafzimmer / Lounge / Lobby.
+ * Nutzt die grösste freie Zone neben der Treppe.
+ */
+function furnishFloor(yFloor, storyIndex, x0, z0, x1, z1, sx, sz, sx1, sz1, rng) {
+  const cmds = [];
+  const y = yFloor + 1; // auf dem Boden
+  const zones = furnitureZones(x0, z0, x1, z1, sx, sz, sx1, sz1);
+  if (zones.length === 0) return cmds;
+
+  const area = (z) => (z.x1 - z.x0 + 1) * (z.z1 - z.z0 + 1);
+  zones.sort((a, b) => area(b) - area(a));
+  const main = zones[0];
+  const { x0: fx0, z0: fz0, x1: fx1, z1: fz1 } = main;
+
+  const carpets = ["red_carpet", "blue_carpet", "light_blue_carpet", "white_carpet", "gray_carpet"];
+  const beds = ["red_bed", "blue_bed", "yellow_bed"];
+  const carpet = carpets[storyIndex % carpets.length];
+
+  // Teppich in allen brauchbaren Zonen
+  for (const z of zones) {
+    cmds.push(fill(z.x0, y, z.z0, z.x1, y, z.z1, carpet));
+  }
+
+  // EG = Empfang, darüber rotierend Büro / Schlafzimmer / Lounge
+  const kind = storyIndex === 0 ? "lobby" : ["office", "bedroom", "lounge"][(storyIndex - 1) % 3];
+
+  if (kind === "lobby") {
+    cmds.push(setblock(fx0, y, fz0, "flower_pot"));
+    cmds.push(setblock(fx1, y, fz0, "flower_pot"));
+    if (fx1 - fx0 >= 2) {
+      cmds.push(setblock(fx0 + 1, y, fz1, "crafting_table"));
+      cmds.push(setblock(Math.min(fx0 + 2, fx1), y, fz1, "chest"));
+    } else {
+      cmds.push(setblock(fx0, y, fz1, "chest"));
+    }
+  } else if (kind === "office") {
+    cmds.push(setblock(fx0, y, fz0, "bookshelf"));
+    cmds.push(setblock(fx0, y + 1, fz0, "bookshelf"));
+    if (fx0 + 1 <= fx1) cmds.push(setblock(fx0 + 1, y, fz0, "bookshelf"));
+    cmds.push(setblock(fx1, y, fz0, "chest"));
+    cmds.push(setblock(fx0, y, fz1, "crafting_table"));
+    cmds.push(setblock(fx1, y, fz1, "flower_pot"));
+  } else if (kind === "bedroom") {
+    const bedColor = beds[storyIndex % beds.length].replace("_bed", "");
+    const bx = Math.min(fx0 + 1, fx1);
+    const bz = fz1;
+    if (bz - 1 >= fz0) cmds.push(...bedNorth(bx, y, bz, bedColor));
+    cmds.push(setblock(fx1, y, fz0, "flower_pot"));
+    cmds.push(setblock(fx0, y, fz0, "chest"));
+  } else {
+    cmds.push(setblock(fx0, y, fz0, "flower_pot"));
+    cmds.push(setblock(fx1, y, fz0, "flower_pot"));
+    cmds.push(setblock(fx0, y, fz1, "flower_pot"));
+    cmds.push(setblock(fx1, y, fz1, "bookshelf"));
+    cmds.push(setblock(Math.floor((fx0 + fx1) / 2), y, fz0, "chest"));
+  }
+
+  if (rng.random() < 0.55) {
+    cmds.push(setblock(rng.int(fx0, fx1), y, rng.int(fz0, fz1), "flower_pot"));
+  }
+
+  return cmds;
+}
+
+/**
+ * Immer gleiche Richtung: von Süd (Tür) nach Norden hoch.
+ * Keine Stufe in der Bodenebene — erste Stufe auf yFloor+1 (auf dem Boden).
+ * Pro Stock herumlaufen zur südlichen Startseite.
+ */
+function placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height) {
+  for (let yFloor = 0; yFloor < height; yFloor += storyH) {
+    for (let i = 0; i < storyH; i++) {
+      const y = yFloor + 1 + i; // nicht in yFloor (Boden)
+      if (y >= height) break;
+      const z = stairZ1 - i; // Start Süd → Nord
+      commands.push(stair(stairX0, y, z, "north"));
+      commands.push(stair(stairX1, y, z, "north"));
+    }
+  }
+}
+
+/**
+ * Bodenzellen am Treppenstart (Süd) und EG unter der Treppe.
+ * Nord auf den Etagen: letzte Stufe bleibt (nicht mit Block überschreiben).
+ */
+function placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, block) {
+  // EG: ganzer Schachtboden bleibt Boden (erste Stufe erst bei y=1)
+  commands.push(fill(stairX0, 0, stairZ0, stairX1, 0, stairZ1, block));
+  for (let y = storyH; y < height; y += storyH) {
+    // Süd-Start: normaler Boden zum Aufsteigen
+    commands.push(setblock(stairX0, y, stairZ1, block));
+    commands.push(setblock(stairX1, y, stairZ1, block));
+  }
+}
+
+/**
+ * Ein Hochhaus. EG-Boden auf y=0 (Strassenniveau), Wände ab y=1.
  */
 function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   const lotWidth = lot.x1 - lot.x0 + 1;
   const lotDepth = lot.z1 - lot.z0 + 1;
   if (lotWidth < 12 || lotDepth < 12) {
     throw new Error(
-      `Parzelle ${lotWidth}×${lotDepth} ist zu klein – für 10/12er Häuser braucht es lot >= 12`,
+      `Parzelle ${lotWidth}×${lotDepth} ist zu klein – für 12er Häuser braucht es lot >= 12`,
     );
   }
 
-  const footprint = rng.pick([10, 12]);
-  const insetX = Math.floor((lotWidth - footprint) / 2);
-  const insetZ = Math.floor((lotDepth - footprint) / 2);
+  const layout = pickTowerLayout(lot, rng);
+  const { footprint, x0, z0, x1, z1 } = layout;
 
-  const x0 = lot.x0 + insetX;
-  const z0 = lot.z0 + insetZ;
-  const x1 = x0 + footprint - 1;
-  const z1 = z0 + footprint - 1;
-
-  const height = rng.int(minHeight, maxHeight);
+  const height = pickTowerHeight(rng, minHeight, maxHeight);
   const facade = rng.pick(FACADE_COLORS);
-  const bandEvery = rng.int(4, 6);
-  const setbackCount = rng.int(0, 2);
+  const storyH = rng.int(4, 5);
   const withAntenna = rng.random() < 0.45;
+
+  const midX = Math.floor((x0 + x1) / 2);
+  const stairX0 = midX - 1;
+  const stairX1 = midX;
+  const stairZ0 = Math.floor((z0 + z1) / 2) - Math.floor(storyH / 2);
+  const stairZ1 = stairZ0 + storyH - 1;
+  const sx = stairX0;
+  const sz = stairZ0;
+  const sx1 = stairX1;
+  const sz1 = stairZ1;
 
   const commands = [];
 
-  /** Alle 4 Wände vollständig (Beton), dann Glasfenster, dann Gesimse. */
-  function buildShaft(xa, za, xb, zb, yBottom, yTop) {
-    if (xb < xa || zb < za || yTop < yBottom) return;
+  // Wände ab y=1 (über dem EG-Boden auf y=0)
+  commands.push(fill(x0, 1, z0, x1, height, z0, facade));
+  commands.push(fill(x0, 1, z1, x1, height, z1, facade));
+  commands.push(fill(x0, 1, z0, x0, height, z1, facade));
+  commands.push(fill(x1, 1, z0, x1, height, z1, facade));
 
-    // Boden + Decke dieses Abschnitts
-    commands.push(fill(xa, yBottom, za, xb, yBottom, zb, facade));
-    commands.push(fill(xa, yTop, za, xb, yTop, zb, facade));
+  // Böden: EG auf y=0 (Strassenniveau), weitere auf storyH, 2*storyH, … + Dach
+  commands.push(fill(x0, 0, z0, x1, 0, z1, facade));
+  commands.push(fill(x0, height, z0, x1, height, z1, facade));
+  for (let y = storyH; y < height; y += storyH) {
+    commands.push(fill(x0, y, z0, x1, y, z1, facade));
+  }
 
-    // Vier volle Wände (Ecken doppelt = egal)
-    commands.push(fill(xa, yBottom, za, xb, yTop, za, facade)); // Nord -Z
-    commands.push(fill(xa, yBottom, zb, xb, yTop, zb, facade)); // Süd +Z
-    commands.push(fill(xa, yBottom, za, xa, yTop, zb, facade)); // West -X
-    commands.push(fill(xb, yBottom, za, xb, yTop, zb, facade)); // Ost +X
+  // Steinweg Tür → Bürgersteig (bis zur Strasse), y=0
+  const doorX0 = x0 + Math.floor(footprint / 2) - 1;
+  const doorX1 = doorX0 + 1;
+  const frameX0 = doorX0 - 1;
+  const frameX1 = doorX1 + 1;
+  const pathZ0 = z1 + 1;
+  const pathZ1 = lot.z1 + LAYOUT.sidewalk; // letzte Bürgersteig-Zelle vor der Fahrbahn
+  if (pathZ1 >= pathZ0) {
+    commands.push(fill(doorX0, 0, pathZ0, doorX1, 0, pathZ1, "stone_bricks"));
+  }
+  commands.push(fill(doorX0, 0, z1, doorX1, 0, z1, "stone_bricks"));
 
-    if (xb - xa < 2 || zb - za < 2 || yTop <= yBottom + 1) return;
+  // Fenster
+  for (let yFloor = 0; yFloor < height; yFloor += storyH) {
+    const yWin0 = yFloor + 1;
+    const yWin1 = Math.min(height - 1, yFloor + storyH - 1);
+    if (yWin1 < yWin0) continue;
+    commands.push(fill(x0 + 1, yWin0, z0, x1 - 1, yWin1, z0, "glass_pane"));
+    commands.push(fill(x0 + 1, yWin0, z1, x1 - 1, yWin1, z1, "glass_pane"));
+    commands.push(fill(x0, yWin0, z0 + 1, x0, yWin1, z1 - 1, "glass_pane"));
+    commands.push(fill(x1, yWin0, z0 + 1, x1, yWin1, z1 - 1, "glass_pane"));
+  }
 
-    // Glasfenster in allen 4 Fassaden (Ecken bleiben Beton)
-    commands.push(fill(xa + 1, yBottom + 1, za, xb - 1, yTop - 1, za, "glass"));
-    commands.push(fill(xa + 1, yBottom + 1, zb, xb - 1, yTop - 1, zb, "glass"));
-    commands.push(fill(xa, yBottom + 1, za + 1, xa, yTop - 1, zb - 1, "glass"));
-    commands.push(fill(xb, yBottom + 1, za + 1, xb, yTop - 1, zb - 1, "glass"));
+  // Gesims
+  for (let y = storyH; y < height; y += storyH) {
+    commands.push(fill(x0 + 1, y, z0, x1 - 1, y, z0, facade));
+    commands.push(fill(x0 + 1, y, z1, x1 - 1, y, z1, facade));
+    commands.push(fill(x0, y, z0 + 1, x0, y, z1 - 1, facade));
+    commands.push(fill(x1, y, z0 + 1, x1, y, z1 - 1, facade));
+  }
 
-    // Horizontale Beton-Bänder
-    for (let y = yBottom + bandEvery; y < yTop; y += bandEvery) {
-      commands.push(fill(xa + 1, y, za, xb - 1, y, za, facade));
-      commands.push(fill(xa + 1, y, zb, xb - 1, y, zb, facade));
-      commands.push(fill(xa, y, za + 1, xa, y, zb - 1, facade));
-      commands.push(fill(xb, y, za + 1, xb, y, zb - 1, facade));
+  // Eingang (auf y=1 über dem EG-Boden)
+  commands.push(fill(frameX0, 1, z1, frameX1, 3, z1, facade));
+  commands.push(fill(doorX0, 1, z1, doorX1, 2, z1, "air"));
+  commands.push(...doubleDoorSouth(doorX0, 1, z1));
+
+  // Innenraum über den Böden
+  for (let yFloor = 0; yFloor < height; yFloor += storyH) {
+    const yTop = Math.min(height - 1, yFloor + storyH - 1);
+    if (yTop >= yFloor + 1) {
+      commands.push(fill(x0 + 1, yFloor + 1, z0 + 1, x1 - 1, yTop, z1 - 1, "air"));
     }
   }
 
-  let curX0 = x0;
-  let curZ0 = z0;
-  let curX1 = x1;
-  let curZ1 = z1;
-  let curY = height;
-
-  buildShaft(curX0, curZ0, curX1, curZ1, 1, curY);
-
-  for (let i = 0; i < setbackCount; i++) {
-    const extraHeight = rng.int(8, 14);
-    const shrink = rng.int(1, 2);
-    const nextX0 = curX0 + shrink;
-    const nextZ0 = curZ0 + shrink;
-    const nextX1 = curX1 - shrink;
-    const nextZ1 = curZ1 - shrink;
-    if (nextX1 - nextX0 < 3 || nextZ1 - nextZ0 < 3) break;
-    const nextY = Math.min(maxHeight, curY + extraHeight);
-    if (nextY <= curY) break;
-
-    commands.push(fill(curX0, curY, curZ0, curX1, curY, curZ1, facade));
-    curX0 = nextX0;
-    curZ0 = nextZ0;
-    curX1 = nextX1;
-    curZ1 = nextZ1;
-    buildShaft(curX0, curZ0, curX1, curZ1, curY + 1, nextY);
-    curY = nextY;
+  // Treppenschacht: Etagenlöcher nur bis vor Süd-Start (Boden bleibt)
+  for (let y = storyH; y < height; y += storyH) {
+    if (stairZ1 - 1 >= stairZ0) {
+      commands.push(fill(sx, y, sz, sx1, y, stairZ1 - 1, "air"));
+    }
   }
+  commands.push(fill(sx, 1, sz, sx1, height - 1, sz1, "air"));
+  placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height);
+  placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, "quartz_block");
 
-  commands.push(fill(curX0, curY, curZ0, curX1, curY, curZ1, facade));
+  // Lobby über EG freiräumen, Treppe/Türen neu
+  commands.push(fill(x0 + 1, 1, z0 + 1, x1 - 1, Math.min(height - 1, storyH - 1), z1 - 1, "air"));
+  placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height);
+  placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, "quartz_block");
+  commands.push(fill(doorX0, 0, z1, doorX1, 0, z1, "stone_bricks"));
+  commands.push(fill(frameX0, 1, z1, frameX1, 3, z1, facade));
+  commands.push(fill(doorX0, 1, z1, doorX1, 2, z1, "air"));
+  commands.push(...doubleDoorSouth(doorX0, 1, z1));
 
-  // --- Eingang Südseite (+Z): nur in der Fassade, kein Aussenpodest ---
-  const doorX0 = x0 + Math.floor(footprint / 2) - 1;
-  const doorX1 = doorX0 + 2;
-  commands.push(fill(doorX0, 1, z1, doorX1, 3, z1, "air"));
-  commands.push(fill(doorX0, 1, z1 - 2, doorX1, 3, z1 - 1, "air"));
-
-  // --- Wendeltreppe innen (NW): 3×3-Schacht, echte Treppenstufen rundherum ---
-  const sx = x0 + 1;
-  const sz = z0 + 1;
-  commands.push(fill(sx, 1, sz, sx + 2, height - 1, sz + 2, "air"));
-  // Mittelpfeiler
-  commands.push(fill(sx + 1, 1, sz + 1, sx + 1, height - 1, sz + 1, "stone"));
-  // Pro Etage eine Stufe, 90° weiter (Wendel)
-  const spiral = [
-    { dx: 0, dz: 0, facing: "east" },
-    { dx: 2, dz: 0, facing: "south" },
-    { dx: 2, dz: 2, facing: "west" },
-    { dx: 0, dz: 2, facing: "north" },
-  ];
-  for (let y = 1; y < height; y++) {
-    const step = spiral[(y - 1) % 4];
-    commands.push(stair(sx + step.dx, y, sz + step.dz, step.facing));
+  let storyIndex = 0;
+  for (let yFloor = 0; yFloor < height; yFloor += storyH) {
+    commands.push(
+      ...furnishFloor(yFloor, storyIndex, x0, z0, x1, z1, sx, sz, sx1, sz1, rng),
+    );
+    storyIndex += 1;
   }
-  // Zugang EG: vom Vorraum zum Treppenhaus
-  commands.push(fill(sx + 2, 1, sz, doorX0 - 1, 2, sz + 2, "air"));
-  commands.push(fill(doorX0, 1, sz + 2, doorX1, 2, z1 - 2, "air"));
 
   if (withAntenna) {
-    const mx = Math.floor((curX0 + curX1) / 2);
-    const mz = Math.floor((curZ0 + curZ1) / 2);
-    commands.push(fill(mx, curY + 1, mz, mx, curY + 4, mz, "iron_bars"));
+    const mx = Math.floor((x0 + x1) / 2);
+    const mz = Math.floor((z0 + z1) / 2);
+    commands.push(fill(mx, height + 1, mz, mx, height + 4, mz, "iron_bars"));
   }
 
   return commands;
@@ -478,12 +743,19 @@ function buildPrepBatches(size, maxHeight) {
   return chunkCommands(all, 3);
 }
 
-/**
- * Bedrock: Box über die ganze Stadt (Chunks-Limit 100).
- * name muss pro Variante eindeutig sein.
- */
+/** Tickingarea über die Stadt (+X/+Z vom Origin). */
 function tickingAreaAddCmd(size, maxY, areaName) {
   return `tickingarea add ~0 ~-1 ~0 ~${size - 1} ~${maxY + 8} ~${size - 1} ${areaName} true`;
+}
+
+/** Origin-Marker am Spieler. */
+function originMarkerLines(tag) {
+  return [
+    "summon armor_stand ~ ~ ~",
+    `tag @e[type=armor_stand,r=3,c=1] add ${tag}`,
+    `tag @e[tag=${tag},c=1] add city_o`,
+    `effect @e[tag=${tag}] invisibility 999999 0 true`,
+  ];
 }
 
 /** Seed für Variante index (1-basiert) aus Basis-Seed. */
@@ -519,30 +791,50 @@ function writeVariant(outFunctionsRoot, variant) {
   const lots = createLots(size, lot, sidewalk, street);
   const terrainBatches = buildTerrainBatches(size, maxHeight);
   const roadBatches = buildRoadBatches(size, lot, sidewalk, street);
+  const landscapeBatches = buildLandscapeBatches(size, lot, sidewalk, street, seed, lots);
 
+  // Gebäude in kleine Tick-Batches splitten (sonst bricht BDS ab → unfertige Stadt)
+  const buildingsDir = path.join(functionsDir, "buildings");
+  fs.rmSync(buildingsDir, { recursive: true, force: true });
+  fs.mkdirSync(buildingsDir, { recursive: true });
+  const buildingBatchFiles = [];
+  for (let i = 0; i < lots.length; i++) {
+    const oneLot = lots[i];
+    const lotSeed = (seed + oneLot.col * 7919 + oneLot.row * 104729) >>> 0;
+    const lotRng = createRng(lotSeed);
+    const cmds = buildTowerCommands(oneLot, lotRng, minHeight, maxHeight);
+    const chunks = chunkCommands(cmds, BUILDING_CMDS_PER_TICK);
+    for (let j = 0; j < chunks.length; j++) {
+      const name = `b_${pad2(i)}_${pad2(j)}`;
+      writeMcfunction(path.join(buildingsDir, `${name}.mcfunction`), chunks[j]);
+      buildingBatchFiles.push(name);
+    }
+  }
+
+  // Reihenfolge: Terrain → Häuser → Strassen → Grün
   const nTerrain = terrainBatches.length;
   const nRoads = roadBatches.length;
+  const nLandscape = landscapeBatches.length;
+  const nBuildingBatches = buildingBatchFiles.length;
   const stepFirstTerrain = 1;
-  const stepFirstRoad = stepFirstTerrain + nTerrain;
-  const stepFirstBuilding = stepFirstRoad + nRoads;
-  const stepLastBuilding = stepFirstBuilding + lots.length - 1;
-  const stepBuildDone = stepLastBuilding + 1;
-  const totalBuildSteps = stepLastBuilding;
+  const stepFirstBuilding = stepFirstTerrain + nTerrain;
+  const stepFirstRoad = stepFirstBuilding + nBuildingBatches;
+  const stepFirstLandscape = stepFirstRoad + nRoads;
+  const stepLastLandscape = stepFirstLandscape + nLandscape - 1;
+  const stepBuildDone = stepLastLandscape + 1;
+  const totalBuildSteps = stepLastLandscape;
 
   writeMcfunction(path.join(functionsDir, "start.mcfunction"), [
-    `tellraw @a {"rawtext":[{"text":"[${label}] Starte (seed=${seed}) – in der Nähe bleiben …"}]}`,
+    `tellraw @a {"rawtext":[{"text":"[${label}] Starte (seed=${seed}) – Nordwest-Ecke, Fläche nach Ost+Süd …"}]}`,
     `scoreboard objectives add ${objBuild} dummy`,
     `tickingarea remove ${areaName}`,
     "kill @e[type=armor_stand,tag=city_o]",
-    "summon armor_stand ~ ~ ~",
-    `tag @e[type=armor_stand,r=3,c=1] add ${tag}`,
-    `tag @e[tag=${tag},c=1] add city_o`,
-    `effect @e[tag=${tag}] invisibility 999999 0 true`,
+    ...originMarkerLines(tag),
     tickingAreaAddCmd(size, maxHeight, areaName),
     `scoreboard players set @e[tag=${tag},c=1] ${objBuild} ${stepFirstTerrain}`,
     `execute as @e[tag=${tag},c=1] at @s run function ${ns}/terrain_batches/t_00`,
     `scoreboard players set @e[tag=${tag},c=1] ${objBuild} ${stepFirstTerrain + 1}`,
-    `tellraw @a {"rawtext":[{"text":"[${label}] Bau läuft (${totalBuildSteps} Schritte) …"}]}`,
+    `tellraw @a {"rawtext":[{"text":"[${label}] Bau läuft (${totalBuildSteps} Schritte, ${lots.length} Häuser) …"}]}`,
   ]);
 
   const terrainDir = path.join(functionsDir, "terrain_batches");
@@ -555,15 +847,10 @@ function writeVariant(outFunctionsRoot, variant) {
     writeMcfunction(path.join(roadsDir, `r_${pad2(i)}.mcfunction`), roadBatches[i]);
   }
 
-  const buildingsDir = path.join(functionsDir, "buildings");
-  for (let i = 0; i < lots.length; i++) {
-    const oneLot = lots[i];
-    const lotSeed = (seed + oneLot.col * 7919 + oneLot.row * 104729) >>> 0;
-    const lotRng = createRng(lotSeed);
-    writeMcfunction(
-      path.join(buildingsDir, `b_${pad2(i)}.mcfunction`),
-      buildTowerCommands(oneLot, lotRng, minHeight, maxHeight),
-    );
+  const landscapeDir = path.join(functionsDir, "landscape_batches");
+  fs.rmSync(landscapeDir, { recursive: true, force: true });
+  for (let i = 0; i < landscapeBatches.length; i++) {
+    writeMcfunction(path.join(landscapeDir, `l_${pad2(i)}.mcfunction`), landscapeBatches[i]);
   }
 
   writeMcfunction(path.join(functionsDir, "build_done.mcfunction"), [
@@ -573,7 +860,6 @@ function writeVariant(outFunctionsRoot, variant) {
     `tellraw @a {"rawtext":[{"text":"[${label}] Fertig. Undo: /function city/clear"}]}`,
   ]);
 
-  // Clear ist gemeinsam: /function city/clear
   writeMcfunction(path.join(functionsDir, "clear.mcfunction"), [
     "function city/clear",
   ]);
@@ -585,16 +871,22 @@ function writeVariant(outFunctionsRoot, variant) {
       `execute as @e[tag=${tag},c=1] at @s if score @s ${objBuild} matches ${step} run function ${ns}/terrain_batches/t_${pad2(i)}`,
     );
   }
+  for (let k = 0; k < nBuildingBatches; k++) {
+    const step = stepFirstBuilding + k;
+    onTick.push(
+      `execute as @e[tag=${tag},c=1] at @s if score @s ${objBuild} matches ${step} run function ${ns}/buildings/${buildingBatchFiles[k]}`,
+    );
+  }
   for (let i = 0; i < nRoads; i++) {
     const step = stepFirstRoad + i;
     onTick.push(
       `execute as @e[tag=${tag},c=1] at @s if score @s ${objBuild} matches ${step} run function ${ns}/road_batches/r_${pad2(i)}`,
     );
   }
-  for (let i = 0; i < lots.length; i++) {
-    const step = stepFirstBuilding + i;
+  for (let i = 0; i < nLandscape; i++) {
+    const step = stepFirstLandscape + i;
     onTick.push(
-      `execute as @e[tag=${tag},c=1] at @s if score @s ${objBuild} matches ${step} run function ${ns}/buildings/b_${pad2(i)}`,
+      `execute as @e[tag=${tag},c=1] at @s if score @s ${objBuild} matches ${step} run function ${ns}/landscape_batches/l_${pad2(i)}`,
     );
   }
   onTick.push(
@@ -609,6 +901,7 @@ function writeVariant(outFunctionsRoot, variant) {
     ns,
     seed,
     buildings: lots.length,
+    building_batches: nBuildingBatches,
     terrain_steps: nTerrain,
     road_steps: nRoads,
     build_steps: totalBuildSteps,
@@ -634,16 +927,13 @@ function writeSharedCityGen(outFunctionsRoot, size, maxHeight, variantCount) {
   }
 
   writeMcfunction(path.join(functionsDir, "terrain.mcfunction"), [
-    'tellraw @a {"rawtext":[{"text":"[city] Terrain – Ebene unter den Füssen, Luft darüber …"}]}',
+    'tellraw @a {"rawtext":[{"text":"[city] Terrain – Nordwest-Ecke, Ebene unter den Füssen, Luft darüber …"}]}',
     `scoreboard objectives add ${objPrep} dummy`,
     "scoreboard objectives add cg_c dummy",
     `tickingarea remove ${prepArea}`,
     "tickingarea remove cg_c_a",
     "kill @e[type=armor_stand,tag=city_o]",
-    "summon armor_stand ~ ~ ~",
-    `tag @e[type=armor_stand,r=3,c=1] add ${prepTag}`,
-    `tag @e[tag=${prepTag},c=1] add city_o`,
-    `effect @e[tag=${prepTag}] invisibility 999999 0 true`,
+    ...originMarkerLines(prepTag),
     tickingAreaAddCmd(size, maxHeight, prepArea),
     `scoreboard players set @e[tag=${prepTag},c=1] ${objPrep} 1`,
     `execute as @e[tag=${prepTag},c=1] at @s run function ${ns}/prep_batches/p_00`,
@@ -669,17 +959,14 @@ function writeSharedCityGen(outFunctionsRoot, size, maxHeight, variantCount) {
   }
 
   writeMcfunction(path.join(functionsDir, "clear.mcfunction"), [
-    'tellraw @a {"rawtext":[{"text":"[city] Clear – Nordwest-Ecke bleiben …"}]}',
+    'tellraw @a {"rawtext":[{"text":"[city] Clear – an die Nordwest-Ecke stellen …"}]}',
     `scoreboard objectives add ${objClear} dummy`,
     `scoreboard objectives add ${objPrep} dummy`,
     `tickingarea remove ${clearArea}`,
     `tickingarea remove ${prepArea}`,
     ...Array.from({ length: variantCount }, (_, i) => `tickingarea remove cg${i + 1}_a`),
     "kill @e[type=armor_stand,tag=city_o]",
-    "summon armor_stand ~ ~ ~",
-    `tag @e[type=armor_stand,r=3,c=1] add ${clearTag}`,
-    `tag @e[tag=${clearTag},c=1] add city_o`,
-    `effect @e[tag=${clearTag}] invisibility 999999 0 true`,
+    ...originMarkerLines(clearTag),
     tickingAreaAddCmd(size, maxHeight, clearArea),
     `scoreboard players set @e[tag=${clearTag},c=1] ${objClear} 1`,
     `execute as @e[tag=${clearTag},c=1] at @s run function ${ns}/clear_batches/c_00`,
@@ -821,8 +1108,8 @@ function parseArgs(argv) {
     seed: 42,
     variants: DEFAULT_VARIANTS,
     size: CITY_SIZE,
-    minHeight: 60,
-    maxHeight: 90,
+    minHeight: 20,
+    maxHeight: 100,
     lot: LAYOUT.lot,
     sidewalk: LAYOUT.sidewalk,
     street: LAYOUT.street,
@@ -842,7 +1129,7 @@ function parseArgs(argv) {
     else if (arg === "--max-height") options.maxHeight = Number(value());
     else if (arg === "-h" || arg === "--help") {
       console.log(`Usage:
-  node generate_city_pack.mjs [--seed 42] [--variants ${DEFAULT_VARIANTS}] [--min-height 60] [--max-height 90]
+  node generate_city_pack.mjs [--seed 42] [--variants ${DEFAULT_VARIANTS}] [--min-height 20] [--max-height 100]
 
   Erzeugt ${DEFAULT_VARIANTS} Varianten (anpassbar): city_1 … city_N
   Stadt: ${CITY_SIZE}×${CITY_SIZE}, Abstand Parzellen = ${LAYOUT.sidewalk + LAYOUT.street + LAYOUT.sidewalk}

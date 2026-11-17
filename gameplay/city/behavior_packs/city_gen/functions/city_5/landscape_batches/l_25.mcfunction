@@ -1,0 +1,13 @@
+setblock ~24 ~1 ~72 air
+setblock ~25 ~1 ~72 air
+setblock ~26 ~1 ~72 air
+setblock ~27 ~1 ~72 air
+setblock ~43 ~1 ~72 air
+setblock ~44 ~1 ~72 air
+setblock ~45 ~1 ~72 air
+setblock ~46 ~1 ~72 air
+setblock ~64 ~1 ~72 air
+setblock ~65 ~1 ~72 air
+setblock ~66 ~1 ~72 air
+setblock ~67 ~1 ~72 air
+tellraw @a {"rawtext":[{"text":"[city] Grün fertig."}]}

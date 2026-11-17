@@ -56,6 +56,7 @@ PROTECTED_DIRS=(
   worlds
   backups
   bin
+  keys
   resource_packs
   behavior_packs
 )

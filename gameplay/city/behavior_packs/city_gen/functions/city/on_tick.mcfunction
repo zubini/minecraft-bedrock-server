@@ -60,8 +60,14 @@ execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 59 run function cit
 execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 60 run function city/prep_batches/p_59
 execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 61 run function city/prep_batches/p_60
 execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 62 run function city/prep_batches/p_61
-execute as @e[tag=cg_t_o,c=1] if score @s cg_t matches 1..62 run scoreboard players add @s cg_t 1
-execute as @e[tag=cg_t_o,c=1] if score @s cg_t matches 63 run function city/terrain_done
+execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 63 run function city/prep_batches/p_62
+execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 64 run function city/prep_batches/p_63
+execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 65 run function city/prep_batches/p_64
+execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 66 run function city/prep_batches/p_65
+execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 67 run function city/prep_batches/p_66
+execute as @e[tag=cg_t_o,c=1] at @s if score @s cg_t matches 68 run function city/prep_batches/p_67
+execute as @e[tag=cg_t_o,c=1] if score @s cg_t matches 1..68 run scoreboard players add @s cg_t 1
+execute as @e[tag=cg_t_o,c=1] if score @s cg_t matches 69 run function city/terrain_done
 execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 1 run function city/clear_batches/c_00
 execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 2 run function city/clear_batches/c_01
 execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 3 run function city/clear_batches/c_02
@@ -121,5 +127,11 @@ execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 56 run function cit
 execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 57 run function city/clear_batches/c_56
 execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 58 run function city/clear_batches/c_57
 execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 59 run function city/clear_batches/c_58
-execute as @e[tag=cg_c_o,c=1] if score @s cg_c matches 1..59 run scoreboard players add @s cg_c 1
-execute as @e[tag=cg_c_o,c=1] if score @s cg_c matches 60 run function city/clear_done
+execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 60 run function city/clear_batches/c_59
+execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 61 run function city/clear_batches/c_60
+execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 62 run function city/clear_batches/c_61
+execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 63 run function city/clear_batches/c_62
+execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 64 run function city/clear_batches/c_63
+execute as @e[tag=cg_c_o,c=1] at @s if score @s cg_c matches 65 run function city/clear_batches/c_64
+execute as @e[tag=cg_c_o,c=1] if score @s cg_c matches 1..65 run scoreboard players add @s cg_c 1
+execute as @e[tag=cg_c_o,c=1] if score @s cg_c matches 66 run function city/clear_done

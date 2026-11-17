@@ -1,4 +1,2 @@
-fill ~0 ~0 ~72 ~79 ~0 ~79 light_gray_concrete
-fill ~0 ~0 ~73 ~79 ~0 ~78 black_concrete
-fill ~0 ~0 ~75 ~79 ~0 ~75 yellow_concrete
-tellraw @a {"rawtext":[{"text":"[city] Strassen fertig – Häuser …"}]}
+fill ~0 ~0 ~73 ~79 ~0 ~78 stone_bricks
+tellraw @a {"rawtext":[{"text":"[city] Strassen fertig – Grün …"}]}

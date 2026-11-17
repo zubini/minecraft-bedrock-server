@@ -6,7 +6,7 @@ Skripte und Packs liegen unter [`gameplay/city/`](city/).
 
 ## Prozedurale Stadt (`city`)
 
-Behavior Pack baut eine Hochhauslandschaft mit Strassen ab deinem Standpunkt (nach Osten und Süden).  
+Behavior Pack baut eine Hochhauslandschaft mit Strassen ab deinem Standpunkt (nach **Osten** und **Süden**).  
 Mehrere Varianten: `city_1` … `city_5` (verschiedene Seeds).
 
 ### Voraussetzungen
@@ -17,7 +17,6 @@ Mehrere Varianten: `city_1` … `city_5` (verschiedene Seeds).
 ### Pack erzeugen (lokal)
 
 ```bash
-# 80×80, 4×4 Hochhäuser, 5 Varianten (Default)
 node gameplay/city/generate_city_pack.mjs --seed 42
 node gameplay/city/generate_city_pack.mjs --seed 42 --variants 5
 ```
@@ -32,21 +31,20 @@ Startet den Server neu. Danach ggf. neu joinen.
 
 ### Terrain vorbereiten (optional)
 
-An der Nordwest-Ecke stehen (Fuss-Höhe = spätere Stadt-Ebene). Fläche nach Ost+Süd freihalten:
+An die **Nordwest-Ecke** stellen (Fuss-Höhe = Boden). Fläche nach Ost+Süd freihalten:
 
 ```
 /function city/terrain
 ```
 
-Macht **unter den Füssen** eine Erd-Ebene (80×80) und räumt **darüber** alles frei.  
+Macht **unter den Füssen** eine Erd-/Gras-Ebene (80×80) und räumt **darüber** alles frei.  
 Chat: „Terrain fertig.“ abwarten.
 
 ### Bauen
 
-1. Koordinaten anzeigen  
-2. An die Ecke stellen, wo **X und Z am kleinsten** sein sollen (Nordwest-Ecke)  
-3. Freie Fläche muss nach **Osten** (X wird grösser) und **Süden** (Z wird grösser) liegen  
-4. Chat – eine Variante wählen:
+1. An dieselbe Nordwest-Ecke stellen  
+2. Freie Fläche nach **Osten** (+X) und **Süden** (+Z)  
+3. Chat – eine Variante wählen:
 
 ```
 /function city_1/start
@@ -59,7 +57,7 @@ Chat: „Terrain fertig.“ abwarten.
 Kurzform (Variante 1): `/function city/start`
 
 Bau läuft **über mehrere Sekunden** (Chat: „Fertig.“ abwarten).  
-**In der Nähe bleiben**, bis es fertig ist (sonst stoppen die Chunks).
+**In der Nähe bleiben**, bis es fertig ist.
 
 ### Rückgängig
 
@@ -67,7 +65,7 @@ Bau läuft **über mehrere Sekunden** (Chat: „Fertig.“ abwarten).
 /function city/clear
 ```
 
-Gleiche 80×80-Fläche für alle Varianten. Über mehrere Sekunden („Clear fertig.“), in der Nähe bleiben.
+Wieder an die **Nordwest-Ecke**. Über mehrere Sekunden („Clear fertig.“).
 
 ### Seed / mehr Varianten
 

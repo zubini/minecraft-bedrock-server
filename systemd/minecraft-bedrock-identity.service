@@ -1,0 +1,14 @@
+[Unit]
+Description=Save Minecraft Bedrock NetherNet server identity
+After=minecraft-bedrock.service
+Requires=minecraft-bedrock.service
+
+[Service]
+Type=oneshot
+Environment=INSTALL_DIR=/opt/minecraft-bedrock
+Environment=SERVICE_NAME=minecraft-bedrock
+ExecStart=/opt/minecraft-bedrock/bin/save-server-identity.sh
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

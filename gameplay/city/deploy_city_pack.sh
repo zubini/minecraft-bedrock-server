@@ -11,7 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACK_SRC="${SCRIPT_DIR}/behavior_packs/city_gen"
 INSTALL_DIR="${INSTALL_DIR:-/opt/minecraft-bedrock}"
 PACK_UUID="a7c4e2b1-9f3d-4e8a-b6c1-2d5e8f0a1b3c"
-PACK_VERSION="[1, 3, 1]"
+PACK_VERSION="[1, 7, 1]"
 
 die() {
   echo "ERROR: $*" >&2
@@ -100,7 +100,7 @@ ssh -o StrictHostKeyChecking=accept-new "$TARGET" "sudo systemctl restart minecr
 
 log "Done."
 echo
-echo "Im Spiel (OP): Nordwest-Ecke (kleinste X/Z), dann z.B.:"
+echo "Im Spiel (OP): Nordwest-Ecke, Fläche nach Ost+Süd:"
 echo "  /function city/terrain"
 echo "  /function city_1/start … city_5/start"
 echo "Undo: /function city/clear"

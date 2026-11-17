@@ -171,8 +171,11 @@ load_config() {
 }
 
 install_scripts() {
-  log "Installing update.sh to ${INSTALL_DIR}/bin …"
+  log "Installing helper scripts to ${INSTALL_DIR}/bin …"
   install -m 755 "${REPO_ROOT}/scripts/update.sh" "${INSTALL_DIR}/bin/update.sh"
+  install -m 755 "${REPO_ROOT}/scripts/bedrock-run.sh" "${INSTALL_DIR}/bin/bedrock-run.sh"
+  install -m 755 "${REPO_ROOT}/scripts/bedrock-cmd.sh" "${INSTALL_DIR}/bin/bedrock-cmd.sh"
+  install -m 755 "${REPO_ROOT}/scripts/save-server-identity.sh" "${INSTALL_DIR}/bin/save-server-identity.sh"
   chown -R "${SERVICE_USER}:${SERVICE_USER}" "${INSTALL_DIR}/bin"
 }
 
@@ -180,6 +183,8 @@ install_systemd() {
   log "Installing systemd units …"
   install -m 644 "${REPO_ROOT}/systemd/minecraft-bedrock.service" \
     /etc/systemd/system/minecraft-bedrock.service
+  install -m 644 "${REPO_ROOT}/systemd/minecraft-bedrock-identity.service" \
+    /etc/systemd/system/minecraft-bedrock-identity.service
   install -m 644 "${REPO_ROOT}/systemd/minecraft-bedrock-update.service" \
     /etc/systemd/system/minecraft-bedrock-update.service
   install -m 644 "${REPO_ROOT}/systemd/minecraft-bedrock-update.timer" \
@@ -191,6 +196,7 @@ install_systemd() {
   fi
   if [[ "$INSTALL_DIR" != "/opt/minecraft-bedrock" ]]; then
     sed -i "s|/opt/minecraft-bedrock|${INSTALL_DIR}|g" /etc/systemd/system/minecraft-bedrock.service
+    sed -i "s|/opt/minecraft-bedrock|${INSTALL_DIR}|g" /etc/systemd/system/minecraft-bedrock-identity.service
     sed -i "s|/opt/minecraft-bedrock|${INSTALL_DIR}|g" /etc/systemd/system/minecraft-bedrock-update.service
   fi
 
@@ -226,7 +232,9 @@ print_status() {
   echo "Next update check:"
   systemctl --no-pager list-timers minecraft-bedrock-update.timer || true
   echo
-  echo "Note: allow UDP port 19132 (and optionally 19133 for IPv6) in the firewall."
+  echo "Note: allow TCP+UDP 19132 (NetherNet) in the firewall – see README."
+  echo "NetherNet-Identität: wird beim Start gespeichert (keys/server_identity_key.pem)."
+  echo "Konsole: sudo ${INSTALL_DIR}/bin/bedrock-cmd.sh serveridentity status"
   echo "Download implies acceptance of the Minecraft EULA: https://minecraft.net/eula"
 }
 

@@ -89,6 +89,30 @@ sudo /opt/minecraft-bedrock/bin/update.sh        # Update manuell prüfen
 systemctl list-timers minecraft-bedrock-update.timer  # nächste Auto-Prüfung
 ```
 
+### NetherNet-Identität (Trust-Dialog)
+
+Unter NetherNet fragt der Client beim ersten Join „Diesem Server vertrauen?“.  
+Ohne gespeicherte Identität erzeugt BDS bei **jedem Neustart** einen neuen Schlüssel → der Dialog erscheint immer wieder.
+
+Beim Start speichert der Dienst die Identität automatisch (`serveridentity save` → `keys/server_identity_key.pem`). Der Ordner `keys/` bleibt bei Updates erhalten.
+
+Manuell:
+
+```bash
+sudo /opt/minecraft-bedrock/bin/bedrock-cmd.sh serveridentity save
+sudo /opt/minecraft-bedrock/bin/bedrock-cmd.sh serveridentity status
+ls -l /opt/minecraft-bedrock/keys/server_identity_key.pem
+```
+
+Nach dem **ersten** Speichern einmal neu verbinden und vertrauen — danach reichen Restarts ohne erneuten Dialog.
+
+Beliebige Konsolenbefehle (Server muss laufen):
+
+```bash
+sudo /opt/minecraft-bedrock/bin/bedrock-cmd.sh say Hallo
+sudo /opt/minecraft-bedrock/bin/bedrock-cmd.sh list
+```
+
 ## Konfiguration
 
 `/etc/minecraft-bedrock/config.env` (Vorlage: [`config/config.env.example`](config/config.env.example))
@@ -104,7 +128,7 @@ systemctl list-timers minecraft-bedrock-update.timer  # nächste Auto-Prüfung
 
 Mail-Versand braucht ein lokales MTA (`mail`/`sendmail`), typisch `msmtp-mta` + `bsd-mailx`, plus `NOTIFY_EMAIL` in `/etc/minecraft-bedrock/config.env` (nicht im Git – nur die auskommentierte Vorlage in `config.env.example`).
 
-Spiel-Einstellungen (`server.properties`, Allowlist, …) unter `/opt/minecraft-bedrock/` bleiben bei Updates erhalten.
+Spiel-Einstellungen (`server.properties`, Allowlist, …) und `keys/` (NetherNet-Identität) unter `/opt/minecraft-bedrock/` bleiben bei Updates erhalten.
 
 ## Update & Weltschutz
 

@@ -9,14 +9,18 @@ User=minecraft
 Group=minecraft
 WorkingDirectory=/opt/minecraft-bedrock
 Environment=LD_LIBRARY_PATH=.
-ExecStart=/opt/minecraft-bedrock/bedrock_server
+Environment=INSTALL_DIR=/opt/minecraft-bedrock
+# FIFO-Wrapper: Konsole erreichbar via bin/bedrock-cmd.sh
+ExecStart=/opt/minecraft-bedrock/bin/bedrock-run.sh
+# Identity-Save asynchron (blockiert sonst systemctl start/restart)
+ExecStartPost=+/bin/systemctl --no-block start minecraft-bedrock-identity.service
 # Refresh Xbox friends session after Bedrock is up (ignore if MCXboxBroadcast is not installed)
 ExecStartPost=+/bin/systemctl --no-block try-restart mcxboxbroadcast.service
 Restart=on-failure
 RestartSec=10
 Nice=5
 
-# Bedrock uses UDP (default port 19132)
+# Bedrock uses UDP (default port 19132) + TCP signaling (NetherNet)
 LimitNOFILE=4096
 
 # Minimal hardening (conservative – should not affect gameplay)
