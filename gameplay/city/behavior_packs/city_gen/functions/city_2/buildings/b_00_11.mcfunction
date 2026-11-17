@@ -1,28 +1,28 @@
-setblock ~7 ~17 ~2 bookshelf
-setblock ~8 ~17 ~2 chest
-setblock ~6 ~17 ~8 crafting_table
-setblock ~8 ~17 ~8 flower_pot
-setblock ~7 ~17 ~8 flower_pot
-fill ~6 ~21 ~2 ~8 ~21 ~8 red_carpet
-fill ~2 ~21 ~2 ~3 ~21 ~8 red_carpet
-setblock ~7 ~21 ~8 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~7 ~21 ~7 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~8 ~21 ~2 flower_pot
-setblock ~6 ~21 ~2 chest
-setblock ~7 ~21 ~4 flower_pot
-fill ~6 ~25 ~2 ~8 ~25 ~8 blue_carpet
-fill ~2 ~25 ~2 ~3 ~25 ~8 blue_carpet
-setblock ~6 ~25 ~2 flower_pot
-setblock ~8 ~25 ~2 flower_pot
-setblock ~6 ~25 ~8 flower_pot
-setblock ~8 ~25 ~8 bookshelf
-setblock ~7 ~25 ~2 chest
-fill ~6 ~29 ~2 ~8 ~29 ~8 light_blue_carpet
-fill ~2 ~29 ~2 ~3 ~29 ~8 light_blue_carpet
-setblock ~6 ~29 ~2 bookshelf
-setblock ~6 ~30 ~2 bookshelf
-setblock ~7 ~29 ~2 bookshelf
-setblock ~8 ~29 ~2 chest
-setblock ~6 ~29 ~8 crafting_table
-setblock ~8 ~29 ~8 flower_pot
-setblock ~8 ~29 ~2 flower_pot
+setblock ~7 ~1 ~10 crafting_table
+setblock ~9 ~1 ~8 chest
+setblock ~10 ~1 ~4 barrel
+setblock ~8 ~1 ~4 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~5 ~1 ~9 oak_fence
+setblock ~5 ~2 ~9 oak_pressure_plate
+setblock ~9 ~1 ~8 flower_pot
+setblock ~1 ~1 ~8 chest
+setblock ~1 ~1 ~3 chest
+setblock ~4 ~1 ~1 flower_pot
+setblock ~10 ~1 ~1 chest
+setblock ~1 ~1 ~1 bookshelf
+setblock ~5 ~2 ~1 white_wall_banner ["facing_direction":3]
+setblock ~2 ~2 ~10 blue_wall_banner ["facing_direction":2]
+setblock ~10 ~2 ~1 lime_wall_banner ["facing_direction":3]
+setblock ~1 ~2 ~2 orange_wall_banner ["facing_direction":5]
+setblock ~6 ~1 ~1 bookshelf
+setblock ~7 ~5 ~10 blue_bed ["direction":2,"head_piece_bit":false]
+setblock ~7 ~5 ~9 blue_bed ["direction":2,"head_piece_bit":true]
+setblock ~6 ~5 ~1 chest
+setblock ~10 ~5 ~1 flower_pot
+setblock ~10 ~5 ~2 oak_fence
+setblock ~10 ~6 ~2 oak_pressure_plate
+setblock ~6 ~5 ~2 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]
+setblock ~8 ~5 ~4 oak_fence
+setblock ~8 ~6 ~4 oak_pressure_plate
+setblock ~9 ~5 ~9 oak_fence
+setblock ~9 ~6 ~9 oak_pressure_plate

@@ -5,54 +5,54 @@
       "ns": "city_1",
       "seed": 42,
       "buildings": 16,
-      "building_batches": 214,
+      "building_batches": 416,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 258
+      "build_steps": 454
     },
     {
       "ns": "city_2",
       "seed": 104771,
       "buildings": 16,
-      "building_batches": 210,
+      "building_batches": 405,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 255
+      "build_steps": 443
     },
     {
       "ns": "city_3",
       "seed": 209500,
       "buildings": 16,
-      "building_batches": 216,
+      "building_batches": 419,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 260
+      "build_steps": 456
     },
     {
       "ns": "city_4",
       "seed": 314229,
       "buildings": 16,
-      "building_batches": 215,
+      "building_batches": 421,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 261
+      "build_steps": 460
     },
     {
       "ns": "city_5",
       "seed": 418958,
       "buildings": 16,
-      "building_batches": 229,
+      "building_batches": 448,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 274
+      "build_steps": 486
     }
   ],
   "size": 80,
   "min_height": 20,
   "max_height": 100,
-  "lot": 12,
+  "lot": 13,
   "sidewalk": 1,
-  "street": 6,
+  "street": 5,
   "prep_steps": 68,
   "clear_steps": 65
 }

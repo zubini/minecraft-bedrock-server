@@ -1,28 +1,28 @@
-setblock ~5 ~50 ~43 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~51 ~47 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~51 ~47 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~52 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~52 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~53 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~53 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~54 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~54 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~55 ~43 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~55 ~43 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~56 ~47 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~56 ~47 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~57 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~57 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~58 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~58 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~59 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~59 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~60 ~43 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~60 ~43 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-fill ~4 ~0 ~43 ~5 ~0 ~47 quartz_block
-fill ~5 ~0 ~50 ~6 ~0 ~50 stone_bricks
-fill ~4 ~1 ~50 ~7 ~3 ~50 light_gray_concrete
-fill ~5 ~1 ~50 ~6 ~2 ~50 air
-setblock ~5 ~1 ~50 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~5 ~2 ~50 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~6 ~1 ~50 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~6 ~50 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~51 ~48 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~51 ~48 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~52 ~47 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~52 ~47 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~53 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~53 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~54 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~54 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~55 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~55 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~56 ~48 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~56 ~48 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~57 ~47 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~57 ~47 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~58 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~58 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~59 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~59 ~45 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~60 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~60 ~44 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+fill ~5 ~0 ~44 ~6 ~0 ~48 quartz_block
+setblock ~5 ~5 ~48 light_gray_concrete
+setblock ~6 ~5 ~48 light_gray_concrete
+setblock ~5 ~10 ~48 light_gray_concrete
+setblock ~6 ~10 ~48 light_gray_concrete
+setblock ~5 ~15 ~48 light_gray_concrete
+setblock ~6 ~15 ~48 light_gray_concrete

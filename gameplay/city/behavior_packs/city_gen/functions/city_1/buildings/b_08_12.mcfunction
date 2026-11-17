@@ -1,28 +1,28 @@
-setblock ~8 ~1 ~42 flower_pot
-setblock ~7 ~1 ~48 crafting_table
-setblock ~8 ~1 ~48 chest
-fill ~6 ~5 ~42 ~8 ~5 ~48 blue_carpet
-fill ~2 ~5 ~42 ~3 ~5 ~48 blue_carpet
-setblock ~6 ~5 ~42 bookshelf
-setblock ~6 ~6 ~42 bookshelf
-setblock ~7 ~5 ~42 bookshelf
-setblock ~8 ~5 ~42 chest
-setblock ~6 ~5 ~48 crafting_table
-setblock ~8 ~5 ~48 flower_pot
-fill ~6 ~9 ~42 ~8 ~9 ~48 light_blue_carpet
-fill ~2 ~9 ~42 ~3 ~9 ~48 light_blue_carpet
-setblock ~7 ~9 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~7 ~9 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~8 ~9 ~42 flower_pot
-setblock ~6 ~9 ~42 chest
-fill ~6 ~13 ~42 ~8 ~13 ~48 white_carpet
-fill ~2 ~13 ~42 ~3 ~13 ~48 white_carpet
-setblock ~6 ~13 ~42 flower_pot
-setblock ~8 ~13 ~42 flower_pot
-setblock ~6 ~13 ~48 flower_pot
-setblock ~8 ~13 ~48 bookshelf
-setblock ~7 ~13 ~42 chest
-setblock ~8 ~13 ~47 flower_pot
-fill ~6 ~17 ~42 ~8 ~17 ~48 gray_carpet
-fill ~2 ~17 ~42 ~3 ~17 ~48 gray_carpet
-setblock ~6 ~17 ~42 bookshelf
+setblock ~4 ~24 ~46 light_gray_concrete
+setblock ~5 ~24 ~46 light_gray_concrete
+setblock ~4 ~28 ~46 light_gray_concrete
+setblock ~5 ~28 ~46 light_gray_concrete
+setblock ~4 ~32 ~46 light_gray_concrete
+setblock ~5 ~32 ~46 light_gray_concrete
+setblock ~4 ~36 ~46 light_gray_concrete
+setblock ~5 ~36 ~46 light_gray_concrete
+setblock ~4 ~40 ~46 light_gray_concrete
+setblock ~5 ~40 ~46 light_gray_concrete
+setblock ~4 ~44 ~46 light_gray_concrete
+setblock ~5 ~44 ~46 light_gray_concrete
+setblock ~4 ~48 ~46 light_gray_concrete
+setblock ~5 ~48 ~46 light_gray_concrete
+setblock ~4 ~52 ~46 light_gray_concrete
+setblock ~5 ~52 ~46 light_gray_concrete
+setblock ~4 ~56 ~46 light_gray_concrete
+setblock ~5 ~56 ~46 light_gray_concrete
+setblock ~4 ~60 ~46 light_gray_concrete
+setblock ~5 ~60 ~46 light_gray_concrete
+setblock ~4 ~64 ~46 light_gray_concrete
+setblock ~5 ~64 ~46 light_gray_concrete
+fill ~5 ~0 ~51 ~6 ~0 ~51 stone_bricks
+fill ~4 ~1 ~51 ~7 ~3 ~51 light_gray_concrete
+fill ~5 ~1 ~51 ~6 ~2 ~51 air
+setblock ~5 ~1 ~51 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~5 ~2 ~51 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~6 ~1 ~51 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]

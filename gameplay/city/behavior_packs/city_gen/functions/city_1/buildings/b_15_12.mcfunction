@@ -1,28 +1,28 @@
-setblock ~67 ~21 ~62 bookshelf
-setblock ~68 ~21 ~62 chest
-setblock ~66 ~21 ~68 crafting_table
-setblock ~68 ~21 ~68 flower_pot
-fill ~66 ~26 ~62 ~68 ~26 ~68 red_carpet
-fill ~62 ~26 ~62 ~63 ~26 ~68 red_carpet
-setblock ~67 ~26 ~68 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~67 ~26 ~67 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~68 ~26 ~62 flower_pot
-setblock ~66 ~26 ~62 chest
-setblock ~68 ~26 ~62 flower_pot
-fill ~66 ~31 ~62 ~68 ~31 ~68 blue_carpet
-fill ~62 ~31 ~62 ~63 ~31 ~68 blue_carpet
-setblock ~66 ~31 ~62 flower_pot
-setblock ~68 ~31 ~62 flower_pot
-setblock ~66 ~31 ~68 flower_pot
-setblock ~68 ~31 ~68 bookshelf
-setblock ~67 ~31 ~62 chest
-setblock ~68 ~31 ~68 flower_pot
-fill ~66 ~36 ~62 ~68 ~36 ~68 light_blue_carpet
-fill ~62 ~36 ~62 ~63 ~36 ~68 light_blue_carpet
-setblock ~66 ~36 ~62 bookshelf
-setblock ~66 ~37 ~62 bookshelf
-setblock ~67 ~36 ~62 bookshelf
-setblock ~68 ~36 ~62 chest
-setblock ~66 ~36 ~68 crafting_table
-setblock ~68 ~36 ~68 flower_pot
-setblock ~66 ~36 ~65 flower_pot
+setblock ~67 ~2 ~70 oak_pressure_plate
+setblock ~67 ~1 ~67 lectern
+setblock ~63 ~1 ~61 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~63 ~1 ~61 flower_pot
+setblock ~63 ~1 ~65 barrel
+setblock ~62 ~1 ~66 chest
+setblock ~63 ~1 ~70 chest
+setblock ~62 ~1 ~68 bookshelf
+setblock ~63 ~1 ~69 bookshelf
+setblock ~64 ~1 ~69 oak_fence
+setblock ~64 ~2 ~69 oak_pressure_plate
+setblock ~65 ~1 ~69 oak_fence
+setblock ~65 ~2 ~69 oak_pressure_plate
+setblock ~66 ~1 ~68 bookshelf
+setblock ~69 ~1 ~62 note_block
+setblock ~70 ~1 ~62 oak_fence
+setblock ~70 ~2 ~62 oak_pressure_plate
+setblock ~69 ~1 ~61 bookshelf
+setblock ~66 ~1 ~61 bookshelf
+setblock ~64 ~2 ~61 red_wall_banner ["facing_direction":3]
+setblock ~61 ~2 ~64 blue_wall_banner ["facing_direction":5]
+setblock ~64 ~2 ~61 orange_wall_banner ["facing_direction":3]
+setblock ~64 ~2 ~70 white_wall_banner ["facing_direction":2]
+setblock ~61 ~2 ~61 blue_wall_banner ["facing_direction":3]
+setblock ~70 ~1 ~70 lantern
+setblock ~66 ~1 ~70 chest
+setblock ~67 ~6 ~70 blue_bed ["direction":2,"head_piece_bit":false]
+setblock ~67 ~6 ~69 blue_bed ["direction":2,"head_piece_bit":true]

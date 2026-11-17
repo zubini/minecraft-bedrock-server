@@ -1,28 +1,28 @@
-setblock ~47 ~49 ~42 chest
-setblock ~46 ~49 ~43 flower_pot
-fill ~46 ~53 ~42 ~49 ~53 ~49 white_carpet
-fill ~42 ~53 ~42 ~43 ~53 ~49 white_carpet
-fill ~42 ~53 ~48 ~49 ~53 ~49 white_carpet
-setblock ~46 ~53 ~42 bookshelf
-setblock ~46 ~54 ~42 bookshelf
-setblock ~47 ~53 ~42 bookshelf
-setblock ~49 ~53 ~42 chest
-setblock ~46 ~53 ~49 crafting_table
-setblock ~49 ~53 ~49 flower_pot
-fill ~46 ~57 ~42 ~49 ~57 ~49 gray_carpet
-fill ~42 ~57 ~42 ~43 ~57 ~49 gray_carpet
-fill ~42 ~57 ~48 ~49 ~57 ~49 gray_carpet
-setblock ~47 ~57 ~49 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~57 ~48 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~49 ~57 ~42 flower_pot
-setblock ~46 ~57 ~42 chest
-setblock ~46 ~57 ~42 flower_pot
-fill ~46 ~61 ~42 ~49 ~61 ~49 red_carpet
-fill ~42 ~61 ~42 ~43 ~61 ~49 red_carpet
-fill ~42 ~61 ~48 ~49 ~61 ~49 red_carpet
-setblock ~46 ~61 ~42 flower_pot
-setblock ~49 ~61 ~42 flower_pot
-setblock ~46 ~61 ~49 flower_pot
-setblock ~49 ~61 ~49 bookshelf
-setblock ~47 ~61 ~42 chest
-setblock ~46 ~61 ~44 flower_pot
+setblock ~48 ~9 ~51 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~51 ~9 ~51 flower_pot
+setblock ~51 ~10 ~41 lantern
+setblock ~47 ~9 ~48 oak_fence
+setblock ~47 ~10 ~48 oak_pressure_plate
+setblock ~47 ~9 ~41 flower_pot
+setblock ~43 ~9 ~50 oak_fence
+setblock ~43 ~10 ~50 oak_pressure_plate
+setblock ~43 ~9 ~51 chest
+setblock ~45 ~9 ~49 crafting_table
+setblock ~41 ~9 ~51 barrel
+setblock ~42 ~9 ~50 chest
+setblock ~47 ~9 ~41 oak_fence
+setblock ~47 ~10 ~41 oak_pressure_plate
+setblock ~46 ~9 ~42 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]
+setblock ~47 ~10 ~41 orange_wall_banner ["facing_direction":3]
+setblock ~51 ~10 ~50 lime_wall_banner ["facing_direction":4]
+setblock ~41 ~10 ~43 pink_wall_banner ["facing_direction":5]
+setblock ~46 ~10 ~51 red_wall_banner ["facing_direction":2]
+setblock ~51 ~10 ~43 orange_wall_banner ["facing_direction":4]
+setblock ~45 ~10 ~41 pink_wall_banner ["facing_direction":3]
+setblock ~51 ~9 ~51 lantern
+setblock ~47 ~13 ~41 bookshelf
+setblock ~47 ~14 ~41 bookshelf
+setblock ~48 ~13 ~41 bookshelf
+setblock ~48 ~14 ~41 bookshelf
+setblock ~51 ~13 ~41 chest
+setblock ~47 ~13 ~51 lectern

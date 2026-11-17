@@ -1,28 +1,28 @@
-fill ~22 ~57 ~42 ~23 ~57 ~48 gray_carpet
-setblock ~27 ~57 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~57 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~28 ~57 ~42 flower_pot
-setblock ~26 ~57 ~42 chest
-fill ~26 ~61 ~42 ~28 ~61 ~48 red_carpet
-fill ~22 ~61 ~42 ~23 ~61 ~48 red_carpet
-setblock ~26 ~61 ~42 flower_pot
-setblock ~28 ~61 ~42 flower_pot
-setblock ~26 ~61 ~48 flower_pot
-setblock ~28 ~61 ~48 bookshelf
-setblock ~27 ~61 ~42 chest
-fill ~26 ~65 ~42 ~28 ~65 ~48 blue_carpet
-fill ~22 ~65 ~42 ~23 ~65 ~48 blue_carpet
-setblock ~26 ~65 ~42 bookshelf
-setblock ~26 ~66 ~42 bookshelf
-setblock ~27 ~65 ~42 bookshelf
-setblock ~28 ~65 ~42 chest
-setblock ~26 ~65 ~48 crafting_table
-setblock ~28 ~65 ~48 flower_pot
-setblock ~26 ~65 ~43 flower_pot
-fill ~26 ~69 ~42 ~28 ~69 ~48 light_blue_carpet
-fill ~22 ~69 ~42 ~23 ~69 ~48 light_blue_carpet
-setblock ~27 ~69 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~69 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~28 ~69 ~42 flower_pot
-setblock ~26 ~69 ~42 chest
-setblock ~28 ~69 ~44 flower_pot
+setblock ~26 ~9 ~50 smithing_table
+setblock ~27 ~9 ~50 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~30 ~9 ~50 flower_pot
+setblock ~30 ~10 ~41 lantern
+setblock ~26 ~9 ~41 note_block
+setblock ~30 ~9 ~42 oak_fence
+setblock ~30 ~10 ~42 oak_pressure_plate
+setblock ~28 ~9 ~42 fletching_table
+setblock ~27 ~9 ~42 flower_pot
+setblock ~27 ~9 ~50 fletching_table
+setblock ~24 ~9 ~47 flower_pot
+setblock ~28 ~9 ~47 oak_fence
+setblock ~28 ~10 ~47 oak_pressure_plate
+setblock ~30 ~9 ~48 note_block
+setblock ~23 ~9 ~48 bookshelf
+setblock ~23 ~10 ~48 bookshelf
+setblock ~26 ~9 ~48 cartography_table
+setblock ~21 ~9 ~41 bookshelf
+setblock ~22 ~9 ~43 bookshelf
+setblock ~23 ~9 ~42 bookshelf
+setblock ~21 ~9 ~48 bookshelf
+setblock ~21 ~10 ~48 bookshelf
+setblock ~21 ~9 ~46 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~21 ~9 ~42 lectern
+setblock ~27 ~9 ~41 lectern
+setblock ~21 ~10 ~45 yellow_wall_banner ["facing_direction":5]
+setblock ~21 ~10 ~45 lime_wall_banner ["facing_direction":5]
+setblock ~22 ~10 ~41 pink_wall_banner ["facing_direction":3]

@@ -1,28 +1,28 @@
-fill ~21 ~68 ~2 ~21 ~68 ~8 white_concrete
-fill ~29 ~68 ~2 ~29 ~68 ~8 white_concrete
-fill ~22 ~72 ~1 ~28 ~72 ~1 white_concrete
-fill ~22 ~72 ~9 ~28 ~72 ~9 white_concrete
-fill ~21 ~72 ~2 ~21 ~72 ~8 white_concrete
-fill ~29 ~72 ~2 ~29 ~72 ~8 white_concrete
-fill ~23 ~1 ~9 ~26 ~3 ~9 white_concrete
-fill ~24 ~1 ~9 ~25 ~2 ~9 air
-setblock ~24 ~1 ~9 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~24 ~2 ~9 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~25 ~1 ~9 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~25 ~2 ~9 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~22 ~1 ~2 ~28 ~3 ~8 air
-fill ~22 ~5 ~2 ~28 ~7 ~8 air
-fill ~22 ~9 ~2 ~28 ~11 ~8 air
-fill ~22 ~13 ~2 ~28 ~15 ~8 air
-fill ~22 ~17 ~2 ~28 ~19 ~8 air
-fill ~22 ~21 ~2 ~28 ~23 ~8 air
-fill ~22 ~25 ~2 ~28 ~27 ~8 air
-fill ~22 ~29 ~2 ~28 ~31 ~8 air
-fill ~22 ~33 ~2 ~28 ~35 ~8 air
-fill ~22 ~37 ~2 ~28 ~39 ~8 air
-fill ~22 ~41 ~2 ~28 ~43 ~8 air
-fill ~22 ~45 ~2 ~28 ~47 ~8 air
-fill ~22 ~49 ~2 ~28 ~51 ~8 air
-fill ~22 ~53 ~2 ~28 ~55 ~8 air
-fill ~22 ~57 ~2 ~28 ~59 ~8 air
-fill ~22 ~61 ~2 ~28 ~63 ~8 air
+fill ~20 ~68 ~1 ~20 ~68 ~10 white_concrete
+fill ~31 ~68 ~1 ~31 ~68 ~10 white_concrete
+fill ~21 ~72 ~0 ~30 ~72 ~0 white_concrete
+fill ~21 ~72 ~11 ~30 ~72 ~11 white_concrete
+fill ~20 ~72 ~1 ~20 ~72 ~10 white_concrete
+fill ~31 ~72 ~1 ~31 ~72 ~10 white_concrete
+fill ~24 ~1 ~11 ~27 ~3 ~11 white_concrete
+fill ~25 ~1 ~11 ~26 ~2 ~11 air
+setblock ~25 ~1 ~11 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~25 ~2 ~11 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~26 ~1 ~11 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~26 ~2 ~11 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+fill ~21 ~1 ~1 ~30 ~3 ~10 air
+fill ~21 ~5 ~1 ~30 ~7 ~10 air
+fill ~21 ~9 ~1 ~30 ~11 ~10 air
+fill ~21 ~13 ~1 ~30 ~15 ~10 air
+fill ~21 ~17 ~1 ~30 ~19 ~10 air
+fill ~21 ~21 ~1 ~30 ~23 ~10 air
+fill ~21 ~25 ~1 ~30 ~27 ~10 air
+fill ~21 ~29 ~1 ~30 ~31 ~10 air
+fill ~21 ~33 ~1 ~30 ~35 ~10 air
+fill ~21 ~37 ~1 ~30 ~39 ~10 air
+fill ~21 ~41 ~1 ~30 ~43 ~10 air
+fill ~21 ~45 ~1 ~30 ~47 ~10 air
+fill ~21 ~49 ~1 ~30 ~51 ~10 air
+fill ~21 ~53 ~1 ~30 ~55 ~10 air
+fill ~21 ~57 ~1 ~30 ~59 ~10 air
+fill ~21 ~61 ~1 ~30 ~63 ~10 air

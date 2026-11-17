@@ -1,28 +1,28 @@
-setblock ~47 ~49 ~42 chest
-setblock ~46 ~49 ~43 flower_pot
-fill ~46 ~53 ~42 ~48 ~53 ~48 white_carpet
-fill ~42 ~53 ~42 ~43 ~53 ~48 white_carpet
-setblock ~46 ~53 ~42 bookshelf
-setblock ~46 ~54 ~42 bookshelf
-setblock ~47 ~53 ~42 bookshelf
-setblock ~48 ~53 ~42 chest
-setblock ~46 ~53 ~48 crafting_table
-setblock ~48 ~53 ~48 flower_pot
-fill ~46 ~57 ~42 ~48 ~57 ~48 gray_carpet
-fill ~42 ~57 ~42 ~43 ~57 ~48 gray_carpet
-setblock ~47 ~57 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~57 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~48 ~57 ~42 flower_pot
-setblock ~46 ~57 ~42 chest
-fill ~46 ~61 ~42 ~48 ~61 ~48 red_carpet
-fill ~42 ~61 ~42 ~43 ~61 ~48 red_carpet
-setblock ~46 ~61 ~42 flower_pot
-setblock ~48 ~61 ~42 flower_pot
-setblock ~46 ~61 ~48 flower_pot
-setblock ~48 ~61 ~48 bookshelf
-setblock ~47 ~61 ~42 chest
-fill ~46 ~65 ~42 ~48 ~65 ~48 blue_carpet
-fill ~42 ~65 ~42 ~43 ~65 ~48 blue_carpet
-setblock ~46 ~65 ~42 bookshelf
-setblock ~46 ~66 ~42 bookshelf
-setblock ~47 ~65 ~42 bookshelf
+setblock ~47 ~9 ~41 bookshelf
+setblock ~47 ~10 ~41 bookshelf
+setblock ~50 ~9 ~41 barrel
+setblock ~46 ~9 ~50 fletching_table
+setblock ~47 ~9 ~50 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~50 ~9 ~50 flower_pot
+setblock ~49 ~9 ~45 loom
+setblock ~47 ~9 ~45 lantern
+setblock ~47 ~9 ~48 crafting_table
+setblock ~49 ~9 ~49 loom
+setblock ~46 ~9 ~49 oak_fence
+setblock ~46 ~10 ~49 oak_pressure_plate
+setblock ~42 ~9 ~49 bookshelf
+setblock ~48 ~9 ~48 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~42 ~9 ~48 barrel
+setblock ~41 ~9 ~49 chest
+setblock ~42 ~9 ~46 smithing_table
+setblock ~44 ~9 ~41 oak_fence
+setblock ~44 ~10 ~41 oak_pressure_plate
+setblock ~44 ~9 ~42 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~50 ~9 ~41 chest
+setblock ~48 ~9 ~41 fletching_table
+setblock ~46 ~10 ~50 yellow_wall_banner ["facing_direction":2]
+setblock ~48 ~10 ~50 light_blue_wall_banner ["facing_direction":2]
+setblock ~50 ~10 ~49 pink_wall_banner ["facing_direction":4]
+setblock ~41 ~10 ~42 light_blue_wall_banner ["facing_direction":5]
+setblock ~50 ~10 ~50 blue_wall_banner ["facing_direction":2]
+setblock ~50 ~10 ~46 pink_wall_banner ["facing_direction":4]

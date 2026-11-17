@@ -1,28 +1,28 @@
-setblock ~66 ~1 ~62 flower_pot
-fill ~66 ~5 ~62 ~68 ~5 ~68 blue_carpet
-fill ~62 ~5 ~62 ~63 ~5 ~68 blue_carpet
-setblock ~66 ~5 ~62 bookshelf
-setblock ~66 ~6 ~62 bookshelf
-setblock ~67 ~5 ~62 bookshelf
-setblock ~68 ~5 ~62 chest
-setblock ~66 ~5 ~68 crafting_table
-setblock ~68 ~5 ~68 flower_pot
-fill ~66 ~9 ~62 ~68 ~9 ~68 light_blue_carpet
-fill ~62 ~9 ~62 ~63 ~9 ~68 light_blue_carpet
-setblock ~67 ~9 ~68 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~67 ~9 ~67 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~68 ~9 ~62 flower_pot
-setblock ~66 ~9 ~62 chest
-setblock ~67 ~9 ~62 flower_pot
-fill ~66 ~13 ~62 ~68 ~13 ~68 white_carpet
-fill ~62 ~13 ~62 ~63 ~13 ~68 white_carpet
-setblock ~66 ~13 ~62 flower_pot
-setblock ~68 ~13 ~62 flower_pot
-setblock ~66 ~13 ~68 flower_pot
-setblock ~68 ~13 ~68 bookshelf
-setblock ~67 ~13 ~62 chest
-fill ~66 ~17 ~62 ~68 ~17 ~68 gray_carpet
-fill ~62 ~17 ~62 ~63 ~17 ~68 gray_carpet
-setblock ~66 ~17 ~62 bookshelf
-setblock ~66 ~18 ~62 bookshelf
-setblock ~67 ~17 ~62 bookshelf
+setblock ~65 ~28 ~66 white_concrete
+fill ~65 ~0 ~71 ~66 ~0 ~71 stone_bricks
+fill ~64 ~1 ~71 ~67 ~3 ~71 white_concrete
+fill ~65 ~1 ~71 ~66 ~2 ~71 air
+setblock ~65 ~1 ~71 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~65 ~2 ~71 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~66 ~1 ~71 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~66 ~2 ~71 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+setblock ~66 ~1 ~61 flower_pot
+setblock ~70 ~1 ~61 flower_pot
+setblock ~68 ~1 ~61 oak_fence
+setblock ~68 ~2 ~61 oak_pressure_plate
+setblock ~66 ~1 ~62 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~70 ~1 ~70 chest
+setblock ~67 ~1 ~70 fletching_table
+setblock ~67 ~1 ~66 flower_pot
+setblock ~69 ~1 ~65 smithing_table
+setblock ~67 ~1 ~68 bookshelf
+setblock ~67 ~2 ~68 bookshelf
+setblock ~68 ~1 ~68 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~61 ~1 ~61 oak_fence
+setblock ~61 ~2 ~61 oak_pressure_plate
+setblock ~62 ~1 ~68 bookshelf
+setblock ~62 ~1 ~66 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~63 ~1 ~63 bookshelf
+setblock ~63 ~2 ~63 bookshelf
+setblock ~62 ~1 ~61 barrel
+setblock ~67 ~1 ~61 oak_fence

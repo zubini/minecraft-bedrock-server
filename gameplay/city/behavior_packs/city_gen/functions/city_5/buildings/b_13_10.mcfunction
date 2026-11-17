@@ -1,28 +1,28 @@
-setblock ~26 ~2 ~70 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~26 ~1 ~62 ~29 ~1 ~69 red_carpet
-fill ~22 ~1 ~62 ~23 ~1 ~69 red_carpet
-setblock ~26 ~1 ~62 flower_pot
-setblock ~29 ~1 ~62 flower_pot
-setblock ~27 ~1 ~69 crafting_table
-setblock ~28 ~1 ~69 chest
-fill ~26 ~6 ~62 ~29 ~6 ~69 blue_carpet
-fill ~22 ~6 ~62 ~23 ~6 ~69 blue_carpet
-setblock ~26 ~6 ~62 bookshelf
-setblock ~26 ~7 ~62 bookshelf
-setblock ~27 ~6 ~62 bookshelf
-setblock ~29 ~6 ~62 chest
-setblock ~26 ~6 ~69 crafting_table
-setblock ~29 ~6 ~69 flower_pot
-fill ~26 ~11 ~62 ~29 ~11 ~69 light_blue_carpet
-fill ~22 ~11 ~62 ~23 ~11 ~69 light_blue_carpet
-setblock ~27 ~11 ~69 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~11 ~68 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~29 ~11 ~62 flower_pot
-setblock ~26 ~11 ~62 chest
-fill ~26 ~16 ~62 ~29 ~16 ~69 white_carpet
-fill ~22 ~16 ~62 ~23 ~16 ~69 white_carpet
-setblock ~26 ~16 ~62 flower_pot
-setblock ~29 ~16 ~62 flower_pot
-setblock ~26 ~16 ~69 flower_pot
-setblock ~29 ~16 ~69 bookshelf
-setblock ~27 ~16 ~62 chest
+setblock ~25 ~20 ~68 cyan_concrete
+setblock ~26 ~20 ~68 cyan_concrete
+setblock ~25 ~25 ~68 cyan_concrete
+setblock ~26 ~25 ~68 cyan_concrete
+setblock ~25 ~30 ~68 cyan_concrete
+setblock ~26 ~30 ~68 cyan_concrete
+setblock ~25 ~35 ~68 cyan_concrete
+setblock ~26 ~35 ~68 cyan_concrete
+setblock ~25 ~40 ~68 cyan_concrete
+setblock ~26 ~40 ~68 cyan_concrete
+setblock ~25 ~45 ~68 cyan_concrete
+setblock ~26 ~45 ~68 cyan_concrete
+setblock ~25 ~50 ~68 cyan_concrete
+setblock ~26 ~50 ~68 cyan_concrete
+setblock ~25 ~55 ~68 cyan_concrete
+setblock ~26 ~55 ~68 cyan_concrete
+setblock ~25 ~60 ~68 cyan_concrete
+setblock ~26 ~60 ~68 cyan_concrete
+fill ~25 ~0 ~72 ~26 ~0 ~72 stone_bricks
+fill ~24 ~1 ~72 ~27 ~3 ~72 cyan_concrete
+fill ~25 ~1 ~72 ~26 ~2 ~72 air
+setblock ~25 ~1 ~72 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~25 ~2 ~72 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~26 ~1 ~72 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~26 ~2 ~72 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+setblock ~27 ~1 ~61 flower_pot
+setblock ~31 ~1 ~61 flower_pot
+setblock ~29 ~1 ~61 oak_fence

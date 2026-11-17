@@ -1,28 +1,28 @@
-setblock ~46 ~2 ~50 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~46 ~1 ~42 ~49 ~1 ~49 red_carpet
-fill ~42 ~1 ~42 ~43 ~1 ~49 red_carpet
-fill ~42 ~1 ~48 ~49 ~1 ~49 red_carpet
-setblock ~46 ~1 ~42 flower_pot
-setblock ~49 ~1 ~42 flower_pot
-setblock ~47 ~1 ~49 crafting_table
-setblock ~48 ~1 ~49 chest
-setblock ~47 ~1 ~49 flower_pot
-fill ~46 ~5 ~42 ~49 ~5 ~49 blue_carpet
-fill ~42 ~5 ~42 ~43 ~5 ~49 blue_carpet
-fill ~42 ~5 ~48 ~49 ~5 ~49 blue_carpet
-setblock ~46 ~5 ~42 bookshelf
-setblock ~46 ~6 ~42 bookshelf
-setblock ~47 ~5 ~42 bookshelf
-setblock ~49 ~5 ~42 chest
-setblock ~46 ~5 ~49 crafting_table
-setblock ~49 ~5 ~49 flower_pot
-setblock ~46 ~5 ~46 flower_pot
-fill ~46 ~9 ~42 ~49 ~9 ~49 light_blue_carpet
-fill ~42 ~9 ~42 ~43 ~9 ~49 light_blue_carpet
-fill ~42 ~9 ~48 ~49 ~9 ~49 light_blue_carpet
-setblock ~47 ~9 ~49 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~9 ~48 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~49 ~9 ~42 flower_pot
-setblock ~46 ~9 ~42 chest
-setblock ~46 ~9 ~47 flower_pot
-fill ~46 ~13 ~42 ~49 ~13 ~49 white_carpet
+setblock ~45 ~16 ~47 light_blue_concrete
+setblock ~46 ~16 ~47 light_blue_concrete
+setblock ~45 ~20 ~47 light_blue_concrete
+setblock ~46 ~20 ~47 light_blue_concrete
+setblock ~45 ~24 ~47 light_blue_concrete
+setblock ~46 ~24 ~47 light_blue_concrete
+setblock ~45 ~28 ~47 light_blue_concrete
+setblock ~46 ~28 ~47 light_blue_concrete
+setblock ~45 ~32 ~47 light_blue_concrete
+setblock ~46 ~32 ~47 light_blue_concrete
+setblock ~45 ~36 ~47 light_blue_concrete
+setblock ~46 ~36 ~47 light_blue_concrete
+setblock ~45 ~40 ~47 light_blue_concrete
+setblock ~46 ~40 ~47 light_blue_concrete
+setblock ~45 ~44 ~47 light_blue_concrete
+setblock ~46 ~44 ~47 light_blue_concrete
+setblock ~45 ~48 ~47 light_blue_concrete
+setblock ~46 ~48 ~47 light_blue_concrete
+setblock ~45 ~52 ~47 light_blue_concrete
+setblock ~46 ~52 ~47 light_blue_concrete
+setblock ~45 ~56 ~47 light_blue_concrete
+setblock ~46 ~56 ~47 light_blue_concrete
+setblock ~45 ~60 ~47 light_blue_concrete
+setblock ~46 ~60 ~47 light_blue_concrete
+fill ~45 ~0 ~52 ~46 ~0 ~52 stone_bricks
+fill ~44 ~1 ~52 ~47 ~3 ~52 light_blue_concrete
+fill ~45 ~1 ~52 ~46 ~2 ~52 air
+setblock ~45 ~1 ~52 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]

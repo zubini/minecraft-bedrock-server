@@ -1,28 +1,28 @@
-setblock ~9 ~33 ~42 flower_pot
-setblock ~6 ~33 ~42 chest
-setblock ~8 ~33 ~49 flower_pot
-fill ~6 ~37 ~42 ~9 ~37 ~49 gray_carpet
-fill ~2 ~37 ~42 ~3 ~37 ~49 gray_carpet
-fill ~2 ~37 ~48 ~9 ~37 ~49 gray_carpet
-setblock ~6 ~37 ~42 flower_pot
-setblock ~9 ~37 ~42 flower_pot
-setblock ~6 ~37 ~49 flower_pot
-setblock ~9 ~37 ~49 bookshelf
-setblock ~7 ~37 ~42 chest
-fill ~6 ~41 ~42 ~9 ~41 ~49 red_carpet
-fill ~2 ~41 ~42 ~3 ~41 ~49 red_carpet
-fill ~2 ~41 ~48 ~9 ~41 ~49 red_carpet
-setblock ~6 ~41 ~42 bookshelf
-setblock ~6 ~42 ~42 bookshelf
-setblock ~7 ~41 ~42 bookshelf
-setblock ~9 ~41 ~42 chest
-setblock ~6 ~41 ~49 crafting_table
-setblock ~9 ~41 ~49 flower_pot
-fill ~6 ~45 ~42 ~9 ~45 ~49 blue_carpet
-fill ~2 ~45 ~42 ~3 ~45 ~49 blue_carpet
-fill ~2 ~45 ~48 ~9 ~45 ~49 blue_carpet
-setblock ~7 ~45 ~49 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~7 ~45 ~48 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~9 ~45 ~42 flower_pot
-setblock ~6 ~45 ~42 chest
-setblock ~9 ~45 ~48 flower_pot
+setblock ~10 ~5 ~49 oak_fence
+setblock ~10 ~6 ~49 oak_pressure_plate
+setblock ~3 ~5 ~47 loom
+setblock ~4 ~5 ~41 oak_fence
+setblock ~4 ~6 ~41 oak_pressure_plate
+setblock ~1 ~5 ~46 oak_fence
+setblock ~1 ~6 ~46 oak_pressure_plate
+setblock ~3 ~5 ~51 oak_fence
+setblock ~3 ~6 ~51 oak_pressure_plate
+setblock ~2 ~5 ~49 oak_fence
+setblock ~2 ~6 ~49 oak_pressure_plate
+setblock ~1 ~5 ~50 flower_pot
+setblock ~9 ~5 ~49 oak_fence
+setblock ~9 ~6 ~49 oak_pressure_plate
+setblock ~9 ~5 ~41 chest
+setblock ~1 ~5 ~42 oak_fence
+setblock ~1 ~6 ~42 oak_pressure_plate
+setblock ~7 ~5 ~42 loom
+setblock ~5 ~5 ~42 bookshelf
+setblock ~5 ~6 ~42 bookshelf
+setblock ~7 ~6 ~51 blue_wall_banner ["facing_direction":2]
+setblock ~7 ~6 ~51 lime_wall_banner ["facing_direction":2]
+setblock ~7 ~6 ~41 blue_wall_banner ["facing_direction":3]
+setblock ~2 ~6 ~41 white_wall_banner ["facing_direction":3]
+setblock ~1 ~6 ~47 white_wall_banner ["facing_direction":5]
+setblock ~11 ~6 ~51 light_blue_wall_banner ["facing_direction":4]
+setblock ~11 ~5 ~41 flower_pot
+setblock ~9 ~9 ~46 oak_fence

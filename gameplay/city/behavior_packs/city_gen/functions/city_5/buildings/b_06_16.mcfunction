@@ -1,28 +1,28 @@
-setblock ~47 ~21 ~28 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~21 ~27 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~48 ~21 ~22 flower_pot
-setblock ~46 ~21 ~22 chest
-fill ~46 ~25 ~22 ~48 ~25 ~28 blue_carpet
-fill ~42 ~25 ~22 ~43 ~25 ~28 blue_carpet
-setblock ~46 ~25 ~22 flower_pot
-setblock ~48 ~25 ~22 flower_pot
-setblock ~46 ~25 ~28 flower_pot
-setblock ~48 ~25 ~28 bookshelf
-setblock ~47 ~25 ~22 chest
-setblock ~48 ~25 ~25 flower_pot
-fill ~46 ~29 ~22 ~48 ~29 ~28 light_blue_carpet
-fill ~42 ~29 ~22 ~43 ~29 ~28 light_blue_carpet
-setblock ~46 ~29 ~22 bookshelf
-setblock ~46 ~30 ~22 bookshelf
-setblock ~47 ~29 ~22 bookshelf
-setblock ~48 ~29 ~22 chest
-setblock ~46 ~29 ~28 crafting_table
-setblock ~48 ~29 ~28 flower_pot
-setblock ~46 ~29 ~22 flower_pot
-fill ~46 ~33 ~22 ~48 ~33 ~28 white_carpet
-fill ~42 ~33 ~22 ~43 ~33 ~28 white_carpet
-setblock ~47 ~33 ~28 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~33 ~27 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~48 ~33 ~22 flower_pot
-setblock ~46 ~33 ~22 chest
-fill ~46 ~37 ~22 ~48 ~37 ~28 gray_carpet
+setblock ~46 ~2 ~31 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+setblock ~46 ~1 ~21 flower_pot
+setblock ~50 ~1 ~21 flower_pot
+setblock ~48 ~1 ~21 oak_fence
+setblock ~48 ~2 ~21 oak_pressure_plate
+setblock ~46 ~1 ~22 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~50 ~1 ~30 chest
+setblock ~47 ~1 ~30 cartography_table
+setblock ~49 ~1 ~29 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~50 ~1 ~28 barrel
+setblock ~45 ~1 ~28 chest
+setblock ~41 ~1 ~27 lantern
+setblock ~49 ~1 ~27 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]
+setblock ~43 ~1 ~28 chest
+setblock ~43 ~1 ~29 note_block
+setblock ~43 ~1 ~22 flower_pot
+setblock ~42 ~1 ~25 chest
+setblock ~41 ~1 ~27 chest
+setblock ~43 ~1 ~22 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~48 ~1 ~22 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~43 ~1 ~21 fletching_table
+setblock ~45 ~2 ~30 orange_wall_banner ["facing_direction":2]
+setblock ~41 ~2 ~30 light_blue_wall_banner ["facing_direction":2]
+setblock ~43 ~2 ~21 red_wall_banner ["facing_direction":3]
+setblock ~50 ~1 ~21 lantern
+setblock ~50 ~1 ~21 barrel
+setblock ~46 ~5 ~21 bookshelf
+setblock ~46 ~6 ~21 bookshelf

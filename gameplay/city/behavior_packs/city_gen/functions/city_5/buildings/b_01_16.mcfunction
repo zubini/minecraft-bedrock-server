@@ -1,28 +1,28 @@
-setblock ~27 ~41 ~2 bookshelf
-setblock ~28 ~41 ~2 chest
-setblock ~26 ~41 ~8 crafting_table
-setblock ~28 ~41 ~8 flower_pot
-setblock ~27 ~41 ~7 flower_pot
-fill ~26 ~45 ~2 ~28 ~45 ~8 blue_carpet
-fill ~22 ~45 ~2 ~23 ~45 ~8 blue_carpet
-setblock ~27 ~45 ~8 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~45 ~7 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~28 ~45 ~2 flower_pot
-setblock ~26 ~45 ~2 chest
-fill ~26 ~49 ~2 ~28 ~49 ~8 light_blue_carpet
-fill ~22 ~49 ~2 ~23 ~49 ~8 light_blue_carpet
-setblock ~26 ~49 ~2 flower_pot
-setblock ~28 ~49 ~2 flower_pot
-setblock ~26 ~49 ~8 flower_pot
-setblock ~28 ~49 ~8 bookshelf
-setblock ~27 ~49 ~2 chest
-setblock ~26 ~49 ~3 flower_pot
-fill ~26 ~53 ~2 ~28 ~53 ~8 white_carpet
-fill ~22 ~53 ~2 ~23 ~53 ~8 white_carpet
-setblock ~26 ~53 ~2 bookshelf
-setblock ~26 ~54 ~2 bookshelf
-setblock ~27 ~53 ~2 bookshelf
-setblock ~28 ~53 ~2 chest
-setblock ~26 ~53 ~8 crafting_table
-setblock ~28 ~53 ~8 flower_pot
-fill ~26 ~57 ~2 ~28 ~57 ~8 gray_carpet
+setblock ~29 ~6 ~2 oak_pressure_plate
+setblock ~28 ~5 ~8 fletching_table
+setblock ~28 ~5 ~3 oak_fence
+setblock ~28 ~6 ~3 oak_pressure_plate
+setblock ~26 ~5 ~4 bookshelf
+setblock ~30 ~5 ~10 cartography_table
+setblock ~27 ~5 ~7 bookshelf
+setblock ~23 ~5 ~10 note_block
+setblock ~23 ~5 ~10 oak_fence
+setblock ~23 ~6 ~10 oak_pressure_plate
+setblock ~21 ~5 ~10 chest
+setblock ~21 ~5 ~8 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]
+setblock ~21 ~5 ~9 note_block
+setblock ~28 ~5 ~2 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~30 ~5 ~1 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~22 ~5 ~1 oak_fence
+setblock ~22 ~6 ~1 oak_pressure_plate
+setblock ~30 ~6 ~10 pink_wall_banner ["facing_direction":2]
+setblock ~30 ~6 ~10 light_blue_wall_banner ["facing_direction":4]
+setblock ~30 ~6 ~1 pink_wall_banner ["facing_direction":3]
+setblock ~21 ~6 ~6 lime_wall_banner ["facing_direction":5]
+setblock ~30 ~5 ~1 flower_pot
+setblock ~30 ~5 ~10 chest
+setblock ~26 ~9 ~1 bookshelf
+setblock ~26 ~10 ~1 bookshelf
+setblock ~27 ~9 ~1 bookshelf
+setblock ~27 ~10 ~1 bookshelf
+setblock ~30 ~9 ~1 barrel

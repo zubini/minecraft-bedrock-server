@@ -55,18 +55,18 @@ const FACADE_COLORS = [
 /** Feste Stadtgrösse: 80×80 → 4×4 Parzellen bei Zellgrösse 20. */
 const CITY_SIZE = 80;
 
-/** Layout: lot | Bürgersteig | Strasse | Bürgersteig → Zelle 20, Lücke 8. */
+/** Layout: lot | Bürgersteig | Strasse | Bürgersteig → Zelle 20 (Haus 11–13). */
 const LAYOUT = {
-  lot: 12,
+  lot: 13,
   sidewalk: 1,
-  street: 6,
+  street: 5,
 };
 
 /** Anzahl vorgefertigter Varianten (city_1 … city_N). */
 const DEFAULT_VARIANTS = 5;
 
 /** Pack-Version (bei Logik-Änderung erhöhen). */
-const PACK_VERSION = [1, 7, 4];
+const PACK_VERSION = [1, 7, 9];
 
 /** Max. Befehle pro Gebäude-Tick (sonst bricht BDS lange Functions ab → nur 3–4 Häuser). */
 const BUILDING_CMDS_PER_TICK = 28;
@@ -190,8 +190,8 @@ const FLOWERS = ["poppy", "dandelion", "azure_bluet", "oxeye_daisy", "cornflower
 function pickTowerLayout(lot, rng) {
   const lotWidth = lot.x1 - lot.x0 + 1;
   const lotDepth = lot.z1 - lot.z0 + 1;
-  // Kleiner als Parzelle → Grünstreifen zwischen Haus und Strasse
-  const footprint = rng.pick([8, 9, 10]);
+  // 11–13: genug Innenraum für Einrichtung; ggf. schmaler Grünstreifen
+  const footprint = rng.pick([11, 12, 13]);
   const insetX = Math.floor((lotWidth - footprint) / 2);
   const insetZ = Math.floor((lotDepth - footprint) / 2);
   return {
@@ -344,12 +344,34 @@ function doubleDoorSouth(xLeft, y, z) {
   ];
 }
 
-/** Bett: Fuss bei (x,z), Kopf nach Norden (direction 2). */
+/** Bett: Fuss bei (x,z), Kopf nach Norden (nur Farben, die BDS zuverlässig parst). */
 function bedNorth(x, y, z, color) {
   return [
     setblock(x, y, z, `${color}_bed ["direction":2,"head_piece_bit":false]`),
     setblock(x, y, z - 1, `${color}_bed ["direction":2,"head_piece_bit":true]`),
   ];
+}
+
+/** Tisch: Zaunbein + Druckplatte. */
+function tableAt(x, y, z) {
+  return [setblock(x, y, z, "oak_fence"), setblock(x, y + 1, z, "oak_pressure_plate")];
+}
+
+/** Stuhl aus Eichenstufe (facing = Sitzrichtung). */
+function chairAt(x, y, z, facing) {
+  const dir = { east: 0, west: 1, south: 2, north: 3 }[facing];
+  if (dir === undefined) throw new Error(`Unbekannte Stuhl-Richtung: ${facing}`);
+  return [
+    setblock(x, y, z, `oak_stairs ["weirdo_direction":${dir},"upside_down_bit":false]`),
+  ];
+}
+
+/**
+ * Poster/Bilder an Innenwänden = Wandbanner (Paintings sind Entities, ungeeignet).
+ * facing_direction: 2=N, 3=S, 4=W, 5=E (Banner blickt in diese Richtung).
+ */
+function wallPoster(x, y, z, facingDir, color) {
+  return setblock(x, y, z, `${color}_wall_banner ["facing_direction":${facingDir}]`);
 }
 
 /**
@@ -362,7 +384,6 @@ function furnitureZones(x0, z0, x1, z1, sx, sz, sx1, sz1) {
       zones.push({ x0: ax0, z0: az0, x1: ax1, z1: az1 });
     }
   };
-  // Ost / West / Süd / Nord vom Schacht
   pushIf(sx1 + 1, z0 + 1, x1 - 1, z1 - 1);
   pushIf(x0 + 1, z0 + 1, sx - 1, z1 - 1);
   pushIf(x0 + 1, sz1 + 1, x1 - 1, z1 - 1);
@@ -370,67 +391,142 @@ function furnitureZones(x0, z0, x1, z1, sx, sz, sx1, sz1) {
   return zones;
 }
 
+function inStairShaft(x, z, sx, sz, sx1, sz1) {
+  return x >= sx && x <= sx1 && z >= sz && z <= sz1;
+}
+
 /**
- * Einrichtung pro Stock: Teppich + Büro / Schlafzimmer / Lounge / Lobby.
- * Nutzt die grösste freie Zone neben der Treppe.
+ * Einrichtung auf jedem Stock: zufällige Möbel in allen Zonen + Wandposter.
+ * Kein Teppich (stört Treppen).
  */
 function furnishFloor(yFloor, storyIndex, x0, z0, x1, z1, sx, sz, sx1, sz1, rng) {
   const cmds = [];
-  const y = yFloor + 1; // auf dem Boden
+  const y = yFloor + 1;
   const zones = furnitureZones(x0, z0, x1, z1, sx, sz, sx1, sz1);
   if (zones.length === 0) return cmds;
 
   const area = (z) => (z.x1 - z.x0 + 1) * (z.z1 - z.z0 + 1);
   zones.sort((a, b) => area(b) - area(a));
+
+  const bedColors = ["red", "blue", "white"];
+  const bannerColors = ["red", "blue", "white", "yellow", "lime", "orange", "pink", "light_blue"];
+  const desks = ["cartography_table", "fletching_table", "smithing_table", "loom", "crafting_table", "lectern"];
+  const storage = ["chest", "barrel", "barrel", "chest"];
+  const clutter = ["flower_pot", "flower_pot", "lantern", "bookshelf", "crafting_table", "note_block"];
+
+  const kind =
+    storyIndex === 0 ? "lobby" : rng.pick(["office", "bedroom", "lounge", "office", "bedroom"]);
+
+  const placeInZone = (zone, block, preferCorner = false) => {
+    let x;
+    let z;
+    if (preferCorner) {
+      x = rng.pick([zone.x0, zone.x1]);
+      z = rng.pick([zone.z0, zone.z1]);
+    } else {
+      x = rng.int(zone.x0, zone.x1);
+      z = rng.int(zone.z0, zone.z1);
+    }
+    if (inStairShaft(x, z, sx, sz, sx1, sz1)) return;
+    cmds.push(setblock(x, y, z, block));
+  };
+
+  // Theme-Möbel in der grössten Zone
   const main = zones[0];
   const { x0: fx0, z0: fz0, x1: fx1, z1: fz1 } = main;
-
-  const carpets = ["red_carpet", "blue_carpet", "light_blue_carpet", "white_carpet", "gray_carpet"];
-  const beds = ["red_bed", "blue_bed", "yellow_bed"];
-  const carpet = carpets[storyIndex % carpets.length];
-
-  // Teppich in allen brauchbaren Zonen
-  for (const z of zones) {
-    cmds.push(fill(z.x0, y, z.z0, z.x1, y, z.z1, carpet));
-  }
-
-  // EG = Empfang, darüber rotierend Büro / Schlafzimmer / Lounge
-  const kind = storyIndex === 0 ? "lobby" : ["office", "bedroom", "lounge"][(storyIndex - 1) % 3];
 
   if (kind === "lobby") {
     cmds.push(setblock(fx0, y, fz0, "flower_pot"));
     cmds.push(setblock(fx1, y, fz0, "flower_pot"));
-    if (fx1 - fx0 >= 2) {
-      cmds.push(setblock(fx0 + 1, y, fz1, "crafting_table"));
-      cmds.push(setblock(Math.min(fx0 + 2, fx1), y, fz1, "chest"));
-    } else {
-      cmds.push(setblock(fx0, y, fz1, "chest"));
-    }
+    cmds.push(...tableAt(Math.floor((fx0 + fx1) / 2), y, fz0));
+    if (fx0 + 1 <= fx1) cmds.push(...chairAt(fx0, y, fz0 + (fz0 < fz1 ? 1 : 0), "south"));
+    cmds.push(setblock(fx1, y, fz1, rng.pick(storage)));
+    if (fx1 - fx0 >= 2) cmds.push(setblock(fx0 + 1, y, fz1, rng.pick(desks)));
   } else if (kind === "office") {
     cmds.push(setblock(fx0, y, fz0, "bookshelf"));
     cmds.push(setblock(fx0, y + 1, fz0, "bookshelf"));
-    if (fx0 + 1 <= fx1) cmds.push(setblock(fx0 + 1, y, fz0, "bookshelf"));
-    cmds.push(setblock(fx1, y, fz0, "chest"));
-    cmds.push(setblock(fx0, y, fz1, "crafting_table"));
+    if (fx0 + 1 <= fx1) {
+      cmds.push(setblock(fx0 + 1, y, fz0, "bookshelf"));
+      cmds.push(setblock(fx0 + 1, y + 1, fz0, "bookshelf"));
+    }
+    cmds.push(setblock(fx1, y, fz0, rng.pick(storage)));
+    cmds.push(setblock(fx0, y, fz1, rng.pick(desks)));
+    if (fx0 + 1 <= fx1) cmds.push(...chairAt(fx0 + 1, y, fz1, "north"));
     cmds.push(setblock(fx1, y, fz1, "flower_pot"));
+    if (rng.random() < 0.7) cmds.push(setblock(fx1, y + 1, fz0, "lantern"));
   } else if (kind === "bedroom") {
-    const bedColor = beds[storyIndex % beds.length].replace("_bed", "");
+    const bedColor = bedColors[storyIndex % bedColors.length];
     const bx = Math.min(fx0 + 1, fx1);
     const bz = fz1;
     if (bz - 1 >= fz0) cmds.push(...bedNorth(bx, y, bz, bedColor));
+    cmds.push(setblock(fx0, y, fz0, rng.pick(storage)));
     cmds.push(setblock(fx1, y, fz0, "flower_pot"));
-    cmds.push(setblock(fx0, y, fz0, "chest"));
+    if (fx1 - 1 > fx0) cmds.push(...tableAt(fx1, y, Math.min(fz0 + 1, fz1)));
+    if (rng.random() < 0.6) cmds.push(...chairAt(fx0, y, Math.min(fz0 + 1, fz1), "east"));
   } else {
-    cmds.push(setblock(fx0, y, fz0, "flower_pot"));
-    cmds.push(setblock(fx1, y, fz0, "flower_pot"));
+    // Lounge
+    cmds.push(...tableAt(Math.floor((fx0 + fx1) / 2), y, Math.floor((fz0 + fz1) / 2)));
+    cmds.push(...chairAt(fx0, y, Math.floor((fz0 + fz1) / 2), "east"));
+    if (fx1 - fx0 >= 2) cmds.push(...chairAt(fx1, y, Math.floor((fz0 + fz1) / 2), "west"));
+    cmds.push(setblock(fx0, y, fz0, "bookshelf"));
+    cmds.push(setblock(fx1, y, fz0, rng.pick(storage)));
     cmds.push(setblock(fx0, y, fz1, "flower_pot"));
-    cmds.push(setblock(fx1, y, fz1, "bookshelf"));
-    cmds.push(setblock(Math.floor((fx0 + fx1) / 2), y, fz0, "chest"));
+    cmds.push(setblock(fx1, y, fz1, "noteblock"));
   }
 
-  if (rng.random() < 0.55) {
-    cmds.push(setblock(rng.int(fx0, fx1), y, rng.int(fz0, fz1), "flower_pot"));
+  // Weitere Zonen: zufällige Möbelstücke
+  for (const zone of zones) {
+    const n = rng.int(2, 5);
+    for (let i = 0; i < n; i++) {
+      const roll = rng.random();
+      const x = rng.int(zone.x0, zone.x1);
+      const z = rng.int(zone.z0, zone.z1);
+      if (inStairShaft(x, z, sx, sz, sx1, sz1)) continue;
+      if (roll < 0.25) cmds.push(...tableAt(x, y, z));
+      else if (roll < 0.4) cmds.push(...chairAt(x, y, z, rng.pick(["north", "south", "east", "west"])));
+      else if (roll < 0.55) cmds.push(setblock(x, y, z, rng.pick(storage)));
+      else if (roll < 0.7) cmds.push(setblock(x, y, z, rng.pick(desks)));
+      else if (roll < 0.85) cmds.push(setblock(x, y, z, rng.pick(clutter)));
+      else {
+        cmds.push(setblock(x, y, z, "bookshelf"));
+        if (rng.random() < 0.5) cmds.push(setblock(x, y + 1, z, "bookshelf"));
+      }
+    }
   }
+
+  // Wandposter (Banner) an Innenwänden, Augenhöhe – nicht im Schacht
+  const posterY = yFloor + 2;
+  const posters = rng.int(3, 7);
+  for (let i = 0; i < posters; i++) {
+    const color = rng.pick(bannerColors);
+    const side = rng.int(0, 3);
+    if (side === 0 && z1 - 1 > z0 + 1) {
+      // Südwand innen → Banner blickt nach Norden
+      const x = rng.int(x0 + 1, x1 - 1);
+      if (!inStairShaft(x, z1 - 1, sx, sz, sx1, sz1)) {
+        cmds.push(wallPoster(x, posterY, z1 - 1, 2, color));
+      }
+    } else if (side === 1 && z0 + 1 < z1 - 1) {
+      const x = rng.int(x0 + 1, x1 - 1);
+      if (!inStairShaft(x, z0 + 1, sx, sz, sx1, sz1)) {
+        cmds.push(wallPoster(x, posterY, z0 + 1, 3, color));
+      }
+    } else if (side === 2 && x0 + 1 < x1 - 1) {
+      const z = rng.int(z0 + 1, z1 - 1);
+      if (!inStairShaft(x0 + 1, z, sx, sz, sx1, sz1)) {
+        cmds.push(wallPoster(x0 + 1, posterY, z, 5, color));
+      }
+    } else if (x1 - 1 > x0 + 1) {
+      const z = rng.int(z0 + 1, z1 - 1);
+      if (!inStairShaft(x1 - 1, z, sx, sz, sx1, sz1)) {
+        cmds.push(wallPoster(x1 - 1, posterY, z, 4, color));
+      }
+    }
+  }
+
+  // Etwas Extra-Streuzufall in der Hauptzone
+  if (rng.random() < 0.8) placeInZone(main, rng.pick(clutter), true);
+  if (rng.random() < 0.5) placeInZone(main, rng.pick(storage), true);
 
   return cmds;
 }
@@ -455,9 +551,16 @@ function placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, story
   }
 }
 
-/** EG: Schachtboden voll (erste Stufe erst bei y=1). */
-function placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, _storyH, _height, block) {
-  commands.push(fill(stairX0, 0, stairZ0, stairX1, 0, stairZ1, block));
+/**
+ * EG: Schachtboden voll (erste Stufe erst bei y=1).
+ * Obergeschosse: 2 Anlauf-Blöcke Süd (stairZ1) = regulärer Boden — nicht im Parterre.
+ */
+function placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, egBlock, upperFloorBlock) {
+  commands.push(fill(stairX0, 0, stairZ0, stairX1, 0, stairZ1, egBlock));
+  for (let y = storyH; y < height; y += storyH) {
+    commands.push(setblock(stairX0, y, stairZ1, upperFloorBlock));
+    commands.push(setblock(stairX1, y, stairZ1, upperFloorBlock));
+  }
 }
 
 /**
@@ -466,9 +569,9 @@ function placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, _story
 function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   const lotWidth = lot.x1 - lot.x0 + 1;
   const lotDepth = lot.z1 - lot.z0 + 1;
-  if (lotWidth < 12 || lotDepth < 12) {
+  if (lotWidth < 13 || lotDepth < 13) {
     throw new Error(
-      `Parzelle ${lotWidth}×${lotDepth} ist zu klein – für 12er Häuser braucht es lot >= 12`,
+      `Parzelle ${lotWidth}×${lotDepth} ist zu klein – für 11–13er Häuser braucht es lot >= 13`,
     );
   }
 
@@ -483,13 +586,14 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   const midX = Math.floor((x0 + x1) / 2);
   const stairX0 = midX - 1;
   const stairX1 = midX;
+  // Schacht = genau storyH Stufen Süd→Nord (unabhängig von Gebäudebreite)
   const stairZ0 = Math.floor((z0 + z1) / 2) - Math.floor(storyH / 2);
   const stairZ1 = stairZ0 + storyH - 1;
-  // Deckenloch = Stufenbreite; nach Süden (vorne) +2 gegenüber stairZ1-1
+  // Für Möbel-Aussparung: ganzer Treppenlauf inkl. Süd-Anlaufzelle
   const sx = stairX0;
   const sx1 = stairX1;
   const sz = stairZ0;
-  const sz1 = Math.min(z1 - 1, stairZ1 + 1);
+  const sz1 = stairZ1;
 
   const commands = [];
 
@@ -550,16 +654,19 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
     }
   }
 
-  // Treppenschacht: Etagenlöcher (Stufen + 2 Blöcke vorne/Süd)
+  // Etagenlöcher = exakt Treppen-Durchstoss (2×(storyH-1)), Süd-Anlauf bleibt Boden
   for (let y = storyH; y < height; y += storyH) {
-    commands.push(fill(sx, y, sz, sx1, y, sz1, "air"));
+    if (stairZ1 - 1 >= stairZ0) {
+      commands.push(fill(stairX0, y, stairZ0, stairX1, y, stairZ1 - 1, "air"));
+    }
   }
-  commands.push(fill(sx, 1, sz, sx1, height - 1, sz1, "air"));
+  // Luft im Treppenlauf (danach Anlauf-Boden wieder setzen)
+  commands.push(fill(stairX0, 1, stairZ0, stairX1, height - 1, stairZ1, "air"));
 
-  // Lobby-EG freiräumen, dann Treppe/Podeste/Türen einmal final setzen
+  // Lobby-EG freiräumen, dann Treppe/Böden/Türen einmal final setzen
   commands.push(fill(x0 + 1, 1, z0 + 1, x1 - 1, Math.min(height - 1, storyH - 1), z1 - 1, "air"));
   placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height);
-  placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, "quartz_block");
+  placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, storyH, height, "quartz_block", facade);
   commands.push(fill(doorX0, 0, z1, doorX1, 0, z1, "stone_bricks"));
   commands.push(fill(frameX0, 1, z1, frameX1, 3, z1, facade));
   commands.push(fill(doorX0, 1, z1, doorX1, 2, z1, "air"));

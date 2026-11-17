@@ -1,28 +1,28 @@
-setblock ~6 ~18 ~22 bookshelf
-setblock ~7 ~17 ~22 bookshelf
-setblock ~8 ~17 ~22 chest
-setblock ~6 ~17 ~28 crafting_table
-setblock ~8 ~17 ~28 flower_pot
-setblock ~6 ~17 ~23 flower_pot
-fill ~6 ~21 ~22 ~8 ~21 ~28 red_carpet
-fill ~2 ~21 ~22 ~3 ~21 ~28 red_carpet
-setblock ~7 ~21 ~28 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~7 ~21 ~27 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~8 ~21 ~22 flower_pot
-setblock ~6 ~21 ~22 chest
-fill ~6 ~25 ~22 ~8 ~25 ~28 blue_carpet
-fill ~2 ~25 ~22 ~3 ~25 ~28 blue_carpet
-setblock ~6 ~25 ~22 flower_pot
-setblock ~8 ~25 ~22 flower_pot
-setblock ~6 ~25 ~28 flower_pot
-setblock ~8 ~25 ~28 bookshelf
-setblock ~7 ~25 ~22 chest
-setblock ~6 ~25 ~25 flower_pot
-fill ~6 ~29 ~22 ~8 ~29 ~28 light_blue_carpet
-fill ~2 ~29 ~22 ~3 ~29 ~28 light_blue_carpet
-setblock ~6 ~29 ~22 bookshelf
-setblock ~6 ~30 ~22 bookshelf
-setblock ~7 ~29 ~22 bookshelf
-setblock ~8 ~29 ~22 chest
-setblock ~6 ~29 ~28 crafting_table
-setblock ~8 ~29 ~28 flower_pot
+setblock ~6 ~2 ~31 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+setblock ~6 ~1 ~21 flower_pot
+setblock ~10 ~1 ~21 flower_pot
+setblock ~8 ~1 ~21 oak_fence
+setblock ~8 ~2 ~21 oak_pressure_plate
+setblock ~6 ~1 ~22 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~10 ~1 ~30 chest
+setblock ~7 ~1 ~30 lectern
+setblock ~10 ~1 ~28 oak_fence
+setblock ~10 ~2 ~28 oak_pressure_plate
+setblock ~7 ~1 ~23 barrel
+setblock ~6 ~1 ~26 oak_fence
+setblock ~6 ~2 ~26 oak_pressure_plate
+setblock ~6 ~1 ~22 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~8 ~1 ~26 barrel
+setblock ~4 ~1 ~29 oak_fence
+setblock ~4 ~2 ~29 oak_pressure_plate
+setblock ~7 ~1 ~29 oak_fence
+setblock ~7 ~2 ~29 oak_pressure_plate
+setblock ~9 ~1 ~28 oak_fence
+setblock ~9 ~2 ~28 oak_pressure_plate
+setblock ~10 ~1 ~27 smithing_table
+setblock ~1 ~1 ~22 cartography_table
+setblock ~2 ~1 ~26 chest
+setblock ~3 ~1 ~22 note_block
+setblock ~8 ~1 ~21 bookshelf
+setblock ~8 ~2 ~21 bookshelf
+setblock ~10 ~1 ~22 crafting_table

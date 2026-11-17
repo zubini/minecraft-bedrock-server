@@ -1,28 +1,28 @@
-setblock ~66 ~1 ~70 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~66 ~2 ~70 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~62 ~1 ~62 ~69 ~3 ~69 air
-fill ~62 ~5 ~62 ~69 ~7 ~69 air
-fill ~62 ~9 ~62 ~69 ~11 ~69 air
-fill ~62 ~13 ~62 ~69 ~15 ~69 air
-fill ~62 ~17 ~62 ~69 ~19 ~69 air
-fill ~62 ~21 ~62 ~69 ~23 ~69 air
-fill ~62 ~25 ~62 ~69 ~27 ~69 air
-fill ~62 ~29 ~62 ~69 ~31 ~69 air
-fill ~62 ~33 ~62 ~69 ~35 ~69 air
-fill ~62 ~37 ~62 ~69 ~39 ~69 air
-fill ~62 ~41 ~62 ~69 ~43 ~69 air
-fill ~62 ~45 ~62 ~69 ~47 ~69 air
-fill ~62 ~49 ~62 ~69 ~51 ~69 air
-fill ~62 ~53 ~62 ~69 ~55 ~69 air
-fill ~62 ~57 ~62 ~69 ~59 ~69 air
-fill ~62 ~61 ~62 ~69 ~63 ~69 air
-fill ~62 ~65 ~62 ~69 ~67 ~69 air
-fill ~62 ~69 ~62 ~69 ~71 ~69 air
-fill ~62 ~73 ~62 ~69 ~75 ~69 air
-fill ~62 ~77 ~62 ~69 ~79 ~69 air
-fill ~62 ~81 ~62 ~69 ~82 ~69 air
-fill ~64 ~4 ~63 ~65 ~4 ~67 air
-fill ~64 ~8 ~63 ~65 ~8 ~67 air
-fill ~64 ~12 ~63 ~65 ~12 ~67 air
-fill ~64 ~16 ~63 ~65 ~16 ~67 air
-fill ~64 ~20 ~63 ~65 ~20 ~67 air
+setblock ~66 ~1 ~72 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~66 ~2 ~72 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+fill ~61 ~1 ~61 ~71 ~3 ~71 air
+fill ~61 ~5 ~61 ~71 ~7 ~71 air
+fill ~61 ~9 ~61 ~71 ~11 ~71 air
+fill ~61 ~13 ~61 ~71 ~15 ~71 air
+fill ~61 ~17 ~61 ~71 ~19 ~71 air
+fill ~61 ~21 ~61 ~71 ~23 ~71 air
+fill ~61 ~25 ~61 ~71 ~27 ~71 air
+fill ~61 ~29 ~61 ~71 ~31 ~71 air
+fill ~61 ~33 ~61 ~71 ~35 ~71 air
+fill ~61 ~37 ~61 ~71 ~39 ~71 air
+fill ~61 ~41 ~61 ~71 ~43 ~71 air
+fill ~61 ~45 ~61 ~71 ~47 ~71 air
+fill ~61 ~49 ~61 ~71 ~51 ~71 air
+fill ~61 ~53 ~61 ~71 ~55 ~71 air
+fill ~61 ~57 ~61 ~71 ~59 ~71 air
+fill ~61 ~61 ~61 ~71 ~63 ~71 air
+fill ~61 ~65 ~61 ~71 ~67 ~71 air
+fill ~61 ~69 ~61 ~71 ~71 ~71 air
+fill ~61 ~73 ~61 ~71 ~75 ~71 air
+fill ~61 ~77 ~61 ~71 ~79 ~71 air
+fill ~61 ~81 ~61 ~71 ~82 ~71 air
+fill ~65 ~4 ~64 ~66 ~4 ~66 air
+fill ~65 ~8 ~64 ~66 ~8 ~66 air
+fill ~65 ~12 ~64 ~66 ~12 ~66 air
+fill ~65 ~16 ~64 ~66 ~16 ~66 air
+fill ~65 ~20 ~64 ~66 ~20 ~66 air

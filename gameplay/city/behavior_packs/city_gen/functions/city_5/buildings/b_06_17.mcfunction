@@ -1,28 +1,28 @@
-fill ~42 ~37 ~22 ~43 ~37 ~28 gray_carpet
-setblock ~46 ~37 ~22 flower_pot
-setblock ~48 ~37 ~22 flower_pot
-setblock ~46 ~37 ~28 flower_pot
-setblock ~48 ~37 ~28 bookshelf
-setblock ~47 ~37 ~22 chest
-setblock ~46 ~37 ~24 flower_pot
-fill ~46 ~41 ~22 ~48 ~41 ~28 red_carpet
-fill ~42 ~41 ~22 ~43 ~41 ~28 red_carpet
-setblock ~46 ~41 ~22 bookshelf
-setblock ~46 ~42 ~22 bookshelf
-setblock ~47 ~41 ~22 bookshelf
-setblock ~48 ~41 ~22 chest
-setblock ~46 ~41 ~28 crafting_table
-setblock ~48 ~41 ~28 flower_pot
-setblock ~48 ~41 ~22 flower_pot
-fill ~46 ~45 ~22 ~48 ~45 ~28 blue_carpet
-fill ~42 ~45 ~22 ~43 ~45 ~28 blue_carpet
-setblock ~47 ~45 ~28 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~45 ~27 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~48 ~45 ~22 flower_pot
-setblock ~46 ~45 ~22 chest
-fill ~46 ~49 ~22 ~48 ~49 ~28 light_blue_carpet
-fill ~42 ~49 ~22 ~43 ~49 ~28 light_blue_carpet
-setblock ~46 ~49 ~22 flower_pot
-setblock ~48 ~49 ~22 flower_pot
-setblock ~46 ~49 ~28 flower_pot
-setblock ~48 ~49 ~28 bookshelf
+setblock ~47 ~5 ~21 bookshelf
+setblock ~47 ~6 ~21 bookshelf
+setblock ~50 ~5 ~21 chest
+setblock ~46 ~5 ~30 crafting_table
+setblock ~47 ~5 ~30 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~50 ~5 ~30 flower_pot
+setblock ~50 ~6 ~21 lantern
+setblock ~46 ~5 ~24 chest
+setblock ~49 ~5 ~24 oak_fence
+setblock ~49 ~6 ~24 oak_pressure_plate
+setblock ~47 ~5 ~27 chest
+setblock ~43 ~5 ~28 oak_fence
+setblock ~43 ~6 ~28 oak_pressure_plate
+setblock ~47 ~5 ~29 oak_fence
+setblock ~47 ~6 ~29 oak_pressure_plate
+setblock ~43 ~5 ~22 bookshelf
+setblock ~43 ~5 ~26 cartography_table
+setblock ~45 ~5 ~21 flower_pot
+setblock ~45 ~5 ~22 bookshelf
+setblock ~50 ~6 ~22 red_wall_banner ["facing_direction":4]
+setblock ~41 ~6 ~29 white_wall_banner ["facing_direction":5]
+setblock ~41 ~6 ~30 pink_wall_banner ["facing_direction":2]
+setblock ~41 ~6 ~29 blue_wall_banner ["facing_direction":5]
+setblock ~47 ~6 ~30 yellow_wall_banner ["facing_direction":2]
+setblock ~50 ~6 ~30 light_blue_wall_banner ["facing_direction":2]
+setblock ~46 ~5 ~21 bookshelf
+setblock ~46 ~9 ~21 bookshelf
+setblock ~46 ~10 ~21 bookshelf

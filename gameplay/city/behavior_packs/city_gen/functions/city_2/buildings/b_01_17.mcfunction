@@ -1,28 +1,28 @@
-setblock ~29 ~46 ~2 flower_pot
-setblock ~26 ~46 ~9 flower_pot
-setblock ~29 ~46 ~9 bookshelf
-setblock ~27 ~46 ~2 chest
-setblock ~27 ~46 ~2 flower_pot
-fill ~26 ~51 ~2 ~29 ~51 ~9 red_carpet
-fill ~22 ~51 ~2 ~23 ~51 ~9 red_carpet
-setblock ~26 ~51 ~2 bookshelf
-setblock ~26 ~52 ~2 bookshelf
-setblock ~27 ~51 ~2 bookshelf
-setblock ~29 ~51 ~2 chest
-setblock ~26 ~51 ~9 crafting_table
-setblock ~29 ~51 ~9 flower_pot
-setblock ~26 ~51 ~2 flower_pot
-fill ~26 ~56 ~2 ~29 ~56 ~9 blue_carpet
-fill ~22 ~56 ~2 ~23 ~56 ~9 blue_carpet
-setblock ~27 ~56 ~9 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~56 ~8 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~29 ~56 ~2 flower_pot
-setblock ~26 ~56 ~2 chest
-fill ~26 ~61 ~2 ~29 ~61 ~9 light_blue_carpet
-fill ~22 ~61 ~2 ~23 ~61 ~9 light_blue_carpet
-setblock ~26 ~61 ~2 flower_pot
-setblock ~29 ~61 ~2 flower_pot
-setblock ~26 ~61 ~9 flower_pot
-setblock ~29 ~61 ~9 bookshelf
-setblock ~27 ~61 ~2 chest
-fill ~26 ~66 ~2 ~29 ~66 ~9 white_carpet
+setblock ~31 ~6 ~1 flower_pot
+setblock ~31 ~6 ~2 oak_fence
+setblock ~31 ~7 ~2 oak_pressure_plate
+setblock ~29 ~6 ~10 oak_fence
+setblock ~29 ~7 ~10 oak_pressure_plate
+setblock ~30 ~6 ~8 bookshelf
+setblock ~27 ~6 ~11 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]
+setblock ~24 ~6 ~10 oak_fence
+setblock ~24 ~7 ~10 oak_pressure_plate
+setblock ~22 ~6 ~3 oak_fence
+setblock ~22 ~7 ~3 oak_pressure_plate
+setblock ~23 ~6 ~3 oak_fence
+setblock ~23 ~7 ~3 oak_pressure_plate
+setblock ~30 ~6 ~11 fletching_table
+setblock ~23 ~6 ~9 bookshelf
+setblock ~26 ~6 ~2 fletching_table
+setblock ~31 ~6 ~2 loom
+setblock ~27 ~6 ~1 oak_fence
+setblock ~27 ~7 ~1 oak_pressure_plate
+setblock ~31 ~6 ~1 oak_fence
+setblock ~31 ~7 ~1 oak_pressure_plate
+setblock ~28 ~6 ~1 cartography_table
+setblock ~31 ~7 ~1 orange_wall_banner ["facing_direction":3]
+setblock ~21 ~7 ~3 light_blue_wall_banner ["facing_direction":5]
+setblock ~25 ~7 ~1 pink_wall_banner ["facing_direction":3]
+setblock ~27 ~6 ~1 flower_pot
+setblock ~28 ~11 ~11 white_bed ["direction":2,"head_piece_bit":false]
+setblock ~28 ~11 ~10 white_bed ["direction":2,"head_piece_bit":true]

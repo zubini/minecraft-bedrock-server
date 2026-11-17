@@ -1,28 +1,28 @@
-fill ~24 ~0 ~29 ~25 ~0 ~29 stone_bricks
-fill ~23 ~1 ~29 ~26 ~3 ~29 white_concrete
-fill ~24 ~1 ~29 ~25 ~2 ~29 air
-setblock ~24 ~1 ~29 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~24 ~2 ~29 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~25 ~1 ~29 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~25 ~2 ~29 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~26 ~1 ~22 ~28 ~1 ~28 red_carpet
-fill ~22 ~1 ~22 ~23 ~1 ~28 red_carpet
-setblock ~26 ~1 ~22 flower_pot
-setblock ~28 ~1 ~22 flower_pot
-setblock ~27 ~1 ~28 crafting_table
-setblock ~28 ~1 ~28 chest
-setblock ~28 ~1 ~23 flower_pot
-fill ~26 ~5 ~22 ~28 ~5 ~28 blue_carpet
-fill ~22 ~5 ~22 ~23 ~5 ~28 blue_carpet
-setblock ~26 ~5 ~22 bookshelf
-setblock ~26 ~6 ~22 bookshelf
-setblock ~27 ~5 ~22 bookshelf
-setblock ~28 ~5 ~22 chest
-setblock ~26 ~5 ~28 crafting_table
-setblock ~28 ~5 ~28 flower_pot
-fill ~26 ~9 ~22 ~28 ~9 ~28 light_blue_carpet
-fill ~22 ~9 ~22 ~23 ~9 ~28 light_blue_carpet
-setblock ~27 ~9 ~28 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~9 ~27 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~28 ~9 ~22 flower_pot
-setblock ~26 ~9 ~22 chest
+setblock ~24 ~4 ~26 white_concrete
+setblock ~25 ~4 ~26 white_concrete
+setblock ~24 ~8 ~26 white_concrete
+setblock ~25 ~8 ~26 white_concrete
+setblock ~24 ~12 ~26 white_concrete
+setblock ~25 ~12 ~26 white_concrete
+setblock ~24 ~16 ~26 white_concrete
+setblock ~25 ~16 ~26 white_concrete
+setblock ~24 ~20 ~26 white_concrete
+setblock ~25 ~20 ~26 white_concrete
+setblock ~24 ~24 ~26 white_concrete
+setblock ~25 ~24 ~26 white_concrete
+setblock ~24 ~28 ~26 white_concrete
+setblock ~25 ~28 ~26 white_concrete
+setblock ~24 ~32 ~26 white_concrete
+setblock ~25 ~32 ~26 white_concrete
+setblock ~24 ~36 ~26 white_concrete
+setblock ~25 ~36 ~26 white_concrete
+setblock ~24 ~40 ~26 white_concrete
+setblock ~25 ~40 ~26 white_concrete
+setblock ~24 ~44 ~26 white_concrete
+setblock ~25 ~44 ~26 white_concrete
+setblock ~24 ~48 ~26 white_concrete
+setblock ~25 ~48 ~26 white_concrete
+setblock ~24 ~52 ~26 white_concrete
+setblock ~25 ~52 ~26 white_concrete
+setblock ~24 ~56 ~26 white_concrete
+setblock ~25 ~56 ~26 white_concrete

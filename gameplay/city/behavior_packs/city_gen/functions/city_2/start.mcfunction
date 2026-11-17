@@ -10,4 +10,4 @@ tickingarea add ~0 ~-1 ~0 ~79 ~108 ~79 cg2_a true
 scoreboard players set @e[tag=cg2_o,c=1] cg2_b 1
 execute as @e[tag=cg2_o,c=1] at @s run function city_2/terrain_batches/t_00
 scoreboard players set @e[tag=cg2_o,c=1] cg2_b 2
-tellraw @a {"rawtext":[{"text":"[city_2] Bau läuft (255 Schritte, 16 Häuser) …"}]}
+tellraw @a {"rawtext":[{"text":"[city_2] Bau läuft (443 Schritte, 16 Häuser) …"}]}

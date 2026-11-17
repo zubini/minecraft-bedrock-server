@@ -1,28 +1,28 @@
-fill ~22 ~66 ~22 ~23 ~66 ~29 white_carpet
-setblock ~26 ~66 ~22 bookshelf
-setblock ~26 ~67 ~22 bookshelf
-setblock ~27 ~66 ~22 bookshelf
-setblock ~29 ~66 ~22 chest
-setblock ~26 ~66 ~29 crafting_table
-setblock ~29 ~66 ~29 flower_pot
-fill ~26 ~71 ~22 ~29 ~71 ~29 gray_carpet
-fill ~22 ~71 ~22 ~23 ~71 ~29 gray_carpet
-setblock ~27 ~71 ~29 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~71 ~28 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~29 ~71 ~22 flower_pot
-setblock ~26 ~71 ~22 chest
-setblock ~29 ~71 ~26 flower_pot
-fill ~26 ~76 ~22 ~29 ~76 ~29 red_carpet
-fill ~22 ~76 ~22 ~23 ~76 ~29 red_carpet
-setblock ~26 ~76 ~22 flower_pot
-setblock ~29 ~76 ~22 flower_pot
-setblock ~26 ~76 ~29 flower_pot
-setblock ~29 ~76 ~29 bookshelf
-setblock ~27 ~76 ~22 chest
-fill ~26 ~81 ~22 ~29 ~81 ~29 blue_carpet
-fill ~22 ~81 ~22 ~23 ~81 ~29 blue_carpet
-setblock ~26 ~81 ~22 bookshelf
-setblock ~26 ~82 ~22 bookshelf
-setblock ~27 ~81 ~22 bookshelf
-setblock ~29 ~81 ~22 chest
-setblock ~26 ~81 ~29 crafting_table
+setblock ~27 ~11 ~21 barrel
+setblock ~31 ~11 ~21 flower_pot
+setblock ~31 ~11 ~22 oak_fence
+setblock ~31 ~12 ~22 oak_pressure_plate
+setblock ~27 ~11 ~22 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]
+setblock ~29 ~11 ~22 barrel
+setblock ~27 ~11 ~28 oak_fence
+setblock ~27 ~12 ~28 oak_pressure_plate
+setblock ~27 ~11 ~25 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~31 ~11 ~31 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~21 ~11 ~31 note_block
+setblock ~21 ~11 ~28 oak_fence
+setblock ~21 ~12 ~28 oak_pressure_plate
+setblock ~24 ~11 ~24 barrel
+setblock ~23 ~11 ~22 bookshelf
+setblock ~23 ~12 ~22 bookshelf
+setblock ~28 ~11 ~30 bookshelf
+setblock ~25 ~11 ~30 oak_fence
+setblock ~25 ~12 ~30 oak_pressure_plate
+setblock ~25 ~11 ~31 bookshelf
+setblock ~25 ~12 ~31 bookshelf
+setblock ~22 ~11 ~31 bookshelf
+setblock ~31 ~11 ~21 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~31 ~11 ~22 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]
+setblock ~28 ~11 ~22 bookshelf
+setblock ~28 ~12 ~22 bookshelf
+setblock ~27 ~11 ~23 bookshelf
+setblock ~22 ~11 ~22 loom

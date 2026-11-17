@@ -1,28 +1,28 @@
-fill ~42 ~36 ~62 ~43 ~36 ~69 light_blue_carpet
-setblock ~46 ~36 ~62 bookshelf
-setblock ~46 ~37 ~62 bookshelf
-setblock ~47 ~36 ~62 bookshelf
-setblock ~49 ~36 ~62 chest
-setblock ~46 ~36 ~69 crafting_table
-setblock ~49 ~36 ~69 flower_pot
-fill ~46 ~41 ~62 ~49 ~41 ~69 white_carpet
-fill ~42 ~41 ~62 ~43 ~41 ~69 white_carpet
-setblock ~47 ~41 ~69 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~41 ~68 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~49 ~41 ~62 flower_pot
-setblock ~46 ~41 ~62 chest
-setblock ~48 ~41 ~66 flower_pot
-fill ~46 ~46 ~62 ~49 ~46 ~69 gray_carpet
-fill ~42 ~46 ~62 ~43 ~46 ~69 gray_carpet
-setblock ~46 ~46 ~62 flower_pot
-setblock ~49 ~46 ~62 flower_pot
-setblock ~46 ~46 ~69 flower_pot
-setblock ~49 ~46 ~69 bookshelf
-setblock ~47 ~46 ~62 chest
-fill ~46 ~51 ~62 ~49 ~51 ~69 red_carpet
-fill ~42 ~51 ~62 ~43 ~51 ~69 red_carpet
-setblock ~46 ~51 ~62 bookshelf
-setblock ~46 ~52 ~62 bookshelf
-setblock ~47 ~51 ~62 bookshelf
-setblock ~49 ~51 ~62 chest
-setblock ~46 ~51 ~69 crafting_table
+setblock ~47 ~6 ~61 bookshelf
+setblock ~51 ~6 ~61 barrel
+setblock ~47 ~6 ~71 flower_pot
+setblock ~51 ~6 ~71 noteblock
+setblock ~51 ~6 ~66 cartography_table
+setblock ~48 ~6 ~68 oak_fence
+setblock ~48 ~7 ~68 oak_pressure_plate
+setblock ~44 ~6 ~69 lantern
+setblock ~42 ~6 ~67 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~49 ~6 ~71 oak_fence
+setblock ~49 ~7 ~71 oak_pressure_plate
+setblock ~43 ~6 ~70 bookshelf
+setblock ~46 ~6 ~62 bookshelf
+setblock ~46 ~7 ~62 bookshelf
+setblock ~50 ~6 ~63 note_block
+setblock ~51 ~6 ~62 crafting_table
+setblock ~41 ~6 ~62 bookshelf
+setblock ~41 ~7 ~66 light_blue_wall_banner ["facing_direction":5]
+setblock ~51 ~7 ~68 lime_wall_banner ["facing_direction":4]
+setblock ~51 ~7 ~70 blue_wall_banner ["facing_direction":4]
+setblock ~41 ~7 ~67 white_wall_banner ["facing_direction":5]
+setblock ~47 ~6 ~71 flower_pot
+setblock ~48 ~11 ~71 white_bed ["direction":2,"head_piece_bit":false]
+setblock ~48 ~11 ~70 white_bed ["direction":2,"head_piece_bit":true]
+setblock ~47 ~11 ~61 barrel
+setblock ~51 ~11 ~61 flower_pot
+setblock ~51 ~11 ~62 oak_fence
+setblock ~51 ~12 ~62 oak_pressure_plate

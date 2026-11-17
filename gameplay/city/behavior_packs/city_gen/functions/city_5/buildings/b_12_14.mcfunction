@@ -1,28 +1,28 @@
-setblock ~6 ~46 ~62 flower_pot
-setblock ~8 ~46 ~62 flower_pot
-setblock ~6 ~46 ~68 flower_pot
-setblock ~8 ~46 ~68 bookshelf
-setblock ~7 ~46 ~62 chest
-fill ~6 ~51 ~62 ~8 ~51 ~68 red_carpet
-fill ~2 ~51 ~62 ~3 ~51 ~68 red_carpet
-setblock ~6 ~51 ~62 bookshelf
-setblock ~6 ~52 ~62 bookshelf
-setblock ~7 ~51 ~62 bookshelf
-setblock ~8 ~51 ~62 chest
-setblock ~6 ~51 ~68 crafting_table
-setblock ~8 ~51 ~68 flower_pot
-fill ~6 ~56 ~62 ~8 ~56 ~68 blue_carpet
-fill ~2 ~56 ~62 ~3 ~56 ~68 blue_carpet
-setblock ~7 ~56 ~68 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~7 ~56 ~67 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~8 ~56 ~62 flower_pot
-setblock ~6 ~56 ~62 chest
-setblock ~6 ~56 ~67 flower_pot
-fill ~6 ~61 ~62 ~8 ~61 ~68 light_blue_carpet
-fill ~2 ~61 ~62 ~3 ~61 ~68 light_blue_carpet
-setblock ~6 ~61 ~62 flower_pot
-setblock ~8 ~61 ~62 flower_pot
-setblock ~6 ~61 ~68 flower_pot
-setblock ~8 ~61 ~68 bookshelf
-setblock ~7 ~61 ~62 chest
-fill ~6 ~66 ~62 ~8 ~66 ~68 white_carpet
+setblock ~10 ~6 ~61 flower_pot
+setblock ~10 ~6 ~62 oak_fence
+setblock ~10 ~7 ~62 oak_pressure_plate
+setblock ~10 ~6 ~67 oak_fence
+setblock ~10 ~7 ~67 oak_pressure_plate
+setblock ~9 ~6 ~69 oak_fence
+setblock ~9 ~7 ~69 oak_pressure_plate
+setblock ~9 ~6 ~62 oak_fence
+setblock ~9 ~7 ~62 oak_pressure_plate
+setblock ~6 ~6 ~68 oak_fence
+setblock ~6 ~7 ~68 oak_pressure_plate
+setblock ~6 ~6 ~61 oak_fence
+setblock ~6 ~7 ~61 oak_pressure_plate
+setblock ~3 ~6 ~64 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~2 ~6 ~68 oak_fence
+setblock ~2 ~7 ~68 oak_pressure_plate
+setblock ~3 ~6 ~68 oak_fence
+setblock ~3 ~7 ~68 oak_pressure_plate
+setblock ~1 ~6 ~68 chest
+setblock ~10 ~6 ~70 flower_pot
+setblock ~10 ~6 ~69 oak_fence
+setblock ~10 ~7 ~69 oak_pressure_plate
+setblock ~7 ~6 ~70 oak_fence
+setblock ~7 ~7 ~70 oak_pressure_plate
+setblock ~9 ~6 ~68 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~2 ~6 ~61 oak_fence
+setblock ~2 ~7 ~61 oak_pressure_plate
+setblock ~2 ~6 ~62 loom

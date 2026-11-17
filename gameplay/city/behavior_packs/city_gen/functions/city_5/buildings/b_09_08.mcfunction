@@ -1,28 +1,28 @@
-setblock ~27 ~16 ~42 chest
-setblock ~26 ~16 ~45 flower_pot
-fill ~26 ~21 ~42 ~28 ~21 ~48 gray_carpet
-fill ~22 ~21 ~42 ~23 ~21 ~48 gray_carpet
-setblock ~26 ~21 ~42 bookshelf
-setblock ~26 ~22 ~42 bookshelf
-setblock ~27 ~21 ~42 bookshelf
-setblock ~28 ~21 ~42 chest
-setblock ~26 ~21 ~48 crafting_table
-setblock ~28 ~21 ~48 flower_pot
-fill ~26 ~26 ~42 ~28 ~26 ~48 red_carpet
-fill ~22 ~26 ~42 ~23 ~26 ~48 red_carpet
-setblock ~27 ~26 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~26 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~28 ~26 ~42 flower_pot
-setblock ~26 ~26 ~42 chest
-fill ~26 ~31 ~42 ~28 ~31 ~48 blue_carpet
-fill ~22 ~31 ~42 ~23 ~31 ~48 blue_carpet
-setblock ~26 ~31 ~42 flower_pot
-setblock ~28 ~31 ~42 flower_pot
-setblock ~26 ~31 ~48 flower_pot
-setblock ~28 ~31 ~48 bookshelf
-setblock ~27 ~31 ~42 chest
-setblock ~28 ~31 ~45 flower_pot
-fill ~26 ~36 ~42 ~28 ~36 ~48 light_blue_carpet
-fill ~22 ~36 ~42 ~23 ~36 ~48 light_blue_carpet
-setblock ~26 ~36 ~42 bookshelf
-setblock ~26 ~37 ~42 bookshelf
+setblock ~29 ~1 ~42 oak_fence
+setblock ~29 ~2 ~42 oak_pressure_plate
+setblock ~22 ~1 ~43 bookshelf
+setblock ~22 ~2 ~43 bookshelf
+setblock ~22 ~1 ~41 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~24 ~1 ~50 bookshelf
+setblock ~24 ~2 ~50 bookshelf
+setblock ~28 ~1 ~49 oak_fence
+setblock ~28 ~2 ~49 oak_pressure_plate
+setblock ~25 ~1 ~41 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]
+setblock ~24 ~1 ~42 smithing_table
+setblock ~30 ~1 ~42 note_block
+setblock ~22 ~1 ~42 chest
+setblock ~21 ~1 ~42 chest
+setblock ~30 ~2 ~42 lime_wall_banner ["facing_direction":4]
+setblock ~29 ~2 ~50 lime_wall_banner ["facing_direction":2]
+setblock ~28 ~2 ~50 yellow_wall_banner ["facing_direction":2]
+setblock ~30 ~1 ~41 flower_pot
+setblock ~26 ~1 ~50 barrel
+setblock ~26 ~6 ~41 bookshelf
+setblock ~26 ~7 ~41 bookshelf
+setblock ~27 ~6 ~41 bookshelf
+setblock ~27 ~7 ~41 bookshelf
+setblock ~30 ~6 ~41 chest
+setblock ~26 ~6 ~50 smithing_table
+setblock ~27 ~6 ~50 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~30 ~6 ~50 flower_pot
+setblock ~26 ~6 ~50 oak_stairs ["weirdo_direction":0,"upside_down_bit":false]

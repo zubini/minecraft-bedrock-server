@@ -1,28 +1,28 @@
-fill ~4 ~10 ~63 ~5 ~10 ~68 air
-fill ~4 ~15 ~63 ~5 ~15 ~68 air
-fill ~4 ~20 ~63 ~5 ~20 ~68 air
-fill ~4 ~25 ~63 ~5 ~25 ~68 air
-fill ~4 ~30 ~63 ~5 ~30 ~68 air
-fill ~4 ~35 ~63 ~5 ~35 ~68 air
-fill ~4 ~40 ~63 ~5 ~40 ~68 air
-fill ~4 ~45 ~63 ~5 ~45 ~68 air
-fill ~4 ~50 ~63 ~5 ~50 ~68 air
-fill ~4 ~55 ~63 ~5 ~55 ~68 air
-fill ~4 ~60 ~63 ~5 ~60 ~68 air
-fill ~4 ~1 ~63 ~5 ~61 ~68 air
-fill ~2 ~1 ~62 ~9 ~4 ~69 air
-setblock ~4 ~1 ~67 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~1 ~67 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~2 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~2 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~3 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~3 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~4 ~64 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~4 ~64 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~5 ~63 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~5 ~63 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~6 ~67 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~6 ~67 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~7 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~5 ~7 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
-setblock ~4 ~8 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+fill ~5 ~10 ~64 ~6 ~10 ~67 air
+fill ~5 ~15 ~64 ~6 ~15 ~67 air
+fill ~5 ~20 ~64 ~6 ~20 ~67 air
+fill ~5 ~25 ~64 ~6 ~25 ~67 air
+fill ~5 ~30 ~64 ~6 ~30 ~67 air
+fill ~5 ~35 ~64 ~6 ~35 ~67 air
+fill ~5 ~40 ~64 ~6 ~40 ~67 air
+fill ~5 ~45 ~64 ~6 ~45 ~67 air
+fill ~5 ~50 ~64 ~6 ~50 ~67 air
+fill ~5 ~55 ~64 ~6 ~55 ~67 air
+fill ~5 ~60 ~64 ~6 ~60 ~67 air
+fill ~5 ~1 ~64 ~6 ~61 ~68 air
+fill ~1 ~1 ~61 ~11 ~4 ~71 air
+setblock ~5 ~1 ~68 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~1 ~68 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~2 ~67 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~2 ~67 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~3 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~3 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~4 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~4 ~65 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~5 ~64 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~5 ~64 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~6 ~68 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~6 ~68 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~7 ~67 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~6 ~7 ~67 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~5 ~8 ~66 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]

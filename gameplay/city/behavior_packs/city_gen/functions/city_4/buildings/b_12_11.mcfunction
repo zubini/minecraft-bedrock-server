@@ -1,28 +1,28 @@
-setblock ~7 ~16 ~62 chest
-setblock ~7 ~16 ~65 flower_pot
-fill ~6 ~21 ~62 ~9 ~21 ~69 gray_carpet
-fill ~2 ~21 ~62 ~3 ~21 ~69 gray_carpet
-setblock ~6 ~21 ~62 bookshelf
-setblock ~6 ~22 ~62 bookshelf
-setblock ~7 ~21 ~62 bookshelf
-setblock ~9 ~21 ~62 chest
-setblock ~6 ~21 ~69 crafting_table
-setblock ~9 ~21 ~69 flower_pot
-fill ~6 ~26 ~62 ~9 ~26 ~69 red_carpet
-fill ~2 ~26 ~62 ~3 ~26 ~69 red_carpet
-setblock ~7 ~26 ~69 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~7 ~26 ~68 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~9 ~26 ~62 flower_pot
-setblock ~6 ~26 ~62 chest
-setblock ~6 ~26 ~69 flower_pot
-fill ~6 ~31 ~62 ~9 ~31 ~69 blue_carpet
-fill ~2 ~31 ~62 ~3 ~31 ~69 blue_carpet
-setblock ~6 ~31 ~62 flower_pot
-setblock ~9 ~31 ~62 flower_pot
-setblock ~6 ~31 ~69 flower_pot
-setblock ~9 ~31 ~69 bookshelf
-setblock ~7 ~31 ~62 chest
-fill ~6 ~36 ~62 ~9 ~36 ~69 light_blue_carpet
-fill ~2 ~36 ~62 ~3 ~36 ~69 light_blue_carpet
-setblock ~6 ~36 ~62 bookshelf
-setblock ~6 ~37 ~62 bookshelf
+setblock ~9 ~2 ~61 oak_pressure_plate
+setblock ~7 ~1 ~62 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~11 ~1 ~71 chest
+setblock ~8 ~1 ~71 lectern
+setblock ~8 ~1 ~62 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~9 ~1 ~62 chest
+setblock ~10 ~1 ~63 bookshelf
+setblock ~2 ~1 ~69 oak_fence
+setblock ~2 ~2 ~69 oak_pressure_plate
+setblock ~3 ~1 ~65 oak_fence
+setblock ~3 ~2 ~65 oak_pressure_plate
+setblock ~3 ~1 ~63 oak_fence
+setblock ~3 ~2 ~63 oak_pressure_plate
+setblock ~2 ~1 ~63 oak_fence
+setblock ~2 ~2 ~63 oak_pressure_plate
+setblock ~11 ~1 ~69 bookshelf
+setblock ~5 ~1 ~70 chest
+setblock ~8 ~1 ~62 bookshelf
+setblock ~8 ~2 ~62 bookshelf
+setblock ~11 ~1 ~63 crafting_table
+setblock ~1 ~1 ~62 bookshelf
+setblock ~7 ~1 ~63 fletching_table
+setblock ~11 ~1 ~63 cartography_table
+setblock ~8 ~2 ~61 blue_wall_banner ["facing_direction":3]
+setblock ~1 ~2 ~62 white_wall_banner ["facing_direction":5]
+setblock ~11 ~2 ~70 yellow_wall_banner ["facing_direction":4]
+setblock ~6 ~2 ~71 red_wall_banner ["facing_direction":2]
+setblock ~7 ~1 ~61 note_block

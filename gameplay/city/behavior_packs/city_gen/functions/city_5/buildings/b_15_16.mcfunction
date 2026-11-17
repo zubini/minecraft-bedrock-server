@@ -1,28 +1,28 @@
-setblock ~69 ~17 ~69 flower_pot
-fill ~66 ~21 ~62 ~69 ~21 ~69 red_carpet
-fill ~62 ~21 ~62 ~63 ~21 ~69 red_carpet
-fill ~62 ~21 ~68 ~69 ~21 ~69 red_carpet
-setblock ~67 ~21 ~69 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~67 ~21 ~68 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~69 ~21 ~62 flower_pot
-setblock ~66 ~21 ~62 chest
-setblock ~69 ~21 ~69 flower_pot
-fill ~66 ~25 ~62 ~69 ~25 ~69 blue_carpet
-fill ~62 ~25 ~62 ~63 ~25 ~69 blue_carpet
-fill ~62 ~25 ~68 ~69 ~25 ~69 blue_carpet
-setblock ~66 ~25 ~62 flower_pot
-setblock ~69 ~25 ~62 flower_pot
-setblock ~66 ~25 ~69 flower_pot
-setblock ~69 ~25 ~69 bookshelf
-setblock ~67 ~25 ~62 chest
-setblock ~67 ~25 ~64 flower_pot
-fill ~66 ~29 ~62 ~69 ~29 ~69 light_blue_carpet
-fill ~62 ~29 ~62 ~63 ~29 ~69 light_blue_carpet
-fill ~62 ~29 ~68 ~69 ~29 ~69 light_blue_carpet
-setblock ~66 ~29 ~62 bookshelf
-setblock ~66 ~30 ~62 bookshelf
-setblock ~67 ~29 ~62 bookshelf
-setblock ~69 ~29 ~62 chest
-setblock ~66 ~29 ~69 crafting_table
-setblock ~69 ~29 ~69 flower_pot
-setblock ~67 ~29 ~66 flower_pot
+setblock ~66 ~2 ~72 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+setblock ~67 ~1 ~61 flower_pot
+setblock ~71 ~1 ~61 flower_pot
+setblock ~69 ~1 ~61 oak_fence
+setblock ~69 ~2 ~61 oak_pressure_plate
+setblock ~67 ~1 ~62 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~71 ~1 ~71 barrel
+setblock ~68 ~1 ~71 crafting_table
+setblock ~71 ~1 ~65 lectern
+setblock ~67 ~1 ~64 bookshelf
+setblock ~67 ~2 ~64 bookshelf
+setblock ~69 ~1 ~67 oak_fence
+setblock ~69 ~2 ~67 oak_pressure_plate
+setblock ~67 ~1 ~71 oak_fence
+setblock ~67 ~2 ~71 oak_pressure_plate
+setblock ~70 ~1 ~64 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~64 ~1 ~65 crafting_table
+setblock ~61 ~1 ~69 bookshelf
+setblock ~62 ~1 ~68 bookshelf
+setblock ~62 ~1 ~66 crafting_table
+setblock ~69 ~1 ~69 oak_fence
+setblock ~69 ~2 ~69 oak_pressure_plate
+setblock ~61 ~1 ~71 barrel
+setblock ~71 ~1 ~68 oak_fence
+setblock ~71 ~2 ~68 oak_pressure_plate
+setblock ~68 ~1 ~70 crafting_table
+setblock ~65 ~1 ~71 bookshelf
+setblock ~64 ~1 ~62 chest

@@ -1,28 +1,28 @@
-fill ~21 ~68 ~42 ~21 ~68 ~48 white_concrete
-fill ~29 ~68 ~42 ~29 ~68 ~48 white_concrete
-fill ~22 ~72 ~41 ~28 ~72 ~41 white_concrete
-fill ~22 ~72 ~49 ~28 ~72 ~49 white_concrete
-fill ~21 ~72 ~42 ~21 ~72 ~48 white_concrete
-fill ~29 ~72 ~42 ~29 ~72 ~48 white_concrete
-fill ~23 ~1 ~49 ~26 ~3 ~49 white_concrete
-fill ~24 ~1 ~49 ~25 ~2 ~49 air
-setblock ~24 ~1 ~49 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~24 ~2 ~49 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~25 ~1 ~49 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~25 ~2 ~49 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~22 ~1 ~42 ~28 ~3 ~48 air
-fill ~22 ~5 ~42 ~28 ~7 ~48 air
-fill ~22 ~9 ~42 ~28 ~11 ~48 air
-fill ~22 ~13 ~42 ~28 ~15 ~48 air
-fill ~22 ~17 ~42 ~28 ~19 ~48 air
-fill ~22 ~21 ~42 ~28 ~23 ~48 air
-fill ~22 ~25 ~42 ~28 ~27 ~48 air
-fill ~22 ~29 ~42 ~28 ~31 ~48 air
-fill ~22 ~33 ~42 ~28 ~35 ~48 air
-fill ~22 ~37 ~42 ~28 ~39 ~48 air
-fill ~22 ~41 ~42 ~28 ~43 ~48 air
-fill ~22 ~45 ~42 ~28 ~47 ~48 air
-fill ~22 ~49 ~42 ~28 ~51 ~48 air
-fill ~22 ~53 ~42 ~28 ~55 ~48 air
-fill ~22 ~57 ~42 ~28 ~59 ~48 air
-fill ~22 ~61 ~42 ~28 ~63 ~48 air
+fill ~20 ~68 ~41 ~20 ~68 ~50 white_concrete
+fill ~31 ~68 ~41 ~31 ~68 ~50 white_concrete
+fill ~21 ~72 ~40 ~30 ~72 ~40 white_concrete
+fill ~21 ~72 ~51 ~30 ~72 ~51 white_concrete
+fill ~20 ~72 ~41 ~20 ~72 ~50 white_concrete
+fill ~31 ~72 ~41 ~31 ~72 ~50 white_concrete
+fill ~24 ~1 ~51 ~27 ~3 ~51 white_concrete
+fill ~25 ~1 ~51 ~26 ~2 ~51 air
+setblock ~25 ~1 ~51 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~25 ~2 ~51 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~26 ~1 ~51 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~26 ~2 ~51 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+fill ~21 ~1 ~41 ~30 ~3 ~50 air
+fill ~21 ~5 ~41 ~30 ~7 ~50 air
+fill ~21 ~9 ~41 ~30 ~11 ~50 air
+fill ~21 ~13 ~41 ~30 ~15 ~50 air
+fill ~21 ~17 ~41 ~30 ~19 ~50 air
+fill ~21 ~21 ~41 ~30 ~23 ~50 air
+fill ~21 ~25 ~41 ~30 ~27 ~50 air
+fill ~21 ~29 ~41 ~30 ~31 ~50 air
+fill ~21 ~33 ~41 ~30 ~35 ~50 air
+fill ~21 ~37 ~41 ~30 ~39 ~50 air
+fill ~21 ~41 ~41 ~30 ~43 ~50 air
+fill ~21 ~45 ~41 ~30 ~47 ~50 air
+fill ~21 ~49 ~41 ~30 ~51 ~50 air
+fill ~21 ~53 ~41 ~30 ~55 ~50 air
+fill ~21 ~57 ~41 ~30 ~59 ~50 air
+fill ~21 ~61 ~41 ~30 ~63 ~50 air

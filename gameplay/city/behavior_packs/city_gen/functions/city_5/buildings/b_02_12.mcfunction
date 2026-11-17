@@ -1,28 +1,28 @@
-fill ~42 ~36 ~2 ~43 ~36 ~9 light_blue_carpet
-setblock ~46 ~36 ~2 bookshelf
-setblock ~46 ~37 ~2 bookshelf
-setblock ~47 ~36 ~2 bookshelf
-setblock ~49 ~36 ~2 chest
-setblock ~46 ~36 ~9 crafting_table
-setblock ~49 ~36 ~9 flower_pot
-fill ~46 ~41 ~2 ~49 ~41 ~9 white_carpet
-fill ~42 ~41 ~2 ~43 ~41 ~9 white_carpet
-setblock ~47 ~41 ~9 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~41 ~8 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~49 ~41 ~2 flower_pot
-setblock ~46 ~41 ~2 chest
-setblock ~48 ~41 ~6 flower_pot
-fill ~46 ~46 ~2 ~49 ~46 ~9 gray_carpet
-fill ~42 ~46 ~2 ~43 ~46 ~9 gray_carpet
-setblock ~46 ~46 ~2 flower_pot
-setblock ~49 ~46 ~2 flower_pot
-setblock ~46 ~46 ~9 flower_pot
-setblock ~49 ~46 ~9 bookshelf
-setblock ~47 ~46 ~2 chest
-fill ~46 ~51 ~2 ~49 ~51 ~9 red_carpet
-fill ~42 ~51 ~2 ~43 ~51 ~9 red_carpet
-setblock ~46 ~51 ~2 bookshelf
-setblock ~46 ~52 ~2 bookshelf
-setblock ~47 ~51 ~2 bookshelf
-setblock ~49 ~51 ~2 chest
-setblock ~46 ~51 ~9 crafting_table
+setblock ~47 ~6 ~1 bookshelf
+setblock ~51 ~6 ~1 barrel
+setblock ~47 ~6 ~11 flower_pot
+setblock ~51 ~6 ~11 noteblock
+setblock ~51 ~6 ~6 cartography_table
+setblock ~48 ~6 ~8 oak_fence
+setblock ~48 ~7 ~8 oak_pressure_plate
+setblock ~44 ~6 ~9 lantern
+setblock ~42 ~6 ~7 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~49 ~6 ~11 oak_fence
+setblock ~49 ~7 ~11 oak_pressure_plate
+setblock ~43 ~6 ~10 bookshelf
+setblock ~46 ~6 ~2 bookshelf
+setblock ~46 ~7 ~2 bookshelf
+setblock ~50 ~6 ~3 note_block
+setblock ~51 ~6 ~2 crafting_table
+setblock ~41 ~6 ~2 bookshelf
+setblock ~41 ~7 ~6 light_blue_wall_banner ["facing_direction":5]
+setblock ~51 ~7 ~8 lime_wall_banner ["facing_direction":4]
+setblock ~51 ~7 ~10 blue_wall_banner ["facing_direction":4]
+setblock ~41 ~7 ~7 white_wall_banner ["facing_direction":5]
+setblock ~47 ~6 ~11 flower_pot
+setblock ~48 ~11 ~11 white_bed ["direction":2,"head_piece_bit":false]
+setblock ~48 ~11 ~10 white_bed ["direction":2,"head_piece_bit":true]
+setblock ~47 ~11 ~1 barrel
+setblock ~51 ~11 ~1 flower_pot
+setblock ~51 ~11 ~2 oak_fence
+setblock ~51 ~12 ~2 oak_pressure_plate

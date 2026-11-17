@@ -1,28 +1,28 @@
-setblock ~45 ~1 ~29 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~45 ~2 ~29 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~42 ~1 ~22 ~48 ~3 ~28 air
-fill ~42 ~5 ~22 ~48 ~7 ~28 air
-fill ~42 ~9 ~22 ~48 ~11 ~28 air
-fill ~42 ~13 ~22 ~48 ~15 ~28 air
-fill ~42 ~17 ~22 ~48 ~19 ~28 air
-fill ~42 ~21 ~22 ~48 ~23 ~28 air
-fill ~42 ~25 ~22 ~48 ~27 ~28 air
-fill ~42 ~29 ~22 ~48 ~31 ~28 air
-fill ~42 ~33 ~22 ~48 ~35 ~28 air
-fill ~42 ~37 ~22 ~48 ~39 ~28 air
-fill ~42 ~41 ~22 ~48 ~43 ~28 air
-fill ~42 ~45 ~22 ~48 ~47 ~28 air
-fill ~42 ~49 ~22 ~48 ~51 ~28 air
-fill ~42 ~53 ~22 ~48 ~55 ~28 air
-fill ~42 ~57 ~22 ~48 ~59 ~28 air
-fill ~42 ~61 ~22 ~48 ~63 ~28 air
-fill ~42 ~65 ~22 ~48 ~67 ~28 air
-fill ~42 ~69 ~22 ~48 ~71 ~28 air
-fill ~42 ~73 ~22 ~48 ~75 ~28 air
-fill ~42 ~77 ~22 ~48 ~79 ~28 air
-fill ~42 ~81 ~22 ~48 ~83 ~28 air
-fill ~44 ~4 ~23 ~45 ~4 ~27 air
-fill ~44 ~8 ~23 ~45 ~8 ~27 air
-fill ~44 ~12 ~23 ~45 ~12 ~27 air
-fill ~44 ~16 ~23 ~45 ~16 ~27 air
-fill ~44 ~20 ~23 ~45 ~20 ~27 air
+setblock ~46 ~1 ~31 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~46 ~2 ~31 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+fill ~41 ~1 ~21 ~50 ~3 ~30 air
+fill ~41 ~5 ~21 ~50 ~7 ~30 air
+fill ~41 ~9 ~21 ~50 ~11 ~30 air
+fill ~41 ~13 ~21 ~50 ~15 ~30 air
+fill ~41 ~17 ~21 ~50 ~19 ~30 air
+fill ~41 ~21 ~21 ~50 ~23 ~30 air
+fill ~41 ~25 ~21 ~50 ~27 ~30 air
+fill ~41 ~29 ~21 ~50 ~31 ~30 air
+fill ~41 ~33 ~21 ~50 ~35 ~30 air
+fill ~41 ~37 ~21 ~50 ~39 ~30 air
+fill ~41 ~41 ~21 ~50 ~43 ~30 air
+fill ~41 ~45 ~21 ~50 ~47 ~30 air
+fill ~41 ~49 ~21 ~50 ~51 ~30 air
+fill ~41 ~53 ~21 ~50 ~55 ~30 air
+fill ~41 ~57 ~21 ~50 ~59 ~30 air
+fill ~41 ~61 ~21 ~50 ~63 ~30 air
+fill ~41 ~65 ~21 ~50 ~67 ~30 air
+fill ~41 ~69 ~21 ~50 ~71 ~30 air
+fill ~41 ~73 ~21 ~50 ~75 ~30 air
+fill ~41 ~77 ~21 ~50 ~79 ~30 air
+fill ~41 ~81 ~21 ~50 ~83 ~30 air
+fill ~44 ~4 ~23 ~45 ~4 ~25 air
+fill ~44 ~8 ~23 ~45 ~8 ~25 air
+fill ~44 ~12 ~23 ~45 ~12 ~25 air
+fill ~44 ~16 ~23 ~45 ~16 ~25 air
+fill ~44 ~20 ~23 ~45 ~20 ~25 air

@@ -1,28 +1,28 @@
-setblock ~48 ~1 ~46 flower_pot
-fill ~46 ~6 ~42 ~49 ~6 ~49 blue_carpet
-fill ~42 ~6 ~42 ~43 ~6 ~49 blue_carpet
-setblock ~46 ~6 ~42 bookshelf
-setblock ~46 ~7 ~42 bookshelf
-setblock ~47 ~6 ~42 bookshelf
-setblock ~49 ~6 ~42 chest
-setblock ~46 ~6 ~49 crafting_table
-setblock ~49 ~6 ~49 flower_pot
-fill ~46 ~11 ~42 ~49 ~11 ~49 light_blue_carpet
-fill ~42 ~11 ~42 ~43 ~11 ~49 light_blue_carpet
-setblock ~47 ~11 ~49 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~11 ~48 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~49 ~11 ~42 flower_pot
-setblock ~46 ~11 ~42 chest
-fill ~46 ~16 ~42 ~49 ~16 ~49 white_carpet
-fill ~42 ~16 ~42 ~43 ~16 ~49 white_carpet
-setblock ~46 ~16 ~42 flower_pot
-setblock ~49 ~16 ~42 flower_pot
-setblock ~46 ~16 ~49 flower_pot
-setblock ~49 ~16 ~49 bookshelf
-setblock ~47 ~16 ~42 chest
-setblock ~46 ~16 ~47 flower_pot
-fill ~46 ~21 ~42 ~49 ~21 ~49 gray_carpet
-fill ~42 ~21 ~42 ~43 ~21 ~49 gray_carpet
-setblock ~46 ~21 ~42 bookshelf
-setblock ~46 ~22 ~42 bookshelf
-setblock ~47 ~21 ~42 bookshelf
+setblock ~46 ~35 ~48 white_concrete
+setblock ~45 ~40 ~48 white_concrete
+setblock ~46 ~40 ~48 white_concrete
+setblock ~45 ~45 ~48 white_concrete
+setblock ~46 ~45 ~48 white_concrete
+fill ~45 ~0 ~52 ~46 ~0 ~52 stone_bricks
+fill ~44 ~1 ~52 ~47 ~3 ~52 white_concrete
+fill ~45 ~1 ~52 ~46 ~2 ~52 air
+setblock ~45 ~1 ~52 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~45 ~2 ~52 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~46 ~1 ~52 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~46 ~2 ~52 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+setblock ~47 ~1 ~41 flower_pot
+setblock ~51 ~1 ~41 flower_pot
+setblock ~49 ~1 ~41 oak_fence
+setblock ~49 ~2 ~41 oak_pressure_plate
+setblock ~47 ~1 ~42 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~51 ~1 ~51 barrel
+setblock ~48 ~1 ~51 loom
+setblock ~51 ~1 ~43 flower_pot
+setblock ~47 ~1 ~42 crafting_table
+setblock ~51 ~1 ~51 bookshelf
+setblock ~51 ~2 ~51 bookshelf
+setblock ~50 ~1 ~47 flower_pot
+setblock ~43 ~1 ~49 bookshelf
+setblock ~43 ~2 ~49 bookshelf
+setblock ~42 ~1 ~41 bookshelf
+setblock ~43 ~1 ~45 lectern

@@ -1,28 +1,28 @@
-setblock ~7 ~45 ~7 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~8 ~45 ~2 flower_pot
-setblock ~6 ~45 ~2 chest
-setblock ~7 ~45 ~6 flower_pot
-fill ~6 ~49 ~2 ~8 ~49 ~8 light_blue_carpet
-fill ~2 ~49 ~2 ~3 ~49 ~8 light_blue_carpet
-setblock ~6 ~49 ~2 flower_pot
-setblock ~8 ~49 ~2 flower_pot
-setblock ~6 ~49 ~8 flower_pot
-setblock ~8 ~49 ~8 bookshelf
-setblock ~7 ~49 ~2 chest
-setblock ~8 ~49 ~4 flower_pot
-fill ~6 ~53 ~2 ~8 ~53 ~8 white_carpet
-fill ~2 ~53 ~2 ~3 ~53 ~8 white_carpet
-setblock ~6 ~53 ~2 bookshelf
-setblock ~6 ~54 ~2 bookshelf
-setblock ~7 ~53 ~2 bookshelf
-setblock ~8 ~53 ~2 chest
-setblock ~6 ~53 ~8 crafting_table
-setblock ~8 ~53 ~8 flower_pot
-fill ~6 ~57 ~2 ~8 ~57 ~8 gray_carpet
-fill ~2 ~57 ~2 ~3 ~57 ~8 gray_carpet
-setblock ~7 ~57 ~8 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~7 ~57 ~7 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~8 ~57 ~2 flower_pot
-setblock ~6 ~57 ~2 chest
-fill ~6 ~61 ~2 ~8 ~61 ~8 red_carpet
-fill ~2 ~61 ~2 ~3 ~61 ~8 red_carpet
+setblock ~6 ~6 ~8 oak_pressure_plate
+setblock ~8 ~5 ~8 flower_pot
+setblock ~9 ~5 ~9 oak_fence
+setblock ~9 ~6 ~9 oak_pressure_plate
+setblock ~3 ~5 ~8 smithing_table
+setblock ~4 ~5 ~8 oak_fence
+setblock ~4 ~6 ~8 oak_pressure_plate
+setblock ~1 ~5 ~6 oak_stairs ["weirdo_direction":2,"upside_down_bit":false]
+setblock ~1 ~5 ~5 flower_pot
+setblock ~2 ~5 ~7 bookshelf
+setblock ~1 ~5 ~3 lectern
+setblock ~1 ~5 ~10 oak_fence
+setblock ~1 ~6 ~10 oak_pressure_plate
+setblock ~3 ~5 ~2 oak_fence
+setblock ~3 ~6 ~2 oak_pressure_plate
+setblock ~1 ~5 ~2 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~1 ~5 ~1 oak_fence
+setblock ~1 ~6 ~1 oak_pressure_plate
+setblock ~7 ~5 ~2 oak_fence
+setblock ~7 ~6 ~2 oak_pressure_plate
+setblock ~10 ~5 ~2 lectern
+setblock ~7 ~6 ~10 orange_wall_banner ["facing_direction":2]
+setblock ~1 ~6 ~5 white_wall_banner ["facing_direction":5]
+setblock ~1 ~6 ~2 blue_wall_banner ["facing_direction":5]
+setblock ~3 ~6 ~1 orange_wall_banner ["facing_direction":3]
+setblock ~8 ~6 ~1 pink_wall_banner ["facing_direction":3]
+setblock ~1 ~6 ~10 lime_wall_banner ["facing_direction":2]
+setblock ~10 ~5 ~1 bookshelf

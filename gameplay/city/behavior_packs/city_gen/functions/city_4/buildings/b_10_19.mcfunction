@@ -1,28 +1,28 @@
-setblock ~48 ~65 ~42 chest
-setblock ~46 ~65 ~48 crafting_table
-setblock ~48 ~65 ~48 flower_pot
-fill ~46 ~69 ~42 ~48 ~69 ~48 light_blue_carpet
-fill ~42 ~69 ~42 ~43 ~69 ~48 light_blue_carpet
-setblock ~47 ~69 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~69 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~48 ~69 ~42 flower_pot
-setblock ~46 ~69 ~42 chest
-fill ~46 ~73 ~42 ~48 ~73 ~48 white_carpet
-fill ~42 ~73 ~42 ~43 ~73 ~48 white_carpet
-setblock ~46 ~73 ~42 flower_pot
-setblock ~48 ~73 ~42 flower_pot
-setblock ~46 ~73 ~48 flower_pot
-setblock ~48 ~73 ~48 bookshelf
-setblock ~47 ~73 ~42 chest
-fill ~46 ~77 ~42 ~48 ~77 ~48 gray_carpet
-fill ~42 ~77 ~42 ~43 ~77 ~48 gray_carpet
-setblock ~46 ~77 ~42 bookshelf
-setblock ~46 ~78 ~42 bookshelf
-setblock ~47 ~77 ~42 bookshelf
-setblock ~48 ~77 ~42 chest
-setblock ~46 ~77 ~48 crafting_table
-setblock ~48 ~77 ~48 flower_pot
-fill ~46 ~81 ~42 ~48 ~81 ~48 red_carpet
-fill ~42 ~81 ~42 ~43 ~81 ~48 red_carpet
-setblock ~47 ~81 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~81 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~50 ~9 ~50 chest
+setblock ~47 ~13 ~50 red_bed ["direction":2,"head_piece_bit":false]
+setblock ~47 ~13 ~49 red_bed ["direction":2,"head_piece_bit":true]
+setblock ~46 ~13 ~41 chest
+setblock ~50 ~13 ~41 flower_pot
+setblock ~50 ~13 ~42 oak_fence
+setblock ~50 ~14 ~42 oak_pressure_plate
+setblock ~49 ~13 ~42 barrel
+setblock ~50 ~13 ~50 barrel
+setblock ~48 ~13 ~47 oak_stairs ["weirdo_direction":3,"upside_down_bit":false]
+setblock ~43 ~13 ~48 lantern
+setblock ~48 ~13 ~48 oak_stairs ["weirdo_direction":1,"upside_down_bit":false]
+setblock ~44 ~13 ~50 oak_fence
+setblock ~44 ~14 ~50 oak_pressure_plate
+setblock ~43 ~13 ~49 chest
+setblock ~46 ~13 ~49 oak_fence
+setblock ~46 ~14 ~49 oak_pressure_plate
+setblock ~41 ~13 ~48 oak_fence
+setblock ~41 ~14 ~48 oak_pressure_plate
+setblock ~43 ~13 ~43 barrel
+setblock ~42 ~13 ~41 lectern
+setblock ~43 ~13 ~42 loom
+setblock ~43 ~13 ~50 bookshelf
+setblock ~49 ~13 ~41 bookshelf
+setblock ~43 ~13 ~42 fletching_table
+setblock ~48 ~13 ~41 oak_fence
+setblock ~48 ~14 ~41 oak_pressure_plate
+setblock ~44 ~13 ~42 bookshelf
