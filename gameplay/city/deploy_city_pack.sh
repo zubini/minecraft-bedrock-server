@@ -11,6 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACK_SRC="${SCRIPT_DIR}/behavior_packs/city_gen"
 INSTALL_DIR="${INSTALL_DIR:-/opt/minecraft-bedrock}"
 PACK_UUID="a7c4e2b1-9f3d-4e8a-b6c1-2d5e8f0a1b3c"
+PACK_VERSION="[1, 1, 0]"
 
 die() {
   echo "ERROR: $*" >&2
@@ -58,7 +59,7 @@ rsync -az --delete \
 
 log "Enabling pack in world_behavior_packs.json …"
 # shellcheck disable=SC2029
-ssh -o StrictHostKeyChecking=accept-new "$TARGET" "sudo INSTALL_DIR=$(printf '%q' "$INSTALL_DIR") PACK_UUID=$(printf '%q' "$PACK_UUID") bash -s" <<'REMOTE'
+ssh -o StrictHostKeyChecking=accept-new "$TARGET" "sudo INSTALL_DIR=$(printf '%q' "$INSTALL_DIR") PACK_UUID=$(printf '%q' "$PACK_UUID") PACK_VERSION=$(printf '%q' "$PACK_VERSION") bash -s" <<'REMOTE'
 set -euo pipefail
 PROPS="${INSTALL_DIR}/server.properties"
 LEVEL="Bedrock level"
@@ -70,13 +71,14 @@ WORLD="${INSTALL_DIR}/worlds/${LEVEL}"
 [[ -d "$WORLD" ]] || { echo "ERROR: world dir not found: $WORLD" >&2; exit 1; }
 WBP="${WORLD}/world_behavior_packs.json"
 
-python3 - "$WBP" "$PACK_UUID" <<'PY'
+python3 - "$WBP" "$PACK_UUID" "$PACK_VERSION" <<'PY'
 import json, sys
 from pathlib import Path
 
 path = Path(sys.argv[1])
 uuid = sys.argv[2]
-entry = {"pack_id": uuid, "version": [1, 0, 0]}
+version = json.loads(sys.argv[3])
+entry = {"pack_id": uuid, "version": version}
 
 data = []
 if path.exists() and path.stat().st_size > 0:
@@ -98,10 +100,7 @@ ssh -o StrictHostKeyChecking=accept-new "$TARGET" "sudo systemctl restart minecr
 
 log "Done."
 echo
-echo "Im Spiel (OP): an die hintere linke Ecke stellen,"
-echo "dorthin schauen wo die Stadt hin soll (wächst vorne + rechts):"
-echo "  /function city_gen/start"
-echo "Undo:"
-echo "  /function city_gen/clear"
-echo "Details: gameplay/tipps.md"
-echo "Bei Bedarf neu joinen, falls Functions noch unbekannt sind."
+echo "Im Spiel (OP): Nordwest-Ecke (kleinste X/Z), dann z.B.:"
+echo "  /function city_gen_1/start   …   /function city_gen_5/start"
+echo "Undo: /function city_gen_N/clear   (Kurzform Variante 1: city_gen/start|clear)"
+echo "Details: gameplay/tipps.md — ggf. neu joinen."

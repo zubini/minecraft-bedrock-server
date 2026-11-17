@@ -6,7 +6,8 @@ Skripte und Packs liegen unter [`gameplay/city/`](city/).
 
 ## Prozedurale Stadt (`city_gen`)
 
-Behavior Pack baut eine Hochhauslandschaft mit Strassen **in Blickrichtung** (vorne und rechts).
+Behavior Pack baut eine Hochhauslandschaft mit Strassen ab deinem Standpunkt (nach Osten und Süden).  
+Mehrere Varianten: `city_gen_1` … `city_gen_5` (verschiedene Seeds).
 
 ### Voraussetzungen
 
@@ -16,14 +17,10 @@ Behavior Pack baut eine Hochhauslandschaft mit Strassen **in Blickrichtung** (vo
 ### Pack erzeugen (lokal)
 
 ```bash
-# gross = 120×120 (Default), klein = 60×60
-node gameplay/city/generate_city_pack.mjs --seed 42 --size gross
-node gameplay/city/generate_city_pack.mjs --seed 42 --size klein
-# optional: --min-height 60 --max-height 90
-# Häuser: 10×10 oder 12×12, Eingang in der Fassade, Treppenhaus innen
+# 80×80, 4×4 Hochhäuser, 5 Varianten (Default)
+node gameplay/city/generate_city_pack.mjs --seed 42
+node gameplay/city/generate_city_pack.mjs --seed 42 --variants 5
 ```
-
-Anderer Look: anderen `--seed` wählen und erneut erzeugen.
 
 ### Deploy
 
@@ -31,47 +28,44 @@ Anderer Look: anderen `--seed` wählen und erneut erzeugen.
 ./gameplay/city/deploy_city_pack.sh minecraft
 ```
 
-Startet den Server-Dienst neu. Danach ggf. neu joinen.
+Startet den Server neu. Danach ggf. neu joinen.
 
-### Bauen (so einfach wie möglich)
+### Bauen
 
-1. An die **hintere linke Ecke** der gewünschten Fläche stellen  
-2. **Dorthin schauen**, wo die Stadt hin soll (freie Fläche vor dir)  
-3. Chat:
+1. Koordinaten anzeigen  
+2. An die Ecke stellen, wo **X und Z am kleinsten** sein sollen (Nordwest-Ecke)  
+3. Freie Fläche muss nach **Osten** (X wird grösser) und **Süden** (Z wird grösser) liegen  
+4. Chat – eine Variante wählen:
 
 ```
-/function city_gen/start
+/function city_gen_1/start
+/function city_gen_2/start
+/function city_gen_3/start
+/function city_gen_4/start
+/function city_gen_5/start
 ```
 
-Die Stadt wächst **vor dir** und nach **rechts**. Kompass/Norden brauchst du nicht.
+Kurzform (Variante 1): `/function city_gen/start`
 
-```text
-        (Blickrichtung)
-              ↑ vorne
-              ·········
-        ●─────·  STADT
-      du      → rechts
-```
-
-Der Lauf kann bei `gross` etwas dauern. Chat zeigt den Fortschritt.
+Bau läuft **über mehrere Sekunden** (Chat: „Fertig.“ abwarten).  
+**In der Nähe bleiben**, bis es fertig ist (sonst stoppen die Chunks).
 
 ### Rückgängig
 
 ```
-/function city_gen/clear
+/function city_gen_1/clear
 ```
 
-Beim `start` wird ein unsichtbarer Marker gesetzt – Clear findet die Stadt damit auch von woanders.  
-Ohne Marker: wieder an dieselbe Ecke stellen, in dieselbe Richtung schauen, dann clear.
+(gleiche Nummer wie beim Start; Kurzform: `/function city_gen/clear`)
 
-Clear läuft über mehrere Ticks („Clear fertig.“ abwarten). Stellt vorheriges Terrain nicht wieder her.
+Clear ebenfalls über mehrere Sekunden („Clear fertig.“), in der Nähe bleiben.
 
-### Seed neu ausprobieren
+### Seed / mehr Varianten
 
-1. `/function city_gen/clear`
-2. Lokal `node gameplay/city/generate_city_pack.mjs --seed <neu> --size gross`
-3. `./gameplay/city/deploy_city_pack.sh minecraft`
-4. `/function city_gen/start`
+1. Clear der gebauten Variante  
+2. Lokal `node gameplay/city/generate_city_pack.mjs --seed <neu> [--variants 5]`  
+3. `./gameplay/city/deploy_city_pack.sh minecraft`  
+4. `/function city_gen_N/start`
 
 ## Gebäude kopieren (Structure Block)
 
@@ -111,3 +105,21 @@ Oder Structure Block setzen → Modus **Load** → gleicher Name → **Load**.
 ```
 
 (Höhe `~5` an die echte Etagenhöhe anpassen.)
+
+## Schneller fliegen (Kreativmodus)
+
+Im Kreativmodus: fliegen starten (Springen doppeltippen), dann **Sprint halten** — das ist der eingebaute Flug-Turbo. Auf dem Controller oft dieselbe Taste wie Sprint am Boden (z. B. linken Stick drücken).
+
+Noch schneller erkunden: Zuschauermodus (`/gamemode spectator`), zurück mit `/gamemode creative`.
+
+Optional Speed-Effekt (Operator) — erhöht vor allem die Geschwindigkeit **am Boden**; im Flug oft schwächer als Sprint:
+
+```
+/effect @s speed 99999 5 true
+```
+
+- `99999` = Dauer in Sekunden  
+- `5` = Stufe (höher = schneller)  
+- `true` = Partikel ausblenden  
+
+Entfernen: `/effect @s clear`
