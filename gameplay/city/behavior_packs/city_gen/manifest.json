@@ -2,7 +2,7 @@
   "format_version": 2,
   "header": {
     "name": "City Gen",
-    "description": "Procedural city (seed=42, size=160)",
+    "description": "Procedural city (seed=42, size=120)",
     "uuid": "a7c4e2b1-9f3d-4e8a-b6c1-2d5e8f0a1b3c",
     "version": [
       1,

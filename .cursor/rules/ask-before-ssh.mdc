@@ -1,0 +1,19 @@
+---
+description: Vor SSH-/Server-Aktionen immer nachfragen
+alwaysApply: true
+---
+
+# SSH / Remote-Server: erst fragen
+
+Bevor du per SSH (oder vergleichbar remote) etwas auf dem Minecraft-Server tust, **immer zuerst nachfragen** und auf eine klare Zustimmung warten.
+
+Dazu zählen unter anderem:
+
+- `ssh` / Befehle auf dem Host (z. B. `minecraft`, `minecraft.zubini.ch`)
+- Lesen oder Ändern von Dateien unter `/opt/minecraft-bedrock`, `/opt/mcxboxbroadcast`, `/etc/...`
+- `systemctl` start/stop/restart/reload (Bedrock, MCXboxBroadcast, …)
+- Deploy, rsync, Pack-Install, Firewall-/Netz-Änderungen, Updates
+
+**Erlaubt ohne Nachfrage:** rein lokale Arbeit im Repo auf dem Entwicklungsrechner.
+
+**Nach Zustimmung:** kurz sagen, was du remote machst; bei riskanten Schritten (Restart mit Kick, Daten löschen) nochmal explizit bestätigen.

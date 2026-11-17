@@ -1,475 +1,164 @@
-fill ~80 ~1 ~100 ~91 ~72 ~111 white_concrete hollow
-fill ~81 ~2 ~100 ~90 ~71 ~100 glass
-fill ~81 ~2 ~111 ~90 ~71 ~111 glass
-fill ~80 ~2 ~101 ~80 ~71 ~110 glass
-fill ~91 ~2 ~101 ~91 ~71 ~110 glass
-fill ~81 ~4 ~100 ~90 ~4 ~100 white_concrete
-fill ~81 ~4 ~111 ~90 ~4 ~111 white_concrete
-fill ~80 ~4 ~101 ~80 ~4 ~110 white_concrete
-fill ~91 ~4 ~101 ~91 ~4 ~110 white_concrete
-fill ~81 ~7 ~100 ~90 ~7 ~100 white_concrete
-fill ~81 ~7 ~111 ~90 ~7 ~111 white_concrete
-fill ~80 ~7 ~101 ~80 ~7 ~110 white_concrete
-fill ~91 ~7 ~101 ~91 ~7 ~110 white_concrete
-fill ~81 ~10 ~100 ~90 ~10 ~100 white_concrete
-fill ~81 ~10 ~111 ~90 ~10 ~111 white_concrete
-fill ~80 ~10 ~101 ~80 ~10 ~110 white_concrete
-fill ~91 ~10 ~101 ~91 ~10 ~110 white_concrete
-fill ~81 ~13 ~100 ~90 ~13 ~100 white_concrete
-fill ~81 ~13 ~111 ~90 ~13 ~111 white_concrete
-fill ~80 ~13 ~101 ~80 ~13 ~110 white_concrete
-fill ~91 ~13 ~101 ~91 ~13 ~110 white_concrete
-fill ~81 ~16 ~100 ~90 ~16 ~100 white_concrete
-fill ~81 ~16 ~111 ~90 ~16 ~111 white_concrete
-fill ~80 ~16 ~101 ~80 ~16 ~110 white_concrete
-fill ~91 ~16 ~101 ~91 ~16 ~110 white_concrete
-fill ~81 ~19 ~100 ~90 ~19 ~100 white_concrete
-fill ~81 ~19 ~111 ~90 ~19 ~111 white_concrete
-fill ~80 ~19 ~101 ~80 ~19 ~110 white_concrete
-fill ~91 ~19 ~101 ~91 ~19 ~110 white_concrete
-fill ~81 ~22 ~100 ~90 ~22 ~100 white_concrete
-fill ~81 ~22 ~111 ~90 ~22 ~111 white_concrete
-fill ~80 ~22 ~101 ~80 ~22 ~110 white_concrete
-fill ~91 ~22 ~101 ~91 ~22 ~110 white_concrete
-fill ~81 ~25 ~100 ~90 ~25 ~100 white_concrete
-fill ~81 ~25 ~111 ~90 ~25 ~111 white_concrete
-fill ~80 ~25 ~101 ~80 ~25 ~110 white_concrete
-fill ~91 ~25 ~101 ~91 ~25 ~110 white_concrete
-fill ~81 ~28 ~100 ~90 ~28 ~100 white_concrete
-fill ~81 ~28 ~111 ~90 ~28 ~111 white_concrete
-fill ~80 ~28 ~101 ~80 ~28 ~110 white_concrete
-fill ~91 ~28 ~101 ~91 ~28 ~110 white_concrete
-fill ~81 ~31 ~100 ~90 ~31 ~100 white_concrete
-fill ~81 ~31 ~111 ~90 ~31 ~111 white_concrete
-fill ~80 ~31 ~101 ~80 ~31 ~110 white_concrete
-fill ~91 ~31 ~101 ~91 ~31 ~110 white_concrete
-fill ~81 ~34 ~100 ~90 ~34 ~100 white_concrete
-fill ~81 ~34 ~111 ~90 ~34 ~111 white_concrete
-fill ~80 ~34 ~101 ~80 ~34 ~110 white_concrete
-fill ~91 ~34 ~101 ~91 ~34 ~110 white_concrete
-fill ~81 ~37 ~100 ~90 ~37 ~100 white_concrete
-fill ~81 ~37 ~111 ~90 ~37 ~111 white_concrete
-fill ~80 ~37 ~101 ~80 ~37 ~110 white_concrete
-fill ~91 ~37 ~101 ~91 ~37 ~110 white_concrete
-fill ~81 ~40 ~100 ~90 ~40 ~100 white_concrete
-fill ~81 ~40 ~111 ~90 ~40 ~111 white_concrete
-fill ~80 ~40 ~101 ~80 ~40 ~110 white_concrete
-fill ~91 ~40 ~101 ~91 ~40 ~110 white_concrete
-fill ~81 ~43 ~100 ~90 ~43 ~100 white_concrete
-fill ~81 ~43 ~111 ~90 ~43 ~111 white_concrete
-fill ~80 ~43 ~101 ~80 ~43 ~110 white_concrete
-fill ~91 ~43 ~101 ~91 ~43 ~110 white_concrete
-fill ~81 ~46 ~100 ~90 ~46 ~100 white_concrete
-fill ~81 ~46 ~111 ~90 ~46 ~111 white_concrete
-fill ~80 ~46 ~101 ~80 ~46 ~110 white_concrete
-fill ~91 ~46 ~101 ~91 ~46 ~110 white_concrete
-fill ~81 ~49 ~100 ~90 ~49 ~100 white_concrete
-fill ~81 ~49 ~111 ~90 ~49 ~111 white_concrete
-fill ~80 ~49 ~101 ~80 ~49 ~110 white_concrete
-fill ~91 ~49 ~101 ~91 ~49 ~110 white_concrete
-fill ~81 ~52 ~100 ~90 ~52 ~100 white_concrete
-fill ~81 ~52 ~111 ~90 ~52 ~111 white_concrete
-fill ~80 ~52 ~101 ~80 ~52 ~110 white_concrete
-fill ~91 ~52 ~101 ~91 ~52 ~110 white_concrete
-fill ~81 ~55 ~100 ~90 ~55 ~100 white_concrete
-fill ~81 ~55 ~111 ~90 ~55 ~111 white_concrete
-fill ~80 ~55 ~101 ~80 ~55 ~110 white_concrete
-fill ~91 ~55 ~101 ~91 ~55 ~110 white_concrete
-fill ~81 ~58 ~100 ~90 ~58 ~100 white_concrete
-fill ~81 ~58 ~111 ~90 ~58 ~111 white_concrete
-fill ~80 ~58 ~101 ~80 ~58 ~110 white_concrete
-fill ~91 ~58 ~101 ~91 ~58 ~110 white_concrete
-fill ~81 ~61 ~100 ~90 ~61 ~100 white_concrete
-fill ~81 ~61 ~111 ~90 ~61 ~111 white_concrete
-fill ~80 ~61 ~101 ~80 ~61 ~110 white_concrete
-fill ~91 ~61 ~101 ~91 ~61 ~110 white_concrete
-fill ~81 ~64 ~100 ~90 ~64 ~100 white_concrete
-fill ~81 ~64 ~111 ~90 ~64 ~111 white_concrete
-fill ~80 ~64 ~101 ~80 ~64 ~110 white_concrete
-fill ~91 ~64 ~101 ~91 ~64 ~110 white_concrete
-fill ~81 ~67 ~100 ~90 ~67 ~100 white_concrete
-fill ~81 ~67 ~111 ~90 ~67 ~111 white_concrete
-fill ~80 ~67 ~101 ~80 ~67 ~110 white_concrete
-fill ~91 ~67 ~101 ~91 ~67 ~110 white_concrete
-fill ~81 ~70 ~100 ~90 ~70 ~100 white_concrete
-fill ~81 ~70 ~111 ~90 ~70 ~111 white_concrete
-fill ~80 ~70 ~101 ~80 ~70 ~110 white_concrete
-fill ~91 ~70 ~101 ~91 ~70 ~110 white_concrete
-fill ~80 ~72 ~100 ~91 ~72 ~111 white_concrete
-fill ~82 ~73 ~102 ~89 ~82 ~109 white_concrete hollow
-fill ~83 ~74 ~102 ~88 ~81 ~102 glass
-fill ~83 ~74 ~109 ~88 ~81 ~109 glass
-fill ~82 ~74 ~103 ~82 ~81 ~108 glass
-fill ~89 ~74 ~103 ~89 ~81 ~108 glass
-fill ~83 ~76 ~102 ~88 ~76 ~102 white_concrete
-fill ~83 ~76 ~109 ~88 ~76 ~109 white_concrete
-fill ~82 ~76 ~103 ~82 ~76 ~108 white_concrete
-fill ~89 ~76 ~103 ~89 ~76 ~108 white_concrete
-fill ~83 ~79 ~102 ~88 ~79 ~102 white_concrete
-fill ~83 ~79 ~109 ~88 ~79 ~109 white_concrete
-fill ~82 ~79 ~103 ~82 ~79 ~108 white_concrete
-fill ~89 ~79 ~103 ~89 ~79 ~108 white_concrete
-fill ~82 ~82 ~102 ~89 ~82 ~109 white_concrete
-fill ~85 ~1 ~111 ~86 ~2 ~111 air
-fill ~85 ~83 ~105 ~85 ~86 ~105 iron_bars
-fill ~101 ~1 ~101 ~110 ~78 ~110 black_concrete hollow
-fill ~102 ~2 ~101 ~109 ~77 ~101 glass
-fill ~102 ~2 ~110 ~109 ~77 ~110 glass
-fill ~101 ~2 ~102 ~101 ~77 ~109 glass
-fill ~110 ~2 ~102 ~110 ~77 ~109 glass
-fill ~102 ~4 ~101 ~109 ~4 ~101 black_concrete
-fill ~102 ~4 ~110 ~109 ~4 ~110 black_concrete
-fill ~101 ~4 ~102 ~101 ~4 ~109 black_concrete
-fill ~110 ~4 ~102 ~110 ~4 ~109 black_concrete
-fill ~102 ~7 ~101 ~109 ~7 ~101 black_concrete
-fill ~102 ~7 ~110 ~109 ~7 ~110 black_concrete
-fill ~101 ~7 ~102 ~101 ~7 ~109 black_concrete
-fill ~110 ~7 ~102 ~110 ~7 ~109 black_concrete
-fill ~102 ~10 ~101 ~109 ~10 ~101 black_concrete
-fill ~102 ~10 ~110 ~109 ~10 ~110 black_concrete
-fill ~101 ~10 ~102 ~101 ~10 ~109 black_concrete
-fill ~110 ~10 ~102 ~110 ~10 ~109 black_concrete
-fill ~102 ~13 ~101 ~109 ~13 ~101 black_concrete
-fill ~102 ~13 ~110 ~109 ~13 ~110 black_concrete
-fill ~101 ~13 ~102 ~101 ~13 ~109 black_concrete
-fill ~110 ~13 ~102 ~110 ~13 ~109 black_concrete
-fill ~102 ~16 ~101 ~109 ~16 ~101 black_concrete
-fill ~102 ~16 ~110 ~109 ~16 ~110 black_concrete
-fill ~101 ~16 ~102 ~101 ~16 ~109 black_concrete
-fill ~110 ~16 ~102 ~110 ~16 ~109 black_concrete
-fill ~102 ~19 ~101 ~109 ~19 ~101 black_concrete
-fill ~102 ~19 ~110 ~109 ~19 ~110 black_concrete
-fill ~101 ~19 ~102 ~101 ~19 ~109 black_concrete
-fill ~110 ~19 ~102 ~110 ~19 ~109 black_concrete
-fill ~102 ~22 ~101 ~109 ~22 ~101 black_concrete
-fill ~102 ~22 ~110 ~109 ~22 ~110 black_concrete
-fill ~101 ~22 ~102 ~101 ~22 ~109 black_concrete
-fill ~110 ~22 ~102 ~110 ~22 ~109 black_concrete
-fill ~102 ~25 ~101 ~109 ~25 ~101 black_concrete
-fill ~102 ~25 ~110 ~109 ~25 ~110 black_concrete
-fill ~101 ~25 ~102 ~101 ~25 ~109 black_concrete
-fill ~110 ~25 ~102 ~110 ~25 ~109 black_concrete
-fill ~102 ~28 ~101 ~109 ~28 ~101 black_concrete
-fill ~102 ~28 ~110 ~109 ~28 ~110 black_concrete
-fill ~101 ~28 ~102 ~101 ~28 ~109 black_concrete
-fill ~110 ~28 ~102 ~110 ~28 ~109 black_concrete
-fill ~102 ~31 ~101 ~109 ~31 ~101 black_concrete
-fill ~102 ~31 ~110 ~109 ~31 ~110 black_concrete
-fill ~101 ~31 ~102 ~101 ~31 ~109 black_concrete
-fill ~110 ~31 ~102 ~110 ~31 ~109 black_concrete
-fill ~102 ~34 ~101 ~109 ~34 ~101 black_concrete
-fill ~102 ~34 ~110 ~109 ~34 ~110 black_concrete
-fill ~101 ~34 ~102 ~101 ~34 ~109 black_concrete
-fill ~110 ~34 ~102 ~110 ~34 ~109 black_concrete
-fill ~102 ~37 ~101 ~109 ~37 ~101 black_concrete
-fill ~102 ~37 ~110 ~109 ~37 ~110 black_concrete
-fill ~101 ~37 ~102 ~101 ~37 ~109 black_concrete
-fill ~110 ~37 ~102 ~110 ~37 ~109 black_concrete
-fill ~102 ~40 ~101 ~109 ~40 ~101 black_concrete
-fill ~102 ~40 ~110 ~109 ~40 ~110 black_concrete
-fill ~101 ~40 ~102 ~101 ~40 ~109 black_concrete
-fill ~110 ~40 ~102 ~110 ~40 ~109 black_concrete
-fill ~102 ~43 ~101 ~109 ~43 ~101 black_concrete
-fill ~102 ~43 ~110 ~109 ~43 ~110 black_concrete
-fill ~101 ~43 ~102 ~101 ~43 ~109 black_concrete
-fill ~110 ~43 ~102 ~110 ~43 ~109 black_concrete
-fill ~102 ~46 ~101 ~109 ~46 ~101 black_concrete
-fill ~102 ~46 ~110 ~109 ~46 ~110 black_concrete
-fill ~101 ~46 ~102 ~101 ~46 ~109 black_concrete
-fill ~110 ~46 ~102 ~110 ~46 ~109 black_concrete
-fill ~102 ~49 ~101 ~109 ~49 ~101 black_concrete
-fill ~102 ~49 ~110 ~109 ~49 ~110 black_concrete
-fill ~101 ~49 ~102 ~101 ~49 ~109 black_concrete
-fill ~110 ~49 ~102 ~110 ~49 ~109 black_concrete
-fill ~102 ~52 ~101 ~109 ~52 ~101 black_concrete
-fill ~102 ~52 ~110 ~109 ~52 ~110 black_concrete
-fill ~101 ~52 ~102 ~101 ~52 ~109 black_concrete
-fill ~110 ~52 ~102 ~110 ~52 ~109 black_concrete
-fill ~102 ~55 ~101 ~109 ~55 ~101 black_concrete
-fill ~102 ~55 ~110 ~109 ~55 ~110 black_concrete
-fill ~101 ~55 ~102 ~101 ~55 ~109 black_concrete
-fill ~110 ~55 ~102 ~110 ~55 ~109 black_concrete
-fill ~102 ~58 ~101 ~109 ~58 ~101 black_concrete
-fill ~102 ~58 ~110 ~109 ~58 ~110 black_concrete
-fill ~101 ~58 ~102 ~101 ~58 ~109 black_concrete
-fill ~110 ~58 ~102 ~110 ~58 ~109 black_concrete
-fill ~102 ~61 ~101 ~109 ~61 ~101 black_concrete
-fill ~102 ~61 ~110 ~109 ~61 ~110 black_concrete
-fill ~101 ~61 ~102 ~101 ~61 ~109 black_concrete
-fill ~110 ~61 ~102 ~110 ~61 ~109 black_concrete
-fill ~102 ~64 ~101 ~109 ~64 ~101 black_concrete
-fill ~102 ~64 ~110 ~109 ~64 ~110 black_concrete
-fill ~101 ~64 ~102 ~101 ~64 ~109 black_concrete
-fill ~110 ~64 ~102 ~110 ~64 ~109 black_concrete
-fill ~102 ~67 ~101 ~109 ~67 ~101 black_concrete
-fill ~102 ~67 ~110 ~109 ~67 ~110 black_concrete
-fill ~101 ~67 ~102 ~101 ~67 ~109 black_concrete
-fill ~110 ~67 ~102 ~110 ~67 ~109 black_concrete
-fill ~102 ~70 ~101 ~109 ~70 ~101 black_concrete
-fill ~102 ~70 ~110 ~109 ~70 ~110 black_concrete
-fill ~101 ~70 ~102 ~101 ~70 ~109 black_concrete
-fill ~110 ~70 ~102 ~110 ~70 ~109 black_concrete
-fill ~102 ~73 ~101 ~109 ~73 ~101 black_concrete
-fill ~102 ~73 ~110 ~109 ~73 ~110 black_concrete
-fill ~101 ~73 ~102 ~101 ~73 ~109 black_concrete
-fill ~110 ~73 ~102 ~110 ~73 ~109 black_concrete
-fill ~102 ~76 ~101 ~109 ~76 ~101 black_concrete
-fill ~102 ~76 ~110 ~109 ~76 ~110 black_concrete
-fill ~101 ~76 ~102 ~101 ~76 ~109 black_concrete
-fill ~110 ~76 ~102 ~110 ~76 ~109 black_concrete
-fill ~101 ~78 ~101 ~110 ~78 ~110 black_concrete
-fill ~103 ~79 ~103 ~108 ~90 ~108 black_concrete hollow
-fill ~104 ~80 ~103 ~107 ~89 ~103 glass
-fill ~104 ~80 ~108 ~107 ~89 ~108 glass
-fill ~103 ~80 ~104 ~103 ~89 ~107 glass
-fill ~108 ~80 ~104 ~108 ~89 ~107 glass
-fill ~104 ~82 ~103 ~107 ~82 ~103 black_concrete
-fill ~104 ~82 ~108 ~107 ~82 ~108 black_concrete
-fill ~103 ~82 ~104 ~103 ~82 ~107 black_concrete
-fill ~108 ~82 ~104 ~108 ~82 ~107 black_concrete
-fill ~104 ~85 ~103 ~107 ~85 ~103 black_concrete
-fill ~104 ~85 ~108 ~107 ~85 ~108 black_concrete
-fill ~103 ~85 ~104 ~103 ~85 ~107 black_concrete
-fill ~108 ~85 ~104 ~108 ~85 ~107 black_concrete
-fill ~104 ~88 ~103 ~107 ~88 ~103 black_concrete
-fill ~104 ~88 ~108 ~107 ~88 ~108 black_concrete
-fill ~103 ~88 ~104 ~103 ~88 ~107 black_concrete
-fill ~108 ~88 ~104 ~108 ~88 ~107 black_concrete
-fill ~103 ~90 ~103 ~108 ~90 ~108 black_concrete
-fill ~105 ~1 ~110 ~106 ~2 ~110 air
-fill ~120 ~1 ~100 ~131 ~64 ~111 white_concrete hollow
-fill ~121 ~2 ~100 ~130 ~63 ~100 glass
-fill ~121 ~2 ~111 ~130 ~63 ~111 glass
-fill ~120 ~2 ~101 ~120 ~63 ~110 glass
-fill ~131 ~2 ~101 ~131 ~63 ~110 glass
-fill ~121 ~4 ~100 ~130 ~4 ~100 white_concrete
-fill ~121 ~4 ~111 ~130 ~4 ~111 white_concrete
-fill ~120 ~4 ~101 ~120 ~4 ~110 white_concrete
-fill ~131 ~4 ~101 ~131 ~4 ~110 white_concrete
-fill ~121 ~7 ~100 ~130 ~7 ~100 white_concrete
-fill ~121 ~7 ~111 ~130 ~7 ~111 white_concrete
-fill ~120 ~7 ~101 ~120 ~7 ~110 white_concrete
-fill ~131 ~7 ~101 ~131 ~7 ~110 white_concrete
-fill ~121 ~10 ~100 ~130 ~10 ~100 white_concrete
-fill ~121 ~10 ~111 ~130 ~10 ~111 white_concrete
-fill ~120 ~10 ~101 ~120 ~10 ~110 white_concrete
-fill ~131 ~10 ~101 ~131 ~10 ~110 white_concrete
-fill ~121 ~13 ~100 ~130 ~13 ~100 white_concrete
-fill ~121 ~13 ~111 ~130 ~13 ~111 white_concrete
-fill ~120 ~13 ~101 ~120 ~13 ~110 white_concrete
-fill ~131 ~13 ~101 ~131 ~13 ~110 white_concrete
-fill ~121 ~16 ~100 ~130 ~16 ~100 white_concrete
-fill ~121 ~16 ~111 ~130 ~16 ~111 white_concrete
-fill ~120 ~16 ~101 ~120 ~16 ~110 white_concrete
-fill ~131 ~16 ~101 ~131 ~16 ~110 white_concrete
-fill ~121 ~19 ~100 ~130 ~19 ~100 white_concrete
-fill ~121 ~19 ~111 ~130 ~19 ~111 white_concrete
-fill ~120 ~19 ~101 ~120 ~19 ~110 white_concrete
-fill ~131 ~19 ~101 ~131 ~19 ~110 white_concrete
-fill ~121 ~22 ~100 ~130 ~22 ~100 white_concrete
-fill ~121 ~22 ~111 ~130 ~22 ~111 white_concrete
-fill ~120 ~22 ~101 ~120 ~22 ~110 white_concrete
-fill ~131 ~22 ~101 ~131 ~22 ~110 white_concrete
-fill ~121 ~25 ~100 ~130 ~25 ~100 white_concrete
-fill ~121 ~25 ~111 ~130 ~25 ~111 white_concrete
-fill ~120 ~25 ~101 ~120 ~25 ~110 white_concrete
-fill ~131 ~25 ~101 ~131 ~25 ~110 white_concrete
-fill ~121 ~28 ~100 ~130 ~28 ~100 white_concrete
-fill ~121 ~28 ~111 ~130 ~28 ~111 white_concrete
-fill ~120 ~28 ~101 ~120 ~28 ~110 white_concrete
-fill ~131 ~28 ~101 ~131 ~28 ~110 white_concrete
-fill ~121 ~31 ~100 ~130 ~31 ~100 white_concrete
-fill ~121 ~31 ~111 ~130 ~31 ~111 white_concrete
-fill ~120 ~31 ~101 ~120 ~31 ~110 white_concrete
-fill ~131 ~31 ~101 ~131 ~31 ~110 white_concrete
-fill ~121 ~34 ~100 ~130 ~34 ~100 white_concrete
-fill ~121 ~34 ~111 ~130 ~34 ~111 white_concrete
-fill ~120 ~34 ~101 ~120 ~34 ~110 white_concrete
-fill ~131 ~34 ~101 ~131 ~34 ~110 white_concrete
-fill ~121 ~37 ~100 ~130 ~37 ~100 white_concrete
-fill ~121 ~37 ~111 ~130 ~37 ~111 white_concrete
-fill ~120 ~37 ~101 ~120 ~37 ~110 white_concrete
-fill ~131 ~37 ~101 ~131 ~37 ~110 white_concrete
-fill ~121 ~40 ~100 ~130 ~40 ~100 white_concrete
-fill ~121 ~40 ~111 ~130 ~40 ~111 white_concrete
-fill ~120 ~40 ~101 ~120 ~40 ~110 white_concrete
-fill ~131 ~40 ~101 ~131 ~40 ~110 white_concrete
-fill ~121 ~43 ~100 ~130 ~43 ~100 white_concrete
-fill ~121 ~43 ~111 ~130 ~43 ~111 white_concrete
-fill ~120 ~43 ~101 ~120 ~43 ~110 white_concrete
-fill ~131 ~43 ~101 ~131 ~43 ~110 white_concrete
-fill ~121 ~46 ~100 ~130 ~46 ~100 white_concrete
-fill ~121 ~46 ~111 ~130 ~46 ~111 white_concrete
-fill ~120 ~46 ~101 ~120 ~46 ~110 white_concrete
-fill ~131 ~46 ~101 ~131 ~46 ~110 white_concrete
-fill ~121 ~49 ~100 ~130 ~49 ~100 white_concrete
-fill ~121 ~49 ~111 ~130 ~49 ~111 white_concrete
-fill ~120 ~49 ~101 ~120 ~49 ~110 white_concrete
-fill ~131 ~49 ~101 ~131 ~49 ~110 white_concrete
-fill ~121 ~52 ~100 ~130 ~52 ~100 white_concrete
-fill ~121 ~52 ~111 ~130 ~52 ~111 white_concrete
-fill ~120 ~52 ~101 ~120 ~52 ~110 white_concrete
-fill ~131 ~52 ~101 ~131 ~52 ~110 white_concrete
-fill ~121 ~55 ~100 ~130 ~55 ~100 white_concrete
-fill ~121 ~55 ~111 ~130 ~55 ~111 white_concrete
-fill ~120 ~55 ~101 ~120 ~55 ~110 white_concrete
-fill ~131 ~55 ~101 ~131 ~55 ~110 white_concrete
-fill ~121 ~58 ~100 ~130 ~58 ~100 white_concrete
-fill ~121 ~58 ~111 ~130 ~58 ~111 white_concrete
-fill ~120 ~58 ~101 ~120 ~58 ~110 white_concrete
-fill ~131 ~58 ~101 ~131 ~58 ~110 white_concrete
-fill ~121 ~61 ~100 ~130 ~61 ~100 white_concrete
-fill ~121 ~61 ~111 ~130 ~61 ~111 white_concrete
-fill ~120 ~61 ~101 ~120 ~61 ~110 white_concrete
-fill ~131 ~61 ~101 ~131 ~61 ~110 white_concrete
-fill ~120 ~64 ~100 ~131 ~64 ~111 white_concrete
-fill ~121 ~65 ~101 ~130 ~77 ~110 white_concrete hollow
-fill ~122 ~66 ~101 ~129 ~76 ~101 glass
-fill ~122 ~66 ~110 ~129 ~76 ~110 glass
-fill ~121 ~66 ~102 ~121 ~76 ~109 glass
-fill ~130 ~66 ~102 ~130 ~76 ~109 glass
-fill ~122 ~68 ~101 ~129 ~68 ~101 white_concrete
-fill ~122 ~68 ~110 ~129 ~68 ~110 white_concrete
-fill ~121 ~68 ~102 ~121 ~68 ~109 white_concrete
-fill ~130 ~68 ~102 ~130 ~68 ~109 white_concrete
-fill ~122 ~71 ~101 ~129 ~71 ~101 white_concrete
-fill ~122 ~71 ~110 ~129 ~71 ~110 white_concrete
-fill ~121 ~71 ~102 ~121 ~71 ~109 white_concrete
-fill ~130 ~71 ~102 ~130 ~71 ~109 white_concrete
-fill ~122 ~74 ~101 ~129 ~74 ~101 white_concrete
-fill ~122 ~74 ~110 ~129 ~74 ~110 white_concrete
-fill ~121 ~74 ~102 ~121 ~74 ~109 white_concrete
-fill ~130 ~74 ~102 ~130 ~74 ~109 white_concrete
-fill ~121 ~77 ~101 ~130 ~77 ~110 white_concrete
-fill ~123 ~78 ~103 ~128 ~90 ~108 white_concrete hollow
-fill ~124 ~79 ~103 ~127 ~89 ~103 glass
-fill ~124 ~79 ~108 ~127 ~89 ~108 glass
-fill ~123 ~79 ~104 ~123 ~89 ~107 glass
-fill ~128 ~79 ~104 ~128 ~89 ~107 glass
-fill ~124 ~81 ~103 ~127 ~81 ~103 white_concrete
-fill ~124 ~81 ~108 ~127 ~81 ~108 white_concrete
-fill ~123 ~81 ~104 ~123 ~81 ~107 white_concrete
-fill ~128 ~81 ~104 ~128 ~81 ~107 white_concrete
-fill ~124 ~84 ~103 ~127 ~84 ~103 white_concrete
-fill ~124 ~84 ~108 ~127 ~84 ~108 white_concrete
-fill ~123 ~84 ~104 ~123 ~84 ~107 white_concrete
-fill ~128 ~84 ~104 ~128 ~84 ~107 white_concrete
-fill ~124 ~87 ~103 ~127 ~87 ~103 white_concrete
-fill ~124 ~87 ~108 ~127 ~87 ~108 white_concrete
-fill ~123 ~87 ~104 ~123 ~87 ~107 white_concrete
-fill ~128 ~87 ~104 ~128 ~87 ~107 white_concrete
-fill ~123 ~90 ~103 ~128 ~90 ~108 white_concrete
-fill ~125 ~1 ~111 ~126 ~2 ~111 air
-fill ~141 ~1 ~101 ~150 ~81 ~110 cyan_concrete hollow
-fill ~142 ~2 ~101 ~149 ~80 ~101 glass
-fill ~142 ~2 ~110 ~149 ~80 ~110 glass
-fill ~141 ~2 ~102 ~141 ~80 ~109 glass
-fill ~150 ~2 ~102 ~150 ~80 ~109 glass
-fill ~142 ~4 ~101 ~149 ~4 ~101 cyan_concrete
-fill ~142 ~4 ~110 ~149 ~4 ~110 cyan_concrete
-fill ~141 ~4 ~102 ~141 ~4 ~109 cyan_concrete
-fill ~150 ~4 ~102 ~150 ~4 ~109 cyan_concrete
-fill ~142 ~7 ~101 ~149 ~7 ~101 cyan_concrete
-fill ~142 ~7 ~110 ~149 ~7 ~110 cyan_concrete
-fill ~141 ~7 ~102 ~141 ~7 ~109 cyan_concrete
-fill ~150 ~7 ~102 ~150 ~7 ~109 cyan_concrete
-fill ~142 ~10 ~101 ~149 ~10 ~101 cyan_concrete
-fill ~142 ~10 ~110 ~149 ~10 ~110 cyan_concrete
-fill ~141 ~10 ~102 ~141 ~10 ~109 cyan_concrete
-fill ~150 ~10 ~102 ~150 ~10 ~109 cyan_concrete
-fill ~142 ~13 ~101 ~149 ~13 ~101 cyan_concrete
-fill ~142 ~13 ~110 ~149 ~13 ~110 cyan_concrete
-fill ~141 ~13 ~102 ~141 ~13 ~109 cyan_concrete
-fill ~150 ~13 ~102 ~150 ~13 ~109 cyan_concrete
-fill ~142 ~16 ~101 ~149 ~16 ~101 cyan_concrete
-fill ~142 ~16 ~110 ~149 ~16 ~110 cyan_concrete
-fill ~141 ~16 ~102 ~141 ~16 ~109 cyan_concrete
-fill ~150 ~16 ~102 ~150 ~16 ~109 cyan_concrete
-fill ~142 ~19 ~101 ~149 ~19 ~101 cyan_concrete
-fill ~142 ~19 ~110 ~149 ~19 ~110 cyan_concrete
-fill ~141 ~19 ~102 ~141 ~19 ~109 cyan_concrete
-fill ~150 ~19 ~102 ~150 ~19 ~109 cyan_concrete
-fill ~142 ~22 ~101 ~149 ~22 ~101 cyan_concrete
-fill ~142 ~22 ~110 ~149 ~22 ~110 cyan_concrete
-fill ~141 ~22 ~102 ~141 ~22 ~109 cyan_concrete
-fill ~150 ~22 ~102 ~150 ~22 ~109 cyan_concrete
-fill ~142 ~25 ~101 ~149 ~25 ~101 cyan_concrete
-fill ~142 ~25 ~110 ~149 ~25 ~110 cyan_concrete
-fill ~141 ~25 ~102 ~141 ~25 ~109 cyan_concrete
-fill ~150 ~25 ~102 ~150 ~25 ~109 cyan_concrete
-fill ~142 ~28 ~101 ~149 ~28 ~101 cyan_concrete
-fill ~142 ~28 ~110 ~149 ~28 ~110 cyan_concrete
-fill ~141 ~28 ~102 ~141 ~28 ~109 cyan_concrete
-fill ~150 ~28 ~102 ~150 ~28 ~109 cyan_concrete
-fill ~142 ~31 ~101 ~149 ~31 ~101 cyan_concrete
-fill ~142 ~31 ~110 ~149 ~31 ~110 cyan_concrete
-fill ~141 ~31 ~102 ~141 ~31 ~109 cyan_concrete
-fill ~150 ~31 ~102 ~150 ~31 ~109 cyan_concrete
-fill ~142 ~34 ~101 ~149 ~34 ~101 cyan_concrete
-fill ~142 ~34 ~110 ~149 ~34 ~110 cyan_concrete
-fill ~141 ~34 ~102 ~141 ~34 ~109 cyan_concrete
-fill ~150 ~34 ~102 ~150 ~34 ~109 cyan_concrete
-fill ~142 ~37 ~101 ~149 ~37 ~101 cyan_concrete
-fill ~142 ~37 ~110 ~149 ~37 ~110 cyan_concrete
-fill ~141 ~37 ~102 ~141 ~37 ~109 cyan_concrete
-fill ~150 ~37 ~102 ~150 ~37 ~109 cyan_concrete
-fill ~142 ~40 ~101 ~149 ~40 ~101 cyan_concrete
-fill ~142 ~40 ~110 ~149 ~40 ~110 cyan_concrete
-fill ~141 ~40 ~102 ~141 ~40 ~109 cyan_concrete
-fill ~150 ~40 ~102 ~150 ~40 ~109 cyan_concrete
-fill ~142 ~43 ~101 ~149 ~43 ~101 cyan_concrete
-fill ~142 ~43 ~110 ~149 ~43 ~110 cyan_concrete
-fill ~141 ~43 ~102 ~141 ~43 ~109 cyan_concrete
-fill ~150 ~43 ~102 ~150 ~43 ~109 cyan_concrete
-fill ~142 ~46 ~101 ~149 ~46 ~101 cyan_concrete
-fill ~142 ~46 ~110 ~149 ~46 ~110 cyan_concrete
-fill ~141 ~46 ~102 ~141 ~46 ~109 cyan_concrete
-fill ~150 ~46 ~102 ~150 ~46 ~109 cyan_concrete
-fill ~142 ~49 ~101 ~149 ~49 ~101 cyan_concrete
-fill ~142 ~49 ~110 ~149 ~49 ~110 cyan_concrete
-fill ~141 ~49 ~102 ~141 ~49 ~109 cyan_concrete
-fill ~150 ~49 ~102 ~150 ~49 ~109 cyan_concrete
-fill ~142 ~52 ~101 ~149 ~52 ~101 cyan_concrete
-fill ~142 ~52 ~110 ~149 ~52 ~110 cyan_concrete
-fill ~141 ~52 ~102 ~141 ~52 ~109 cyan_concrete
-fill ~150 ~52 ~102 ~150 ~52 ~109 cyan_concrete
-fill ~142 ~55 ~101 ~149 ~55 ~101 cyan_concrete
-fill ~142 ~55 ~110 ~149 ~55 ~110 cyan_concrete
-fill ~141 ~55 ~102 ~141 ~55 ~109 cyan_concrete
-fill ~150 ~55 ~102 ~150 ~55 ~109 cyan_concrete
-fill ~142 ~58 ~101 ~149 ~58 ~101 cyan_concrete
-fill ~142 ~58 ~110 ~149 ~58 ~110 cyan_concrete
-fill ~141 ~58 ~102 ~141 ~58 ~109 cyan_concrete
-fill ~150 ~58 ~102 ~150 ~58 ~109 cyan_concrete
-fill ~142 ~61 ~101 ~149 ~61 ~101 cyan_concrete
-fill ~142 ~61 ~110 ~149 ~61 ~110 cyan_concrete
-fill ~141 ~61 ~102 ~141 ~61 ~109 cyan_concrete
-fill ~150 ~61 ~102 ~150 ~61 ~109 cyan_concrete
-fill ~142 ~64 ~101 ~149 ~64 ~101 cyan_concrete
-fill ~142 ~64 ~110 ~149 ~64 ~110 cyan_concrete
-fill ~141 ~64 ~102 ~141 ~64 ~109 cyan_concrete
-fill ~150 ~64 ~102 ~150 ~64 ~109 cyan_concrete
-fill ~142 ~67 ~101 ~149 ~67 ~101 cyan_concrete
-fill ~142 ~67 ~110 ~149 ~67 ~110 cyan_concrete
-fill ~141 ~67 ~102 ~141 ~67 ~109 cyan_concrete
-fill ~150 ~67 ~102 ~150 ~67 ~109 cyan_concrete
-fill ~142 ~70 ~101 ~149 ~70 ~101 cyan_concrete
-fill ~142 ~70 ~110 ~149 ~70 ~110 cyan_concrete
-fill ~141 ~70 ~102 ~141 ~70 ~109 cyan_concrete
-fill ~150 ~70 ~102 ~150 ~70 ~109 cyan_concrete
-fill ~142 ~73 ~101 ~149 ~73 ~101 cyan_concrete
-fill ~142 ~73 ~110 ~149 ~73 ~110 cyan_concrete
-fill ~141 ~73 ~102 ~141 ~73 ~109 cyan_concrete
-fill ~150 ~73 ~102 ~150 ~73 ~109 cyan_concrete
-fill ~142 ~76 ~101 ~149 ~76 ~101 cyan_concrete
-fill ~142 ~76 ~110 ~149 ~76 ~110 cyan_concrete
-fill ~141 ~76 ~102 ~141 ~76 ~109 cyan_concrete
-fill ~150 ~76 ~102 ~150 ~76 ~109 cyan_concrete
-fill ~142 ~79 ~101 ~149 ~79 ~101 cyan_concrete
-fill ~142 ~79 ~110 ~149 ~79 ~110 cyan_concrete
-fill ~141 ~79 ~102 ~141 ~79 ~109 cyan_concrete
-fill ~150 ~79 ~102 ~150 ~79 ~109 cyan_concrete
-fill ~141 ~81 ~101 ~150 ~81 ~110 cyan_concrete
-fill ~145 ~1 ~110 ~146 ~2 ~110 air
-fill ~145 ~82 ~105 ~145 ~85 ~105 iron_bars
+fill ^101 ~1 ^21 ^110 ~1 ^30 light_gray_concrete
+fill ^101 ~85 ^21 ^110 ~85 ^30 light_gray_concrete
+fill ^101 ~1 ^21 ^110 ~85 ^21 light_gray_concrete
+fill ^101 ~1 ^30 ^110 ~85 ^30 light_gray_concrete
+fill ^101 ~1 ^21 ^101 ~85 ^30 light_gray_concrete
+fill ^110 ~1 ^21 ^110 ~85 ^30 light_gray_concrete
+fill ^102 ~2 ^21 ^109 ~84 ^21 glass
+fill ^102 ~2 ^30 ^109 ~84 ^30 glass
+fill ^101 ~2 ^22 ^101 ~84 ^29 glass
+fill ^110 ~2 ^22 ^110 ~84 ^29 glass
+fill ^102 ~7 ^21 ^109 ~7 ^21 light_gray_concrete
+fill ^102 ~7 ^30 ^109 ~7 ^30 light_gray_concrete
+fill ^101 ~7 ^22 ^101 ~7 ^29 light_gray_concrete
+fill ^110 ~7 ^22 ^110 ~7 ^29 light_gray_concrete
+fill ^102 ~13 ^21 ^109 ~13 ^21 light_gray_concrete
+fill ^102 ~13 ^30 ^109 ~13 ^30 light_gray_concrete
+fill ^101 ~13 ^22 ^101 ~13 ^29 light_gray_concrete
+fill ^110 ~13 ^22 ^110 ~13 ^29 light_gray_concrete
+fill ^102 ~19 ^21 ^109 ~19 ^21 light_gray_concrete
+fill ^102 ~19 ^30 ^109 ~19 ^30 light_gray_concrete
+fill ^101 ~19 ^22 ^101 ~19 ^29 light_gray_concrete
+fill ^110 ~19 ^22 ^110 ~19 ^29 light_gray_concrete
+fill ^102 ~25 ^21 ^109 ~25 ^21 light_gray_concrete
+fill ^102 ~25 ^30 ^109 ~25 ^30 light_gray_concrete
+fill ^101 ~25 ^22 ^101 ~25 ^29 light_gray_concrete
+fill ^110 ~25 ^22 ^110 ~25 ^29 light_gray_concrete
+fill ^102 ~31 ^21 ^109 ~31 ^21 light_gray_concrete
+fill ^102 ~31 ^30 ^109 ~31 ^30 light_gray_concrete
+fill ^101 ~31 ^22 ^101 ~31 ^29 light_gray_concrete
+fill ^110 ~31 ^22 ^110 ~31 ^29 light_gray_concrete
+fill ^102 ~37 ^21 ^109 ~37 ^21 light_gray_concrete
+fill ^102 ~37 ^30 ^109 ~37 ^30 light_gray_concrete
+fill ^101 ~37 ^22 ^101 ~37 ^29 light_gray_concrete
+fill ^110 ~37 ^22 ^110 ~37 ^29 light_gray_concrete
+fill ^102 ~43 ^21 ^109 ~43 ^21 light_gray_concrete
+fill ^102 ~43 ^30 ^109 ~43 ^30 light_gray_concrete
+fill ^101 ~43 ^22 ^101 ~43 ^29 light_gray_concrete
+fill ^110 ~43 ^22 ^110 ~43 ^29 light_gray_concrete
+fill ^102 ~49 ^21 ^109 ~49 ^21 light_gray_concrete
+fill ^102 ~49 ^30 ^109 ~49 ^30 light_gray_concrete
+fill ^101 ~49 ^22 ^101 ~49 ^29 light_gray_concrete
+fill ^110 ~49 ^22 ^110 ~49 ^29 light_gray_concrete
+fill ^102 ~55 ^21 ^109 ~55 ^21 light_gray_concrete
+fill ^102 ~55 ^30 ^109 ~55 ^30 light_gray_concrete
+fill ^101 ~55 ^22 ^101 ~55 ^29 light_gray_concrete
+fill ^110 ~55 ^22 ^110 ~55 ^29 light_gray_concrete
+fill ^102 ~61 ^21 ^109 ~61 ^21 light_gray_concrete
+fill ^102 ~61 ^30 ^109 ~61 ^30 light_gray_concrete
+fill ^101 ~61 ^22 ^101 ~61 ^29 light_gray_concrete
+fill ^110 ~61 ^22 ^110 ~61 ^29 light_gray_concrete
+fill ^102 ~67 ^21 ^109 ~67 ^21 light_gray_concrete
+fill ^102 ~67 ^30 ^109 ~67 ^30 light_gray_concrete
+fill ^101 ~67 ^22 ^101 ~67 ^29 light_gray_concrete
+fill ^110 ~67 ^22 ^110 ~67 ^29 light_gray_concrete
+fill ^102 ~73 ^21 ^109 ~73 ^21 light_gray_concrete
+fill ^102 ~73 ^30 ^109 ~73 ^30 light_gray_concrete
+fill ^101 ~73 ^22 ^101 ~73 ^29 light_gray_concrete
+fill ^110 ~73 ^22 ^110 ~73 ^29 light_gray_concrete
+fill ^102 ~79 ^21 ^109 ~79 ^21 light_gray_concrete
+fill ^102 ~79 ^30 ^109 ~79 ^30 light_gray_concrete
+fill ^101 ~79 ^22 ^101 ~79 ^29 light_gray_concrete
+fill ^110 ~79 ^22 ^110 ~79 ^29 light_gray_concrete
+fill ^101 ~85 ^21 ^110 ~85 ^30 light_gray_concrete
+fill ^102 ~86 ^22 ^109 ~86 ^29 light_gray_concrete
+fill ^102 ~90 ^22 ^109 ~90 ^29 light_gray_concrete
+fill ^102 ~86 ^22 ^109 ~90 ^22 light_gray_concrete
+fill ^102 ~86 ^29 ^109 ~90 ^29 light_gray_concrete
+fill ^102 ~86 ^22 ^102 ~90 ^29 light_gray_concrete
+fill ^109 ~86 ^22 ^109 ~90 ^29 light_gray_concrete
+fill ^103 ~87 ^22 ^108 ~89 ^22 glass
+fill ^103 ~87 ^29 ^108 ~89 ^29 glass
+fill ^102 ~87 ^23 ^102 ~89 ^28 glass
+fill ^109 ~87 ^23 ^109 ~89 ^28 glass
+fill ^102 ~90 ^22 ^109 ~90 ^29 light_gray_concrete
+fill ^105 ~1 ^30 ^107 ~3 ^30 air
+fill ^105 ~1 ^28 ^107 ~3 ^29 air
+fill ^102 ~1 ^22 ^103 ~84 ^23 air
+fill ^102 ~1 ^22 ^102 ~1 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~2 ^22 ^103 ~2 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~3 ^23 ^103 ~3 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~4 ^23 ^102 ~4 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~5 ^22 ^102 ~5 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~6 ^22 ^103 ~6 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~7 ^23 ^103 ~7 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~8 ^23 ^102 ~8 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~9 ^22 ^102 ~9 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~10 ^22 ^103 ~10 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~11 ^23 ^103 ~11 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~12 ^23 ^102 ~12 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~13 ^22 ^102 ~13 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~14 ^22 ^103 ~14 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~15 ^23 ^103 ~15 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~16 ^23 ^102 ~16 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~17 ^22 ^102 ~17 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~18 ^22 ^103 ~18 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~19 ^23 ^103 ~19 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~20 ^23 ^102 ~20 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~21 ^22 ^102 ~21 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~22 ^22 ^103 ~22 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~23 ^23 ^103 ~23 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~24 ^23 ^102 ~24 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~25 ^22 ^102 ~25 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~26 ^22 ^103 ~26 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~27 ^23 ^103 ~27 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~28 ^23 ^102 ~28 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~29 ^22 ^102 ~29 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~30 ^22 ^103 ~30 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~31 ^23 ^103 ~31 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~32 ^23 ^102 ~32 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~33 ^22 ^102 ~33 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~34 ^22 ^103 ~34 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~35 ^23 ^103 ~35 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~36 ^23 ^102 ~36 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~37 ^22 ^102 ~37 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~38 ^22 ^103 ~38 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~39 ^23 ^103 ~39 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~40 ^23 ^102 ~40 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~41 ^22 ^102 ~41 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~42 ^22 ^103 ~42 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~43 ^23 ^103 ~43 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~44 ^23 ^102 ~44 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~45 ^22 ^102 ~45 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~46 ^22 ^103 ~46 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~47 ^23 ^103 ~47 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~48 ^23 ^102 ~48 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~49 ^22 ^102 ~49 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~50 ^22 ^103 ~50 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~51 ^23 ^103 ~51 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~52 ^23 ^102 ~52 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~53 ^22 ^102 ~53 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~54 ^22 ^103 ~54 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~55 ^23 ^103 ~55 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~56 ^23 ^102 ~56 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~57 ^22 ^102 ~57 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~58 ^22 ^103 ~58 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~59 ^23 ^103 ~59 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~60 ^23 ^102 ~60 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~61 ^22 ^102 ~61 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~62 ^22 ^103 ~62 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~63 ^23 ^103 ~63 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~64 ^23 ^102 ~64 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~65 ^22 ^102 ~65 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~66 ^22 ^103 ~66 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~67 ^23 ^103 ~67 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~68 ^23 ^102 ~68 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~69 ^22 ^102 ~69 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~70 ^22 ^103 ~70 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~71 ^23 ^103 ~71 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~72 ^23 ^102 ~72 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~73 ^22 ^102 ~73 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~74 ^22 ^103 ~74 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~75 ^23 ^103 ~75 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~76 ^23 ^102 ~76 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~77 ^22 ^102 ~77 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~78 ^22 ^103 ~78 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~79 ^23 ^103 ~79 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~80 ^23 ^102 ~80 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^102 ~81 ^22 ^102 ~81 ^22 stone_stairs ["weirdo_direction"=0,"upside_down_bit"=false]
+fill ^103 ~82 ^22 ^103 ~82 ^22 stone_stairs ["weirdo_direction"=2,"upside_down_bit"=false]
+fill ^103 ~83 ^23 ^103 ~83 ^23 stone_stairs ["weirdo_direction"=1,"upside_down_bit"=false]
+fill ^102 ~84 ^23 ^102 ~84 ^23 stone_stairs ["weirdo_direction"=3,"upside_down_bit"=false]
+fill ^104 ~1 ^22 ^104 ~2 ^23 air
+fill ^105 ~91 ^25 ^105 ~94 ^25 iron_bars
 function city_gen/buildings/b_12

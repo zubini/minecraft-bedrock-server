@@ -98,8 +98,10 @@ ssh -o StrictHostKeyChecking=accept-new "$TARGET" "sudo systemctl restart minecr
 
 log "Done."
 echo
-echo "Im Spiel (OP), an die SW-Ecke stellen:"
+echo "Im Spiel (OP): an die hintere linke Ecke stellen,"
+echo "dorthin schauen wo die Stadt hin soll (wächst vorne + rechts):"
 echo "  /function city_gen/start"
 echo "Undo:"
 echo "  /function city_gen/clear"
+echo "Details: gameplay/tipps.md"
 echo "Bei Bedarf neu joinen, falls Functions noch unbekannt sind."

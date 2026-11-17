@@ -6,10 +6,13 @@
  * 1) Wir berechnen ein Strassenraster und Hochhäuser (Zufall mit --seed).
  * 2) Daraus werden Minecraft-Befehle geschrieben (fill …).
  * 3) Die Befehle landen in .mcfunction-Dateien.
- * 4) Im Spiel: /function city_gen/start  (baut relativ zu deinem Standpunkt)
+ * 4) Im Spiel: hinschauen → /function city_gen/start (vorne + rechts)
  *
  * Aufruf:
- *   node gameplay/city/generate_city_pack.mjs --seed 42
+ *   node gameplay/city/generate_city_pack.mjs --seed 42 --size gross
+ *   node gameplay/city/generate_city_pack.mjs --seed 42 --size klein
+ *
+ * Grösse: klein = 60×60, gross = 120×120 (Default: gross)
  */
 
 import fs from "node:fs";
@@ -45,6 +48,12 @@ const FACADE_COLORS = [
   "cyan_concrete",
 ];
 
+/** Stadtgrösse in Blöcken (muss durch Zellgrösse 20 teilbar sein). */
+const SIZE_PRESETS = {
+  klein: 60,
+  gross: 120,
+};
+
 // ---------------------------------------------------------------------------
 // Hilfen: Zufall, Koordinaten, Dateien schreiben
 // ---------------------------------------------------------------------------
@@ -78,11 +87,12 @@ function createRng(seed) {
 }
 
 /**
- * Relative Minecraft-Koordinate.
- * ~0 ~5 ~10  = 0 nach Osten, 5 nach oben, 10 nach Süden – vom Spieler aus.
+ * Lokale Koordinate relativ zur Blickrichtung (^).
+ * ^x = rechts, ~y = oben (Welt), ^z = vorwärts.
+ * → Stadt wächst immer vor dir und nach rechts – Himmelsrichtung egal.
  */
 function at(x, y, z) {
-  return `~${x} ~${y} ~${z}`;
+  return `^${x} ~${y} ^${z}`;
 }
 
 /** Ein einzelner fill-Befehl. mode z.B. "hollow" = nur die Hülle. */
@@ -94,10 +104,11 @@ function fill(x1, y1, z1, x2, y2, z2, block, mode = "") {
 }
 
 /**
- * Wie fill(), aber splittet grosse Quader, falls > FILL_MAX_BLOCKS.
+ * Wie fill(), aber splittet grosse Quader, falls > maxBlocks.
  * Sonst schlägt der Befehl im Spiel fehl.
+ * maxBlocks kleiner wählen (z.B. Clear), wenn viele Blöcke wirklich ersetzt werden.
  */
-function fillLarge(x1, y1, z1, x2, y2, z2, block, mode = "") {
+function fillLarge(x1, y1, z1, x2, y2, z2, block, mode = "", maxBlocks = FILL_MAX_BLOCKS) {
   const commands = [];
 
   const yMin = Math.min(y1, y2);
@@ -111,15 +122,15 @@ function fillLarge(x1, y1, z1, x2, y2, z2, block, mode = "") {
   const depth = zMax - zMin + 1;
 
   // Wie breit darf ein Streifen in X sein?
-  const maxStripWidth = Math.max(1, Math.floor(FILL_MAX_BLOCKS / (height * depth)));
+  const maxStripWidth = Math.max(1, Math.floor(maxBlocks / (height * depth)));
 
   for (let x = xMin; x <= xMax; ) {
     const xEnd = Math.min(xMax, x + maxStripWidth - 1);
     const width = xEnd - x + 1;
 
     // Falls immer noch zu gross: zusätzlich in Z schneiden
-    if (width * height * depth > FILL_MAX_BLOCKS) {
-      const maxDepth = Math.max(1, Math.floor(FILL_MAX_BLOCKS / (width * height)));
+    if (width * height * depth > maxBlocks) {
+      const maxDepth = Math.max(1, Math.floor(maxBlocks / (width * height)));
       for (let z = zMin; z <= zMax; ) {
         const zEnd = Math.min(zMax, z + maxDepth - 1);
         commands.push(fill(x, yMin, z, xEnd, yMax, zEnd, block, mode));
@@ -231,16 +242,14 @@ function buildRoadCommands(size, lot, sidewalk, street) {
     commands.push(...fillLarge(0, 0, mid, size - 1, 0, mid, "white_concrete"));
   }
 
-  commands.push('tellraw @a {"rawtext":[{"text":"[city_gen] Strassen fertig – Hochhäuser …"}]}');
+  commands.push('tellraw @a {"rawtext":[{"text":"[city_gen] Strassen fertig."}]}');
   return commands;
 }
 
 /**
  * Ein Hochhaus auf einer Parzelle.
- * y=0 ist der Boden; das Haus geht von y=1 nach oben.
- *
- * Grundfläche (Grunddurchmesser): immer 10×10 oder 12×12,
- * zentriert auf der Parzelle (Parzelle muss mindestens 12×12 sein).
+ * y=0 = Boden/Strasse; Haus ab y=1.
+ * Grundfläche: 10×10 oder 12×12, zentriert.
  */
 function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   const lotWidth = lot.x1 - lot.x0 + 1;
@@ -251,7 +260,6 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
     );
   }
 
-  // Pro Turm: entweder 10×10 oder 12×12 Grundfläche
   const footprint = rng.pick([10, 12]);
   const insetX = Math.floor((lotWidth - footprint) / 2);
   const insetZ = Math.floor((lotDepth - footprint) / 2);
@@ -263,28 +271,35 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
 
   const height = rng.int(minHeight, maxHeight);
   const facade = rng.pick(FACADE_COLORS);
-  const bandEvery = rng.int(3, 5); // alle N Blöcke ein Beton-Gesims
-  const setbackCount = rng.int(0, 2); // 0–2 Verjüngungen nach oben
+  const bandEvery = rng.int(4, 6);
+  const setbackCount = rng.int(0, 2);
   const withAntenna = rng.random() < 0.45;
 
   const commands = [];
 
-  /** Ein Turmabschnitt: Hülle + Glasfassade + horizontale Bänder. */
+  /** Alle 4 Wände vollständig (Beton), dann Glasfenster, dann Gesimse. */
   function buildShaft(xa, za, xb, zb, yBottom, yTop) {
     if (xb < xa || zb < za || yTop < yBottom) return;
 
-    // Äussere Betonkiste, innen hohl
-    commands.push(fill(xa, yBottom, za, xb, yTop, zb, facade, "hollow"));
+    // Boden + Decke dieses Abschnitts
+    commands.push(fill(xa, yBottom, za, xb, yBottom, zb, facade));
+    commands.push(fill(xa, yTop, za, xb, yTop, zb, facade));
 
-    if (xb - xa < 2 || zb - za < 2 || yTop <= yBottom) return;
+    // Vier volle Wände (Ecken doppelt = egal)
+    commands.push(fill(xa, yBottom, za, xb, yTop, za, facade)); // Nord -Z
+    commands.push(fill(xa, yBottom, zb, xb, yTop, zb, facade)); // Süd +Z
+    commands.push(fill(xa, yBottom, za, xa, yTop, zb, facade)); // West -X
+    commands.push(fill(xb, yBottom, za, xb, yTop, zb, facade)); // Ost +X
 
-    // Vier Glaswände (Ecken bleiben Beton)
+    if (xb - xa < 2 || zb - za < 2 || yTop <= yBottom + 1) return;
+
+    // Glasfenster in allen 4 Fassaden (Ecken bleiben Beton)
     commands.push(fill(xa + 1, yBottom + 1, za, xb - 1, yTop - 1, za, "glass"));
     commands.push(fill(xa + 1, yBottom + 1, zb, xb - 1, yTop - 1, zb, "glass"));
     commands.push(fill(xa, yBottom + 1, za + 1, xa, yTop - 1, zb - 1, "glass"));
     commands.push(fill(xb, yBottom + 1, za + 1, xb, yTop - 1, zb - 1, "glass"));
 
-    // Beton-Bänder als Stockwerks-Rhythmus
+    // Horizontale Beton-Bänder
     for (let y = yBottom + bandEvery; y < yTop; y += bandEvery) {
       commands.push(fill(xa + 1, y, za, xb - 1, y, za, facade));
       commands.push(fill(xa + 1, y, zb, xb - 1, y, zb, facade));
@@ -293,7 +308,6 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
     }
   }
 
-  // Hauptteil des Turms
   let curX0 = x0;
   let curZ0 = z0;
   let curX1 = x1;
@@ -302,23 +316,18 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
 
   buildShaft(curX0, curZ0, curX1, curZ1, 1, curY);
 
-  // Optionale Setbacks: oben schmaler weiterbauen
   for (let i = 0; i < setbackCount; i++) {
-    const extraHeight = rng.int(8, 16);
+    const extraHeight = rng.int(8, 14);
     const shrink = rng.int(1, 2);
     const nextX0 = curX0 + shrink;
     const nextZ0 = curZ0 + shrink;
     const nextX1 = curX1 - shrink;
     const nextZ1 = curZ1 - shrink;
-
     if (nextX1 - nextX0 < 3 || nextZ1 - nextZ0 < 3) break;
-
     const nextY = Math.min(maxHeight, curY + extraHeight);
     if (nextY <= curY) break;
 
-    // Terrasse auf dem breiteren Teil darunter
     commands.push(fill(curX0, curY, curZ0, curX1, curY, curZ1, facade));
-
     curX0 = nextX0;
     curZ0 = nextZ0;
     curX1 = nextX1;
@@ -327,15 +336,60 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
     curY = nextY;
   }
 
-  // Flaches Dach
   commands.push(fill(curX0, curY, curZ0, curX1, curY, curZ1, facade));
 
-  // Eingang an der Südseite (+Z), 2 Blöcke hoch
-  const doorX0 = x0 + Math.max(1, Math.floor(footprint / 2) - 1);
-  const doorX1 = Math.min(x1 - 1, doorX0 + 1);
-  commands.push(fill(doorX0, 1, z1, doorX1, 2, z1, "air"));
+  // --- Eingang Südseite (+Z): nur in der Fassade, kein Aussenpodest ---
+  const doorX0 = x0 + Math.floor(footprint / 2) - 1;
+  const doorX1 = doorX0 + 2;
+  commands.push(fill(doorX0, 1, z1, doorX1, 3, z1, "air"));
+  // Vorraum innen (Gebäude bleibt aussen geschlossen)
+  commands.push(fill(doorX0, 1, z1 - 2, doorX1, 3, z1 - 1, "air"));
 
-  // Manchmal eine Antenne
+  // --- Treppenhaus innen (linke hintere Ecke), 2×2 Schacht mit Wendeltreppe ---
+  // weirdo_direction: 0=Ost, 1=West, 2=Süd, 3=Nord
+  const sx = x0 + 1;
+  const sz = z0 + 1;
+  // Schacht durch alle Etagen frei (Böden durchbrechen)
+  commands.push(fill(sx, 1, sz, sx + 1, height - 1, sz + 1, "air"));
+
+  for (let y = 1; y < height; y++) {
+    const phase = (y - 1) % 4;
+    let tx = sx;
+    let tz = sz;
+    let dir = 0;
+    if (phase === 0) {
+      tx = sx;
+      tz = sz;
+      dir = 0; // nach Osten aufsteigen
+    } else if (phase === 1) {
+      tx = sx + 1;
+      tz = sz;
+      dir = 2; // nach Süden
+    } else if (phase === 2) {
+      tx = sx + 1;
+      tz = sz + 1;
+      dir = 1; // nach Westen
+    } else {
+      tx = sx;
+      tz = sz + 1;
+      dir = 3; // nach Norden
+    }
+    commands.push(
+      fill(
+        tx,
+        y,
+        tz,
+        tx,
+        y,
+        tz,
+        `stone_stairs ["weirdo_direction"=${dir},"upside_down_bit"=false]`,
+      ),
+    );
+  }
+
+  // Zugang vom Vorraum zum Treppenhaus (innen)
+  commands.push(fill(sx + 2, 1, sz, sx + 2, 2, sz + 1, "air"));
+
   if (withAntenna) {
     const mx = Math.floor((curX0 + curX1) / 2);
     const mz = Math.floor((curZ0 + curZ1) / 2);
@@ -345,15 +399,26 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   return commands;
 }
 
-/** Alles im Bauvolumen löschen (für /function city_gen/clear). */
+/**
+ * Clear-Befehle: kleine Y-Scheiben + konservatives Block-Limit
+ * (dichte Gebäude: grosse fills im selben Tick bleiben oft wirkungslos).
+ * Höhe inkl. Antenne (maxHeight + 4).
+ */
 function buildClearCommandBatches(size, maxHeight) {
-  const all = [
-    ...fillLarge(0, 0, 0, size - 1, maxHeight, size - 1, "air"),
-    ...fillLarge(0, 0, 0, size - 1, 0, size - 1, "grass_block"),
-  ];
+  const clearTop = maxHeight + 4;
+  const ySlice = 8;
+  // Deutlich unter 32768 – Clear ersetzt echte Blöcke, nicht nur Luft
+  const clearFillMax = 8192;
+  const all = [];
 
-  // In Häppchen teilen, damit eine Function nicht zu lang wird
-  const batchSize = 80;
+  for (let y0 = 0; y0 <= clearTop; y0 += ySlice) {
+    const y1 = Math.min(clearTop, y0 + ySlice - 1);
+    all.push(...fillLarge(0, y0, 0, size - 1, y1, size - 1, "air", "", clearFillMax));
+  }
+  all.push(...fillLarge(0, 0, 0, size - 1, 0, size - 1, "grass_block", "", clearFillMax));
+
+  // Wenige fills pro Tick – Rest über tick.json
+  const batchSize = 6;
   const batches = [];
   for (let i = 0; i < all.length; i += batchSize) {
     batches.push(all.slice(i, i + batchSize));
@@ -396,66 +461,108 @@ function buildPack(options) {
 
   const lots = createLots(size, lot, sidewalk, street);
 
-  // --- start → terrain → roads → buildings/b_00 → … → b_N ---
+  // Reihenfolge: Terrain → Häuser (einzeln) → Strassen zuletzt
+  // (Strassen zuletzt, damit sie nicht verloren gehen; 1 Haus/Datei gegen Command-Limits)
 
+  // Marker am Origin: clear findet die Stadt auch ohne gleichen Standpunkt
   writeMcfunction(path.join(functionsDir, "start.mcfunction"), [
     'tellraw @a {"rawtext":[{"text":"[city_gen] Starte Stadtbau …"}]}',
+    "scoreboard objectives add city_gen dummy",
+    "scoreboard players set clear_step city_gen 0",
+    "kill @e[type=armor_stand,tag=city_gen_origin]",
+    "summon armor_stand ~ ~ ~",
+    "tag @e[type=armor_stand,r=2,c=1] add city_gen_origin",
+    // Gleiche Blickrichtung wie der Spieler (für ^-Koordinaten beim Clear)
+    "tp @e[type=armor_stand,tag=city_gen_origin,c=1] ~ ~ ~ facing ^0 ^0 ^1",
+    "effect @e[type=armor_stand,tag=city_gen_origin] invisibility 999999 0 true",
     "function city_gen/terrain",
   ]);
 
   const terrain = buildTerrainCommands(size, maxHeight);
-  terrain.push("function city_gen/roads");
+  terrain.push(
+    lots.length > 0 ? "function city_gen/buildings/b_00" : "function city_gen/roads",
+  );
   writeMcfunction(path.join(functionsDir, "terrain.mcfunction"), terrain);
 
+  const buildingsDir = path.join(functionsDir, "buildings");
+  for (let i = 0; i < lots.length; i++) {
+    const oneLot = lots[i];
+    const lotSeed = (seed + oneLot.col * 7919 + oneLot.row * 104729) >>> 0;
+    const lotRng = createRng(lotSeed);
+    const commands = buildTowerCommands(oneLot, lotRng, minHeight, maxHeight);
+
+    if (i + 1 < lots.length) {
+      commands.push(`function city_gen/buildings/b_${pad2(i + 1)}`);
+    } else {
+      commands.push("function city_gen/roads");
+    }
+    writeMcfunction(path.join(buildingsDir, `b_${pad2(i)}.mcfunction`), commands);
+  }
+
   const roads = buildRoadCommands(size, lot, sidewalk, street);
-  roads.push("function city_gen/buildings/b_00");
+  // Strassen nochmals sicher auf y=0 (sichtbar über Steinboden)
+  roads.push(
+    'tellraw @a {"rawtext":[{"text":"[city_gen] Fertig. Undo: /function city_gen/clear"}]}',
+  );
   writeMcfunction(path.join(functionsDir, "roads.mcfunction"), roads);
 
-  // Je 4 Häuser in einer Datei (sonst zu viele Befehle auf einmal)
-  const HOUSES_PER_FILE = 4;
-  const sectors = [];
-  for (let i = 0; i < lots.length; i += HOUSES_PER_FILE) {
-    sectors.push(lots.slice(i, i + HOUSES_PER_FILE));
-  }
-
-  const buildingsDir = path.join(functionsDir, "buildings");
-  for (let s = 0; s < sectors.length; s++) {
-    const commands = [];
-
-    for (const oneLot of sectors[s]) {
-      // Pro Parzelle eigener Zufallsstrom → stabile, unterschiedliche Türme
-      const lotSeed = (seed + oneLot.col * 7919 + oneLot.row * 104729) >>> 0;
-      const lotRng = createRng(lotSeed);
-      commands.push(...buildTowerCommands(oneLot, lotRng, minHeight, maxHeight));
-    }
-
-    if (s + 1 < sectors.length) {
-      commands.push(`function city_gen/buildings/b_${pad2(s + 1)}`);
-    } else {
-      commands.push(
-        'tellraw @a {"rawtext":[{"text":"[city_gen] Fertig. Undo: /function city_gen/clear"}]}',
-      );
-    }
-
-    writeMcfunction(path.join(buildingsDir, `b_${pad2(s)}.mcfunction`), commands);
-  }
-
-  // --- clear → clear_01 → … ---
+  // --- clear über mehrere Ticks (tick.json) ---
+  // Ein Tick = ein Batch. Grosse fill-Ketten im selben Tick bleiben sonst wirkungslos.
 
   const clearBatches = buildClearCommandBatches(size, maxHeight);
+  const clearBatchDir = path.join(functionsDir, "clear_batches");
+  fs.mkdirSync(clearBatchDir, { recursive: true });
+
   for (let i = 0; i < clearBatches.length; i++) {
-    const lines = [...clearBatches[i]];
-    if (i === 0) {
-      lines.unshift('tellraw @a {"rawtext":[{"text":"[city_gen] Clear …"}]}');
-    }
-    if (i + 1 < clearBatches.length) {
-      lines.push(`function city_gen/clear_${pad2(i + 1)}`);
-    } else {
-      lines.push('tellraw @a {"rawtext":[{"text":"[city_gen] Clear fertig."}]}');
-    }
-    const name = i === 0 ? "clear.mcfunction" : `clear_${pad2(i)}.mcfunction`;
-    writeMcfunction(path.join(functionsDir, name), lines);
+    writeMcfunction(
+      path.join(clearBatchDir, `c_${pad2(i)}.mcfunction`),
+      clearBatches[i],
+    );
   }
+
+  // clear: Marker sicherstellen, Clear-Schleife scharf schalten
+  writeMcfunction(path.join(functionsDir, "clear.mcfunction"), [
+    'tellraw @a {"rawtext":[{"text":"[city_gen] Clear … (läuft über mehrere Ticks)"}]}',
+    "scoreboard objectives add city_gen dummy",
+    "execute unless entity @e[type=armor_stand,tag=city_gen_origin] run function city_gen/clear_place_marker",
+    "scoreboard players set clear_step city_gen 1",
+  ]);
+
+  writeMcfunction(path.join(functionsDir, "clear_place_marker.mcfunction"), [
+    'tellraw @a {"rawtext":[{"text":"[city_gen] Kein Origin-Marker – Clear vom aktuellen Standpunkt (gleiche Blickrichtung)."}]}',
+    "summon armor_stand ~ ~ ~",
+    "tag @e[type=armor_stand,r=2,c=1] add city_gen_origin",
+    "tp @e[type=armor_stand,tag=city_gen_origin,c=1] ~ ~ ~ facing ^0 ^0 ^1",
+    "effect @e[type=armor_stand,tag=city_gen_origin] invisibility 999999 0 true",
+  ]);
+
+  // Pro Tick genau ein Batch (Score erst danach erhöhen → kein Same-Tick-Durchlauf)
+  const advanceLines = [];
+  for (let i = 0; i < clearBatches.length; i++) {
+    advanceLines.push(
+      `execute if score clear_step city_gen matches ${i + 1} run function city_gen/clear_batches/c_${pad2(i)}`,
+    );
+  }
+  writeMcfunction(path.join(functionsDir, "clear_advance.mcfunction"), advanceLines);
+
+  const doneStep = clearBatches.length + 1;
+  writeMcfunction(path.join(functionsDir, "clear_done.mcfunction"), [
+    "scoreboard players set clear_step city_gen 0",
+    "kill @e[type=armor_stand,tag=city_gen_origin]",
+    'tellraw @a {"rawtext":[{"text":"[city_gen] Clear fertig."}]}',
+  ]);
+
+  writeMcfunction(path.join(functionsDir, "on_tick.mcfunction"), [
+    `execute if score clear_step city_gen matches 1..${clearBatches.length} as @e[type=armor_stand,tag=city_gen_origin,c=1] at @s run function city_gen/clear_advance`,
+    `execute if score clear_step city_gen matches 1..${clearBatches.length} run scoreboard players add clear_step city_gen 1`,
+    `execute if score clear_step city_gen matches ${doneStep} run function city_gen/clear_done`,
+  ]);
+
+  // tick.json liegt direkt unter functions/
+  fs.writeFileSync(
+    path.join(OUT_DIR, "functions", "tick.json"),
+    JSON.stringify({ values: ["city_gen/on_tick"] }, null, 2) + "\n",
+  );
 
   // Kleine Meta-Datei nur zur Übersicht (nicht von Minecraft gelesen)
   const meta = {
@@ -467,14 +574,14 @@ function buildPack(options) {
     sidewalk,
     street,
     buildings: lots.length,
-    building_sectors: sectors.length,
+    building_files: lots.length,
     clear_steps: clearBatches.length,
   };
   fs.writeFileSync(path.join(OUT_DIR, "city_gen_meta.json"), JSON.stringify(meta, null, 2) + "\n");
 
   console.log(
     `Fertig: ${OUT_DIR}\n` +
-      `  ${lots.length} Häuser in ${sectors.length} Dateien, seed=${seed}`,
+      `  ${size}×${size}, ${lots.length} Häuser, seed=${seed}, clear_steps=${clearBatches.length}`,
   );
 }
 
@@ -482,10 +589,20 @@ function buildPack(options) {
 // Kommandozeile
 // ---------------------------------------------------------------------------
 
+function parseSize(raw) {
+  const key = String(raw).toLowerCase();
+  if (SIZE_PRESETS[key] !== undefined) return SIZE_PRESETS[key];
+  const n = Number(raw);
+  if (n === SIZE_PRESETS.klein || n === SIZE_PRESETS.gross) return n;
+  throw new Error(
+    `Ungültige --size "${raw}". Erlaubt: klein (${SIZE_PRESETS.klein}), gross (${SIZE_PRESETS.gross})`,
+  );
+}
+
 function parseArgs(argv) {
   const options = {
     seed: 42,
-    size: 160,
+    size: SIZE_PRESETS.gross,
     minHeight: 60,
     maxHeight: 90,
     lot: 13,
@@ -502,7 +619,7 @@ function parseArgs(argv) {
     };
 
     if (arg === "--seed") options.seed = Number(value());
-    else if (arg === "--size") options.size = Number(value());
+    else if (arg === "--size") options.size = parseSize(value());
     else if (arg === "--min-height") options.minHeight = Number(value());
     else if (arg === "--max-height") options.maxHeight = Number(value());
     else if (arg === "--lot") options.lot = Number(value());
@@ -510,12 +627,15 @@ function parseArgs(argv) {
     else if (arg === "--street") options.street = Number(value());
     else if (arg === "-h" || arg === "--help") {
       console.log(`Usage:
-  node generate_city_pack.mjs [--seed 42] [--size 160] [--min-height 60] [--max-height 90]
+  node generate_city_pack.mjs [--seed 42] [--size klein|gross] [--min-height 60] [--max-height 90]
+
+  --size klein  → ${SIZE_PRESETS.klein}×${SIZE_PRESETS.klein}
+  --size gross  → ${SIZE_PRESETS.gross}×${SIZE_PRESETS.gross}  (Default)
 
 Danach deployen:
   ./gameplay/city/deploy_city_pack.sh minecraft
 
-Im Spiel (SW-Ecke):
+Im Spiel: an die Ecke stellen, dorthin schauen wo die Stadt hin soll:
   /function city_gen/start
   /function city_gen/clear`);
       process.exit(0);

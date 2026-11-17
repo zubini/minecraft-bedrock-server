@@ -6,7 +6,7 @@ Skripte und Packs liegen unter [`gameplay/city/`](city/).
 
 ## Prozedurale Stadt (`city_gen`)
 
-Behavior Pack baut eine ~160×160-Hochhauslandschaft mit Strassen **relativ zu deinem Standpunkt** (SW-Ecke).
+Behavior Pack baut eine Hochhauslandschaft mit Strassen **in Blickrichtung** (vorne und rechts).
 
 ### Voraussetzungen
 
@@ -16,9 +16,11 @@ Behavior Pack baut eine ~160×160-Hochhauslandschaft mit Strassen **relativ zu d
 ### Pack erzeugen (lokal)
 
 ```bash
-node gameplay/city/generate_city_pack.mjs --seed 42
-# optional: --size 160 --min-height 60 --max-height 90
-# Häuser: pro Turm zufällig 10×10 oder 12×12 Grundfläche (Parzelle --lot, Default 13)
+# gross = 120×120 (Default), klein = 60×60
+node gameplay/city/generate_city_pack.mjs --seed 42 --size gross
+node gameplay/city/generate_city_pack.mjs --seed 42 --size klein
+# optional: --min-height 60 --max-height 90
+# Häuser: 10×10 oder 12×12, Eingang in der Fassade, Treppenhaus innen
 ```
 
 Anderer Look: anderen `--seed` wählen und erneut erzeugen.
@@ -31,32 +33,43 @@ Anderer Look: anderen `--seed` wählen und erneut erzeugen.
 
 Startet den Server-Dienst neu. Danach ggf. neu joinen.
 
-### Bauen
+### Bauen (so einfach wie möglich)
 
-1. Einstellungen → Koordinaten anzeigen
-2. An die **Süd-West-Ecke** der geplanten Fläche stellen (Bodenhöhe = unterste Etage)
+1. An die **hintere linke Ecke** der gewünschten Fläche stellen  
+2. **Dorthin schauen**, wo die Stadt hin soll (freie Fläche vor dir)  
 3. Chat:
 
 ```
 /function city_gen/start
 ```
 
-Der Lauf ist bei 160×160 und hohen Türmen bewusst langsam. Chat-Meldungen zeigen den Fortschritt.
+Die Stadt wächst **vor dir** und nach **rechts**. Kompass/Norden brauchst du nicht.
+
+```text
+        (Blickrichtung)
+              ↑ vorne
+              ·········
+        ●─────·  STADT
+      du      → rechts
+```
+
+Der Lauf kann bei `gross` etwas dauern. Chat zeigt den Fortschritt.
 
 ### Rückgängig
-
-Gleicher Standpunkt wie beim Bauen:
 
 ```
 /function city_gen/clear
 ```
 
-Entfernt das Bauvolumen (Luft + Bodenschicht Gras). Stellt vorheriges Terrain nicht wieder her.
+Beim `start` wird ein unsichtbarer Marker gesetzt – Clear findet die Stadt damit auch von woanders.  
+Ohne Marker: wieder an dieselbe Ecke stellen, in dieselbe Richtung schauen, dann clear.
+
+Clear läuft über mehrere Ticks („Clear fertig.“ abwarten). Stellt vorheriges Terrain nicht wieder her.
 
 ### Seed neu ausprobieren
 
 1. `/function city_gen/clear`
-2. Lokal `node gameplay/city/generate_city_pack.mjs --seed <neu>`
+2. Lokal `node gameplay/city/generate_city_pack.mjs --seed <neu> --size gross`
 3. `./gameplay/city/deploy_city_pack.sh minecraft`
 4. `/function city_gen/start`
 
