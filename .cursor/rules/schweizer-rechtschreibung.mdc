@@ -1,0 +1,28 @@
+---
+description: Schweizer Rechtschreibung – kein ß, immer ss
+alwaysApply: true
+---
+
+# Schweizer Rechtschreibung (ss statt ß)
+
+Für alle deutschen Texte in diesem Projekt (Chat, Docs, Kommentare, UI-Strings, Commit-Messages):
+
+- **Nie** den Buchstaben `ß` verwenden
+- Stattdessen immer **`ss`** (Schweiz)
+
+## Beispiele
+
+| Vermeiden | Verwenden |
+|-----------|-----------|
+| Straße | Strasse |
+| groß | gross |
+| heißt | heisst |
+| schließen | schliessen |
+| Maß | Mass |
+| muß / muss | muss |
+
+## Gilt für
+
+- Antworten an den User
+- Markdown, Kommentare, Log-/Chat-Meldungen im Code
+- Neu erzeugte Dateien und Umbenennungen von Begriffen in Docs

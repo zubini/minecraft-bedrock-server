@@ -175,3 +175,7 @@ Nach Änderungen an `config.yml`: `sudo systemctl restart mcxboxbroadcast`.
 | `scripts/provision.sh` | Einrichtung Bedrock-Server (`user@host` vom PC, sonst auf dem Server) |
 | `scripts/setup-mcxboxbroadcast.sh` | Optional: MCXboxBroadcast für Switch/Konsolen (eigenständig) |
 | `scripts/update.sh` | Versionscheck + Update (liegt danach unter `/opt/.../bin/`) |
+
+## Gameplay
+
+Bauen, Tipps und Behavior Packs: [`gameplay/tipps.md`](gameplay/tipps.md) (u. a. prozedurale Stadt unter `gameplay/city/`).

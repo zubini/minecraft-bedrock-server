@@ -1,0 +1,12 @@
+{
+  "seed": 42,
+  "size": 160,
+  "min_height": 60,
+  "max_height": 90,
+  "lot": 13,
+  "sidewalk": 1,
+  "street": 5,
+  "buildings": 64,
+  "building_sectors": 16,
+  "clear_steps": 2
+}
