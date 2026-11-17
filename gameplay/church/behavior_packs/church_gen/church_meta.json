@@ -3,7 +3,7 @@
   "size_x": 24,
   "size_z": 40,
   "max_height": 35,
-  "build_steps": 4,
+  "build_steps": 5,
   "clear_steps": 5,
-  "build_commands": 95
+  "build_commands": 118
 }

@@ -12,4 +12,4 @@ tickingarea add ~0 ~-1 ~0 ~23 ~43 ~39 ch_a true
 scoreboard players set @e[tag=ch_o,c=1] ch_b 1
 execute as @e[tag=ch_o,c=1] at @s run function church/build_batches/b_00
 scoreboard players set @e[tag=ch_o,c=1] ch_b 2
-tellraw @a {"rawtext":[{"text":"[church] Bau läuft (4 Schritte) …"}]}
+tellraw @a {"rawtext":[{"text":"[church] Bau läuft (5 Schritte) …"}]}

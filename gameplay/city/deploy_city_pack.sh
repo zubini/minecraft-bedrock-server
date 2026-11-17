@@ -11,7 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACK_SRC="${SCRIPT_DIR}/behavior_packs/city_gen"
 INSTALL_DIR="${INSTALL_DIR:-/opt/minecraft-bedrock}"
 PACK_UUID="a7c4e2b1-9f3d-4e8a-b6c1-2d5e8f0a1b3c"
-PACK_VERSION="[1, 7, 3]"
+PACK_VERSION="[1, 7, 4]"
 
 die() {
   echo "ERROR: $*" >&2

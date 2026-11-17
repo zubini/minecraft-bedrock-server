@@ -5,46 +5,46 @@
       "ns": "city_1",
       "seed": 42,
       "buildings": 16,
-      "building_batches": 230,
+      "building_batches": 214,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 274
+      "build_steps": 258
     },
     {
       "ns": "city_2",
       "seed": 104771,
       "buildings": 16,
-      "building_batches": 227,
+      "building_batches": 210,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 272
+      "build_steps": 255
     },
     {
       "ns": "city_3",
       "seed": 209500,
       "buildings": 16,
-      "building_batches": 234,
+      "building_batches": 216,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 278
+      "build_steps": 260
     },
     {
       "ns": "city_4",
       "seed": 314229,
       "buildings": 16,
-      "building_batches": 233,
+      "building_batches": 215,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 279
+      "build_steps": 261
     },
     {
       "ns": "city_5",
       "seed": 418958,
       "buildings": 16,
-      "building_batches": 249,
+      "building_batches": 229,
       "terrain_steps": 11,
       "road_steps": 8,
-      "build_steps": 294
+      "build_steps": 274
     }
   ],
   "size": 80,

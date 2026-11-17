@@ -1,28 +1,28 @@
+fill ~19 ~3 ~21 ~19 ~6 ~22 blue_stained_glass_pane
+fill ~4 ~3 ~25 ~4 ~6 ~26 yellow_stained_glass_pane
+fill ~19 ~3 ~25 ~19 ~6 ~26 yellow_stained_glass_pane
+fill ~4 ~3 ~29 ~4 ~6 ~30 purple_stained_glass_pane
+fill ~19 ~3 ~29 ~19 ~6 ~30 purple_stained_glass_pane
+fill ~4 ~3 ~33 ~4 ~6 ~34 red_stained_glass_pane
+fill ~19 ~3 ~33 ~19 ~6 ~34 red_stained_glass_pane
+fill ~7 ~3 ~10 ~8 ~6 ~10 purple_stained_glass_pane
+fill ~10 ~3 ~10 ~11 ~6 ~10 yellow_stained_glass_pane
+fill ~13 ~3 ~10 ~14 ~6 ~10 blue_stained_glass_pane
+fill ~16 ~3 ~10 ~17 ~6 ~10 red_stained_glass_pane
+fill ~11 ~12 ~10 ~12 ~14 ~10 yellow_stained_glass_pane
+fill ~11 ~12 ~37 ~12 ~14 ~37 yellow_stained_glass_pane
+fill ~6 ~0 ~2 ~13 ~0 ~9 stone_bricks
+fill ~6 ~1 ~2 ~13 ~22 ~2 stone_bricks
+fill ~6 ~1 ~9 ~13 ~22 ~9 stone_bricks
+fill ~6 ~1 ~2 ~6 ~22 ~9 stone_bricks
+fill ~13 ~1 ~2 ~13 ~22 ~9 stone_bricks
+fill ~7 ~1 ~3 ~12 ~21 ~8 air
+fill ~7 ~0 ~3 ~12 ~0 ~8 stone_bricks
 fill ~8 ~1 ~9 ~11 ~4 ~10 air
 fill ~8 ~0 ~9 ~11 ~0 ~10 quartz_block
+fill ~8 ~1 ~9 ~8 ~4 ~10 stone_bricks
+fill ~11 ~1 ~9 ~11 ~4 ~10 stone_bricks
+fill ~9 ~1 ~9 ~10 ~4 ~10 air
 fill ~6 ~8 ~4 ~6 ~11 ~5 glass_pane
 fill ~13 ~8 ~4 ~13 ~11 ~5 glass_pane
 fill ~8 ~8 ~2 ~11 ~11 ~2 glass_pane
-fill ~6 ~23 ~2 ~13 ~23 ~9 quartz_block
-fill ~7 ~24 ~3 ~12 ~24 ~8 quartz_block
-fill ~8 ~25 ~4 ~11 ~25 ~7 quartz_block
-fill ~9 ~26 ~5 ~10 ~26 ~6 quartz_block
-setblock ~9 ~28 ~5 iron_bars
-setblock ~9 ~29 ~5 iron_bars
-setblock ~8 ~29 ~5 iron_bars
-setblock ~10 ~29 ~5 iron_bars
-setblock ~9 ~30 ~5 iron_bars
-fill ~9 ~1 ~37 ~14 ~5 ~37 stone_bricks
-fill ~10 ~1 ~37 ~13 ~3 ~37 air
-setblock ~10 ~1 ~37 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~10 ~2 ~37 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~11 ~1 ~37 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~11 ~2 ~37 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~10 ~0 ~38 ~13 ~0 ~39 stone_bricks
-setblock ~10 ~0 ~39 quartz_stairs ["weirdo_direction":2,"upside_down_bit":false]
-setblock ~11 ~0 ~39 quartz_stairs ["weirdo_direction":2,"upside_down_bit":false]
-setblock ~12 ~0 ~39 quartz_stairs ["weirdo_direction":2,"upside_down_bit":false]
-setblock ~13 ~0 ~39 quartz_stairs ["weirdo_direction":2,"upside_down_bit":false]
-fill ~10 ~1 ~12 ~13 ~1 ~14 quartz_block
-setblock ~11 ~2 ~12 candle
-setblock ~12 ~2 ~12 candle

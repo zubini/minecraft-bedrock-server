@@ -1,28 +1,28 @@
-setblock ~45 ~2 ~10 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~46 ~1 ~10 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~46 ~2 ~10 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~46 ~1 ~2 ~49 ~1 ~9 red_carpet
-fill ~42 ~1 ~7 ~49 ~1 ~9 red_carpet
-fill ~42 ~1 ~2 ~43 ~1 ~9 red_carpet
-setblock ~46 ~1 ~2 flower_pot
-setblock ~49 ~1 ~2 flower_pot
-setblock ~47 ~1 ~9 crafting_table
-setblock ~48 ~1 ~9 chest
-setblock ~47 ~1 ~9 flower_pot
-fill ~46 ~5 ~2 ~49 ~5 ~9 blue_carpet
-fill ~42 ~5 ~7 ~49 ~5 ~9 blue_carpet
-fill ~42 ~5 ~2 ~43 ~5 ~9 blue_carpet
-setblock ~46 ~5 ~2 bookshelf
-setblock ~46 ~6 ~2 bookshelf
-setblock ~47 ~5 ~2 bookshelf
-setblock ~49 ~5 ~2 chest
-setblock ~46 ~5 ~9 crafting_table
-setblock ~49 ~5 ~9 flower_pot
-setblock ~46 ~5 ~6 flower_pot
-fill ~46 ~9 ~2 ~49 ~9 ~9 light_blue_carpet
-fill ~42 ~9 ~7 ~49 ~9 ~9 light_blue_carpet
-fill ~42 ~9 ~2 ~43 ~9 ~9 light_blue_carpet
-setblock ~47 ~9 ~9 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~9 ~8 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~49 ~9 ~2 flower_pot
-setblock ~46 ~9 ~2 chest
+fill ~42 ~13 ~2 ~43 ~13 ~9 white_carpet
+fill ~42 ~13 ~8 ~49 ~13 ~9 white_carpet
+setblock ~46 ~13 ~2 flower_pot
+setblock ~49 ~13 ~2 flower_pot
+setblock ~46 ~13 ~9 flower_pot
+setblock ~49 ~13 ~9 bookshelf
+setblock ~47 ~13 ~2 chest
+fill ~46 ~17 ~2 ~49 ~17 ~9 gray_carpet
+fill ~42 ~17 ~2 ~43 ~17 ~9 gray_carpet
+fill ~42 ~17 ~8 ~49 ~17 ~9 gray_carpet
+setblock ~46 ~17 ~2 bookshelf
+setblock ~46 ~18 ~2 bookshelf
+setblock ~47 ~17 ~2 bookshelf
+setblock ~49 ~17 ~2 chest
+setblock ~46 ~17 ~9 crafting_table
+setblock ~49 ~17 ~9 flower_pot
+setblock ~47 ~17 ~2 flower_pot
+fill ~46 ~21 ~2 ~49 ~21 ~9 red_carpet
+fill ~42 ~21 ~2 ~43 ~21 ~9 red_carpet
+fill ~42 ~21 ~8 ~49 ~21 ~9 red_carpet
+setblock ~47 ~21 ~9 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~47 ~21 ~8 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~49 ~21 ~2 flower_pot
+setblock ~46 ~21 ~2 chest
+setblock ~46 ~21 ~2 flower_pot
+fill ~46 ~25 ~2 ~49 ~25 ~9 blue_carpet
+fill ~42 ~25 ~2 ~43 ~25 ~9 blue_carpet
+fill ~42 ~25 ~8 ~49 ~25 ~9 blue_carpet

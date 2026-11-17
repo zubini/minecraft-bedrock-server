@@ -66,7 +66,7 @@ const LAYOUT = {
 const DEFAULT_VARIANTS = 5;
 
 /** Pack-Version (bei Logik-Änderung erhöhen). */
-const PACK_VERSION = [1, 7, 3];
+const PACK_VERSION = [1, 7, 4];
 
 /** Max. Befehle pro Gebäude-Tick (sonst bricht BDS lange Functions ab → nur 3–4 Häuser). */
 const BUILDING_CMDS_PER_TICK = 28;
@@ -310,9 +310,10 @@ function buildLandscapeBatches(size, lot, sidewalk, street, seed, lots) {
 }
 
 /**
- * Doppeltür Südwand (direction 2, Blick von aussen nach Norden).
- * Bedrock: hinge_bit true = Anschlag links, false = rechts (bei dieser Ausrichtung).
- * Links aussen = true, rechts aussen = false.
+ * Doppeltür Südwand. Bedrock direction = Innenseite der Tür:
+ * 0 Ost, 1 Süd, 2 West, 3 Nord. Eingang von Süden → Innenseite Nord (3).
+ * hinge_bit relativ zur Innenseite: false=links, true=rechts.
+ * Von aussen: links (West) Anschlag aussen links, rechts Anschlag aussen rechts.
  */
 function doubleDoorSouth(xLeft, y, z) {
   return [
@@ -320,25 +321,25 @@ function doubleDoorSouth(xLeft, y, z) {
       xLeft,
       y,
       z,
-      'wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]',
+      'wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]',
     ),
     setblock(
       xLeft,
       y + 1,
       z,
-      'wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]',
+      'wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]',
     ),
     setblock(
       xLeft + 1,
       y,
       z,
-      'wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]',
+      'wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]',
     ),
     setblock(
       xLeft + 1,
       y + 1,
       z,
-      'wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]',
+      'wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]',
     ),
   ];
 }
@@ -454,11 +455,7 @@ function placeStraightStairs(commands, stairX0, stairX1, stairZ0, stairZ1, story
   }
 }
 
-/**
- * EG: Schachtboden voll (erste Stufe erst bei y=1).
- * Obere Etagen: kein Süd-Pad im Schacht — sonst zu kleine Deckenaussparung
- * (Spieler kollidiert mit dem Bodenrand). Anlauf von z=stairZ1+1 auf normalem Boden.
- */
+/** EG: Schachtboden voll (erste Stufe erst bei y=1). */
 function placeStairLandings(commands, stairX0, stairX1, stairZ0, stairZ1, _storyH, _height, block) {
   commands.push(fill(stairX0, 0, stairZ0, stairX1, 0, stairZ1, block));
 }
@@ -488,11 +485,11 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   const stairX1 = midX;
   const stairZ0 = Math.floor((z0 + z1) / 2) - Math.floor(storyH / 2);
   const stairZ1 = stairZ0 + storyH - 1;
-  // Aussparung grösser als die Stufen (±1), sonst kommt man nicht durch die Decke
-  const sx = Math.max(x0 + 1, stairX0 - 1);
-  const sx1 = Math.min(x1 - 1, stairX1 + 1);
-  const sz = Math.max(z0 + 1, stairZ0 - 1);
-  const sz1 = stairZ1; // ganzer Schacht inkl. Süd — kein Bodensteg im Loch
+  // Deckenloch = Stufenbreite; nach Süden (vorne) +2 gegenüber stairZ1-1
+  const sx = stairX0;
+  const sx1 = stairX1;
+  const sz = stairZ0;
+  const sz1 = Math.min(z1 - 1, stairZ1 + 1);
 
   const commands = [];
 
@@ -553,7 +550,7 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
     }
   }
 
-  // Treppenschacht: volle Etagenlöcher (Stufen-Fussabdruck + Rand), kein Bodensteg
+  // Treppenschacht: Etagenlöcher (Stufen + 2 Blöcke vorne/Süd)
   for (let y = storyH; y < height; y += storyH) {
     commands.push(fill(sx, y, sz, sx1, y, sz1, "air"));
   }

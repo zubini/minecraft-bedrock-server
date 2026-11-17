@@ -1,28 +1,28 @@
-fill ~22 ~21 ~2 ~23 ~21 ~9 gray_carpet
-fill ~22 ~21 ~8 ~29 ~21 ~9 gray_carpet
-setblock ~26 ~21 ~2 bookshelf
-setblock ~26 ~22 ~2 bookshelf
-setblock ~27 ~21 ~2 bookshelf
-setblock ~29 ~21 ~2 chest
-setblock ~26 ~21 ~9 crafting_table
-setblock ~29 ~21 ~9 flower_pot
-setblock ~26 ~21 ~8 flower_pot
-fill ~26 ~26 ~2 ~29 ~26 ~9 red_carpet
-fill ~22 ~26 ~2 ~23 ~26 ~9 red_carpet
-fill ~22 ~26 ~8 ~29 ~26 ~9 red_carpet
-setblock ~27 ~26 ~9 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~26 ~8 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~29 ~26 ~2 flower_pot
-setblock ~26 ~26 ~2 chest
-fill ~26 ~31 ~2 ~29 ~31 ~9 blue_carpet
-fill ~22 ~31 ~2 ~23 ~31 ~9 blue_carpet
-fill ~22 ~31 ~8 ~29 ~31 ~9 blue_carpet
-setblock ~26 ~31 ~2 flower_pot
-setblock ~29 ~31 ~2 flower_pot
-setblock ~26 ~31 ~9 flower_pot
-setblock ~29 ~31 ~9 bookshelf
-setblock ~27 ~31 ~2 chest
-fill ~26 ~36 ~2 ~29 ~36 ~9 light_blue_carpet
-fill ~22 ~36 ~2 ~23 ~36 ~9 light_blue_carpet
-fill ~22 ~36 ~8 ~29 ~36 ~9 light_blue_carpet
-setblock ~26 ~36 ~2 bookshelf
+setblock ~29 ~46 ~2 flower_pot
+setblock ~26 ~46 ~9 flower_pot
+setblock ~29 ~46 ~9 bookshelf
+setblock ~27 ~46 ~2 chest
+setblock ~27 ~46 ~2 flower_pot
+fill ~26 ~51 ~2 ~29 ~51 ~9 red_carpet
+fill ~22 ~51 ~2 ~23 ~51 ~9 red_carpet
+setblock ~26 ~51 ~2 bookshelf
+setblock ~26 ~52 ~2 bookshelf
+setblock ~27 ~51 ~2 bookshelf
+setblock ~29 ~51 ~2 chest
+setblock ~26 ~51 ~9 crafting_table
+setblock ~29 ~51 ~9 flower_pot
+setblock ~26 ~51 ~2 flower_pot
+fill ~26 ~56 ~2 ~29 ~56 ~9 blue_carpet
+fill ~22 ~56 ~2 ~23 ~56 ~9 blue_carpet
+setblock ~27 ~56 ~9 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~27 ~56 ~8 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~29 ~56 ~2 flower_pot
+setblock ~26 ~56 ~2 chest
+fill ~26 ~61 ~2 ~29 ~61 ~9 light_blue_carpet
+fill ~22 ~61 ~2 ~23 ~61 ~9 light_blue_carpet
+setblock ~26 ~61 ~2 flower_pot
+setblock ~29 ~61 ~2 flower_pot
+setblock ~26 ~61 ~9 flower_pot
+setblock ~29 ~61 ~9 bookshelf
+setblock ~27 ~61 ~2 chest
+fill ~26 ~66 ~2 ~29 ~66 ~9 white_carpet

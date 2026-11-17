@@ -1,28 +1,28 @@
-setblock ~5 ~52 ~26 quartz_block
-setblock ~4 ~56 ~26 quartz_block
-setblock ~5 ~56 ~26 quartz_block
-fill ~5 ~0 ~30 ~6 ~0 ~30 stone_bricks
-fill ~4 ~1 ~30 ~7 ~3 ~30 light_gray_concrete
-fill ~5 ~1 ~30 ~6 ~2 ~30 air
-setblock ~5 ~1 ~30 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~5 ~2 ~30 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~6 ~1 ~30 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~6 ~2 ~30 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~6 ~1 ~22 ~9 ~1 ~29 red_carpet
-fill ~2 ~1 ~27 ~9 ~1 ~29 red_carpet
-fill ~2 ~1 ~22 ~3 ~1 ~29 red_carpet
-setblock ~6 ~1 ~22 flower_pot
-setblock ~9 ~1 ~22 flower_pot
-setblock ~7 ~1 ~29 crafting_table
-setblock ~8 ~1 ~29 chest
-setblock ~7 ~1 ~29 flower_pot
-fill ~6 ~5 ~22 ~9 ~5 ~29 blue_carpet
-fill ~2 ~5 ~27 ~9 ~5 ~29 blue_carpet
-fill ~2 ~5 ~22 ~3 ~5 ~29 blue_carpet
-setblock ~6 ~5 ~22 bookshelf
-setblock ~6 ~6 ~22 bookshelf
-setblock ~7 ~5 ~22 bookshelf
-setblock ~9 ~5 ~22 chest
-setblock ~6 ~5 ~29 crafting_table
-setblock ~9 ~5 ~29 flower_pot
-setblock ~8 ~5 ~24 flower_pot
+fill ~6 ~9 ~22 ~9 ~9 ~29 light_blue_carpet
+fill ~2 ~9 ~22 ~3 ~9 ~29 light_blue_carpet
+fill ~2 ~9 ~28 ~9 ~9 ~29 light_blue_carpet
+setblock ~7 ~9 ~29 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~7 ~9 ~28 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~9 ~9 ~22 flower_pot
+setblock ~6 ~9 ~22 chest
+fill ~6 ~13 ~22 ~9 ~13 ~29 white_carpet
+fill ~2 ~13 ~22 ~3 ~13 ~29 white_carpet
+fill ~2 ~13 ~28 ~9 ~13 ~29 white_carpet
+setblock ~6 ~13 ~22 flower_pot
+setblock ~9 ~13 ~22 flower_pot
+setblock ~6 ~13 ~29 flower_pot
+setblock ~9 ~13 ~29 bookshelf
+setblock ~7 ~13 ~22 chest
+fill ~6 ~17 ~22 ~9 ~17 ~29 gray_carpet
+fill ~2 ~17 ~22 ~3 ~17 ~29 gray_carpet
+fill ~2 ~17 ~28 ~9 ~17 ~29 gray_carpet
+setblock ~6 ~17 ~22 bookshelf
+setblock ~6 ~18 ~22 bookshelf
+setblock ~7 ~17 ~22 bookshelf
+setblock ~9 ~17 ~22 chest
+setblock ~6 ~17 ~29 crafting_table
+setblock ~9 ~17 ~29 flower_pot
+setblock ~6 ~17 ~23 flower_pot
+fill ~6 ~21 ~22 ~9 ~21 ~29 red_carpet
+fill ~2 ~21 ~22 ~3 ~21 ~29 red_carpet
+fill ~2 ~21 ~28 ~9 ~21 ~29 red_carpet

@@ -1,28 +1,26 @@
-setblock ~66 ~53 ~62 bookshelf
-setblock ~66 ~54 ~62 bookshelf
-setblock ~67 ~53 ~62 bookshelf
-setblock ~69 ~53 ~62 chest
-setblock ~66 ~53 ~69 crafting_table
-setblock ~69 ~53 ~69 flower_pot
-fill ~66 ~57 ~62 ~69 ~57 ~69 gray_carpet
-fill ~62 ~57 ~67 ~69 ~57 ~69 gray_carpet
-fill ~62 ~57 ~62 ~63 ~57 ~69 gray_carpet
-setblock ~67 ~57 ~69 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~67 ~57 ~68 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~69 ~57 ~62 flower_pot
-setblock ~66 ~57 ~62 chest
-setblock ~69 ~57 ~68 flower_pot
-fill ~66 ~61 ~62 ~69 ~61 ~69 red_carpet
-fill ~62 ~61 ~67 ~69 ~61 ~69 red_carpet
-fill ~62 ~61 ~62 ~63 ~61 ~69 red_carpet
-setblock ~66 ~61 ~62 flower_pot
-setblock ~69 ~61 ~62 flower_pot
-setblock ~66 ~61 ~69 flower_pot
-setblock ~69 ~61 ~69 bookshelf
-setblock ~67 ~61 ~62 chest
-setblock ~69 ~61 ~66 flower_pot
-fill ~66 ~65 ~62 ~69 ~65 ~69 blue_carpet
-fill ~62 ~65 ~67 ~69 ~65 ~69 blue_carpet
-fill ~62 ~65 ~62 ~63 ~65 ~69 blue_carpet
-setblock ~66 ~65 ~62 bookshelf
-setblock ~66 ~66 ~62 bookshelf
+fill ~66 ~73 ~62 ~69 ~73 ~69 white_carpet
+fill ~62 ~73 ~62 ~63 ~73 ~69 white_carpet
+fill ~62 ~73 ~68 ~69 ~73 ~69 white_carpet
+setblock ~66 ~73 ~62 flower_pot
+setblock ~69 ~73 ~62 flower_pot
+setblock ~66 ~73 ~69 flower_pot
+setblock ~69 ~73 ~69 bookshelf
+setblock ~67 ~73 ~62 chest
+fill ~66 ~77 ~62 ~69 ~77 ~69 gray_carpet
+fill ~62 ~77 ~62 ~63 ~77 ~69 gray_carpet
+fill ~62 ~77 ~68 ~69 ~77 ~69 gray_carpet
+setblock ~66 ~77 ~62 bookshelf
+setblock ~66 ~78 ~62 bookshelf
+setblock ~67 ~77 ~62 bookshelf
+setblock ~69 ~77 ~62 chest
+setblock ~66 ~77 ~69 crafting_table
+setblock ~69 ~77 ~69 flower_pot
+setblock ~68 ~77 ~67 flower_pot
+fill ~66 ~81 ~62 ~69 ~81 ~69 red_carpet
+fill ~62 ~81 ~62 ~63 ~81 ~69 red_carpet
+fill ~62 ~81 ~68 ~69 ~81 ~69 red_carpet
+setblock ~67 ~81 ~69 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~67 ~81 ~68 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~69 ~81 ~62 flower_pot
+setblock ~66 ~81 ~62 chest
+fill ~65 ~84 ~65 ~65 ~87 ~65 iron_bars

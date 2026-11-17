@@ -1,28 +1,28 @@
-setblock ~46 ~13 ~22 flower_pot
-setblock ~48 ~13 ~22 flower_pot
-setblock ~46 ~13 ~28 flower_pot
-setblock ~48 ~13 ~28 bookshelf
-setblock ~47 ~13 ~22 chest
-fill ~46 ~17 ~22 ~48 ~17 ~28 gray_carpet
-fill ~42 ~17 ~22 ~43 ~17 ~28 gray_carpet
-fill ~42 ~17 ~27 ~48 ~17 ~28 gray_carpet
-setblock ~46 ~17 ~22 bookshelf
-setblock ~46 ~18 ~22 bookshelf
-setblock ~47 ~17 ~22 bookshelf
-setblock ~48 ~17 ~22 chest
-setblock ~46 ~17 ~28 crafting_table
-setblock ~48 ~17 ~28 flower_pot
-setblock ~47 ~17 ~28 flower_pot
-fill ~46 ~21 ~22 ~48 ~21 ~28 red_carpet
-fill ~42 ~21 ~22 ~43 ~21 ~28 red_carpet
-fill ~42 ~21 ~27 ~48 ~21 ~28 red_carpet
-setblock ~47 ~21 ~28 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~47 ~21 ~27 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~48 ~21 ~22 flower_pot
-setblock ~46 ~21 ~22 chest
-fill ~46 ~25 ~22 ~48 ~25 ~28 blue_carpet
-fill ~42 ~25 ~22 ~43 ~25 ~28 blue_carpet
-fill ~42 ~25 ~27 ~48 ~25 ~28 blue_carpet
-setblock ~46 ~25 ~22 flower_pot
-setblock ~48 ~25 ~22 flower_pot
-setblock ~46 ~25 ~28 flower_pot
+fill ~42 ~37 ~22 ~43 ~37 ~28 gray_carpet
+setblock ~46 ~37 ~22 flower_pot
+setblock ~48 ~37 ~22 flower_pot
+setblock ~46 ~37 ~28 flower_pot
+setblock ~48 ~37 ~28 bookshelf
+setblock ~47 ~37 ~22 chest
+setblock ~46 ~37 ~24 flower_pot
+fill ~46 ~41 ~22 ~48 ~41 ~28 red_carpet
+fill ~42 ~41 ~22 ~43 ~41 ~28 red_carpet
+setblock ~46 ~41 ~22 bookshelf
+setblock ~46 ~42 ~22 bookshelf
+setblock ~47 ~41 ~22 bookshelf
+setblock ~48 ~41 ~22 chest
+setblock ~46 ~41 ~28 crafting_table
+setblock ~48 ~41 ~28 flower_pot
+setblock ~48 ~41 ~22 flower_pot
+fill ~46 ~45 ~22 ~48 ~45 ~28 blue_carpet
+fill ~42 ~45 ~22 ~43 ~45 ~28 blue_carpet
+setblock ~47 ~45 ~28 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~47 ~45 ~27 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~48 ~45 ~22 flower_pot
+setblock ~46 ~45 ~22 chest
+fill ~46 ~49 ~22 ~48 ~49 ~28 light_blue_carpet
+fill ~42 ~49 ~22 ~43 ~49 ~28 light_blue_carpet
+setblock ~46 ~49 ~22 flower_pot
+setblock ~48 ~49 ~22 flower_pot
+setblock ~46 ~49 ~28 flower_pot
+setblock ~48 ~49 ~28 bookshelf

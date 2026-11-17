@@ -3,14 +3,14 @@ fill ~62 ~17 ~42 ~68 ~19 ~48 air
 fill ~62 ~21 ~42 ~68 ~23 ~48 air
 fill ~62 ~25 ~42 ~68 ~27 ~48 air
 fill ~62 ~29 ~42 ~68 ~30 ~48 air
-fill ~64 ~4 ~43 ~65 ~4 ~45 air
-fill ~64 ~8 ~43 ~65 ~8 ~45 air
-fill ~64 ~12 ~43 ~65 ~12 ~45 air
-fill ~64 ~16 ~43 ~65 ~16 ~45 air
-fill ~64 ~20 ~43 ~65 ~20 ~45 air
-fill ~64 ~24 ~43 ~65 ~24 ~45 air
-fill ~64 ~28 ~43 ~65 ~28 ~45 air
-fill ~64 ~1 ~43 ~65 ~30 ~46 air
+fill ~64 ~4 ~43 ~65 ~4 ~47 air
+fill ~64 ~8 ~43 ~65 ~8 ~47 air
+fill ~64 ~12 ~43 ~65 ~12 ~47 air
+fill ~64 ~16 ~43 ~65 ~16 ~47 air
+fill ~64 ~20 ~43 ~65 ~20 ~47 air
+fill ~64 ~24 ~43 ~65 ~24 ~47 air
+fill ~64 ~28 ~43 ~65 ~28 ~47 air
+fill ~64 ~1 ~43 ~65 ~30 ~47 air
 fill ~62 ~1 ~42 ~68 ~3 ~48 air
 setblock ~64 ~1 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~65 ~1 ~46 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]

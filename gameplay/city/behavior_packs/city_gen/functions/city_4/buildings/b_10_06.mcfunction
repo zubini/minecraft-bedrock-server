@@ -24,5 +24,5 @@ fill ~41 ~80 ~42 ~41 ~80 ~48 white_concrete
 fill ~49 ~80 ~42 ~49 ~80 ~48 white_concrete
 fill ~43 ~1 ~49 ~46 ~3 ~49 white_concrete
 fill ~44 ~1 ~49 ~45 ~2 ~49 air
-setblock ~44 ~1 ~49 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~44 ~2 ~49 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~44 ~1 ~49 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~44 ~2 ~49 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]

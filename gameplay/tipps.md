@@ -74,7 +74,7 @@ Wieder an die **Nordwest-Ecke**. Über mehrere Sekunden („Clear fertig.“).
 3. `./gameplay/city/deploy_city_pack.sh minecraft`  
 4. `/function city_N/start`
 
-## Landmarken (Kirche, Stadion, Schule, Rathaus, Park)
+## Landmarken (Kirche, Stadion, Schule, Rathaus, Park, Train Station)
 
 Eigenständige Behavior Packs — jeweils **Nordwest-Ecke**, Bau nach **Ost+Süd**, eigenes Clear mit passender Grösse.
 
@@ -85,6 +85,7 @@ Eigenständige Behavior Packs — jeweils **Nordwest-Ecke**, Bau nach **Ost+Süd
 | Schule | 36×48 | ~18 | `/function school/start` | `/function school/clear` |
 | Rathaus | 32×32 | ~28 | `/function townhall/start` | `/function townhall/clear` |
 | Park | 48×48 | ~12 | `/function park/start` | `/function park/clear` |
+| Train Station | 48×56 | ~22 | `/function trainstation/start` | `/function trainstation/clear` |
 
 ### Pack erzeugen (lokal)
 
@@ -94,6 +95,7 @@ node gameplay/stadium/generate_stadium_pack.mjs
 node gameplay/school/generate_school_pack.mjs
 node gameplay/townhall/generate_townhall_pack.mjs
 node gameplay/park/generate_park_pack.mjs
+node gameplay/trainstation/generate_trainstation_pack.mjs
 ```
 
 ### Deploy (je Pack, startet den Server neu)
@@ -104,6 +106,7 @@ node gameplay/park/generate_park_pack.mjs
 ./gameplay/school/deploy_school_pack.sh minecraft
 ./gameplay/townhall/deploy_townhall_pack.sh minecraft
 ./gameplay/park/deploy_park_pack.sh minecraft
+./gameplay/trainstation/deploy_trainstation_pack.sh minecraft
 ```
 
 Danach ggf. neu joinen. **In der Nähe bleiben**, bis Chat «Fertig.» meldet (Stadion dauert länger).

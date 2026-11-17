@@ -13,16 +13,16 @@ setblock ~45 ~44 ~24 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false
 setblock ~44 ~45 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~45 ~45 ~23 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 fill ~44 ~0 ~23 ~45 ~0 ~27 quartz_block
-setblock ~44 ~5 ~27 quartz_block
-setblock ~45 ~5 ~27 quartz_block
-setblock ~44 ~10 ~27 quartz_block
-setblock ~45 ~10 ~27 quartz_block
-setblock ~44 ~15 ~27 quartz_block
-setblock ~45 ~15 ~27 quartz_block
-setblock ~44 ~20 ~27 quartz_block
-setblock ~45 ~20 ~27 quartz_block
-setblock ~44 ~25 ~27 quartz_block
-setblock ~45 ~25 ~27 quartz_block
-setblock ~44 ~30 ~27 quartz_block
-setblock ~45 ~30 ~27 quartz_block
-setblock ~44 ~35 ~27 quartz_block
+fill ~45 ~0 ~30 ~46 ~0 ~30 stone_bricks
+fill ~44 ~1 ~30 ~47 ~3 ~30 white_concrete
+fill ~45 ~1 ~30 ~46 ~2 ~30 air
+setblock ~45 ~1 ~30 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~45 ~2 ~30 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~46 ~1 ~30 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~46 ~2 ~30 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+fill ~46 ~1 ~22 ~49 ~1 ~29 red_carpet
+fill ~42 ~1 ~22 ~43 ~1 ~29 red_carpet
+setblock ~46 ~1 ~22 flower_pot
+setblock ~49 ~1 ~22 flower_pot
+setblock ~47 ~1 ~29 crafting_table
+setblock ~48 ~1 ~29 chest

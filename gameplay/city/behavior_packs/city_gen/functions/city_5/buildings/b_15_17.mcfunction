@@ -1,28 +1,28 @@
-setblock ~69 ~13 ~62 flower_pot
-setblock ~66 ~13 ~69 flower_pot
-setblock ~69 ~13 ~69 bookshelf
-setblock ~67 ~13 ~62 chest
-fill ~66 ~17 ~62 ~69 ~17 ~69 gray_carpet
-fill ~62 ~17 ~67 ~69 ~17 ~69 gray_carpet
-fill ~62 ~17 ~62 ~63 ~17 ~69 gray_carpet
-setblock ~66 ~17 ~62 bookshelf
-setblock ~66 ~18 ~62 bookshelf
-setblock ~67 ~17 ~62 bookshelf
-setblock ~69 ~17 ~62 chest
-setblock ~66 ~17 ~69 crafting_table
-setblock ~69 ~17 ~69 flower_pot
-fill ~66 ~21 ~62 ~69 ~21 ~69 red_carpet
-fill ~62 ~21 ~67 ~69 ~21 ~69 red_carpet
-fill ~62 ~21 ~62 ~63 ~21 ~69 red_carpet
-setblock ~67 ~21 ~69 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~67 ~21 ~68 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~69 ~21 ~62 flower_pot
-setblock ~66 ~21 ~62 chest
-setblock ~69 ~21 ~69 flower_pot
-fill ~66 ~25 ~62 ~69 ~25 ~69 blue_carpet
-fill ~62 ~25 ~67 ~69 ~25 ~69 blue_carpet
-fill ~62 ~25 ~62 ~63 ~25 ~69 blue_carpet
-setblock ~66 ~25 ~62 flower_pot
-setblock ~69 ~25 ~62 flower_pot
-setblock ~66 ~25 ~69 flower_pot
-setblock ~69 ~25 ~69 bookshelf
+fill ~66 ~33 ~62 ~69 ~33 ~69 white_carpet
+fill ~62 ~33 ~62 ~63 ~33 ~69 white_carpet
+fill ~62 ~33 ~68 ~69 ~33 ~69 white_carpet
+setblock ~67 ~33 ~69 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~67 ~33 ~68 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~69 ~33 ~62 flower_pot
+setblock ~66 ~33 ~62 chest
+setblock ~66 ~33 ~69 flower_pot
+fill ~66 ~37 ~62 ~69 ~37 ~69 gray_carpet
+fill ~62 ~37 ~62 ~63 ~37 ~69 gray_carpet
+fill ~62 ~37 ~68 ~69 ~37 ~69 gray_carpet
+setblock ~66 ~37 ~62 flower_pot
+setblock ~69 ~37 ~62 flower_pot
+setblock ~66 ~37 ~69 flower_pot
+setblock ~69 ~37 ~69 bookshelf
+setblock ~67 ~37 ~62 chest
+setblock ~69 ~37 ~64 flower_pot
+fill ~66 ~41 ~62 ~69 ~41 ~69 red_carpet
+fill ~62 ~41 ~62 ~63 ~41 ~69 red_carpet
+fill ~62 ~41 ~68 ~69 ~41 ~69 red_carpet
+setblock ~66 ~41 ~62 bookshelf
+setblock ~66 ~42 ~62 bookshelf
+setblock ~67 ~41 ~62 bookshelf
+setblock ~69 ~41 ~62 chest
+setblock ~66 ~41 ~69 crafting_table
+setblock ~69 ~41 ~69 flower_pot
+fill ~66 ~45 ~62 ~69 ~45 ~69 blue_carpet
+fill ~62 ~45 ~62 ~63 ~45 ~69 blue_carpet

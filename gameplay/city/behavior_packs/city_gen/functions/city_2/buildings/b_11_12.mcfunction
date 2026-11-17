@@ -1,28 +1,28 @@
-fill ~62 ~6 ~42 ~63 ~6 ~48 blue_carpet
-setblock ~66 ~6 ~42 bookshelf
-setblock ~66 ~7 ~42 bookshelf
-setblock ~67 ~6 ~42 bookshelf
-setblock ~68 ~6 ~42 chest
-setblock ~66 ~6 ~48 crafting_table
-setblock ~68 ~6 ~48 flower_pot
-setblock ~66 ~6 ~48 flower_pot
-fill ~66 ~11 ~42 ~68 ~11 ~48 light_blue_carpet
-fill ~62 ~11 ~42 ~63 ~11 ~48 light_blue_carpet
-setblock ~67 ~11 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~67 ~11 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~68 ~11 ~42 flower_pot
-setblock ~66 ~11 ~42 chest
-fill ~66 ~16 ~42 ~68 ~16 ~48 white_carpet
-fill ~62 ~16 ~42 ~63 ~16 ~48 white_carpet
-setblock ~66 ~16 ~42 flower_pot
-setblock ~68 ~16 ~42 flower_pot
-setblock ~66 ~16 ~48 flower_pot
-setblock ~68 ~16 ~48 bookshelf
-setblock ~67 ~16 ~42 chest
-setblock ~68 ~16 ~48 flower_pot
-fill ~66 ~21 ~42 ~68 ~21 ~48 gray_carpet
-fill ~62 ~21 ~42 ~63 ~21 ~48 gray_carpet
-setblock ~66 ~21 ~42 bookshelf
-setblock ~66 ~22 ~42 bookshelf
 setblock ~67 ~21 ~42 bookshelf
 setblock ~68 ~21 ~42 chest
+setblock ~66 ~21 ~48 crafting_table
+setblock ~68 ~21 ~48 flower_pot
+fill ~66 ~26 ~42 ~68 ~26 ~48 red_carpet
+fill ~62 ~26 ~42 ~63 ~26 ~48 red_carpet
+setblock ~67 ~26 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~67 ~26 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~68 ~26 ~42 flower_pot
+setblock ~66 ~26 ~42 chest
+setblock ~68 ~26 ~42 flower_pot
+fill ~66 ~31 ~42 ~68 ~31 ~48 blue_carpet
+fill ~62 ~31 ~42 ~63 ~31 ~48 blue_carpet
+setblock ~66 ~31 ~42 flower_pot
+setblock ~68 ~31 ~42 flower_pot
+setblock ~66 ~31 ~48 flower_pot
+setblock ~68 ~31 ~48 bookshelf
+setblock ~67 ~31 ~42 chest
+setblock ~68 ~31 ~48 flower_pot
+fill ~66 ~36 ~42 ~68 ~36 ~48 light_blue_carpet
+fill ~62 ~36 ~42 ~63 ~36 ~48 light_blue_carpet
+setblock ~66 ~36 ~42 bookshelf
+setblock ~66 ~37 ~42 bookshelf
+setblock ~67 ~36 ~42 bookshelf
+setblock ~68 ~36 ~42 chest
+setblock ~66 ~36 ~48 crafting_table
+setblock ~68 ~36 ~48 flower_pot
+setblock ~66 ~36 ~45 flower_pot

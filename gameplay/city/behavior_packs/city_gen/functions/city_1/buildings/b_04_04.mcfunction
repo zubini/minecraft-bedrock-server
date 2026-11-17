@@ -17,10 +17,10 @@ fill ~1 ~52 ~22 ~1 ~52 ~28 light_gray_concrete
 fill ~9 ~52 ~22 ~9 ~52 ~28 light_gray_concrete
 fill ~3 ~1 ~29 ~6 ~3 ~29 light_gray_concrete
 fill ~4 ~1 ~29 ~5 ~2 ~29 air
-setblock ~4 ~1 ~29 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~4 ~2 ~29 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~5 ~1 ~29 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~5 ~2 ~29 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+setblock ~4 ~1 ~29 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
+setblock ~4 ~2 ~29 wooden_door ["direction":3,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
+setblock ~5 ~1 ~29 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~5 ~2 ~29 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
 fill ~2 ~1 ~22 ~8 ~3 ~28 air
 fill ~2 ~5 ~22 ~8 ~7 ~28 air
 fill ~2 ~9 ~22 ~8 ~11 ~28 air

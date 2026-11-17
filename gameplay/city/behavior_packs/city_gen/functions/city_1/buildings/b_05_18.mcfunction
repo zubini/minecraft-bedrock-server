@@ -1,28 +1,28 @@
-setblock ~26 ~37 ~22 bookshelf
-setblock ~27 ~36 ~22 bookshelf
-setblock ~29 ~36 ~22 chest
-setblock ~26 ~36 ~29 crafting_table
-setblock ~29 ~36 ~29 flower_pot
-setblock ~26 ~36 ~23 flower_pot
-fill ~26 ~41 ~22 ~29 ~41 ~29 white_carpet
-fill ~22 ~41 ~22 ~23 ~41 ~29 white_carpet
-fill ~22 ~41 ~28 ~29 ~41 ~29 white_carpet
-setblock ~27 ~41 ~29 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~27 ~41 ~28 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~29 ~41 ~22 flower_pot
-setblock ~26 ~41 ~22 chest
-setblock ~28 ~41 ~27 flower_pot
-fill ~26 ~46 ~22 ~29 ~46 ~29 gray_carpet
-fill ~22 ~46 ~22 ~23 ~46 ~29 gray_carpet
-fill ~22 ~46 ~28 ~29 ~46 ~29 gray_carpet
-setblock ~26 ~46 ~22 flower_pot
-setblock ~29 ~46 ~22 flower_pot
-setblock ~26 ~46 ~29 flower_pot
-setblock ~29 ~46 ~29 bookshelf
-setblock ~27 ~46 ~22 chest
-setblock ~27 ~46 ~22 flower_pot
-fill ~26 ~51 ~22 ~29 ~51 ~29 red_carpet
-fill ~22 ~51 ~22 ~23 ~51 ~29 red_carpet
-fill ~22 ~51 ~28 ~29 ~51 ~29 red_carpet
-setblock ~26 ~51 ~22 bookshelf
-setblock ~26 ~52 ~22 bookshelf
+fill ~22 ~66 ~22 ~23 ~66 ~29 white_carpet
+setblock ~26 ~66 ~22 bookshelf
+setblock ~26 ~67 ~22 bookshelf
+setblock ~27 ~66 ~22 bookshelf
+setblock ~29 ~66 ~22 chest
+setblock ~26 ~66 ~29 crafting_table
+setblock ~29 ~66 ~29 flower_pot
+fill ~26 ~71 ~22 ~29 ~71 ~29 gray_carpet
+fill ~22 ~71 ~22 ~23 ~71 ~29 gray_carpet
+setblock ~27 ~71 ~29 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~27 ~71 ~28 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~29 ~71 ~22 flower_pot
+setblock ~26 ~71 ~22 chest
+setblock ~29 ~71 ~26 flower_pot
+fill ~26 ~76 ~22 ~29 ~76 ~29 red_carpet
+fill ~22 ~76 ~22 ~23 ~76 ~29 red_carpet
+setblock ~26 ~76 ~22 flower_pot
+setblock ~29 ~76 ~22 flower_pot
+setblock ~26 ~76 ~29 flower_pot
+setblock ~29 ~76 ~29 bookshelf
+setblock ~27 ~76 ~22 chest
+fill ~26 ~81 ~22 ~29 ~81 ~29 blue_carpet
+fill ~22 ~81 ~22 ~23 ~81 ~29 blue_carpet
+setblock ~26 ~81 ~22 bookshelf
+setblock ~26 ~82 ~22 bookshelf
+setblock ~27 ~81 ~22 bookshelf
+setblock ~29 ~81 ~22 chest
+setblock ~26 ~81 ~29 crafting_table

@@ -24,5 +24,5 @@ setblock ~5 ~47 ~4 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~4 ~48 ~3 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 setblock ~5 ~48 ~3 quartz_stairs ["weirdo_direction":3,"upside_down_bit":false]
 fill ~4 ~0 ~3 ~5 ~0 ~6 quartz_block
-setblock ~4 ~4 ~6 quartz_block
-setblock ~5 ~4 ~6 quartz_block
+fill ~4 ~0 ~9 ~5 ~0 ~9 stone_bricks
+fill ~3 ~1 ~9 ~6 ~3 ~9 light_gray_concrete

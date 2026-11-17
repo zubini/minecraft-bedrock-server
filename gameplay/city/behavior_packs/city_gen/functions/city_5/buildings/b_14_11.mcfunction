@@ -1,28 +1,28 @@
-setblock ~45 ~35 ~67 quartz_block
-setblock ~44 ~40 ~67 quartz_block
-setblock ~45 ~40 ~67 quartz_block
-setblock ~44 ~45 ~67 quartz_block
-setblock ~45 ~45 ~67 quartz_block
-setblock ~44 ~50 ~67 quartz_block
-setblock ~45 ~50 ~67 quartz_block
-setblock ~44 ~55 ~67 quartz_block
-setblock ~45 ~55 ~67 quartz_block
-setblock ~44 ~60 ~67 quartz_block
-setblock ~45 ~60 ~67 quartz_block
-setblock ~44 ~65 ~67 quartz_block
-setblock ~45 ~65 ~67 quartz_block
-fill ~44 ~0 ~69 ~45 ~0 ~69 stone_bricks
-fill ~43 ~1 ~69 ~46 ~3 ~69 white_concrete
-fill ~44 ~1 ~69 ~45 ~2 ~69 air
-setblock ~44 ~1 ~69 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~44 ~2 ~69 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~45 ~1 ~69 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~45 ~2 ~69 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~46 ~1 ~62 ~48 ~1 ~68 red_carpet
-fill ~42 ~1 ~62 ~43 ~1 ~68 red_carpet
-setblock ~46 ~1 ~62 flower_pot
-setblock ~48 ~1 ~62 flower_pot
-setblock ~47 ~1 ~68 crafting_table
-setblock ~48 ~1 ~68 chest
 fill ~46 ~6 ~62 ~48 ~6 ~68 blue_carpet
 fill ~42 ~6 ~62 ~43 ~6 ~68 blue_carpet
+setblock ~46 ~6 ~62 bookshelf
+setblock ~46 ~7 ~62 bookshelf
+setblock ~47 ~6 ~62 bookshelf
+setblock ~48 ~6 ~62 chest
+setblock ~46 ~6 ~68 crafting_table
+setblock ~48 ~6 ~68 flower_pot
+fill ~46 ~11 ~62 ~48 ~11 ~68 light_blue_carpet
+fill ~42 ~11 ~62 ~43 ~11 ~68 light_blue_carpet
+setblock ~47 ~11 ~68 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~47 ~11 ~67 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~48 ~11 ~62 flower_pot
+setblock ~46 ~11 ~62 chest
+setblock ~46 ~11 ~65 flower_pot
+fill ~46 ~16 ~62 ~48 ~16 ~68 white_carpet
+fill ~42 ~16 ~62 ~43 ~16 ~68 white_carpet
+setblock ~46 ~16 ~62 flower_pot
+setblock ~48 ~16 ~62 flower_pot
+setblock ~46 ~16 ~68 flower_pot
+setblock ~48 ~16 ~68 bookshelf
+setblock ~47 ~16 ~62 chest
+fill ~46 ~21 ~62 ~48 ~21 ~68 gray_carpet
+fill ~42 ~21 ~62 ~43 ~21 ~68 gray_carpet
+setblock ~46 ~21 ~62 bookshelf
+setblock ~46 ~22 ~62 bookshelf
+setblock ~47 ~21 ~62 bookshelf
+setblock ~48 ~21 ~62 chest

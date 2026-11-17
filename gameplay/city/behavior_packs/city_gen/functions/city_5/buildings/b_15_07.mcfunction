@@ -1,5 +1,5 @@
-setblock ~66 ~1 ~70 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~66 ~2 ~70 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
+setblock ~66 ~1 ~70 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
+setblock ~66 ~2 ~70 wooden_door ["direction":3,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
 fill ~62 ~1 ~62 ~69 ~3 ~69 air
 fill ~62 ~5 ~62 ~69 ~7 ~69 air
 fill ~62 ~9 ~62 ~69 ~11 ~69 air
@@ -21,8 +21,8 @@ fill ~62 ~69 ~62 ~69 ~71 ~69 air
 fill ~62 ~73 ~62 ~69 ~75 ~69 air
 fill ~62 ~77 ~62 ~69 ~79 ~69 air
 fill ~62 ~81 ~62 ~69 ~82 ~69 air
-fill ~64 ~4 ~63 ~65 ~4 ~65 air
-fill ~64 ~8 ~63 ~65 ~8 ~65 air
-fill ~64 ~12 ~63 ~65 ~12 ~65 air
-fill ~64 ~16 ~63 ~65 ~16 ~65 air
-fill ~64 ~20 ~63 ~65 ~20 ~65 air
+fill ~64 ~4 ~63 ~65 ~4 ~67 air
+fill ~64 ~8 ~63 ~65 ~8 ~67 air
+fill ~64 ~12 ~63 ~65 ~12 ~67 air
+fill ~64 ~16 ~63 ~65 ~16 ~67 air
+fill ~64 ~20 ~63 ~65 ~20 ~67 air

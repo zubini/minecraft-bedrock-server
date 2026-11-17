@@ -1,28 +1,28 @@
-setblock ~44 ~28 ~6 quartz_block
-setblock ~45 ~28 ~6 quartz_block
-setblock ~44 ~32 ~6 quartz_block
-setblock ~45 ~32 ~6 quartz_block
-setblock ~44 ~36 ~6 quartz_block
-setblock ~45 ~36 ~6 quartz_block
-setblock ~44 ~40 ~6 quartz_block
-setblock ~45 ~40 ~6 quartz_block
-fill ~45 ~0 ~9 ~46 ~0 ~9 stone_bricks
-fill ~44 ~1 ~9 ~47 ~3 ~9 cyan_concrete
-fill ~45 ~1 ~9 ~46 ~2 ~9 air
-setblock ~45 ~1 ~9 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":false]
-setblock ~45 ~2 ~9 wooden_door ["direction":2,"door_hinge_bit":false,"open_bit":false,"upper_block_bit":true]
-setblock ~46 ~1 ~9 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":false]
-setblock ~46 ~2 ~9 wooden_door ["direction":2,"door_hinge_bit":true,"open_bit":false,"upper_block_bit":true]
-fill ~46 ~1 ~3 ~48 ~1 ~8 red_carpet
-fill ~43 ~1 ~7 ~48 ~1 ~8 red_carpet
-setblock ~46 ~1 ~3 flower_pot
-setblock ~48 ~1 ~3 flower_pot
-setblock ~47 ~1 ~8 crafting_table
-setblock ~48 ~1 ~8 chest
 fill ~46 ~5 ~3 ~48 ~5 ~8 blue_carpet
-fill ~43 ~5 ~7 ~48 ~5 ~8 blue_carpet
 setblock ~46 ~5 ~3 bookshelf
 setblock ~46 ~6 ~3 bookshelf
 setblock ~47 ~5 ~3 bookshelf
 setblock ~48 ~5 ~3 chest
 setblock ~46 ~5 ~8 crafting_table
+setblock ~48 ~5 ~8 flower_pot
+setblock ~47 ~5 ~6 flower_pot
+fill ~46 ~9 ~3 ~48 ~9 ~8 light_blue_carpet
+setblock ~47 ~9 ~8 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~47 ~9 ~7 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~48 ~9 ~3 flower_pot
+setblock ~46 ~9 ~3 chest
+setblock ~48 ~9 ~7 flower_pot
+fill ~46 ~13 ~3 ~48 ~13 ~8 white_carpet
+setblock ~46 ~13 ~3 flower_pot
+setblock ~48 ~13 ~3 flower_pot
+setblock ~46 ~13 ~8 flower_pot
+setblock ~48 ~13 ~8 bookshelf
+setblock ~47 ~13 ~3 chest
+setblock ~48 ~13 ~3 flower_pot
+fill ~46 ~17 ~3 ~48 ~17 ~8 gray_carpet
+setblock ~46 ~17 ~3 bookshelf
+setblock ~46 ~18 ~3 bookshelf
+setblock ~47 ~17 ~3 bookshelf
+setblock ~48 ~17 ~3 chest
+setblock ~46 ~17 ~8 crafting_table
+setblock ~48 ~17 ~8 flower_pot

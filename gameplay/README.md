@@ -12,5 +12,6 @@ Alles rund ums Spielen und Bauen — getrennt von Server-Installation und -Konfi
 | [`school/`](school/) | Schule (`/function school/…`) |
 | [`townhall/`](townhall/) | Rathaus (`/function townhall/…`) |
 | [`park/`](park/) | Stadtpark (`/function park/…`) |
+| [`trainstation/`](trainstation/) | Train Station (`/function trainstation/…`) |
 
 Server-Einrichtung: Root-[`README.md`](../README.md).

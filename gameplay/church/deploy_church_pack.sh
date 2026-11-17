@@ -11,7 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACK_SRC="${SCRIPT_DIR}/behavior_packs/church_gen"
 INSTALL_DIR="${INSTALL_DIR:-/opt/minecraft-bedrock}"
 PACK_UUID="c1a8e3d4-7b2f-4a91-9e6c-3d5f8a0b2c4e"
-PACK_VERSION='[1,0,0]'
+PACK_VERSION='[1,0,1]'
 
 die() {
   echo "ERROR: $*" >&2

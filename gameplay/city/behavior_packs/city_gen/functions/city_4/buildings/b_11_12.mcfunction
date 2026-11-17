@@ -1,28 +1,28 @@
-setblock ~68 ~5 ~48 flower_pot
-fill ~66 ~9 ~43 ~68 ~9 ~48 light_blue_carpet
-fill ~63 ~9 ~47 ~68 ~9 ~48 light_blue_carpet
-setblock ~67 ~9 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~67 ~9 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~68 ~9 ~43 flower_pot
-setblock ~66 ~9 ~43 chest
-fill ~66 ~13 ~43 ~68 ~13 ~48 white_carpet
-fill ~63 ~13 ~47 ~68 ~13 ~48 white_carpet
-setblock ~66 ~13 ~43 flower_pot
-setblock ~68 ~13 ~43 flower_pot
-setblock ~66 ~13 ~48 flower_pot
-setblock ~68 ~13 ~48 bookshelf
-setblock ~67 ~13 ~43 chest
-setblock ~68 ~13 ~43 flower_pot
-fill ~66 ~17 ~43 ~68 ~17 ~48 gray_carpet
-fill ~63 ~17 ~47 ~68 ~17 ~48 gray_carpet
-setblock ~66 ~17 ~43 bookshelf
-setblock ~66 ~18 ~43 bookshelf
-setblock ~67 ~17 ~43 bookshelf
-setblock ~68 ~17 ~43 chest
-setblock ~66 ~17 ~48 crafting_table
-setblock ~68 ~17 ~48 flower_pot
-fill ~66 ~21 ~43 ~68 ~21 ~48 red_carpet
-fill ~63 ~21 ~47 ~68 ~21 ~48 red_carpet
-setblock ~67 ~21 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
-setblock ~67 ~21 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
-setblock ~68 ~21 ~43 flower_pot
+setblock ~67 ~25 ~43 chest
+setblock ~67 ~25 ~48 flower_pot
+fill ~66 ~29 ~43 ~68 ~29 ~48 light_blue_carpet
+setblock ~66 ~29 ~43 bookshelf
+setblock ~66 ~30 ~43 bookshelf
+setblock ~67 ~29 ~43 bookshelf
+setblock ~68 ~29 ~43 chest
+setblock ~66 ~29 ~48 crafting_table
+setblock ~68 ~29 ~48 flower_pot
+setblock ~68 ~29 ~45 flower_pot
+fill ~66 ~33 ~43 ~68 ~33 ~48 white_carpet
+setblock ~67 ~33 ~48 yellow_bed ["direction":2,"head_piece_bit":false]
+setblock ~67 ~33 ~47 yellow_bed ["direction":2,"head_piece_bit":true]
+setblock ~68 ~33 ~43 flower_pot
+setblock ~66 ~33 ~43 chest
+setblock ~66 ~33 ~43 flower_pot
+fill ~66 ~37 ~43 ~68 ~37 ~48 gray_carpet
+setblock ~66 ~37 ~43 flower_pot
+setblock ~68 ~37 ~43 flower_pot
+setblock ~66 ~37 ~48 flower_pot
+setblock ~68 ~37 ~48 bookshelf
+setblock ~67 ~37 ~43 chest
+setblock ~66 ~37 ~44 flower_pot
+fill ~66 ~41 ~43 ~68 ~41 ~48 red_carpet
+setblock ~66 ~41 ~43 bookshelf
+setblock ~66 ~42 ~43 bookshelf
+setblock ~67 ~41 ~43 bookshelf
+setblock ~68 ~41 ~43 chest

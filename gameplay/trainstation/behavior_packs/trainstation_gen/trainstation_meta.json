@@ -1,0 +1,9 @@
+{
+  "ns": "trainstation",
+  "size_x": 48,
+  "size_z": 56,
+  "max_height": 22,
+  "build_steps": 10,
+  "clear_steps": 9,
+  "build_commands": 263
+}
