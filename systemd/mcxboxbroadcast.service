@@ -1,10 +1,10 @@
 [Unit]
 Description=MCXboxBroadcast (Xbox Live friends session for Bedrock)
 Documentation=https://github.com/MCXboxBroadcast/Broadcaster
-After=network-online.target
+After=network-online.target minecraft-bedrock.service
 Wants=network-online.target
-# Soft dependency: Bedrock may run on the same host, but is not required locally
-# (remote-address can point at any reachable BDS).
+# Prefer starting after local Bedrock so joins hit a ready TCP/UDP listener.
+# Soft dependency only: remote-address can still point at any reachable BDS.
 
 [Service]
 Type=simple

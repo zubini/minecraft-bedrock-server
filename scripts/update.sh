@@ -34,6 +34,8 @@ DOWNLOAD_LINKS_API="${DOWNLOAD_LINKS_API:-https://net-secondary.web.minecraft-se
 DOWNLOAD_TYPE="${DOWNLOAD_TYPE:-serverBedrockLinux}"
 UPDATE_LOG="${UPDATE_LOG:-/var/log/minecraft-bedrock/update.log}"
 VERSION_FILE="${INSTALL_DIR}/VERSION"
+NOTIFY_EMAIL="${NOTIFY_EMAIL:-}"
+NOTIFY_FROM="${NOTIFY_FROM:-minecraft-bedrock@$(hostname -f 2>/dev/null || hostname)}"
 USER_AGENT="Mozilla/5.0 (compatible; MinecraftBedrockUpdater/1.0)"
 
 # Restart after a failed update post-stop; clean up temp dirs
@@ -69,6 +71,54 @@ log() {
 die() {
   log "ERROR: $*"
   exit 1
+}
+
+# Send mail after a successful update. No-op if NOTIFY_EMAIL is empty.
+notify_update() {
+  local old_ver="$1"
+  local new_ver="$2"
+  local subject body host
+
+  [[ -n "$NOTIFY_EMAIL" ]] || return 0
+
+  host="$(hostname -f 2>/dev/null || hostname)"
+  subject="Minecraft Bedrock: Update auf ${new_ver} (${host})"
+  body="$(cat <<EOF
+Der Minecraft-Bedrock-Server auf ${host} wurde aktualisiert.
+
+Vorher:  ${old_ver:-<keine>}
+Neu:     ${new_ver}
+Backup:  ${LAST_BACKUP_ARCHIVE:-keines}
+Zeit:    $(date '+%Y-%m-%d %H:%M:%S %Z')
+EOF
+)"
+
+  if command -v mail >/dev/null 2>&1; then
+    if printf '%s\n' "$body" | mail -r "$NOTIFY_FROM" -s "$subject" "$NOTIFY_EMAIL"; then
+      log "Notification sent to $NOTIFY_EMAIL"
+    else
+      log "WARNING: mail to $NOTIFY_EMAIL failed (mail exit $?)."
+    fi
+    return 0
+  fi
+
+  if command -v sendmail >/dev/null 2>&1; then
+    if sendmail -t <<EOF
+From: ${NOTIFY_FROM}
+To: ${NOTIFY_EMAIL}
+Subject: ${subject}
+
+${body}
+EOF
+    then
+      log "Notification sent to $NOTIFY_EMAIL"
+    else
+      log "WARNING: sendmail to $NOTIFY_EMAIL failed."
+    fi
+    return 0
+  fi
+
+  log "WARNING: NOTIFY_EMAIL is set but neither mail nor sendmail is available – skipping notification."
 }
 
 on_exit() {
@@ -407,6 +457,7 @@ main() {
   SERVER_NEEDS_RESTART=0
   start_server
   log "Update to $LATEST_VERSION completed."
+  notify_update "$installed" "$LATEST_VERSION"
 }
 
 main

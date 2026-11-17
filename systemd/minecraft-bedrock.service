@@ -10,6 +10,8 @@ Group=minecraft
 WorkingDirectory=/opt/minecraft-bedrock
 Environment=LD_LIBRARY_PATH=.
 ExecStart=/opt/minecraft-bedrock/bedrock_server
+# Refresh Xbox friends session after Bedrock is up (ignore if MCXboxBroadcast is not installed)
+ExecStartPost=+/bin/systemctl --no-block try-restart mcxboxbroadcast.service
 Restart=on-failure
 RestartSec=10
 Nice=5

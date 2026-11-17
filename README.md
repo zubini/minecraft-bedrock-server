@@ -26,7 +26,9 @@ sudo ./scripts/provision.sh
 
 ### Firewall auf Debian (ufw)
 
-Lokal auf dem Server nur SSH und Minecraft freigeben:
+Lokal auf dem Server nur SSH und Minecraft freigeben.
+
+Ab BDS **1.26** (NetherNet) reicht UDP 19132 allein nicht mehr: Signaling läuft über **TCP 19132**, Gameplay über festgelegte **UDP-Ports** (`server-udp-ports` in `server.properties`).
 
 ```bash
 sudo apt-get install -y ufw
@@ -35,11 +37,18 @@ sudo ufw default allow outgoing
 sudo ufw allow OpenSSH          # SSH bleibt erreichbar (Port 22)
 # Falls SSH nicht auf Port 22 läuft, stattdessen z. B.:
 # sudo ufw allow 2222/tcp
-sudo ufw allow 19132/udp        # Minecraft Bedrock
-# optional IPv6:
-# sudo ufw allow 19133/udp
+sudo ufw allow 19132/tcp        # NetherNet Signaling
+sudo ufw allow 19132:19140/udp  # Gameplay (an server-udp-ports anpassen)
 sudo ufw enable
 sudo ufw status
+```
+
+In `/opt/minecraft-bedrock/server.properties` sollten u. a. stehen:
+
+```properties
+transport=nethernet
+server-port=19132
+server-udp-ports=19132-19140
 ```
 
 **Wichtig:** Zuerst die SSH-Regel setzen, erst dann `ufw enable` — sonst droht Aussperrung.  
@@ -47,7 +56,7 @@ Das Provisioning aktiviert die Firewall bewusst **nicht** automatisch.
 
 Der systemd-Service nutzt minimale Härtung (`NoNewPrivileges`, `PrivateTmp`, `ProtectHome`, …) ohne den Spielbetrieb einzuschränken.
 
-Beim Hosting-Provider ggf. dieselben Ports zusätzlich freigeben (Security Group / Cloud-Firewall).
+Beim Hosting-Provider dieselben Ports freigeben (Security Group / Cloud-Firewall): **TCP 19132** und **UDP 19132–19140**.
 
 ### Allowlist
 
@@ -90,13 +99,17 @@ systemctl list-timers minecraft-bedrock-update.timer  # nächste Auto-Prüfung
 | `BACKUP_KEEP` | `3` | Anzahl behaltener Welt-Backups |
 | `INSTALL_DIR` | `/opt/minecraft-bedrock` | Installationsverzeichnis |
 | `BACKUP_DIR` | `/opt/minecraft-bedrock/backups` | Backup-Verzeichnis |
+| `NOTIFY_EMAIL` | (leer / Beispieladresse) | Mail nach erfolgreichem Versions-Update |
+| `NOTIFY_FROM` | `minecraft-bedrock@<hostname>` | Absender der Benachrichtigung |
+
+Mail-Versand braucht ein lokales MTA (`mail`/`sendmail`), typisch `msmtp-mta` + `bsd-mailx`, plus `NOTIFY_EMAIL` in `/etc/minecraft-bedrock/config.env` (nicht im Git – nur die auskommentierte Vorlage in `config.env.example`).
 
 Spiel-Einstellungen (`server.properties`, Allowlist, …) unter `/opt/minecraft-bedrock/` bleiben bei Updates erhalten.
 
 ## Update & Weltschutz
 
-Bei neuer Version: ZIP laden → Checksum prüfen → stoppen → Welt sichern (verifiziert) → installieren → starten.  
-`worlds/` wird nie überschrieben. Schlägt das Backup fehl, bricht das Update ab. Bei Fehler nach dem Stop startet der Service automatisch wieder.
+Bei neuer Version: ZIP laden → Checksum prüfen → stoppen → Welt sichern (verifiziert) → installieren → starten → optional Mail (`NOTIFY_EMAIL`).  
+`worlds/` wird nie überschrieben. Schlägt das Backup fehl, bricht das Update ab. Bei Fehler nach dem Stop startet der Service automatisch wieder. Keine Mail bei reinem Versionscheck ohne Update.
 
 Der Download wird gegen die CDN-Header **Content-MD5** und **Content-Length** geprüft (Mojang liefert kein separates SHA-Manifest). Bei Abweichung wird nicht installiert.
 
