@@ -4,10 +4,10 @@ Gameplay-Hinweise für den Bedrock-Server — getrennt von Installation und Serv
 
 Skripte und Packs liegen unter [`gameplay/city/`](city/).
 
-## Prozedurale Stadt (`city_gen`)
+## Prozedurale Stadt (`city`)
 
 Behavior Pack baut eine Hochhauslandschaft mit Strassen ab deinem Standpunkt (nach Osten und Süden).  
-Mehrere Varianten: `city_gen_1` … `city_gen_5` (verschiedene Seeds).
+Mehrere Varianten: `city_1` … `city_5` (verschiedene Seeds).
 
 ### Voraussetzungen
 
@@ -30,6 +30,17 @@ node gameplay/city/generate_city_pack.mjs --seed 42 --variants 5
 
 Startet den Server neu. Danach ggf. neu joinen.
 
+### Terrain vorbereiten (optional)
+
+An der Nordwest-Ecke stehen (Fuss-Höhe = spätere Stadt-Ebene). Fläche nach Ost+Süd freihalten:
+
+```
+/function city/terrain
+```
+
+Macht **unter den Füssen** eine Erd-Ebene (80×80) und räumt **darüber** alles frei.  
+Chat: „Terrain fertig.“ abwarten.
+
 ### Bauen
 
 1. Koordinaten anzeigen  
@@ -38,14 +49,14 @@ Startet den Server neu. Danach ggf. neu joinen.
 4. Chat – eine Variante wählen:
 
 ```
-/function city_gen_1/start
-/function city_gen_2/start
-/function city_gen_3/start
-/function city_gen_4/start
-/function city_gen_5/start
+/function city_1/start
+/function city_2/start
+/function city_3/start
+/function city_4/start
+/function city_5/start
 ```
 
-Kurzform (Variante 1): `/function city_gen/start`
+Kurzform (Variante 1): `/function city/start`
 
 Bau läuft **über mehrere Sekunden** (Chat: „Fertig.“ abwarten).  
 **In der Nähe bleiben**, bis es fertig ist (sonst stoppen die Chunks).
@@ -53,19 +64,17 @@ Bau läuft **über mehrere Sekunden** (Chat: „Fertig.“ abwarten).
 ### Rückgängig
 
 ```
-/function city_gen_1/clear
+/function city/clear
 ```
 
-(gleiche Nummer wie beim Start; Kurzform: `/function city_gen/clear`)
-
-Clear ebenfalls über mehrere Sekunden („Clear fertig.“), in der Nähe bleiben.
+Gleiche 80×80-Fläche für alle Varianten. Über mehrere Sekunden („Clear fertig.“), in der Nähe bleiben.
 
 ### Seed / mehr Varianten
 
-1. Clear der gebauten Variante  
+1. `/function city/clear`  
 2. Lokal `node gameplay/city/generate_city_pack.mjs --seed <neu> [--variants 5]`  
 3. `./gameplay/city/deploy_city_pack.sh minecraft`  
-4. `/function city_gen_N/start`
+4. `/function city_N/start`
 
 ## Gebäude kopieren (Structure Block)
 

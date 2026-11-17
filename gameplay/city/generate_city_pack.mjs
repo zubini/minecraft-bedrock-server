@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 /**
- * Erzeugt das Behavior Pack "city_gen" mit mehreren Varianten.
+ * Erzeugt das Behavior Pack "city" mit mehreren Varianten.
  *
  * Im Spiel z.B.:
- *   /function city_gen_1/start … /function city_gen_5/start
- *   /function city_gen_1/clear
+ *   /function city_1/start … /function city_5/start
+ *   /function city/terrain | /function city/clear
  *
  * Aufruf:
  *   node gameplay/city/generate_city_pack.mjs --seed 42
- *   node gameplay/city/generate_city_pack.mjs --seed 42 --variants 5
  *
  * Stadt: 80×80, 4×4 Parzellen, Abstand zwischen Häusern ≥ 8 Blöcke.
  */
@@ -56,11 +55,11 @@ const LAYOUT = {
   street: 6,
 };
 
-/** Anzahl vorgefertigter Varianten (city_gen_1 … city_gen_N). */
+/** Anzahl vorgefertigter Varianten (city_1 … city_N). */
 const DEFAULT_VARIANTS = 5;
 
 /** Pack-Version (bei Logik-Änderung erhöhen). */
-const PACK_VERSION = [1, 1, 0];
+const PACK_VERSION = [1, 3, 1];
 
 // ---------------------------------------------------------------------------
 // Hilfen: Zufall, Koordinaten, Dateien schreiben
@@ -249,7 +248,7 @@ function buildTerrainBatches(size, maxHeight) {
   }
   if (batches.length > 0) {
     batches[batches.length - 1].push(
-      'tellraw @a {"rawtext":[{"text":"[city_gen] Terrain fertig – Strassen …"}]}',
+      'tellraw @a {"rawtext":[{"text":"[city] Terrain fertig – Strassen …"}]}',
     );
   }
   return batches;
@@ -292,7 +291,7 @@ function buildRoadBatches(size, lot, sidewalk, street) {
 
   if (batches.length > 0) {
     batches[batches.length - 1].push(
-      'tellraw @a {"rawtext":[{"text":"[city_gen] Strassen fertig – Häuser …"}]}',
+      'tellraw @a {"rawtext":[{"text":"[city] Strassen fertig – Häuser …"}]}',
     );
   }
   return batches;
@@ -426,31 +425,57 @@ function buildTowerCommands(lot, rng, minHeight, maxHeight) {
   return commands;
 }
 
-/**
- * Clear-Befehle: kleine Y-Scheiben + konservatives Block-Limit
- * (dichte Gebäude: grosse fills im selben Tick bleiben oft wirkungslos).
- * Höhe inkl. Antenne (maxHeight + 4).
- */
-function buildClearCommandBatches(size, maxHeight) {
-  const clearTop = maxHeight + 4;
-  const ySlice = 8;
-  // Deutlich unter 32768 – Clear ersetzt echte Blöcke, nicht nur Luft
-  const clearFillMax = 8192;
-  const all = [];
-
-  for (let y0 = 0; y0 <= clearTop; y0 += ySlice) {
-    const y1 = Math.min(clearTop, y0 + ySlice - 1);
-    all.push(...fillLarge(0, y0, 0, size - 1, y1, size - 1, "air", "", clearFillMax));
-  }
-  all.push(...fillLarge(0, 0, 0, size - 1, 0, size - 1, "grass_block", "", clearFillMax));
-
-  // Wenige fills pro Tick – Rest über tick.json
-  const batchSize = 4;
+/** Befehle in Tick-Batches aufteilen. */
+function chunkCommands(all, batchSize) {
   const batches = [];
   for (let i = 0; i < all.length; i += batchSize) {
     batches.push(all.slice(i, i + batchSize));
   }
   return batches;
+}
+
+/**
+ * Luft-Scheiben von yFrom bis clearTop (für Clear und Terrain-Prep).
+ */
+function buildAirClearCommands(size, maxHeight, yFrom = 0) {
+  const clearTop = maxHeight + 4;
+  const clearFillMax = 4096;
+  const all = [];
+
+  const lowEnd = Math.min(15, clearTop);
+  for (let y0 = yFrom; y0 <= lowEnd; y0 += 2) {
+    const y1 = Math.min(lowEnd, y0 + 1);
+    all.push(...fillLarge(0, y0, 0, size - 1, y1, size - 1, "air", "", clearFillMax));
+  }
+  for (let y0 = Math.max(yFrom, 16); y0 <= clearTop; y0 += 4) {
+    const y1 = Math.min(clearTop, y0 + 3);
+    all.push(...fillLarge(0, y0, 0, size - 1, y1, size - 1, "air", "", clearFillMax));
+  }
+  all.push(...fillLarge(0, yFrom, 0, size - 1, Math.min(yFrom + 3, clearTop), size - 1, "air", "", clearFillMax));
+  return all;
+}
+
+/**
+ * Clear-Befehle: nur Luft, kein neuer Boden.
+ * Untere Schichten oft hartnäckig → dünne Y-Scheiben.
+ */
+function buildClearCommandBatches(size, maxHeight) {
+  return chunkCommands(buildAirClearCommands(size, maxHeight, 0), 3);
+}
+
+/**
+ * Terrain-Prep: Ebene unter den Füssen (y=-1) = Erde,
+ * ab Fuss-Höhe (y=0) alles Luft – Platz für die Stadt.
+ * Marker steht auf Spieler-Fuss-Höhe.
+ */
+function buildPrepBatches(size, maxHeight) {
+  const clearFillMax = 4096;
+  const all = [
+    ...buildAirClearCommands(size, maxHeight, 0),
+    ...fillLarge(0, -1, 0, size - 1, -1, size - 1, "dirt", "", clearFillMax),
+    ...fillLarge(0, 0, 0, size - 1, 2, size - 1, "air", "", clearFillMax),
+  ];
+  return chunkCommands(all, 3);
 }
 
 /**
@@ -482,12 +507,11 @@ function writeVariant(outFunctionsRoot, variant) {
     street,
   } = variant;
 
-  const ns = `city_gen_${index}`;
+  const ns = `city_${index}`;
   const tag = `cg${index}_o`;
   const objBuild = `cg${index}_b`;
-  const objClear = `cg${index}_c`;
   const areaName = `cg${index}_a`;
-  const label = `city_gen_${index}`;
+  const label = `city_${index}`;
 
   const functionsDir = path.join(outFunctionsRoot, ns);
   fs.mkdirSync(functionsDir, { recursive: true });
@@ -495,7 +519,6 @@ function writeVariant(outFunctionsRoot, variant) {
   const lots = createLots(size, lot, sidewalk, street);
   const terrainBatches = buildTerrainBatches(size, maxHeight);
   const roadBatches = buildRoadBatches(size, lot, sidewalk, street);
-  const clearBatches = buildClearCommandBatches(size, maxHeight);
 
   const nTerrain = terrainBatches.length;
   const nRoads = roadBatches.length;
@@ -509,14 +532,13 @@ function writeVariant(outFunctionsRoot, variant) {
   writeMcfunction(path.join(functionsDir, "start.mcfunction"), [
     `tellraw @a {"rawtext":[{"text":"[${label}] Starte (seed=${seed}) – in der Nähe bleiben …"}]}`,
     `scoreboard objectives add ${objBuild} dummy`,
-    `scoreboard objectives add ${objClear} dummy`,
     `tickingarea remove ${areaName}`,
-    `kill @e[type=armor_stand,tag=${tag}]`,
+    "kill @e[type=armor_stand,tag=city_o]",
     "summon armor_stand ~ ~ ~",
     `tag @e[type=armor_stand,r=3,c=1] add ${tag}`,
+    `tag @e[tag=${tag},c=1] add city_o`,
     `effect @e[tag=${tag}] invisibility 999999 0 true`,
     tickingAreaAddCmd(size, maxHeight, areaName),
-    `scoreboard players set @e[tag=${tag},c=1] ${objClear} 0`,
     `scoreboard players set @e[tag=${tag},c=1] ${objBuild} ${stepFirstTerrain}`,
     `execute as @e[tag=${tag},c=1] at @s run function ${ns}/terrain_batches/t_00`,
     `scoreboard players set @e[tag=${tag},c=1] ${objBuild} ${stepFirstTerrain + 1}`,
@@ -547,36 +569,13 @@ function writeVariant(outFunctionsRoot, variant) {
   writeMcfunction(path.join(functionsDir, "build_done.mcfunction"), [
     `scoreboard players set @e[tag=${tag}] ${objBuild} 0`,
     `tickingarea remove ${areaName}`,
-    `tellraw @a {"rawtext":[{"text":"[${label}] Fertig. Undo: /function ${ns}/clear"}]}`,
-  ]);
-
-  const clearBatchDir = path.join(functionsDir, "clear_batches");
-  for (let i = 0; i < clearBatches.length; i++) {
-    writeMcfunction(path.join(clearBatchDir, `c_${pad2(i)}.mcfunction`), clearBatches[i]);
-  }
-
-  writeMcfunction(path.join(functionsDir, "clear.mcfunction"), [
-    `tellraw @a {"rawtext":[{"text":"[${label}] Clear – Nordwest-Ecke bleiben …"}]}`,
-    `scoreboard objectives add ${objBuild} dummy`,
-    `scoreboard objectives add ${objClear} dummy`,
-    `tickingarea remove ${areaName}`,
-    `kill @e[type=armor_stand,tag=${tag}]`,
-    "summon armor_stand ~ ~ ~",
-    `tag @e[type=armor_stand,r=3,c=1] add ${tag}`,
-    `effect @e[tag=${tag}] invisibility 999999 0 true`,
-    tickingAreaAddCmd(size, maxHeight, areaName),
-    `scoreboard players set @e[tag=${tag},c=1] ${objBuild} 0`,
-    `scoreboard players set @e[tag=${tag},c=1] ${objClear} 1`,
-    `execute as @e[tag=${tag},c=1] at @s run function ${ns}/clear_batches/c_00`,
-    `scoreboard players set @e[tag=${tag},c=1] ${objClear} 2`,
-    `tellraw @a {"rawtext":[{"text":"[${label}] Clear läuft (${clearBatches.length} Schritte) …"}]}`,
-  ]);
-
-  writeMcfunction(path.join(functionsDir, "clear_done.mcfunction"), [
-    `scoreboard players set @e[tag=${tag}] ${objClear} 0`,
-    `tickingarea remove ${areaName}`,
     `kill @e[tag=${tag}]`,
-    `tellraw @a {"rawtext":[{"text":"[${label}] Clear fertig."}]}`,
+    `tellraw @a {"rawtext":[{"text":"[${label}] Fertig. Undo: /function city/clear"}]}`,
+  ]);
+
+  // Clear ist gemeinsam: /function city/clear
+  writeMcfunction(path.join(functionsDir, "clear.mcfunction"), [
+    "function city/clear",
   ]);
 
   const onTick = [];
@@ -604,17 +603,6 @@ function writeVariant(outFunctionsRoot, variant) {
   onTick.push(
     `execute as @e[tag=${tag},c=1] if score @s ${objBuild} matches ${stepBuildDone} run function ${ns}/build_done`,
   );
-  for (let i = 0; i < clearBatches.length; i++) {
-    onTick.push(
-      `execute as @e[tag=${tag},c=1] at @s if score @s ${objClear} matches ${i + 1} run function ${ns}/clear_batches/c_${pad2(i)}`,
-    );
-  }
-  onTick.push(
-    `execute as @e[tag=${tag},c=1] if score @s ${objClear} matches 1..${clearBatches.length} run scoreboard players add @s ${objClear} 1`,
-  );
-  onTick.push(
-    `execute as @e[tag=${tag},c=1] if score @s ${objClear} matches ${clearBatches.length + 1} run function ${ns}/clear_done`,
-  );
   writeMcfunction(path.join(functionsDir, "on_tick.mcfunction"), onTick);
 
   return {
@@ -624,8 +612,114 @@ function writeVariant(outFunctionsRoot, variant) {
     terrain_steps: nTerrain,
     road_steps: nRoads,
     build_steps: totalBuildSteps,
-    clear_steps: clearBatches.length,
   };
+}
+
+/**
+ * Gemeinsam unter city/: terrain + clear (gleiche Stadtgrösse für alle Varianten).
+ */
+function writeSharedCityGen(outFunctionsRoot, size, maxHeight, variantCount) {
+  const ns = "city";
+  const functionsDir = path.join(outFunctionsRoot, ns);
+  fs.mkdirSync(functionsDir, { recursive: true });
+
+  // --- terrain ---
+  const prepTag = "cg_t_o";
+  const objPrep = "cg_t";
+  const prepArea = "cg_t_a";
+  const prepBatches = buildPrepBatches(size, maxHeight);
+  const prepDir = path.join(functionsDir, "prep_batches");
+  for (let i = 0; i < prepBatches.length; i++) {
+    writeMcfunction(path.join(prepDir, `p_${pad2(i)}.mcfunction`), prepBatches[i]);
+  }
+
+  writeMcfunction(path.join(functionsDir, "terrain.mcfunction"), [
+    'tellraw @a {"rawtext":[{"text":"[city] Terrain – Ebene unter den Füssen, Luft darüber …"}]}',
+    `scoreboard objectives add ${objPrep} dummy`,
+    "scoreboard objectives add cg_c dummy",
+    `tickingarea remove ${prepArea}`,
+    "tickingarea remove cg_c_a",
+    "kill @e[type=armor_stand,tag=city_o]",
+    "summon armor_stand ~ ~ ~",
+    `tag @e[type=armor_stand,r=3,c=1] add ${prepTag}`,
+    `tag @e[tag=${prepTag},c=1] add city_o`,
+    `effect @e[tag=${prepTag}] invisibility 999999 0 true`,
+    tickingAreaAddCmd(size, maxHeight, prepArea),
+    `scoreboard players set @e[tag=${prepTag},c=1] ${objPrep} 1`,
+    `execute as @e[tag=${prepTag},c=1] at @s run function ${ns}/prep_batches/p_00`,
+    `scoreboard players set @e[tag=${prepTag},c=1] ${objPrep} 2`,
+    `tellraw @a {"rawtext":[{"text":"[city] Terrain läuft (${prepBatches.length} Schritte) …"}]}`,
+  ]);
+
+  writeMcfunction(path.join(functionsDir, "terrain_done.mcfunction"), [
+    `scoreboard players set @e[tag=${prepTag}] ${objPrep} 0`,
+    `tickingarea remove ${prepArea}`,
+    `kill @e[tag=${prepTag}]`,
+    'tellraw @a {"rawtext":[{"text":"[city] Terrain fertig. Danach z.B. /function city_1/start"}]}',
+  ]);
+
+  // --- clear (gemeinsam, gleiche Grösse) ---
+  const clearTag = "cg_c_o";
+  const objClear = "cg_c";
+  const clearArea = "cg_c_a";
+  const clearBatches = buildClearCommandBatches(size, maxHeight);
+  const clearDir = path.join(functionsDir, "clear_batches");
+  for (let i = 0; i < clearBatches.length; i++) {
+    writeMcfunction(path.join(clearDir, `c_${pad2(i)}.mcfunction`), clearBatches[i]);
+  }
+
+  writeMcfunction(path.join(functionsDir, "clear.mcfunction"), [
+    'tellraw @a {"rawtext":[{"text":"[city] Clear – Nordwest-Ecke bleiben …"}]}',
+    `scoreboard objectives add ${objClear} dummy`,
+    `scoreboard objectives add ${objPrep} dummy`,
+    `tickingarea remove ${clearArea}`,
+    `tickingarea remove ${prepArea}`,
+    ...Array.from({ length: variantCount }, (_, i) => `tickingarea remove cg${i + 1}_a`),
+    "kill @e[type=armor_stand,tag=city_o]",
+    "summon armor_stand ~ ~ ~",
+    `tag @e[type=armor_stand,r=3,c=1] add ${clearTag}`,
+    `tag @e[tag=${clearTag},c=1] add city_o`,
+    `effect @e[tag=${clearTag}] invisibility 999999 0 true`,
+    tickingAreaAddCmd(size, maxHeight, clearArea),
+    `scoreboard players set @e[tag=${clearTag},c=1] ${objClear} 1`,
+    `execute as @e[tag=${clearTag},c=1] at @s run function ${ns}/clear_batches/c_00`,
+    `scoreboard players set @e[tag=${clearTag},c=1] ${objClear} 2`,
+    `tellraw @a {"rawtext":[{"text":"[city] Clear läuft (${clearBatches.length} Schritte) …"}]}`,
+  ]);
+
+  writeMcfunction(path.join(functionsDir, "clear_done.mcfunction"), [
+    `scoreboard players set @e[tag=${clearTag}] ${objClear} 0`,
+    `tickingarea remove ${clearArea}`,
+    `kill @e[tag=${clearTag}]`,
+    'tellraw @a {"rawtext":[{"text":"[city] Clear fertig."}]}',
+  ]);
+
+  const onTick = [];
+  for (let i = 0; i < prepBatches.length; i++) {
+    onTick.push(
+      `execute as @e[tag=${prepTag},c=1] at @s if score @s ${objPrep} matches ${i + 1} run function ${ns}/prep_batches/p_${pad2(i)}`,
+    );
+  }
+  onTick.push(
+    `execute as @e[tag=${prepTag},c=1] if score @s ${objPrep} matches 1..${prepBatches.length} run scoreboard players add @s ${objPrep} 1`,
+  );
+  onTick.push(
+    `execute as @e[tag=${prepTag},c=1] if score @s ${objPrep} matches ${prepBatches.length + 1} run function ${ns}/terrain_done`,
+  );
+  for (let i = 0; i < clearBatches.length; i++) {
+    onTick.push(
+      `execute as @e[tag=${clearTag},c=1] at @s if score @s ${objClear} matches ${i + 1} run function ${ns}/clear_batches/c_${pad2(i)}`,
+    );
+  }
+  onTick.push(
+    `execute as @e[tag=${clearTag},c=1] if score @s ${objClear} matches 1..${clearBatches.length} run scoreboard players add @s ${objClear} 1`,
+  );
+  onTick.push(
+    `execute as @e[tag=${clearTag},c=1] if score @s ${objClear} matches ${clearBatches.length + 1} run function ${ns}/clear_done`,
+  );
+  writeMcfunction(path.join(functionsDir, "on_tick.mcfunction"), onTick);
+
+  return { prep_steps: prepBatches.length, clear_steps: clearBatches.length };
 }
 
 // ---------------------------------------------------------------------------
@@ -649,7 +743,7 @@ function buildPack(options) {
   const manifest = {
     format_version: 2,
     header: {
-      name: "City Gen",
+      name: "City",
       description: `Procedural city ×${variants} (base seed=${seed}, size=${size})`,
       uuid: PACK_UUID,
       version: PACK_VERSION,
@@ -664,6 +758,14 @@ function buildPack(options) {
 
   const tickValues = [];
   const variantMeta = [];
+
+  const shared = writeSharedCityGen(functionsRoot, size, maxHeight, variants);
+  tickValues.push("city/on_tick");
+
+  // Alias: city/start → Variante 1 (clear/terrain liegen schon unter city/)
+  writeMcfunction(path.join(functionsRoot, "city", "start.mcfunction"), [
+    "function city_1/start",
+  ]);
 
   for (let index = 1; index <= variants; index++) {
     const info = writeVariant(functionsRoot, {
@@ -680,16 +782,6 @@ function buildPack(options) {
     variantMeta.push(info);
   }
 
-  // Alias: city_gen → Variante 1 (Kurzform)
-  const aliasDir = path.join(functionsRoot, "city_gen");
-  fs.mkdirSync(aliasDir, { recursive: true });
-  writeMcfunction(path.join(aliasDir, "start.mcfunction"), [
-    "function city_gen_1/start",
-  ]);
-  writeMcfunction(path.join(aliasDir, "clear.mcfunction"), [
-    "function city_gen_1/clear",
-  ]);
-
   fs.writeFileSync(
     path.join(functionsRoot, "tick.json"),
     JSON.stringify({ values: tickValues }, null, 2) + "\n",
@@ -704,11 +796,15 @@ function buildPack(options) {
     lot,
     sidewalk,
     street,
+    prep_steps: shared.prep_steps,
+    clear_steps: shared.clear_steps,
   };
-  fs.writeFileSync(path.join(OUT_DIR, "city_gen_meta.json"), JSON.stringify(meta, null, 2) + "\n");
+  fs.writeFileSync(path.join(OUT_DIR, "city_meta.json"), JSON.stringify(meta, null, 2) + "\n");
 
   console.log(`Fertig: ${OUT_DIR}`);
   console.log(`  ${size}×${size}, ${variants} Varianten, base seed=${seed}`);
+  console.log(`  /function city/terrain  (${shared.prep_steps} Schritte)`);
+  console.log(`  /function city/clear    (${shared.clear_steps} Schritte)`);
   for (const v of variantMeta) {
     console.log(
       `  /function ${v.ns}/start  (seed=${v.seed}, ${v.buildings} Häuser, ${v.build_steps} Bau-Ticks)`,
@@ -748,17 +844,16 @@ function parseArgs(argv) {
       console.log(`Usage:
   node generate_city_pack.mjs [--seed 42] [--variants ${DEFAULT_VARIANTS}] [--min-height 60] [--max-height 90]
 
-  Erzeugt ${DEFAULT_VARIANTS} Varianten (anpassbar): city_gen_1 … city_gen_N
+  Erzeugt ${DEFAULT_VARIANTS} Varianten (anpassbar): city_1 … city_N
   Stadt: ${CITY_SIZE}×${CITY_SIZE}, Abstand Parzellen = ${LAYOUT.sidewalk + LAYOUT.street + LAYOUT.sidewalk}
 
 Danach:
   ./gameplay/city/deploy_city_pack.sh minecraft
 
 Im Spiel:
-  /function city_gen_1/start
-  /function city_gen_2/start
-  …
-  /function city_gen_1/clear`);
+  /function city/terrain
+  /function city_1/start …
+  /function city/clear`);
       process.exit(0);
     } else if (arg === "--size" || arg === "--lot" || arg === "--sidewalk" || arg === "--street") {
       throw new Error(

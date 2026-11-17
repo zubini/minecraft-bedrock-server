@@ -1,3 +1,0 @@
-scoreboard players set @e[tag=cg5_o] cg5_b 0
-tickingarea remove cg5_a
-tellraw @a {"rawtext":[{"text":"[city_gen_5] Fertig. Undo: /function city_gen_5/clear"}]}

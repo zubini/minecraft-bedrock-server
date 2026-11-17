@@ -1,9 +1,10 @@
 {
   "values": [
-    "city_gen_1/on_tick",
-    "city_gen_2/on_tick",
-    "city_gen_3/on_tick",
-    "city_gen_4/on_tick",
-    "city_gen_5/on_tick"
+    "city/on_tick",
+    "city_1/on_tick",
+    "city_2/on_tick",
+    "city_3/on_tick",
+    "city_4/on_tick",
+    "city_5/on_tick"
   ]
 }

@@ -1,0 +1,37 @@
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 1 run function city_2/terrain_batches/t_00
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 2 run function city_2/terrain_batches/t_01
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 3 run function city_2/terrain_batches/t_02
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 4 run function city_2/terrain_batches/t_03
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 5 run function city_2/terrain_batches/t_04
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 6 run function city_2/terrain_batches/t_05
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 7 run function city_2/terrain_batches/t_06
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 8 run function city_2/terrain_batches/t_07
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 9 run function city_2/terrain_batches/t_08
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 10 run function city_2/terrain_batches/t_09
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 11 run function city_2/terrain_batches/t_10
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 12 run function city_2/road_batches/r_00
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 13 run function city_2/road_batches/r_01
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 14 run function city_2/road_batches/r_02
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 15 run function city_2/road_batches/r_03
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 16 run function city_2/road_batches/r_04
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 17 run function city_2/road_batches/r_05
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 18 run function city_2/road_batches/r_06
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 19 run function city_2/road_batches/r_07
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 20 run function city_2/buildings/b_00
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 21 run function city_2/buildings/b_01
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 22 run function city_2/buildings/b_02
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 23 run function city_2/buildings/b_03
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 24 run function city_2/buildings/b_04
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 25 run function city_2/buildings/b_05
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 26 run function city_2/buildings/b_06
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 27 run function city_2/buildings/b_07
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 28 run function city_2/buildings/b_08
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 29 run function city_2/buildings/b_09
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 30 run function city_2/buildings/b_10
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 31 run function city_2/buildings/b_11
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 32 run function city_2/buildings/b_12
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 33 run function city_2/buildings/b_13
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 34 run function city_2/buildings/b_14
+execute as @e[tag=cg2_o,c=1] at @s if score @s cg2_b matches 35 run function city_2/buildings/b_15
+execute as @e[tag=cg2_o,c=1] if score @s cg2_b matches 1..35 run scoreboard players add @s cg2_b 1
+execute as @e[tag=cg2_o,c=1] if score @s cg2_b matches 36 run function city_2/build_done

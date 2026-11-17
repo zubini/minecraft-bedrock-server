@@ -1,0 +1,53 @@
+{
+  "base_seed": 42,
+  "variants": [
+    {
+      "ns": "city_1",
+      "seed": 42,
+      "buildings": 16,
+      "terrain_steps": 11,
+      "road_steps": 8,
+      "build_steps": 35
+    },
+    {
+      "ns": "city_2",
+      "seed": 104771,
+      "buildings": 16,
+      "terrain_steps": 11,
+      "road_steps": 8,
+      "build_steps": 35
+    },
+    {
+      "ns": "city_3",
+      "seed": 209500,
+      "buildings": 16,
+      "terrain_steps": 11,
+      "road_steps": 8,
+      "build_steps": 35
+    },
+    {
+      "ns": "city_4",
+      "seed": 314229,
+      "buildings": 16,
+      "terrain_steps": 11,
+      "road_steps": 8,
+      "build_steps": 35
+    },
+    {
+      "ns": "city_5",
+      "seed": 418958,
+      "buildings": 16,
+      "terrain_steps": 11,
+      "road_steps": 8,
+      "build_steps": 35
+    }
+  ],
+  "size": 80,
+  "min_height": 60,
+  "max_height": 90,
+  "lot": 12,
+  "sidewalk": 1,
+  "street": 6,
+  "prep_steps": 62,
+  "clear_steps": 59
+}
